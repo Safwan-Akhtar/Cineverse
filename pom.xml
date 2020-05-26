@@ -101,7 +101,22 @@
       <version>2.5</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>repository.spring.milestone</id>
+      <name>Spring Milestones Repository</name>
+      <url>http://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
+
 
   <build>
     <outputDirectory>target/${project.artifactId}/WEB-INF/classes</outputDirectory>
