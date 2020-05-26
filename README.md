@@ -1,1 +1,1 @@
-# QA.CF-Cinema-Project.
+# QA Team Gates - Cinema-Project.
