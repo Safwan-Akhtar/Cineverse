@@ -89,17 +89,17 @@ public class CustomerControllerIntegrationTest {
     }
 
     @Test
-    public void createCharacterTest() throws Exception {
+    public void createCustomerTest() throws Exception {
         String result = this.mock.perform(
-                request(HttpMethod.POST, "/createCharacter")
+                request(HttpMethod.POST, "/createCustomer")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(this.objectMapper.writeValueAsString(testCharacterSheet))
+                        .content(this.objectMapper.writeValueAsString(testCustomers))
                         .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-        assertEquals(result, this.objectMapper.writeValueAsString(characterDTO));
+        assertEquals(result, this.objectMapper.writeValueAsString(customersDTO));
     }
 }
