@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CustomerService {
+public class CustomersService {
 
     private final CustomersRepo customersRepo;
 
     private final ModelMapper mapper;
 
     @Autowired
-    public CustomerService(CustomersRepo customersRepo, ModelMapper mapper) {
+    public CustomersService(CustomersRepo customersRepo, ModelMapper mapper) {
         this.customersRepo = customersRepo;
         this.mapper = mapper;
     }
