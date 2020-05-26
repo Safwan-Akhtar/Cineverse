@@ -37,8 +37,13 @@ public class CustomersController {
                 : ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/getCharacterById/{id}")
-    public ResponseEntity<CharacterDTO> getCharacterById(@PathVariable Long id){
-        return ResponseEntity.ok(this.service.findCharacterById (id));
+    @GetMapping("/getCustomersById/{id}")
+    public ResponseEntity<CustomersDTO> getCustomersById(@PathVariable Long id){
+        return ResponseEntity.ok(this.service.findCustomersById (id));
+    }
+
+    @PutMapping("/updateCustomers/{id}")
+    public ResponseEntity<CustomersDTO> updateCharacter(@PathVariable Long id, @RequestBody Customers customers){
+        return ResponseEntity.ok(this.service.updateCustomers (id, customers));
     }
 }
