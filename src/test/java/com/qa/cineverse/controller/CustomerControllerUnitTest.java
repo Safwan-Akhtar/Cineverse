@@ -10,11 +10,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
@@ -54,13 +57,30 @@ public class CustomerControllerUnitTest {
     }
 
     @Test
-    public void getAllCharacterTest(){
+    public void getAllCustomersTest(){
         when(service.readCustomers ()).thenReturn(this.customers.stream().map(this::mapToDTO).collect(Collectors.toList()));
-        assertFalse("No character found", this.characterController.getAllCustomers().getBody().isEmpty());
+        assertFalse("No customer found", this.characterController.getAllCustomers().getBody().isEmpty());
         verify(service, times(1)).readCustomers ();
     }
 
+    @Test
+    public void createCustomersTest(){
+        when(this.service.createCustomer(testCustomers)).thenReturn(this.customersDTO);
+        assertEquals(this.characterController.createCharacter(testCustomers), new ResponseEntity<CustomersDTO> (this.customersDTO, HttpStatus.CREATED));
+        verify(this.service, times(1)).createCustomer(testCustomers);
+    }
 
+    @Test
+    public void deleteCustomersTestFalse(){
+        this.characterController.deleteCustomers(id);
+        verify(service, times(1)).deleteCustomers(id);
+    }
 
+    @Test
+    public void getCustomersByIDTest(){
+        when(this.service.findCustomersById (id)).thenReturn(this.customersDTO);
+        assertEquals(this.characterController.getCustomersById (id), new ResponseEntity<CustomersDTO>(this.customersDTO, HttpStatus.OK));
+        verify(service, times(1)).findCustomersById (id);
+    }
 
 }
