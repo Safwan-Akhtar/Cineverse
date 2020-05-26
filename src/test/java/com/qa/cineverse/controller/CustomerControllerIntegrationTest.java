@@ -102,4 +102,11 @@ public class CustomerControllerIntegrationTest {
                 .getContentAsString();
         assertEquals(result, this.objectMapper.writeValueAsString(customersDTO));
     }
+
+    @Test
+    public void deleteCustomerTest() throws Exception {
+        this.mock.perform(
+                request(HttpMethod.DELETE, "/deleteCustomer/" + this.id)
+        ).andExpect(status().isNoContent());
+    }
 }
