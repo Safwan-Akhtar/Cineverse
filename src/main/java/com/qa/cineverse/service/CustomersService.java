@@ -48,4 +48,11 @@ public class CustomersService {
         return this.mapToDTO(tempCustomers);
     }
 
+    public boolean deleteCustomers(Long id){
+        if(!this.customersRepo.existsById(id)){
+            throw new CustomersNotFoundException ();
+        }
+        this.customersRepo.deleteById(id);
+        return this.customersRepo.existsById(id);
+    }
 }
