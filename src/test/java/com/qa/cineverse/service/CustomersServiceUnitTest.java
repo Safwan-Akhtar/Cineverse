@@ -63,11 +63,13 @@ public class CustomersServiceUnitTest {
     }
 
     @Test
-    public void createCharacterTest(){
-        when(repository.save(testCharacterSheet)).thenReturn(testCharacterSheetWithID);
-        when(this.mapper.map(testCharacterSheetWithID, CharacterDTO.class)).thenReturn(characterDTO);
-        assertEquals(this.service.createCharacter (testCharacterSheet), this.characterDTO);
-        verify(repository, times(1)).save(this.testCharacterSheet);
+    public void createCustomersTest(){
+        when(repository.save(testCustomers)).thenReturn(testCustomersWithID);
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
+        assertEquals(this.service.createCustomer (testCustomers), this.customersDTO);
+        verify(repository, times(1)).save(this.testCustomers);
     }
+
+
 
 }
