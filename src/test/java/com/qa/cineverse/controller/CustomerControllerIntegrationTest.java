@@ -75,5 +75,31 @@ public class CustomerControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(customersDTOList));
     }
 
+    @Test
+    public void getCustomerByID() throws Exception {
+        String content = this.mock.perform(
+                request(HttpMethod.GET, "/getCustomerById/" + this.id)
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(customersDTO));
+    }
 
+    @Test
+    public void createCharacterTest() throws Exception {
+        String result = this.mock.perform(
+                request(HttpMethod.POST, "/createCharacter")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(testCharacterSheet))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(result, this.objectMapper.writeValueAsString(characterDTO));
+    }
 }
