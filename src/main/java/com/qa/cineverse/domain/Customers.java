@@ -3,10 +3,11 @@ package com.qa.cineverse.domain;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "customers")
+@Proxy(lazy=false)
 public class Customers {
 
     @Id
