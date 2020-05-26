@@ -25,9 +25,9 @@ public class CustomersController {
         return ResponseEntity.ok(this.service.readCustomers ());
     }
 
-    @PostMapping("/createCustomers")
+    @PostMapping("/createCustomer")
     public ResponseEntity<CustomersDTO> createCharacter(@RequestBody Customers customers){
-        return new ResponseEntity<>(this.service.createCustomers (customers), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.service.createCustomer (customers), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteCustomers/{id}")
