@@ -1,0 +1,6 @@
+# git ignore
+.idea
+.vscode
+target
+test-output
+*.iml
