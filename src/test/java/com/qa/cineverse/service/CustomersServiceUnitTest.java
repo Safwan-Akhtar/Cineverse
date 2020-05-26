@@ -2,6 +2,7 @@ package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.dto.CustomersDTO;
+import com.qa.cineverse.exception.CustomersNotFoundException;
 import com.qa.cineverse.repo.CustomersRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,6 +71,26 @@ public class CustomersServiceUnitTest {
         verify(repository, times(1)).save(this.testCustomers);
     }
 
+    @Test
+    public void findCustomersByIdTest(){
+        when(this.repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testCustomersWithID));
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
+        assertEquals(this.service.findCustomersById (this.id), customersDTO);
+        verify(repository, times(1)).findById(id);
+    }
 
+    @Test
+    public void deleteCustomersByExistingId(){
+        when(this.repository.existsById(id)).thenReturn(true, false);
+        assertFalse(service.deleteCustomers(id));
+        verify(repository, times(1)).deleteById(id);
+        verify(repository, times(2)).existsById(id);
+    }
 
+    @Test(expected = CustomersNotFoundException.class)
+    public void deleteCustomersByNonExistingId(){
+        when(this.repository.existsById(id)).thenReturn(false);
+        service.deleteCustomers (id);
+        verify(repository, times(1)).existsById(id);
+    }
 }
