@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,12 +46,26 @@ public class CustomersServiceIntegrationTest {
     }
 
     @Test
-    public void readCharacterTest(){
+    public void readCustomersTest(){
         assertThat(this.service.readCustomers())
                 .isEqualTo(
                         Stream.of(this.mapToDTO(testCustomersWithID)).collect(Collectors.toList())
                 );
     }
 
+    @Test
+    public void createCustomersTest(){
+        assertEquals(this.mapToDTO(this.testCustomersWithID), this.service.createCustomer (testCustomers));
+    }
+
+    @Test
+    public void findCustomersByIdTest(){
+        assertThat(this.service.findCustomersById (this.testCustomersWithID.getCustomerId ())).isEqualTo(this.mapToDTO(this.testCustomersWithID));
+    }
+
+    @Test
+    public void deleteCustomersTest(){
+        assertThat(this.service.deleteCustomers(this.testCustomersWithID.getCustomerId ())).isFalse();
+    }
 
 }
