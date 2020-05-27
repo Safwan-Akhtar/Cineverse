@@ -30,17 +30,15 @@ import java.util.*;
         public Screenings() {
         }
 
-    public Screenings(LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
+    public Screenings(LocalDateTime movieDateTime, String screenType) {
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
-        this.customers = customers;
     }
 
-    public Screenings(Long screeningsId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
+    public Screenings(Long screeningsId, LocalDateTime movieDateTime, String screenType) {
         this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
-        this.customers = customers;
     }
 
     public Long getScreeningsId() {
@@ -99,7 +97,6 @@ import java.util.*;
                 "screeningsId=" + screeningsId +
                 ", movieDateTime=" + movieDateTime +
                 ", screenType='" + screenType + '\'' +
-                ", customers=" + customers +
                 '}';
     }
 }
