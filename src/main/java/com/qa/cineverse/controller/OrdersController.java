@@ -37,7 +37,10 @@ public class OrdersController {
                 : ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/getOrderById/{id}")
+    public ResponseEntity<OrdersDTO> getSkillsById(@PathVariable Long id){
+        return ResponseEntity.ok(this.service.findOrdersById (id));
+    }
 
 
 }
