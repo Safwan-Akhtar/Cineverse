@@ -1,6 +1,7 @@
 package com.qa.cineverse.controller;
 
 import com.qa.cineverse.domain.Customers;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.CustomersDTOTest;
 import com.qa.cineverse.service.CustomersService;
 import org.junit.Before;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.*;
 public class CustomerControllerUnitTest {
 
     @InjectMocks
-    private CustomersController characterController;
+    private CustomersController customerController;
 
     @Mock
     private CustomersService service;
@@ -38,12 +39,12 @@ public class CustomerControllerUnitTest {
 
     private final long id = 1L;
 
-    private CustomersDTOTest customersDTOTest;
+    private CustomersDTO customersDTO;
 
     private final ModelMapper mapper = new ModelMapper();
 
-    private CustomersDTOTest mapToDTO(Customers customers){
-        return this.mapper.map(customers, CustomersDTOTest.class);
+    private CustomersDTO mapToDTO(Customers customers){
+        return this.mapper.map(customers, CustomersDTO.class);
     }
 
     @Before
@@ -53,33 +54,33 @@ public class CustomerControllerUnitTest {
         this.customers.add(testCustomers);
         this.testCustomersWithId = new Customers (testCustomers.getName());
         this.testCustomersWithId.setCustomersId (this.id);
-        this.customersDTOTest = this.mapToDTO(testCustomersWithId);
+        this.customersDTO = this.mapToDTO(testCustomersWithId);
     }
 
     @Test
     public void getAllCustomersTest(){
-        when(service.readCustomers ()).thenReturn(this.customers.stream().map(this::mapToDTO).collect(Collectors.toList()));
-        assertFalse("No customer found", this.characterController.getAllCustomers().getBody().isEmpty());
+        when(service.readCustomers()).thenReturn(this.customers.stream().map(this::mapToDTO).collect(Collectors.toList()));
+        assertFalse("No customer found", this.customerController.getAllCustomers().getBody().isEmpty());
         verify(service, times(1)).readCustomers ();
     }
 
     @Test
     public void createCustomersTest(){
-        when(this.service.createCustomer(testCustomers)).thenReturn(this.customersDTOTest);
-        assertEquals(this.characterController.createCharacter(testCustomers), new ResponseEntity<CustomersDTOTest> (this.customersDTOTest, HttpStatus.CREATED));
+        when(this.service.createCustomer(testCustomers)).thenReturn(this.customersDTO);
+        assertEquals(this.customerController.createCharacter(testCustomers), new ResponseEntity<CustomersDTO> (this.customersDTO, HttpStatus.CREATED));
         verify(this.service, times(1)).createCustomer(testCustomers);
     }
 
     @Test
     public void deleteCustomersTestFalse(){
-        this.characterController.deleteCustomers(id);
+        this.customerController.deleteCustomers(id);
         verify(service, times(1)).deleteCustomers(id);
     }
 
     @Test
     public void getCustomersByIDTest(){
-        when(this.service.findCustomersById (id)).thenReturn(this.customersDTOTest);
-        assertEquals(this.characterController.getCustomersById (id), new ResponseEntity<CustomersDTOTest>(this.customersDTOTest, HttpStatus.OK));
+        when(this.service.findCustomersById (id)).thenReturn(this.customersDTO);
+        assertEquals(this.customerController.getCustomersById (id), new ResponseEntity<CustomersDTO>(this.customersDTO, HttpStatus.OK));
         verify(service, times(1)).findCustomersById (id);
     }
 
