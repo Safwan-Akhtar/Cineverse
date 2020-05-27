@@ -3,6 +3,7 @@ package com.qa.cineverse.service;
 import com.qa.cineverse.domain.Screenings;
 import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
+import com.qa.cineverse.exception.ScreeningsNotFoundException;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,4 +72,26 @@ public class ScreeningsServiceUnitTest {
         verify(repository, times(1)).save(this.testScreenings);
     }
 
+    @Test
+    public void findScreeningsByIdTest(){
+        when(this.repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testScreeningsWithID));
+        when(this.mapper.map(testScreeningsWithID, ScreeningsDTO.class)).thenReturn(screeningsDTO);
+        assertEquals(this.service.findScreeningsById (this.id), screeningsDTO);
+        verify(repository, times(1)).findById(id);
+    }
+
+    @Test
+    public void deleteScreeningsByExistingId(){
+        when(this.repository.existsById(id)).thenReturn(true, false);
+        assertFalse(service.deleteScreening(id));
+        verify(repository, times(1)).deleteById(id);
+        verify(repository, times(2)).existsById(id);
+    }
+
+    @Test(expected = ScreeningsNotFoundException.class)
+    public void deleteScreeningsByNonExistingId(){
+        when(this.repository.existsById(id)).thenReturn(false);
+        service.deleteScreening (id);
+        verify(repository, times(1)).existsById(id);
+    }
 }

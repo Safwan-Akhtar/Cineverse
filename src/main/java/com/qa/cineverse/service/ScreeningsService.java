@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,8 +27,8 @@ public class ScreeningsService {
 
     private ScreeningsDTO mapToDTO(Screenings screenings) { return this.mapper.map(screenings, ScreeningsDTO.class); }
 
-    public Set<ScreeningsDTO> readScreenings() {
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
+    public List<ScreeningsDTO> readScreenings() {
+        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public ScreeningsDTO createScreening(Screenings screenings) {

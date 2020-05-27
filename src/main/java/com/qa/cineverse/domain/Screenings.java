@@ -12,7 +12,7 @@ import java.util.*;
     public class Screenings {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue
         @Column(name = "screenings_id")
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
@@ -25,7 +25,7 @@ import java.util.*;
                 name = "screenings_customers",
                 joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
-        private Set<Customers> customers = new HashSet<>();
+        private List<Customers> customers = new ArrayList<>();
 
         public Screenings() {
         }
@@ -65,11 +65,11 @@ import java.util.*;
         this.screenType = screenType;
     }
 
-    public Set<Customers> getCustomers() {
+    public List<Customers> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(Set<Customers> customers) {
+    public void setCustomers(List<Customers> customers) {
         this.customers = customers;
     }
 

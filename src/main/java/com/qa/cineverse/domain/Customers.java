@@ -22,9 +22,9 @@ public class Customers {
 
     @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "orders_customers",
+            name = "screenings_customers",
             joinColumns=@JoinColumn(name="customers_id"),
-            inverseJoinColumns=@JoinColumn(name="orders_id"))
+            inverseJoinColumns=@JoinColumn(name="screenings_id"))
     private List<Screenings> orders = new ArrayList<> ();
 
     public Customers() {
