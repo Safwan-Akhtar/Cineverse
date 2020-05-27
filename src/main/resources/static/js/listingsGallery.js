@@ -1,0 +1,1 @@
+const display = document.querySelector("#currentListingsDisplay");
