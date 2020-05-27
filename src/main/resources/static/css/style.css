@@ -1,10 +1,70 @@
-body{ background-color: #0E2626;
-color: white;}
 
 
 /* Color Theme Swatches in Hex */
-.Christian-Tagliavini-Portfolio-1-hex { color: #0E2626; }
-.Christian-Tagliavini-Portfolio-2-hex { color: #BF9C88; }
-.Christian-Tagliavini-Portfolio-3-hex { color: #8C6151; }
-.Christian-Tagliavini-Portfolio-4-hex { color: #400B06; }
-.Christian-Tagliavini-Portfolio-5-hex { color: #260101; }
+.yellowgreen-1-hex {
+  color: #004742;
+}
+.yellowgreen-2-hex {
+  color: #1e665b;
+}
+.yellowgreen-3-hex {
+  color: #54887a;
+}
+.yellowgreen-4-hex {
+  color: #869e8f;
+}
+.yellowgreen-5-hex {
+  color: #ebe8cf;
+}
+
+body {
+  background-color: #869e8f;
+  color: white;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+nav {
+  background: #004742;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+}
+
+
+/*Footer*/
+
+.footer {
+position: fixed;
+bottom: 0px;
+left: 0px;
+width: 100%;
+height: 300px;
+
+background-color: blue;
+color: #869e8f;
+text-align: center;
+padding-top: 20px;
+
+
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #54887a;
+  color: white;
+  text-align: center;
+}
