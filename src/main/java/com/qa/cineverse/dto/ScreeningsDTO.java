@@ -2,6 +2,7 @@ package com.qa.cineverse.dto;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,20 +11,20 @@ import java.util.Objects;
 public class ScreeningsDTO {
 
     private Long screeningsId;
-    private String movieDateTime;
+    private LocalDateTime movieDateTime;
     private String screenType;
     private List<CustomersDTO> customers = new ArrayList<> ();
 
     public ScreeningsDTO() {
     }
 
-    public ScreeningsDTO(String movieDateTime, String screenType) {
+    public ScreeningsDTO(LocalDateTime movieDateTime, String screenType) {
         super();
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
     }
 
-    public ScreeningsDTO(Long screeningsId, String movieDateTime, String screenType) {
+    public ScreeningsDTO(Long screeningsId, LocalDateTime movieDateTime, String screenType) {
         this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
@@ -37,11 +38,11 @@ public class ScreeningsDTO {
         this.screeningsId = screeningsId;
     }
 
-    public String getMovieDateTime() {
+    public LocalDateTime getMovieDateTime() {
         return movieDateTime;
     }
 
-    public void setMovieDateTime(String movieDateTime) {
+    public void setMovieDateTime(LocalDateTime movieDateTime) {
         this.movieDateTime = movieDateTime;
     }
 
