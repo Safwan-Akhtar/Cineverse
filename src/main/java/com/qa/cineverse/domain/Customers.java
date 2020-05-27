@@ -14,7 +14,7 @@ public class Customers {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "customers_id")
     private Long customersId;
 
     @Column(name = "name")
@@ -23,8 +23,8 @@ public class Customers {
     @ManyToMany(targetEntity = Orders.class, fetch = FetchType.LAZY)
     @JoinTable(
             name = "orders_customers",
-            joinColumns=@JoinColumn(name="orders_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="customers_id", referencedColumnName="id"))
+            joinColumns=@JoinColumn(name="customers_id"),
+            inverseJoinColumns=@JoinColumn(name="orders_id"))
     private List<Orders> orders = new ArrayList<> ();
 
     public Customers() {
@@ -55,6 +55,14 @@ public class Customers {
         this.name = name;
     }
 
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -63,19 +71,21 @@ public class Customers {
             return false;
         Customers customers = (Customers) o;
         return getCustomersId ().equals (customers.getCustomersId ()) &&
-                getName ().equals (customers.getName ());
+                getName ().equals (customers.getName ()) &&
+                getOrders ().equals (customers.getOrders ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName ());
+        return Objects.hash (getCustomersId (), getName (), getOrders ());
     }
 
     @Override
     public String toString() {
         return "Customers{" +
-                "customerId=" + customersId +
+                "customersId=" + customersId +
                 ", name='" + name + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 }

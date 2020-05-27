@@ -16,16 +16,12 @@ import java.util.Set;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
+        @Column(name = "orders_id")
         private Long ordersId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
         private LocalDateTime movieDateTime;
-        @Column(name = "imdb_id")
-        private String imdbId;
-        @Column(name = "total_price")
-        private String totalPrice;
-        @Column(name = "seat_no")
-        private String seatNo;
+        @Column(name = "screen_type")
+        private String screenType;
 
         @JsonIgnore
         @ManyToMany(cascade= CascadeType.ALL)
@@ -34,20 +30,16 @@ import java.util.Set;
         public Orders() {
         }
 
-    public Orders(LocalDateTime movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
+    public Orders(LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
         this.movieDateTime = movieDateTime;
-        this.imdbId = imdbId;
-        this.totalPrice = totalPrice;
-        this.seatNo = seatNo;
+        this.screenType = screenType;
         this.customers = customers;
     }
 
-    public Orders(Long ordersId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
+    public Orders(Long ordersId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
         this.ordersId = ordersId;
         this.movieDateTime = movieDateTime;
-        this.imdbId = imdbId;
-        this.totalPrice = totalPrice;
-        this.seatNo = seatNo;
+        this.screenType = screenType;
         this.customers = customers;
     }
 
@@ -67,28 +59,12 @@ import java.util.Set;
         this.movieDateTime = movieDateTime;
     }
 
-    public String getImdbId() {
-        return imdbId;
+    public String getScreenType() {
+        return screenType;
     }
 
-    public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
-    }
-
-    public String getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(String totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
+    public void setScreenType(String seatNo) {
+        this.screenType = seatNo;
     }
 
     public Set<Customers> getCustomers() {
@@ -108,15 +84,13 @@ import java.util.Set;
         Orders orders = (Orders) o;
         return getOrdersId ().equals (orders.getOrdersId ()) &&
                 getMovieDateTime ().equals (orders.getMovieDateTime ()) &&
-                getImdbId ().equals (orders.getImdbId ()) &&
-                getTotalPrice ().equals (orders.getTotalPrice ()) &&
-                getSeatNo ().equals (orders.getSeatNo ()) &&
+                getScreenType ().equals (orders.getScreenType ()) &&
                 getCustomers ().equals (orders.getCustomers ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getOrdersId (), getMovieDateTime (), getImdbId (), getTotalPrice (), getSeatNo (), getCustomers ());
+        return Objects.hash (getOrdersId (), getMovieDateTime (), getScreenType (), getCustomers ());
     }
 
     @Override
@@ -124,9 +98,7 @@ import java.util.Set;
         return "Orders{" +
                 "orderId=" + ordersId +
                 ", movieDateTime='" + movieDateTime + '\'' +
-                ", imdbId='" + imdbId + '\'' +
-                ", totalPrice='" + totalPrice + '\'' +
-                ", seatNo='" + seatNo + '\'' +
+                ", seatNo='" + screenType + '\'' +
                 ", customers=" + customers +
                 '}';
     }

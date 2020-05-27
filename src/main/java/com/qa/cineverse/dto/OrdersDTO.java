@@ -10,27 +10,20 @@ public class OrdersDTO {
 
     private Long ordersId;
     private String movieDateTime;
-    private Long imdbId;
-    private BigDecimal totalPrice;
-    private Long seatNo;
+    private String screenType;
 
     public OrdersDTO() {
     }
 
-    public OrdersDTO(String movieDateTime, Long imdbId, BigDecimal totalPrice, Long seatNo) {
-        super();
+    public OrdersDTO(String movieDateTime, String screenType) {
         this.movieDateTime = movieDateTime;
-        this.imdbId = imdbId;
-        this.totalPrice = totalPrice;
-        this.seatNo = seatNo;
+        this.screenType = screenType;
     }
 
-    public OrdersDTO(Long ordersId, String movieDateTime, Long imdbId, BigDecimal totalPrice, Long seatNo) {
+    public OrdersDTO(Long ordersId, String movieDateTime, String screenType) {
         this.ordersId = ordersId;
         this.movieDateTime = movieDateTime;
-        this.imdbId = imdbId;
-        this.totalPrice = totalPrice;
-        this.seatNo = seatNo;
+        this.screenType = screenType;
     }
 
     public Long getOrdersId() {
@@ -49,28 +42,12 @@ public class OrdersDTO {
         this.movieDateTime = movieDateTime;
     }
 
-    public Long getImdbId() {
-        return imdbId;
+    public String getScreenType() {
+        return screenType;
     }
 
-    public void setImdbId(Long imdbId) {
-        this.imdbId = imdbId;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public Long getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(Long seatNo) {
-        this.seatNo = seatNo;
+    public void setScreenType(String screenType) {
+        this.screenType = screenType;
     }
 
     @Override
@@ -82,14 +59,12 @@ public class OrdersDTO {
         OrdersDTO ordersDTO = (OrdersDTO) o;
         return getOrdersId ().equals (ordersDTO.getOrdersId ()) &&
                 getMovieDateTime ().equals (ordersDTO.getMovieDateTime ()) &&
-                getImdbId ().equals (ordersDTO.getImdbId ()) &&
-                getTotalPrice ().equals (ordersDTO.getTotalPrice ()) &&
-                getSeatNo ().equals (ordersDTO.getSeatNo ());
+                getScreenType ().equals (ordersDTO.getScreenType ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getOrdersId (), getMovieDateTime (), getImdbId (), getTotalPrice (), getSeatNo ());
+        return Objects.hash (getOrdersId (), getMovieDateTime (), getScreenType ());
     }
 
     @Override
@@ -97,9 +72,7 @@ public class OrdersDTO {
         return "OrdersDTO{" +
                 "ordersId=" + ordersId +
                 ", movieDateTime='" + movieDateTime + '\'' +
-                ", imdbId=" + imdbId +
-                ", totalPrice=" + totalPrice +
-                ", seatNo=" + seatNo +
+                ", screenType='" + screenType + '\'' +
                 '}';
     }
 }
