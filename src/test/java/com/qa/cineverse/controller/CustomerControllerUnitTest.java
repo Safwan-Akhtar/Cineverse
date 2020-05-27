@@ -1,7 +1,7 @@
 package com.qa.cineverse.controller;
 
 import com.qa.cineverse.domain.Customers;
-import com.qa.cineverse.dto.CustomersDTO;
+import com.qa.cineverse.dto.CustomersDTOTest;
 import com.qa.cineverse.service.CustomersService;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,12 +38,12 @@ public class CustomerControllerUnitTest {
 
     private final long id = 1L;
 
-    private CustomersDTO customersDTO;
+    private CustomersDTOTest customersDTOTest;
 
     private final ModelMapper mapper = new ModelMapper();
 
-    private CustomersDTO mapToDTO(Customers customers){
-        return this.mapper.map(customers, CustomersDTO.class);
+    private CustomersDTOTest mapToDTO(Customers customers){
+        return this.mapper.map(customers, CustomersDTOTest.class);
     }
 
     @Before
@@ -53,7 +53,7 @@ public class CustomerControllerUnitTest {
         this.customers.add(testCustomers);
         this.testCustomersWithId = new Customers (testCustomers.getName());
         this.testCustomersWithId.setCustomersId (this.id);
-        this.customersDTO = this.mapToDTO(testCustomersWithId);
+        this.customersDTOTest = this.mapToDTO(testCustomersWithId);
     }
 
     @Test
@@ -65,8 +65,8 @@ public class CustomerControllerUnitTest {
 
     @Test
     public void createCustomersTest(){
-        when(this.service.createCustomer(testCustomers)).thenReturn(this.customersDTO);
-        assertEquals(this.characterController.createCharacter(testCustomers), new ResponseEntity<CustomersDTO> (this.customersDTO, HttpStatus.CREATED));
+        when(this.service.createCustomer(testCustomers)).thenReturn(this.customersDTOTest);
+        assertEquals(this.characterController.createCharacter(testCustomers), new ResponseEntity<CustomersDTOTest> (this.customersDTOTest, HttpStatus.CREATED));
         verify(this.service, times(1)).createCustomer(testCustomers);
     }
 
@@ -78,8 +78,8 @@ public class CustomerControllerUnitTest {
 
     @Test
     public void getCustomersByIDTest(){
-        when(this.service.findCustomersById (id)).thenReturn(this.customersDTO);
-        assertEquals(this.characterController.getCustomersById (id), new ResponseEntity<CustomersDTO>(this.customersDTO, HttpStatus.OK));
+        when(this.service.findCustomersById (id)).thenReturn(this.customersDTOTest);
+        assertEquals(this.characterController.getCustomersById (id), new ResponseEntity<CustomersDTOTest>(this.customersDTOTest, HttpStatus.OK));
         verify(service, times(1)).findCustomersById (id);
     }
 

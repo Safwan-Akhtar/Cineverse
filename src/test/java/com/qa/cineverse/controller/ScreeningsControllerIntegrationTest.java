@@ -1,11 +1,8 @@
 package com.qa.cineverse.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
-import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.junit.Before;
 import org.junit.Test;

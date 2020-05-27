@@ -1,7 +1,6 @@
 package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.exception.ScreeningsNotFoundException;
 import com.qa.cineverse.repo.ScreeningsRepo;

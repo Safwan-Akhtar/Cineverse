@@ -1,10 +1,7 @@
 package com.qa.cineverse.controller;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
-import com.qa.cineverse.service.CustomersService;
 import com.qa.cineverse.service.ScreeningsService;
 import org.junit.Before;
 import org.junit.Test;
