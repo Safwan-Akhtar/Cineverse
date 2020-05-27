@@ -19,8 +19,8 @@ public class CustomersDTOTest {
 
     @Test
     public void settersTest() {
-        assertNotNull(CustomersDTO.getCustomersId());
-        assertNotNull(CustomersDTO.getName ());
+        assertNotNull(customersDTO.getCustomersId());
+        assertNotNull(customersDTO.getName());
 
         customersDTO.setCustomersId(null);
         assertNull(customersDTO.getCustomersId());
