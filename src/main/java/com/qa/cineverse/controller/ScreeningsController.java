@@ -22,7 +22,7 @@ public class ScreeningsController {
     }
 
     @GetMapping("/getAllScreenings")
-    public ResponseEntity<List<ScreeningsDTO>> getAllOrders(){
+    public ResponseEntity<List<ScreeningsDTO>> getAllScreenings(){
         return ResponseEntity.ok(this.service.readScreenings ());
     }
 
