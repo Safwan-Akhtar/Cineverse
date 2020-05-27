@@ -105,4 +105,11 @@ public class ScreeningsControllerIntegrationTest {
                 .getContentAsString();
         assertEquals(result, this.objectMapper.writeValueAsString(screeningsDTO));
     }
+
+    @Test
+    public void deleteScreeningsTest() throws Exception {
+        this.mock.perform(
+                request(HttpMethod.DELETE, "/deleteScreening/" + this.id)
+        ).andExpect(status().isNoContent());
+    }
 }
