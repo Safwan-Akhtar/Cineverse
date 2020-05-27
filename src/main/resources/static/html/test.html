@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
     <title>Document</title>
 </head>
     <body>
+        <p id="intro">Our movies are rated using the British Board of Film Classification: </p>
+
         <h1>Cinema Classifications</h1>
 
         <p>
@@ -14,19 +18,32 @@
 
         <p>
             <input id="uClick" type="image" value="uclass" src="../img/classu.png">
-            <div id="udesc">Info about u category...</div>
+            <div id="udesc">
+                <h3>U Universal – Suitable for all</h3>
+                <p>A U film should be suitable for audiences aged four years and over, although it is impossible to predict what might
+                upset any particular child.
+            
+                U films should be set within a positive framework and should offer reassuring counterbalances to any violence, threat or
+                horror. If a work is particularly suitable for pre-school children, this will be indicated in the ratings info.</p>
+            </div>
         </p>
 
         <p>
             <input id="pgClick" type="image" value="pgclass" src="../img/classpg.png">
-            <div id="pgdesc">Info about pg category...</div>
+            <div id="pgdesc">
+                <h3>PG Parental Guidance</h3>
+                <p>                   
+                    General viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle a child aged around
+                    eight or older. Unaccompanied children of any age may watch, but parents are advised to consider whether the content may
+                    upset younger, or more sensitive, children.
+                </p>
+            </div>
         </p>
 
 
-
-
-
-
+        <footer id="classFooter">
+            You can find more info <a href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.
+        </footer>
 
 
         <script src="../js/test.js"></script>
