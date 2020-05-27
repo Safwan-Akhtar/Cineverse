@@ -1,7 +1,7 @@
 package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Customers;
-import com.qa.cineverse.dto.CustomersDTOTest;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.repo.CustomersRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +34,8 @@ public class CustomersServiceIntegrationTest {
 
     private Customers testCustomersWithID;
 
-    private CustomersDTOTest mapToDTO(Customers customers){
-        return this.mapper.map(customers, CustomersDTOTest.class);
+    private CustomersDTO mapToDTO(Customers customers){
+        return this.mapper.map(customers, CustomersDTO.class);
     }
 
     @Before

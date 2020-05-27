@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class ScreeningsDTOTest {
 
@@ -40,6 +40,32 @@ public class ScreeningsDTOTest {
         assertNull(screenings.getScreenType ());
     }
 
+    @Test
+    public void equalsWithNull() {
+        assertFalse(screenings.equals(null));
+    }
+
+    @Test
+    public void equalsWithDifferentObject() {
+        assertFalse(screenings.equals(new Object()));
+    }
+
+    @Test
+    public void createScreeningsDTOWithId() {
+        assertEquals(1L, screenings.getScreeningsId(), 0);
+        assertEquals(date1, screenings.getMovieDateTime ());
+        assertEquals("Deluxe", screenings.getScreenType ());
+    }
+
+    @Test
+    public void checkEquality() {
+        assertTrue(screenings.equals(screenings));
+    }
+
+    @Test
+    public void checkEqualityBetweenDifferentObjects() {
+        assertFalse(screenings.equals(other));
+    }
 
 
 }

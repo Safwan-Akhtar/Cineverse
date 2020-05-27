@@ -2,7 +2,7 @@ package com.qa.cineverse.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.cineverse.domain.Customers;
-import com.qa.cineverse.dto.CustomersDTOTest;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.repo.CustomersRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,10 +45,10 @@ public class CustomerControllerIntegrationTest {
 
     private long id;
 
-    private CustomersDTOTest customersDTOTest;
+    private CustomersDTO customersDTO;
 
-    private CustomersDTOTest mapToDTO(Customers customers){
-        return this.mapper.map(customers, CustomersDTOTest.class);
+    private CustomersDTO mapToDTO(Customers customers){
+        return this.mapper.map(customers, CustomersDTO.class);
     }
 
     @Before
@@ -57,13 +57,13 @@ public class CustomerControllerIntegrationTest {
         this.testCustomers = new Customers ("Chris");
         this.testCustomersWithID = this.repository.save(testCustomers);
         this.id = testCustomersWithID.getCustomersId ();
-        this.customersDTOTest = this.mapToDTO(testCustomersWithID);
+        this.customersDTO = this.mapToDTO(testCustomersWithID);
     }
 
     @Test
     public void getAllCustomersTest() throws Exception {
-        List<CustomersDTOTest> customersDTOTestList = new ArrayList<> ();
-        customersDTOTestList.add(customersDTOTest);
+        List<CustomersDTO> customersDTOList = new ArrayList<> ();
+        customersDTOList.add(customersDTO);
         String content = this.mock.perform(
                 request(HttpMethod.GET, "/getAllCustomers")
                         .accept(MediaType.APPLICATION_JSON)
@@ -72,7 +72,7 @@ public class CustomerControllerIntegrationTest {
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-        assertEquals(content, this.objectMapper.writeValueAsString(customersDTOTestList));
+        assertEquals(content, this.objectMapper.writeValueAsString(customersDTOList));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class CustomerControllerIntegrationTest {
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-        assertEquals(content, this.objectMapper.writeValueAsString(customersDTOTest));
+        assertEquals(content, this.objectMapper.writeValueAsString(customersDTO));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class CustomerControllerIntegrationTest {
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
-        assertEquals(result, this.objectMapper.writeValueAsString(customersDTOTest));
+        assertEquals(result, this.objectMapper.writeValueAsString(customersDTO));
     }
 
     @Test
