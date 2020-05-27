@@ -30,7 +30,68 @@ public class CustomersTest {
     @Test
     public void equalsWithNull() { assertFalse(customers.equals(null)); }
 
+    @Test
+    public void equalsWithDifferentObject() { assertFalse(customers.equals (new Object())); }
 
+    @Test
+    public void createCustomersWithId() {
+        assertEquals(1L, customers.getCustomersId(), 0);
+        assertEquals("Luke", customers.getName());
+    }
 
+    @Test
+    public void checkEquality() {
+        assertTrue(customers.equals(customers));
+    }
+
+    @Test
+    public void checkEqualityBetweenDifferentObjects() {
+        assertFalse(customers.equals(other));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void customersNameNullButOtherNameNotNull() {
+        customers.setName(null);
+        other.setCustomersId (1L);
+        assertFalse(customers.equals(other));
+    }
+
+    @Test
+    public void customersNamesNotEqual() {
+        other.setName("Saf");
+        assertFalse(customers.equals(other));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void nullId() {
+        customers.setCustomersId(null);
+        assertFalse(customers.equals(other));
+    }
+
+    @Test
+    public void customersIDDifferent() {
+        other.setCustomersId(1L);
+        assertFalse(customers.equals(other));
+    }
+
+    @Test
+    public void otherIdDifferent() {
+        other.setCustomersId(2L);
+        assertFalse(customers.equals(other));
+    }
+
+    @Test
+    public void constructorWithoutId() {
+        Customers characterSheet = new Customers("Felix");
+        assertNull(characterSheet.getCustomersId ());
+        assertNotNull(characterSheet.getName());
+    }
+
+    @Test
+    public void hashCodeTestWithNull() {
+        Customers customers = new Customers(null);
+        Customers other = new Customers(null, null);
+        assertEquals(customers.hashCode(), other.hashCode());
+    }
 
 }
