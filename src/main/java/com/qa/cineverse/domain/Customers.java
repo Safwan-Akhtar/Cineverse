@@ -22,7 +22,9 @@ public class Customers {
 
     @ManyToMany(targetEntity = Orders.class, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "orders_customers")
+            name = "orders_customers",
+            joinColumns=@JoinColumn(name="orders_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="customers_id", referencedColumnName="id"))
     private List<Orders> orders = new ArrayList<> ();
 
     public Customers() {
