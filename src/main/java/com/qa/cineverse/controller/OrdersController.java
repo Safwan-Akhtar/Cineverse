@@ -41,6 +41,4 @@ public class OrdersController {
     public ResponseEntity<OrdersDTO> getSkillsById(@PathVariable Long id){
         return ResponseEntity.ok(this.service.findOrdersById (id));
     }
-
-
 }
