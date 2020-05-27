@@ -73,5 +73,10 @@ public class ScreeningsControllerUnitTest {
         verify(this.service, times(1)).createScreening(testScreenings);
     }
 
+    @Test
+    public void deleteScreeningsTestFalse(){
+        this.screeningController.deleteScreening(id);
+        verify(service, times(1)).deleteScreening(id);
+    }
 
 }
