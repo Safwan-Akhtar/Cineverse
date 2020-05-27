@@ -52,11 +52,11 @@
       <version>2.3.5</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>0.9.2</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <version>0.9.2</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>com.h2database</groupId>
@@ -172,10 +172,10 @@
       <url>http://repo.spring.io/milestone</url>
     </repository>
 
-    <repository>
-      <id>projectlombok.org</id>
-      <url>http://projectlombok.org/mavenrepo</url>
-    </repository>
+<!--    <repository>-->
+<!--      <id>projectlombok.org</id>-->
+<!--      <url>http://projectlombok.org/mavenrepo</url>-->
+<!--    </repository>-->
   </repositories>
 
 
