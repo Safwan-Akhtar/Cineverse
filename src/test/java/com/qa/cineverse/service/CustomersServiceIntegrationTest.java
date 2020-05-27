@@ -60,12 +60,12 @@ public class CustomersServiceIntegrationTest {
 
     @Test
     public void findCustomersByIdTest(){
-        assertThat(this.service.findCustomersById (this.testCustomersWithID.getCustomerId ())).isEqualTo(this.mapToDTO(this.testCustomersWithID));
+        assertThat(this.service.findCustomersById (this.testCustomersWithID.getCustomersId ())).isEqualTo(this.mapToDTO(this.testCustomersWithID));
     }
 
     @Test
     public void deleteCustomersTest(){
-        assertThat(this.service.deleteCustomers(this.testCustomersWithID.getCustomerId ())).isFalse();
+        assertThat(this.service.deleteCustomers(this.testCustomersWithID.getCustomersId ())).isFalse();
     }
 
 }

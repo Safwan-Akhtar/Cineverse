@@ -51,7 +51,7 @@ public class CustomersServiceUnitTest {
         this.testCustomers = new Customers ("Felix");
         this.customersList.add(testCustomers);
         this.testCustomersWithID = new Customers (testCustomers.getName());
-        this.testCustomersWithID.setCustomerId (id);
+        this.testCustomersWithID.setCustomersId (id);
         this.customersDTO = this.mapToDTO(testCustomersWithID);
     }
 

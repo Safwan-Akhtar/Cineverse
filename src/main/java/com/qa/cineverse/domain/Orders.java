@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,9 +16,10 @@ import java.util.Set;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long orderId;
-        @Column(name = "movie_date_time")
-        private String movieDateTime;
+        @Column(name = "id")
+        private Long ordersId;
+        @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
+        private LocalDateTime movieDateTime;
         @Column(name = "imdb_id")
         private String imdbId;
         @Column(name = "total_price")
@@ -32,7 +34,7 @@ import java.util.Set;
         public Orders() {
         }
 
-    public Orders(String movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
+    public Orders(LocalDateTime movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
         this.movieDateTime = movieDateTime;
         this.imdbId = imdbId;
         this.totalPrice = totalPrice;
@@ -40,8 +42,8 @@ import java.util.Set;
         this.customers = customers;
     }
 
-    public Orders(Long orderId, String movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
-        this.orderId = orderId;
+    public Orders(Long ordersId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String seatNo, Set<Customers> customers) {
+        this.ordersId = ordersId;
         this.movieDateTime = movieDateTime;
         this.imdbId = imdbId;
         this.totalPrice = totalPrice;
@@ -49,19 +51,19 @@ import java.util.Set;
         this.customers = customers;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getOrdersId() {
+        return ordersId;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrdersId(Long orderId) {
+        this.ordersId = orderId;
     }
 
-    public String getMovieDateTime() {
+    public LocalDateTime getMovieDateTime() {
         return movieDateTime;
     }
 
-    public void setMovieDateTime(String movieDateTime) {
+    public void setMovieDateTime(LocalDateTime movieDateTime) {
         this.movieDateTime = movieDateTime;
     }
 
@@ -104,7 +106,7 @@ import java.util.Set;
         if (!(o instanceof Orders))
             return false;
         Orders orders = (Orders) o;
-        return getOrderId ().equals (orders.getOrderId ()) &&
+        return getOrdersId ().equals (orders.getOrdersId ()) &&
                 getMovieDateTime ().equals (orders.getMovieDateTime ()) &&
                 getImdbId ().equals (orders.getImdbId ()) &&
                 getTotalPrice ().equals (orders.getTotalPrice ()) &&
@@ -114,13 +116,13 @@ import java.util.Set;
 
     @Override
     public int hashCode() {
-        return Objects.hash (getOrderId (), getMovieDateTime (), getImdbId (), getTotalPrice (), getSeatNo (), getCustomers ());
+        return Objects.hash (getOrdersId (), getMovieDateTime (), getImdbId (), getTotalPrice (), getSeatNo (), getCustomers ());
     }
 
     @Override
     public String toString() {
         return "Orders{" +
-                "orderId=" + orderId +
+                "orderId=" + ordersId +
                 ", movieDateTime='" + movieDateTime + '\'' +
                 ", imdbId='" + imdbId + '\'' +
                 ", totalPrice='" + totalPrice + '\'' +

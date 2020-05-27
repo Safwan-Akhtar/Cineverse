@@ -14,16 +14,15 @@ public class Customers {
 
     @Id
     @GeneratedValue
-    private Long customerId;
+    @Column(name = "id")
+    private Long customersId;
 
     @Column(name = "name")
     private String name;
 
     @ManyToMany(targetEntity = Orders.class, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "orderline",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
+            name = "orders_customers")
     private List<Orders> orders = new ArrayList<> ();
 
     public Customers() {
@@ -33,17 +32,17 @@ public class Customers {
         this.name = name;
     }
 
-    public Customers(Long customerId, String name) {
-        this.customerId = customerId;
+    public Customers(Long customersId, String name) {
+        this.customersId = customersId;
         this.name = name;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getCustomersId() {
+        return customersId;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomersId(Long customerId) {
+        this.customersId = customerId;
     }
 
     public String getName() {
@@ -61,19 +60,19 @@ public class Customers {
         if (!(o instanceof Customers))
             return false;
         Customers customers = (Customers) o;
-        return getCustomerId ().equals (customers.getCustomerId ()) &&
+        return getCustomersId ().equals (customers.getCustomersId ()) &&
                 getName ().equals (customers.getName ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomerId (), getName ());
+        return Objects.hash (getCustomersId (), getName ());
     }
 
     @Override
     public String toString() {
         return "Customers{" +
-                "customerId=" + customerId +
+                "customerId=" + customersId +
                 ", name='" + name + '\'' +
                 '}';
     }

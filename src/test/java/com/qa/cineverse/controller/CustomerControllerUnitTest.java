@@ -52,7 +52,7 @@ public class CustomerControllerUnitTest {
         this.testCustomers = new Customers ("Luke");
         this.customers.add(testCustomers);
         this.testCustomersWithId = new Customers (testCustomers.getName());
-        this.testCustomersWithId.setCustomerId (this.id);
+        this.testCustomersWithId.setCustomersId (this.id);
         this.customersDTO = this.mapToDTO(testCustomersWithId);
     }
 
