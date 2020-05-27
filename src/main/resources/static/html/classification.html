@@ -3,69 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    <title>Classification</title>
 </head>
+    <body>
+
+        <h1>Cinema Classifications</h1>
+
+        <div id="intro">
+        <p>Our movies are rated using the British Board of Film Classification.</p>
+        <p id="clickBelow">Click the icons below for more details.</p>
+        </div>
+
+        <p>
+            <input id="uClick" type="image" value="uclass" src="../img/classu.png">
+            <div id="udesc">
+                <h3>U Universal – Suitable for all</h3>
+                <p>A U film should be suitable for audiences aged four years and over, although it is impossible to predict what might
+                upset any particular child.
+            
+                U films should be set within a positive framework and should offer reassuring counterbalances to any violence, threat or
+                horror. If a work is particularly suitable for pre-school children, this will be indicated in the ratings info.</p>
+            </div>
+        </p>
+
+        <p>
+            <input id="pgClick" type="image" value="pgclass" src="../img/classpg.png">
+            <div id="pgdesc">
+                <h3>PG Parental Guidance</h3>
+                <p>                   
+                    General viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle a child aged around
+                    eight or older. Unaccompanied children of any age may watch, but parents are advised to consider whether the content may
+                    upset younger, or more sensitive, children.
+                </p>
+            </div>
+        </p>
+
+        <p>
+            <input id="12aClick" type="image" value="12aclass" src="../img/class12a.png">
+        <div id="12adesc">
+            <h3>12A/12 – Suitable for 12 years and over</h3>
+            <p>
+                Films classified 12A and video works classified 12 contain material that is not generally suitable for children aged
+                under 12. No one younger than 12 may see a 12A film in a cinema unless accompanied by an adult. Adults planning to take
+                a child under 12 to view a 12A film should consider whether the film is suitable for that child. To help them decide, we
+                recommend that they check the Ratings info for that film in advance. No one younger than 12 may rent or buy a 12 rated
+                video work.
+            </p>
+        </div>
+        </p>
+
+        <p>
+            <input id="15Click" type="image" value="15class" src="../img/class15.png">
+        <div id="15desc">
+            <h3>15 – Suitable only for 15 years and over</h3>
+            <p>
+                No one younger than 15 may see a 15 film in a cinema. No one younger than 15 may rent or buy a 15 rated video work.
+            </p>
+        </div>
+        </p>
+
+        <p>
+            <input id="18Click" type="image" value="18class" src="../img/class18.png">
+        <div id="18desc">
+            <h3>18 – Suitable only for adults</h3>
+            <p>
+                No one younger than 18 may see an 18 film in a cinema. No one younger than 18 may rent or buy an 18 rated video work.
+                Adults should be free to choose their own entertainment.
+            </p>
+        </div>
+        </p>
+        
+        <p>
+            <input id="r18Click" type="image" value="r18class" src="../img/classr18.png">
+        <div id="r18desc">
+            <h3>R18 - To be shown only in specially licensed cinemas, or supplied only in licensed sex shops, and to adults only</h3>
+            <p>
+                The R18 category is a special and legally-restricted classification primarily for explicit works of consenting sex or
+                strong fetish material involving adults. Films may only be shown to adults in specially licensed cinemas, and video
+                works may be supplied to adults only in licensed sex shops. R18 video works may not be supplied by mail order.
+
+                For full details of the legal restrictions for these works please see the BBFC Classification Guidelines document here.
+            </p>
+        </div>
+        </p>
 
 
-
-<body>
-    <p1>Classification</p1>
-
-    1
-
-    2
-
-    3
-
-    4
-
-    5
-
-    6
-
-    7
+        <footer id="classFooter" class="footer">
+            You can find more info <a href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.
+        </footer>
 
 
-<p>Our movies are rated using the British Board of Film Classification: </p>
-
-        <Form Name="" Method="" Action="" Style="">
-            <input Name="IB1" type="Image" src="../images/classu.png">
-            <input Name="IB1" type="Image" src="../images/classpg.png">
-            <input Name="IB1" type="Image" src="../images/class12a.png">
-            <input Name="IB1" type="Image" src="../images/class12.png">
-            <input Name="IB1" type="Image" src="../images/class15.png">
-            <input Name="IB1" type="Image" src="../images/class18.png">
-            <input Name="IB1" type="Image" src="../images/classr18.png">
-        </Form>
-
-
-<img id="classu" Name="IB1" src="../images/classu.png" alt="USymbol">
-
-
-<button onclick="ucatFunc()">Try it</button>
-
-<button onclick="pgcatFunc()">Try it</button>
-
-<img src="../images/classu.png" width="150" onClick="">
-
-
-
-<div id="ucat">
-    Info about u category...
-</div>
-
-<div id="pgcat">
-    Info about pg category...
-</div>
-
-
-<p>You can find more info <a href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.</p>
-
-<!-- makes items disappear  -->
-<script src="../js/classification.js">
-
-</script>
-
-
-</body>
+        <script src="../js/classification.js"></script>
+    </body>
 </html>
