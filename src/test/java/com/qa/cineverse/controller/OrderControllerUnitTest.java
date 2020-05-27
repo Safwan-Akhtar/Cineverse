@@ -1,8 +1,8 @@
 package com.qa.cineverse.controller;
 
-import com.qa.cineverse.domain.Orders;
-import com.qa.cineverse.dto.OrdersDTO;
-import com.qa.cineverse.service.OrdersService;
+import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.dto.ScreeningsDTO;
+import com.qa.cineverse.service.ScreeningsService;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -15,23 +15,23 @@ import java.util.List;
 public class OrderControllerUnitTest {
 
     @InjectMocks
-    private OrdersController ordersController;
+    private ScreeningsController screeningsController;
 
     @Mock
-    private OrdersService service;
+    private ScreeningsService service;
 
-    private List<Orders> orders;
+    private List<Screenings> orders;
 
-    private Orders testOrders;
+    private Screenings testScreenings;
 
-    private Orders testOrdersWithId;
+    private Screenings testScreeningsWithId;
 
     private final long id = 1L;
 
-    private OrdersDTO ordersDTO;
+    private ScreeningsDTO screeningsDTO;
 
     private final ModelMapper mapper = new ModelMapper();
 
-    private OrdersDTO mapToDTO(Orders orders) { return this.mapper.map(orders, OrdersDTO.class); }
+    private ScreeningsDTO mapToDTO(Screenings screenings) { return this.mapper.map(screenings, ScreeningsDTO.class); }
 
 }

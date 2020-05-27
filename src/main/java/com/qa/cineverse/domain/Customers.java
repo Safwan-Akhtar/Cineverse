@@ -20,12 +20,12 @@ public class Customers {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(targetEntity = Orders.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
     @JoinTable(
             name = "orders_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="orders_id"))
-    private List<Orders> orders = new ArrayList<> ();
+    private List<Screenings> orders = new ArrayList<> ();
 
     public Customers() {
     }
@@ -55,11 +55,11 @@ public class Customers {
         this.name = name;
     }
 
-    public List<Orders> getOrders() {
+    public List<Screenings> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Orders> orders) {
+    public void setOrders(List<Screenings> orders) {
         this.orders = orders;
     }
 

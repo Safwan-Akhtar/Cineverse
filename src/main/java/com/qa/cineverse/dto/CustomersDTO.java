@@ -10,7 +10,7 @@ import java.util.Objects;
 public class CustomersDTO {
     private Long customersId;
     private String name;
-    private List<OrdersDTO> orders = new ArrayList<>();
+    private List<ScreeningsDTO> orders = new ArrayList<>();
 
     public CustomersDTO() {
     }
@@ -41,11 +41,11 @@ public class CustomersDTO {
         this.name = name;
     }
 
-    public List<OrdersDTO> getOrders() {
+    public List<ScreeningsDTO> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<OrdersDTO> orders) {
+    public void setOrders(List<ScreeningsDTO> orders) {
         this.orders = orders;
     }
 

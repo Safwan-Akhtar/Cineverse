@@ -1,9 +1,9 @@
 package com.qa.cineverse.repo;
 
-import com.qa.cineverse.domain.Orders;
+import com.qa.cineverse.domain.Screenings;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrdersRepo extends JpaRepository<Orders, Long> {
+public interface ScreeningsRepo extends JpaRepository<Screenings, Long> {
 }

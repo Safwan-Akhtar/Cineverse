@@ -1,6 +1,5 @@
 package com.qa.cineverse.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -8,14 +7,14 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-    @Table(name = "orders")
+    @Table(name = "screenings")
     @Proxy(lazy=false)
-    public class Orders {
+    public class Screenings {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "orders_id")
-        private Long ordersId;
+        @Column(name = "screenings_id")
+        private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
         private LocalDateTime movieDateTime;
         @Column(name = "screen_type")
@@ -23,33 +22,33 @@ import java.util.*;
 
         @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
         @JoinTable(
-                name = "orders_customers",
-                joinColumns=@JoinColumn(name="orders_id"),
+                name = "screenings_customers",
+                joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
         private Set<Customers> customers = new HashSet<>();
 
-        public Orders() {
+        public Screenings() {
         }
 
-    public Orders(LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
+    public Screenings(LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
         this.customers = customers;
     }
 
-    public Orders(Long ordersId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
-        this.ordersId = ordersId;
+    public Screenings(Long screeningsId, LocalDateTime movieDateTime, String imdbId, String totalPrice, String screenType, Set<Customers> customers) {
+        this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
         this.customers = customers;
     }
 
-    public Long getOrdersId() {
-        return ordersId;
+    public Long getScreeningsId() {
+        return screeningsId;
     }
 
-    public void setOrdersId(Long orderId) {
-        this.ordersId = orderId;
+    public void setScreeningsId(Long screeningsId) {
+        this.screeningsId = screeningsId;
     }
 
     public LocalDateTime getMovieDateTime() {
@@ -64,8 +63,8 @@ import java.util.*;
         return screenType;
     }
 
-    public void setScreenType(String seatNo) {
-        this.screenType = seatNo;
+    public void setScreenType(String screenType) {
+        this.screenType = screenType;
     }
 
     public Set<Customers> getCustomers() {
@@ -80,26 +79,26 @@ import java.util.*;
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Orders))
+        if (!(o instanceof Screenings))
             return false;
-        Orders orders = (Orders) o;
-        return getOrdersId ().equals (orders.getOrdersId ()) &&
-                getMovieDateTime ().equals (orders.getMovieDateTime ()) &&
-                getScreenType ().equals (orders.getScreenType ()) &&
-                getCustomers ().equals (orders.getCustomers ());
+        Screenings that = (Screenings) o;
+        return getScreeningsId ().equals (that.getScreeningsId ()) &&
+                getMovieDateTime ().equals (that.getMovieDateTime ()) &&
+                getScreenType ().equals (that.getScreenType ()) &&
+                getCustomers ().equals (that.getCustomers ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getOrdersId (), getMovieDateTime (), getScreenType (), getCustomers ());
+        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType (), getCustomers ());
     }
 
     @Override
     public String toString() {
-        return "Orders{" +
-                "orderId=" + ordersId +
-                ", movieDateTime='" + movieDateTime + '\'' +
-                ", seatNo='" + screenType + '\'' +
+        return "Screenings{" +
+                "screeningsId=" + screeningsId +
+                ", movieDateTime=" + movieDateTime +
+                ", screenType='" + screenType + '\'' +
                 ", customers=" + customers +
                 '}';
     }

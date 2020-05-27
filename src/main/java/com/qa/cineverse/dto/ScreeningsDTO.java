@@ -2,36 +2,35 @@ package com.qa.cineverse.dto;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Transactional
-public class OrdersDTO {
+public class ScreeningsDTO {
 
-    private Long ordersId;
+    private Long screeningsId;
     private String movieDateTime;
     private String screenType;
 
-    public OrdersDTO() {
+    public ScreeningsDTO() {
     }
 
-    public OrdersDTO(String movieDateTime, String screenType) {
+    public ScreeningsDTO(String movieDateTime, String screenType) {
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
     }
 
-    public OrdersDTO(Long ordersId, String movieDateTime, String screenType) {
-        this.ordersId = ordersId;
+    public ScreeningsDTO(Long screeningsId, String movieDateTime, String screenType) {
+        this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
         this.screenType = screenType;
     }
 
-    public Long getOrdersId() {
-        return ordersId;
+    public Long getScreeningsId() {
+        return screeningsId;
     }
 
-    public void setOrdersId(Long ordersId) {
-        this.ordersId = ordersId;
+    public void setScreeningsId(Long screeningsId) {
+        this.screeningsId = screeningsId;
     }
 
     public String getMovieDateTime() {
@@ -54,23 +53,23 @@ public class OrdersDTO {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof OrdersDTO))
+        if (!(o instanceof ScreeningsDTO))
             return false;
-        OrdersDTO ordersDTO = (OrdersDTO) o;
-        return getOrdersId ().equals (ordersDTO.getOrdersId ()) &&
-                getMovieDateTime ().equals (ordersDTO.getMovieDateTime ()) &&
-                getScreenType ().equals (ordersDTO.getScreenType ());
+        ScreeningsDTO screeningsDTO = (ScreeningsDTO) o;
+        return getScreeningsId ().equals (screeningsDTO.getScreeningsId ()) &&
+                getMovieDateTime ().equals (screeningsDTO.getMovieDateTime ()) &&
+                getScreenType ().equals (screeningsDTO.getScreenType ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getOrdersId (), getMovieDateTime (), getScreenType ());
+        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType ());
     }
 
     @Override
     public String toString() {
-        return "OrdersDTO{" +
-                "ordersId=" + ordersId +
+        return "ScreeningsDTO{" +
+                "screeningsId=" + screeningsId +
                 ", movieDateTime='" + movieDateTime + '\'' +
                 ", screenType='" + screenType + '\'' +
                 '}';
