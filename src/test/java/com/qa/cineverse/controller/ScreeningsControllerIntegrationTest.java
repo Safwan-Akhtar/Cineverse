@@ -78,4 +78,16 @@ public class ScreeningsControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTOList));
     }
 
+    @Test
+    public void getScreeningsByID() throws Exception {
+        String content = this.mock.perform(
+                request(HttpMethod.GET, "/getScreeningById/" + this.id)
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTO));
+    }
 }
