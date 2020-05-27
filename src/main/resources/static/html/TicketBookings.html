@@ -1,9 +1,12 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciniverse Ticket Booking</title>
+    <title>Cineverse Ticket Booking</title>
 </head>
+<noscript>If you have no JS enabled you will see this!</noscript>
+
 <body>
 
     <h1>Ciniverse</h1>
@@ -34,18 +37,18 @@
 
     <form id="ticket" method="GET" action="TicketBookings.html">
         <fieldset>
-        <legend>TicketBookings</legend>
+            <legend>TicketBookings</legend>
             <ul>
                 <li>
-                <Label for="name">Buyer name :</Label>
-                <select id="title" name="title">
-                    <option value="select">Select</option>
-                    <option value="mr">Mr</option>
-                    <option value="mrs">Mrs</option>
-                    <option value="miss">Miss</option>
-                    <option value="other">Other</option>
-                </select>
-                <input id="customername" name="customername" type="text">
+                    <Label for="name">Buyer name :</Label>
+                    <select id="title" name="title">
+                        <option value="select">Select</option>
+                        <option value="mr">Mr</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="miss">Miss</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input id="customername" name="customername" type="text">
                 </li>
                 <li>
                     <label for="movieTitle">Select movie :</label>
@@ -71,21 +74,22 @@
                         <option value="adult">Adult</option>
                         <option value="child">Child</option>
                         <option value="student">Student</option>
-                    <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
+                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
 
-                <id id="seatClass" name="seatClass">
-                    <label>Standard</label>
-                    <input id="standard" type="radio" value="standard" name="seatClass">
-                    <label>VIP</label>
-                    <input id="vip" type="radio" value="vip" name="seatClass">
+                        <id id="seatClass" name="seatClass">
+                            <label>Standard</label>
+                            <input id="standard" type="radio" value="standard" name="seatClass">
+                            <label>VIP</label>
+                            <input id="vip" type="radio" value="vip" name="seatClass">
                 </li>
             </ul>
-           </fieldset>
-           <fieldset>
+        </fieldset>
+        <fieldset>
             <button id="butt1" type="submit">Submit</button>
             <button id="reset" type="reset">Reset</button>
         </fieldset>
     </form>
-    
+
 </body>
+
 </html>
