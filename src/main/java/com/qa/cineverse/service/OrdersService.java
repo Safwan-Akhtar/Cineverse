@@ -30,7 +30,7 @@ public class OrdersService {
         return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toSet());
     }
 
-    public OrdersDTO createOrders(Orders orders) {
+    public OrdersDTO createOrder(Orders orders) {
         Orders tempOrders = this.repo.save(orders);
         return this.mapToDTO (tempOrders);
     }

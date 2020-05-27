@@ -5,9 +5,7 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
     @Table(name = "orders")
@@ -23,9 +21,12 @@ import java.util.Set;
         @Column(name = "screen_type")
         private String screenType;
 
-        @JsonIgnore
-        @ManyToMany(cascade= CascadeType.ALL)
-        private Set<Customers> customers = new HashSet<> ();
+        @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+        @JoinTable(
+                name = "orders_customers",
+                joinColumns=@JoinColumn(name="orders_id"),
+                inverseJoinColumns=@JoinColumn(name="customers_id"))
+        private Set<Customers> customers = new HashSet<>();
 
         public Orders() {
         }

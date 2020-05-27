@@ -26,8 +26,8 @@ public class OrdersController {
     }
 
     @PostMapping("/createOrder")
-    public ResponseEntity<OrdersDTO> createSkills(@RequestBody Orders orders){
-        return new ResponseEntity<>(this.service.createOrders (orders), HttpStatus.CREATED);
+    public ResponseEntity<OrdersDTO> createOrder(@RequestBody Orders orders){
+        return new ResponseEntity<>(this.service.createOrder (orders), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteOrder/{id}")
