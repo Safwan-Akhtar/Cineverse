@@ -79,4 +79,11 @@ public class ScreeningsControllerUnitTest {
         verify(service, times(1)).deleteScreening(id);
     }
 
+    @Test
+    public void getScreeningsByIDTest(){
+        when(this.service.findScreeningsById (id)).thenReturn(this.screeningsDTO);
+        assertEquals(this.screeningController.getScreeningById (id), new ResponseEntity<ScreeningsDTO>(this.screeningsDTO, HttpStatus.OK));
+        verify(service, times(1)).findScreeningsById (id);
+    }
+
 }

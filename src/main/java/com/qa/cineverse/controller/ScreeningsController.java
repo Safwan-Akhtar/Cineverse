@@ -39,7 +39,7 @@ public class ScreeningsController {
     }
 
     @GetMapping("/getScreeningById/{id}")
-    public ResponseEntity<ScreeningsDTO> getSkillsById(@PathVariable Long id){
+    public ResponseEntity<ScreeningsDTO> getScreeningById(@PathVariable Long id){
         return ResponseEntity.ok(this.service.findScreeningsById (id));
     }
 }
