@@ -90,4 +90,19 @@ public class ScreeningsControllerIntegrationTest {
                 .getContentAsString();
         assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTO));
     }
+
+    @Test
+    public void createScreeningsTest() throws Exception {
+        String result = this.mock.perform(
+                request(HttpMethod.POST, "/createScreening")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(testScreenings))
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(result, this.objectMapper.writeValueAsString(screeningsDTO));
+    }
 }
