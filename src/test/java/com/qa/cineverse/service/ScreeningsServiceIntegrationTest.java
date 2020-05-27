@@ -1,11 +1,7 @@
 package com.qa.cineverse.service;
 
-
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
-import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,13 +37,16 @@ public class ScreeningsServiceIntegrationTest {
 
     private Screenings testScreeningsWithID;
 
+    private LocalDateTime date;
+
     private ScreeningsDTO mapToDTO(Screenings screenings){
         return this.mapper.map(screenings, ScreeningsDTO.class);
     }
 
     @Before
     public void setUp(){
-        this.testScreenings = new Screenings (null, "deluxe");
+        date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
+        this.testScreenings = new Screenings (date, "deluxe");
         this.repository.deleteAll();
         this.testScreeningsWithID = this.repository.save(this.testScreenings);
     }

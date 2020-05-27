@@ -13,6 +13,9 @@ import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,14 +45,17 @@ public class ScreeningsServiceUnitTest {
 
     private ScreeningsDTO screeningsDTO;
 
+    private LocalDateTime date;
+
     private ScreeningsDTO mapToDTO(Screenings screenings){
         return this.mapper.map(screenings, ScreeningsDTO.class);
     }
 
     @Before
     public void setUp(){
+        date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.screeningsList = new ArrayList<> ();
-        this.testScreenings = new Screenings (1L, null, "deluxe");
+        this.testScreenings = new Screenings (1L, date, "deluxe");
         this.screeningsList.add(testScreenings);
         this.testScreeningsWithID = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenType ());
         this.testScreeningsWithID.setScreeningsId (id);
