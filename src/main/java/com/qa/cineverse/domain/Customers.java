@@ -3,6 +3,8 @@ package com.qa.cineverse.domain;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +18,13 @@ public class Customers {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(targetEntity = Orders.class, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "orderline",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id"))
+    private List<Orders> orders = new ArrayList<> ();
 
     public Customers() {
     }
