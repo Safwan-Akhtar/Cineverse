@@ -33,7 +33,7 @@ public class CustomersService {
         return this.customersRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public CustomersDTO createCustomers(Customers customers){
+    public CustomersDTO createCustomer(Customers customers){
         return this.mapToDTO(this.customersRepo.save(customers));
     }
 
