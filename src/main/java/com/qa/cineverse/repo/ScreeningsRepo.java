@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ScreeningsRepo extends JpaRepository<Screenings, Long> {
-    List<Screenings> findByName(String name);
+    List<Screenings> findByMovieName(String movieName);
 }

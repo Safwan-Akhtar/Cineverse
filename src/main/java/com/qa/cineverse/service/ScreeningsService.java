@@ -46,6 +46,10 @@ public class ScreeningsService {
                 .orElseThrow(ScreeningsNotFoundException::new));
     }
 
+    public List<ScreeningsDTO> readScreeningsByName(String name) {
+        return this.screeningsRepo.findByMovieName(name).stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
     public boolean deleteScreening(Long id) {
         if(!this.screeningsRepo.existsById(id)) {
             throw new ScreeningsNotFoundException ();

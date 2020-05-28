@@ -45,6 +45,11 @@ public class ScreeningsController {
         return ResponseEntity.ok(this.service.findScreeningsById (id));
     }
 
+    @GetMapping("/readScreeningsByName/{movieName}")
+    public ResponseEntity<List<ScreeningsDTO>> readScreeningsByName(@PathVariable String movieName){
+        return ResponseEntity.ok(this.service.readScreeningsByName (movieName));
+    }
+
     @PatchMapping("/addCustomerToScreening/{id}")
     public ResponseEntity<ScreeningsDTO> addCustomerToScreening(@PathVariable Long id, @RequestBody Customers customer){
         return new ResponseEntity<>(this.service.addCustomerToScreening (id, customer), HttpStatus.ACCEPTED);
