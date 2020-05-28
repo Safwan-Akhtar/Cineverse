@@ -1,5 +1,7 @@
 package com.qa.cineverse.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -24,6 +26,7 @@ import java.util.*;
         @Column(name = "movie_name")
         private String movieName;
 
+        @JsonIgnoreProperties("screenings")
         @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
         @JoinTable(
                 name = "screenings_customers",

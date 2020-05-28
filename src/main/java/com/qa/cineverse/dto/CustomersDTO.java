@@ -1,5 +1,6 @@
 package com.qa.cineverse.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.Objects;
 public class CustomersDTO {
     private Long customersId;
     private String name;
-    private List<ScreeningsDTO> orders = new ArrayList<>();
+    @JsonIgnore
+    private List<ScreeningsDTO> screenings = new ArrayList<>();
 
     public CustomersDTO() {
     }
@@ -41,12 +43,12 @@ public class CustomersDTO {
         this.name = name;
     }
 
-    public List<ScreeningsDTO> getOrders() {
-        return orders;
+    public List<ScreeningsDTO> getScreenings() {
+        return screenings;
     }
 
-    public void setOrders(List<ScreeningsDTO> orders) {
-        this.orders = orders;
+    public void setScreenings(List<ScreeningsDTO> screenings) {
+        this.screenings = screenings;
     }
 
     @Override
@@ -58,12 +60,12 @@ public class CustomersDTO {
         CustomersDTO that = (CustomersDTO) o;
         return getCustomersId ().equals (that.getCustomersId ()) &&
                 getName ().equals (that.getName ()) &&
-                getOrders ().equals (that.getOrders ());
+                getScreenings ().equals (that.getScreenings ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getOrders ());
+        return Objects.hash (getCustomersId (), getName (), getScreenings ());
     }
 
     @Override
@@ -71,7 +73,7 @@ public class CustomersDTO {
         return "CustomersDTO{" +
                 "customerId=" + customersId +
                 ", name='" + name + '\'' +
-                ", orders=" + orders +
+                ", screenings=" + screenings +
                 '}';
     }
 }

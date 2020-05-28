@@ -49,4 +49,9 @@ public class ScreeningsController {
     public ResponseEntity<ScreeningsDTO> updateScreening(@PathVariable Long id, @RequestBody Screenings screening){
         return ResponseEntity.ok(this.service.updateScreening (id, screening));
     }
+
+    @PatchMapping("/addCustomerToScreening/{id}")
+    public ResponseEntity<ScreeningsDTO> addCustomerToScreening(@PathVariable Long id, @RequestBody Customers customer){
+        return new ResponseEntity<>(this.service.addCustomerToScreening (id, customer), HttpStatus.ACCEPTED);
+    }
 }

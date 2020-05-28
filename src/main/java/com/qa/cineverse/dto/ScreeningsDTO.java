@@ -1,5 +1,6 @@
 package com.qa.cineverse.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Column;

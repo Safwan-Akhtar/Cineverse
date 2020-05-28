@@ -2,17 +2,16 @@ package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.exception.CustomersNotFoundException;
 import com.qa.cineverse.exception.ScreeningsNotFoundException;
+import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,11 +19,14 @@ public class ScreeningsService {
 
     private final ScreeningsRepo repo;
 
+    private final CustomersRepo customersRepo;
+
     private final ModelMapper mapper;
 
     @Autowired
-    public ScreeningsService(ScreeningsRepo repo, ModelMapper mapper) {
+    public ScreeningsService(ScreeningsRepo repo, CustomersRepo customersRepo, ModelMapper mapper) {
         this.repo = repo;
+        this.customersRepo = customersRepo;
         this.mapper = mapper;
     }
 
@@ -62,6 +64,11 @@ public class ScreeningsService {
         return this.repo.existsById(id);
     }
 
-
+    public ScreeningsDTO addCustomerToScreening(Long id, Customers customers){
+        Screenings screenings = this.repo.findById(id).orElseThrow(ScreeningsNotFoundException::new);
+        Customers tmp = this.customersRepo.saveAndFlush(customers);
+        screenings.getCustomers ().add(tmp);
+        return this.mapToDTO(this.repo.saveAndFlush(screenings));
+    }
 
 }
