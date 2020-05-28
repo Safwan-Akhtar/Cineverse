@@ -2,12 +2,15 @@ package com.qa.cineverse.dto;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Transactional
 public class CustomersDTO {
-    private Long customerId;
+    private Long customersId;
     private String name;
+    private List<ScreeningsDTO> orders = new ArrayList<>();
 
     public CustomersDTO() {
     }
@@ -18,16 +21,16 @@ public class CustomersDTO {
     }
 
     public CustomersDTO(Long customerId, String name) {
-        this.customerId = customerId;
+        this.customersId = customerId;
         this.name = name;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getCustomersId() {
+        return customersId;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomersId(Long customerId) {
+        this.customersId = customerId;
     }
 
     public String getName() {
@@ -38,6 +41,14 @@ public class CustomersDTO {
         this.name = name;
     }
 
+    public List<ScreeningsDTO> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<ScreeningsDTO> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -45,20 +56,22 @@ public class CustomersDTO {
         if (!(o instanceof CustomersDTO))
             return false;
         CustomersDTO that = (CustomersDTO) o;
-        return getCustomerId ().equals (that.getCustomerId ()) &&
-                getName ().equals (that.getName ());
+        return getCustomersId ().equals (that.getCustomersId ()) &&
+                getName ().equals (that.getName ()) &&
+                getOrders ().equals (that.getOrders ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomerId (), getName ());
+        return Objects.hash (getCustomersId (), getName (), getOrders ());
     }
 
     @Override
     public String toString() {
         return "CustomersDTO{" +
-                "customerId=" + customerId +
+                "customerId=" + customersId +
                 ", name='" + name + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 }
