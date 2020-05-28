@@ -35,7 +35,7 @@ function getMovies(searchText) {
             let movies = response.data.Search;
             let output = '';
             //underscore removes an error message
-            $.each(movies = (_testGallary, movie) => {
+            $.each(movies = (_gallarySearch, movie) => {
                 output += `
                 <div classes="col-md-3">
                     <div class="well text-center">
