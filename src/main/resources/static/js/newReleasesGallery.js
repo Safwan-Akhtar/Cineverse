@@ -35,7 +35,7 @@ const reqTwo = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6723592`);
 
 
 // Mulan
-const reqThree = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6723592`);
+const reqThree = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt4566758`);
         // .then((response) => {
         //     console.log(response);
         //     // movies.push(response.data);
@@ -88,21 +88,27 @@ const reqFive = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt10065694`
 
 function axiosAll()
     {
-
+        // let movies = [];
         axios.all([reqOne, reqTwo, reqThree, reqFour, reqFive]).then(axios.spread((...responses) => {
             const responseOne = responses[0].data
-            const responseTwo = responses[1]
-            const responseThree = responses[2]
+            // populateDiv(responseOne);
+            // movies.push(responseOne)
+            const responseTwo = responses[1].data
+            // populateDiv(responseTwo);
+            // movies.push(responseOne)
+            const responseThree = responses[2].data
+            // populateDiv(responseThree);
+            // movies.push(responseOne)
             console.log(responseOne)
             console.log(responseTwo)
             console.log(responseThree)
+            const movies = [responseOne, responseTwo, responseThree]
             // use/access the results
+            populateDiv(movies);
         })).catch(errors => {
             // react on errors.
         })
-
     }
-
 let buttGetMovieFive = document.querySelector("#showMovie");
 buttGetMovieFive.addEventListener("click", axiosAll);
 
@@ -114,11 +120,11 @@ buttGetMovieFive.addEventListener("click", axiosAll);
 
 
 
-function populateDiv(movie) {
+function populateDiv(movies) {
 
     const div = this.document.getElementById("galleryDiv")
 
-    for (let movie of movieArray) {
+    for (let movie of movies) {
 
         const article = document.createElement("article");
         const divTwo = document.createElement("div");
