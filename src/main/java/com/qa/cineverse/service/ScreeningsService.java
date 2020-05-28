@@ -1,7 +1,10 @@
 package com.qa.cineverse.service;
 
+import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
+import com.qa.cineverse.exception.CustomersNotFoundException;
 import com.qa.cineverse.exception.ScreeningsNotFoundException;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.modelmapper.ModelMapper;
@@ -39,6 +42,17 @@ public class ScreeningsService {
     public ScreeningsDTO findScreeningsById(Long id) {
         return this.mapToDTO(this.repo.findById(id)
                 .orElseThrow(ScreeningsNotFoundException::new));
+    }
+
+    public ScreeningsDTO updateScreening(Long id, Screenings screening){
+        Screenings update = this.repo.findById(id).orElseThrow(CustomersNotFoundException::new);
+        update.setMovieDateTime(screening.getMovieDateTime());
+        update.setScreenType(screening.getScreenType());
+        update.setScreenNumber(screening.getScreenNumber());
+        update.setMovieName(screening.getMovieName());
+        update.setCustomers (screening.getCustomers());
+        Screenings tempCustomers = this.repo.save(update);
+        return this.mapToDTO(tempCustomers);
     }
 
     public boolean deleteScreening(Long id) {

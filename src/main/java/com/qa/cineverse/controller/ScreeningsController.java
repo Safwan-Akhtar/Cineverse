@@ -1,6 +1,8 @@
 package com.qa.cineverse.controller;
 
+import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.ScreeningsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,10 @@ public class ScreeningsController {
     @GetMapping("/getScreeningById/{id}")
     public ResponseEntity<ScreeningsDTO> getScreeningById(@PathVariable Long id){
         return ResponseEntity.ok(this.service.findScreeningsById (id));
+    }
+
+    @PutMapping("/updateScreening/{id}")
+    public ResponseEntity<ScreeningsDTO> updateScreening(@PathVariable Long id, @RequestBody Screenings screening){
+        return ResponseEntity.ok(this.service.updateScreening (id, screening));
     }
 }
