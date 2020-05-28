@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cineverse Ticket Booking</title>
+</head>
+<noscript>If you have no JS enabled you will see this!</noscript>
+
+<body>
+
+    <h1>Ciniverse</h1>
+
+    <nav id="menu">
+        <div>
+
+            <ul class="topnav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listingsGallary.html">Gallary</a></li>
+                <li><a href="openingTimes.html">Opening times</a></li>
+                <li><a href="newReleasesGallary.html">New releases</a></li>
+                <li><a href="classifications.html">Classifications</a></li>
+                <li><a href="screens.html">Screens</a></li>
+                <li><a href="ticketBookings.html">Bookings</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="placesToGo.html">Places to go</a></li>
+                <li><a href="gettingThere.html">Getting there</a></li>
+                <li><a href="discussionBoard.html">Discussion board</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+            <link rel="stylesheet" href="./css.style.css" />
+        </div>
+    </nav>
+
+    <h2>Tickets Booking</h2>
+
+    <form id="ticket" method="GET" action="TicketBookings.html">
+        <fieldset>
+            <legend>TicketBookings</legend>
+            <ul>
+                <li>
+                    <Label for="name">Buyer name :</Label>
+                    <select id="title" name="title">
+                        <option value="select">Select</option>
+                        <option value="mr">Mr</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="miss">Miss</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input id="customername" name="customername" type="text">
+                </li>
+                <li>
+                    <label for="movieTitle">Select movie :</label>
+                    <select id="movieTitle" name="movieTitle">
+                        <option value="select">Select</option>
+                        <option value="Movie1">Movie1</option>
+                        <option value="Movie2">Movie2</option>
+                        <option value="Movie3">Movie3</option>
+                        <option value="Movie4">Movie4</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="screeningDate">Screening Date :</label>
+                    <input type="date" id="screeningDate" name="screeningDate" value="0000-00-00" min="1950-01-01">
+                </li>
+                <li>
+                    <label for="screeningTime">Screening Time</label>
+                    <input type="time" id="screeningTime" name="screeningTime">
+                </li>
+                <li>
+                    <label for="seats">Seats</label>
+                    <select id="seats" name="Age">
+                        <option value="adult">Adult</option>
+                        <option value="child">Child</option>
+                        <option value="student">Student</option>
+                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
+
+                        <id id="seatClass" name="seatClass">
+                            <label>Standard</label>
+                            <input id="standard" type="radio" value="standard" name="seatClass">
+                            <label>VIP</label>
+                            <input id="vip" type="radio" value="vip" name="seatClass">
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <button id="butt1" type="submit">Submit</button>
+            <button id="reset" type="reset">Reset</button>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
