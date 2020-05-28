@@ -50,9 +50,6 @@ public class Customers {
         this.customersId = customerId;
     }
 
-
-
-
     public String getName() {
         return name;
     }
@@ -65,8 +62,8 @@ public class Customers {
         return screenings;
     }
 
-    public void setScreenings(List<Screenings> orders) {
-        this.screenings = orders;
+    public void setScreenings(List<Screenings> screenings) {
+        this.screenings = screenings;
     }
 
     @Override
@@ -91,7 +88,6 @@ public class Customers {
         return "Customers{" +
                 "customersId=" + customersId +
                 ", name='" + name + '\'' +
-                ", screenings =" + screenings +
                 '}';
     }
 }

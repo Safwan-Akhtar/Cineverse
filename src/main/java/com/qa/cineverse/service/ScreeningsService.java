@@ -17,15 +17,15 @@ import java.util.stream.Collectors;
 @Service
 public class ScreeningsService {
 
-    private final ScreeningsRepo repo;
+    private final ScreeningsRepo screeningsRepo;
 
     private final CustomersRepo customersRepo;
 
     private final ModelMapper mapper;
 
     @Autowired
-    public ScreeningsService(ScreeningsRepo repo, CustomersRepo customersRepo, ModelMapper mapper) {
-        this.repo = repo;
+    public ScreeningsService(ScreeningsRepo screeningsRepo, CustomersRepo customersRepo, ModelMapper mapper) {
+        this.screeningsRepo = screeningsRepo;
         this.customersRepo = customersRepo;
         this.mapper = mapper;
     }
@@ -33,42 +33,42 @@ public class ScreeningsService {
     private ScreeningsDTO mapToDTO(Screenings screenings) { return this.mapper.map(screenings, ScreeningsDTO.class); }
 
     public List<ScreeningsDTO> readScreenings() {
-        return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+        return this.screeningsRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public ScreeningsDTO createScreening(Screenings screenings) {
-        Screenings tempScreenings = this.repo.save(screenings);
+        Screenings tempScreenings = this.screeningsRepo.save(screenings);
         return this.mapToDTO (tempScreenings);
     }
 
     public ScreeningsDTO findScreeningsById(Long id) {
-        return this.mapToDTO(this.repo.findById(id)
+        return this.mapToDTO(this.screeningsRepo.findById(id)
                 .orElseThrow(ScreeningsNotFoundException::new));
     }
 
     public ScreeningsDTO updateScreening(Long id, Screenings screening){
-        Screenings update = this.repo.findById(id).orElseThrow(CustomersNotFoundException::new);
+        Screenings update = this.screeningsRepo.findById(id).orElseThrow(ScreeningsNotFoundException::new);
         update.setMovieDateTime(screening.getMovieDateTime());
         update.setScreenType(screening.getScreenType());
         update.setScreenNumber(screening.getScreenNumber());
         update.setMovieName(screening.getMovieName());
-        Screenings tempCustomers = this.repo.save(update);
-        return this.mapToDTO(tempCustomers);
+        Screenings tempScreenings = this.screeningsRepo.save(update);
+        return this.mapToDTO(tempScreenings);
     }
 
     public boolean deleteScreening(Long id) {
-        if(!this.repo.existsById(id)) {
+        if(!this.screeningsRepo.existsById(id)) {
             throw new ScreeningsNotFoundException ();
         }
-        this.repo.deleteById(id);
-        return this.repo.existsById(id);
+        this.screeningsRepo.deleteById(id);
+        return this.screeningsRepo.existsById(id);
     }
 
     public ScreeningsDTO addCustomerToScreening(Long id, Customers customers){
-        Screenings screenings = this.repo.findById(id).orElseThrow(ScreeningsNotFoundException::new);
+        Screenings screenings = this.screeningsRepo.findById(id).orElseThrow(ScreeningsNotFoundException::new);
         Customers tmp = this.customersRepo.saveAndFlush(customers);
         screenings.getCustomers ().add(tmp);
-        return this.mapToDTO(this.repo.saveAndFlush(screenings));
+        return this.mapToDTO(this.screeningsRepo.saveAndFlush(screenings));
     }
 
 }

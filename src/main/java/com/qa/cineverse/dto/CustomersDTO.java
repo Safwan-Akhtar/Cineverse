@@ -11,8 +11,7 @@ import java.util.Objects;
 public class CustomersDTO {
     private Long customersId;
     private String name;
-    @JsonIgnore
-    private List<ScreeningsDTO> screenings = new ArrayList<>();
+
 
     public CustomersDTO() {
     }
@@ -43,13 +42,6 @@ public class CustomersDTO {
         this.name = name;
     }
 
-    public List<ScreeningsDTO> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(List<ScreeningsDTO> screenings) {
-        this.screenings = screenings;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -59,13 +51,12 @@ public class CustomersDTO {
             return false;
         CustomersDTO that = (CustomersDTO) o;
         return getCustomersId ().equals (that.getCustomersId ()) &&
-                getName ().equals (that.getName ()) &&
-                getScreenings ().equals (that.getScreenings ());
+                getName ().equals (that.getName ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getScreenings ());
+        return Objects.hash (getCustomersId (), getName ());
     }
 
     @Override
@@ -73,7 +64,6 @@ public class CustomersDTO {
         return "CustomersDTO{" +
                 "customerId=" + customersId +
                 ", name='" + name + '\'' +
-                ", screenings=" + screenings +
                 '}';
     }
 }
