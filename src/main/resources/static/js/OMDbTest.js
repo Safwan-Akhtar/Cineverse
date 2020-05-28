@@ -4,7 +4,7 @@ let configGet = {
   };
 
 function getMovieCurrentDB(){
-    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=70cf4dddb2d9a01d923c561a9d7797ac&language=en-US&page=1', configGet)
+    axios.get('http://www.omdbapi.com/?t=Guardians&apikey=7d39eb57', configGet)
     .then(function (response) {
         console.log(response)
     });
