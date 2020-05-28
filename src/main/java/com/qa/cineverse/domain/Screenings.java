@@ -12,7 +12,7 @@ import java.util.*;
     public class Screenings {
 
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00

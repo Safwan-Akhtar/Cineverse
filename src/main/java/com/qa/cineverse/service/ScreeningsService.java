@@ -50,7 +50,6 @@ public class ScreeningsService {
         update.setScreenType(screening.getScreenType());
         update.setScreenNumber(screening.getScreenNumber());
         update.setMovieName(screening.getMovieName());
-        update.setCustomers (screening.getCustomers());
         Screenings tempCustomers = this.repo.save(update);
         return this.mapToDTO(tempCustomers);
     }
