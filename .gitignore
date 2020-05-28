@@ -4,4 +4,7 @@
 target
 test-output
 *.iml
+.classpath
 .settings
+.project
+
