@@ -25,24 +25,24 @@ public class CustomersController {
         return ResponseEntity.ok(this.service.readCustomers ());
     }
 
-    @PostMapping("/createCustomers")
+    @PostMapping("/createCustomer")
     public ResponseEntity<CustomersDTO> createCharacter(@RequestBody Customers customers){
-        return new ResponseEntity<>(this.service.createCustomers (customers), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.service.createCustomer (customers), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/deleteCustomers/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public ResponseEntity<?> deleteCustomers(@PathVariable Long id){
         return this.service.deleteCustomers (id)
                 ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
                 : ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/getCustomersById/{id}")
+    @GetMapping("/getCustomerById/{id}")
     public ResponseEntity<CustomersDTO> getCustomersById(@PathVariable Long id){
         return ResponseEntity.ok(this.service.findCustomersById (id));
     }
 
-    @PutMapping("/updateCustomers/{id}")
+    @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<CustomersDTO> updateCharacter(@PathVariable Long id, @RequestBody Customers customers){
         return ResponseEntity.ok(this.service.updateCustomers (id, customers));
     }
