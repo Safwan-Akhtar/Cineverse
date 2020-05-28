@@ -104,10 +104,10 @@ import java.util.*;
         if (!(o instanceof Screenings))
             return false;
         Screenings that = (Screenings) o;
-        return getScreenNumber () == that.getScreenNumber () &&
-                getScreeningsId ().equals (that.getScreeningsId ()) &&
+        return getScreeningsId ().equals (that.getScreeningsId ()) &&
                 getMovieDateTime ().equals (that.getMovieDateTime ()) &&
                 getScreenType ().equals (that.getScreenType ()) &&
+                getScreenNumber ().equals (that.getScreenNumber ()) &&
                 getMovieName ().equals (that.getMovieName ()) &&
                 getCustomers ().equals (that.getCustomers ());
     }
@@ -115,5 +115,17 @@ import java.util.*;
     @Override
     public int hashCode() {
         return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenNumber (), getScreenType (), getMovieName (), getCustomers ());
+    }
+
+    @Override
+    public String toString() {
+        return "Screenings{" +
+                "screeningsId=" + screeningsId +
+                ", movieDateTime=" + movieDateTime +
+                ", screenNumber=" + screenNumber +
+                ", screenType='" + screenType + '\'' +
+                ", movieName='" + movieName + '\'' +
+                ", customers=" + customers +
+                '}';
     }
 }

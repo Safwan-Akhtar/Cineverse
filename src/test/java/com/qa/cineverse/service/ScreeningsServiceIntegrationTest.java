@@ -59,10 +59,10 @@ public class ScreeningsServiceIntegrationTest {
                 );
     }
 
-    @Test
-    public void createScreeningsTest(){
-        assertEquals(this.mapToDTO(this.testScreeningsWithID), this.service.createScreening (testScreenings));
-    }
+//    @Test
+//    public void createScreeningsTest(){
+//        assertEquals(this.mapToDTO(this.testScreeningsWithID), this.service.createScreening (testScreenings));
+//    }
 
     @Test
     public void findCustomersByIdTest(){

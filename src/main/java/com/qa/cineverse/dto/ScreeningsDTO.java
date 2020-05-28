@@ -104,4 +104,16 @@ public class ScreeningsDTO {
     public int hashCode() {
         return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType (), getScreenNumber (), getMovieName (), getCustomers ());
     }
+
+    @Override
+    public String toString() {
+        return "ScreeningsDTO{" +
+                "screeningsId=" + screeningsId +
+                ", movieDateTime=" + movieDateTime +
+                ", screenType='" + screenType + '\'' +
+                ", screenNumber=" + screenNumber +
+                ", movieName='" + movieName + '\'' +
+                ", customers=" + customers +
+                '}';
+    }
 }
