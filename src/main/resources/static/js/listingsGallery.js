@@ -1,8 +1,18 @@
-const axios = require('axios');
 
-const display = document.querySelector("#currentListingsDisplay");
+// Artemis Fowl
+function artemisFowl () {
+    axios({
+      method: "get",
+      url: `http://www.omdbapi.com/?apikey=c737e3a5&i=tt3089630`,
+    }).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+}
 
-axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=6b2221c9').then(resp => {
-
-    console.log(resp.data);
-});
+let buttGetMovieOne = document.querySelector("#getOne");
+buttGetMovieOne.addEventListener("click", artemisFowl);
