@@ -66,17 +66,10 @@ p {
     font-size: large;
 }
 
-#intro {
-    padding-top: 75px;
-    border: 1000px; 
-    color: #004742;
-    font-weight: bold;
-}
-
-#clickBelow {
-    font-weight: normal;
-}
-
 div.card{
-  color: bl;
+  color: black;
+}
+
+.jumbotron {
+    color: black;
 }
