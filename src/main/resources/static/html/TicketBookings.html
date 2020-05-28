@@ -1,0 +1,170 @@
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/style.css" />
+
+</head>
+<noscript>If you have no JS enabled you will see this!</noscript>
+
+<body>
+
+    <h1>Ciniverse</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/src/main/resources/static/index1.html">QA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/src/main/resources/static/index1.html">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Whats on
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Current Listings</a>
+                        <a class="dropdown-item" href="#">Upcoming Releases</a>
+                    </div>
+                </li>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Booking
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/src/main/resources/static/html/TicketBookings.html">Book
+                            Tickets</a>
+                        <a class="dropdown-item" href="#">Book Screen</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Info
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Screens</a>
+                        <a class="dropdown-item" href="#">Opening Times</a>
+                        <a class="dropdown-item" href="#">Classification</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Getting here</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Tickets Booking</h2>
+
+    <form id="ticket" method="GET" action="TicketBookings.html">
+        <fieldset>
+            <legend>TicketBookings</legend>
+            <ul>
+                <li>
+                    <Label for="name">Buyer name :</Label>
+                    <select id="title" name="title">
+                        <option value="select">Select</option>
+                        <option value="mr">Mr</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="miss">Miss</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input id="customername" name="customername" type="text">
+                </li>
+                <li>
+                    <label for="movieTitle">Select movie :</label>
+                    <select id="movieTitle" name="movieTitle">
+                        <option value="select">Select</option>
+                        <option value="Movie1">Movie1</option>
+                        <option value="Movie2">Movie2</option>
+                        <option value="Movie3">Movie3</option>
+                        <option value="Movie4">Movie4</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="screeningDate">Screening Date :</label>
+                    <input type="date" id="screeningDate" name="screeningDate" value="0000-00-00" min="1950-01-01">
+                </li>
+                <li>
+                    <label for="screeningTime">Screening Time</label>
+                    <input type="time" id="screeningTime" name="screeningTime">
+                </li>
+                <li>
+                    <label for="seats">Seats</label>
+                    <select id="seats" name="Age">
+                        <option value="adult">Adult</option>
+                        <option value="child">Child</option>
+                        <option value="student">Student</option>
+                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
+
+                        <id id="seatClass" name="seatClass">
+                            <label>Standard</label>
+                            <input id="standard" type="radio" value="standard" name="seatClass">
+                            <label>VIP</label>
+                            <input id="vip" type="radio" value="vip" name="seatClass">
+                </li>
+                <li>
+                    <label for="seats">Seats</label>
+                    <select id="seats" name="Age">
+                        <option value="adult">Adult</option>
+                        <option value="child">Child</option>
+                        <option value="student">Student</option>
+                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
+
+                        <id id="seatClass" name="seatClass">
+                            <label>Standard</label>
+                            <input id="standard" type="radio" value="standard" name="seatClass">
+                            <label>VIP</label>
+                            <input id="vip" type="radio" value="vip" name="seatClass">
+                </li>
+                <li>
+                    <label for="seats">Seats</label>
+                    <select id="seats" name="Age">
+                        <option value="adult">Adult</option>
+                        <option value="child">Child</option>
+                        <option value="student">Student</option>
+                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
+
+                        <id id="seatClass" name="seatClass">
+                            <label>Standard</label>
+                            <input id="standard" type="radio" value="standard" name="seatClass">
+                            <label>VIP</label>
+                            <input id="vip" type="radio" value="vip" name="seatClass">
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <button id="butt1" type="submit">Submit</button>
+            <button id="reset" type="reset">Reset</button>
+        </fieldset>
+    </form>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
