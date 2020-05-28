@@ -62,16 +62,22 @@
                 </ul>
             </div>
         </nav>
-        <h1>Cinema Classifications</h1>
+add        <!--Start of Main Page content-->
+        <header class="jumbotron"> <!--would like to centre jumbotron-->
+            <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+            <h1 class="display-4">Cinema Classifications</h1>
+            <hr class="my-4">
+            <br>
+        </header>
+        <main>
 
         <div id="intro">
         <p>Our movies are rated using the British Board of Film Classification.</p>
         <p id="clickBelow">Click the icons below for more details.</p>
         </div>
 
-        <p>
             <input id="uClick" type="image" value="uclass" src="../img/classu.png">
-            <div id="udesc">
+            <div id="udesc" style="display: none">
                 <h3>U Universal – Suitable for all</h3>
                 <p>A U film should be suitable for audiences aged four years and over, although it is impossible to predict what might
                 upset any particular child.
@@ -79,11 +85,9 @@
                 U films should be set within a positive framework and should offer reassuring counterbalances to any violence, threat or
                 horror. If a work is particularly suitable for pre-school children, this will be indicated in the ratings info.</p>
             </div>
-        </p>
 
-        <p>
             <input id="pgClick" type="image" value="pgclass" src="../img/classpg.png">
-            <div id="pgdesc">
+            <div id="pgdesc" style="display: none">
                 <h3>PG Parental Guidance</h3>
                 <p>                   
                     General viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle a child aged around
@@ -91,11 +95,9 @@
                     upset younger, or more sensitive, children.
                 </p>
             </div>
-        </p>
 
-        <p>
             <input id="12aClick" type="image" value="12aclass" src="../img/class12a.png">
-        <div id="12adesc">
+        <div id="12adesc" style="display: none">
             <h3>12A/12 – Suitable for 12 years and over</h3>
             <p>
                 Films classified 12A and video works classified 12 contain material that is not generally suitable for children aged
@@ -105,32 +107,27 @@
                 video work.
             </p>
         </div>
-        </p>
 
-        <p>
             <input id="15Click" type="image" value="15class" src="../img/class15.png">
-        <div id="15desc">
+        <div id="15desc" style="display: none">
             <h3>15 – Suitable only for 15 years and over</h3>
             <p>
                 No one younger than 15 may see a 15 film in a cinema. No one younger than 15 may rent or buy a 15 rated video work.
             </p>
         </div>
-        </p>
 
-        <p>
             <input id="18Click" type="image" value="18class" src="../img/class18.png">
-        <div id="18desc">
+        <div id="18desc" style="display: none">
             <h3>18 – Suitable only for adults</h3>
             <p>
                 No one younger than 18 may see an 18 film in a cinema. No one younger than 18 may rent or buy an 18 rated video work.
                 Adults should be free to choose their own entertainment.
             </p>
         </div>
-        </p>
-        
-        <p>
+
+
             <input id="r18Click" type="image" value="r18class" src="../img/classr18.png">
-        <div id="r18desc">
+        <div id="r18desc" style="display: none">
             <h3>R18 - To be shown only in specially licensed cinemas, or supplied only in licensed sex shops, and to adults only</h3>
             <p>
                 The R18 category is a special and legally-restricted classification primarily for explicit works of consenting sex or
@@ -140,15 +137,16 @@
                 For full details of the legal restrictions for these works please see the BBFC Classification Guidelines document here.
             </p>
         </div>
-        </p>
 
 
+        </main>
+        <p>You can find more info <a href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.</p>
         <footer id="classFooter" class="footer">
-            You can find more info <a href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.
+            <p>Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
         </footer>
 
 
-        <script src="../js/classification.js"></script>
+
             <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -159,5 +157,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+        <script src="../js/classification.js"></script>
     </body>
 </html>
