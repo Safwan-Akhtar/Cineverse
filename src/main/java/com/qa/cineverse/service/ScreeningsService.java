@@ -46,16 +46,6 @@ public class ScreeningsService {
                 .orElseThrow(ScreeningsNotFoundException::new));
     }
 
-    public ScreeningsDTO updateScreening(Long id, Screenings screening){
-        Screenings update = this.screeningsRepo.findById(id).orElseThrow(ScreeningsNotFoundException::new);
-        update.setMovieDateTime(screening.getMovieDateTime());
-        update.setScreenType(screening.getScreenType());
-        update.setScreenNumber(screening.getScreenNumber());
-        update.setMovieName(screening.getMovieName());
-        Screenings tempScreenings = this.screeningsRepo.save(update);
-        return this.mapToDTO(tempScreenings);
-    }
-
     public boolean deleteScreening(Long id) {
         if(!this.screeningsRepo.existsById(id)) {
             throw new ScreeningsNotFoundException ();

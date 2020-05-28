@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/style.css" />
-
 </head>
 <noscript>If you have no JS enabled you will see this!</noscript>
 
@@ -26,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/src/main/resources/static/index1.html">Home <span
+                    <a class="nav-link" href="../index.html">Home <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -46,7 +45,7 @@
                         Booking
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/src/main/resources/static/html/TicketBookings.html">Book
+                        <a class="dropdown-item" href="../html/TicketBookings.html">Book
                             Tickets</a>
                         <a class="dropdown-item" href="#">Book Screen</a>
                     </div>
@@ -78,28 +77,22 @@
             <ul>
                 <li>
                     <Label for="name">Buyer name :</Label>
-                    <select id="title" name="title">
-                        <option value="select">Select</option>
-                        <option value="mr">Mr</option>
-                        <option value="mrs">Mrs</option>
-                        <option value="miss">Miss</option>
-                        <option value="other">Other</option>
-                    </select>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
                     <label for="movieTitle">Select movie :</label>
                     <select id="movieTitle" name="movieTitle">
                         <option value="select">Select</option>
-                        <option value="Movie1">Movie1</option>
-                        <option value="Movie2">Movie2</option>
-                        <option value="Movie3">Movie3</option>
-                        <option value="Movie4">Movie4</option>
+                        <option value="Mulan">Mulan</option>
+                        <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
+                        <option value="Avengers: Endgame">Avengers: Endgame</option>
+                        <option value="Frozen 2">Frozen 2</option>
+                        <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
                     </select>
                 </li>
                 <li>
                     <label for="screeningDate">Screening Date :</label>
-                    <input type="date" id="screeningDate" name="screeningDate" value="0000-00-00" min="1950-01-01">
+                    <input type="date" id="screeningDate" name="screeningDate" value="2020-06-15" min="1950-01-01">
                 </li>
                 <li>
                     <label for="screeningTime">Screening Time</label>
@@ -149,10 +142,9 @@
                 </li>
             </ul>
         </fieldset>
-        <fieldset>
-            <button id="butt1" type="submit">Submit</button>
-            <button id="reset" type="reset">Reset</button>
-        </fieldset>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+        <script src="../js/ticket.js"></script>
     </form>
 
     <!-- Scripts -->
