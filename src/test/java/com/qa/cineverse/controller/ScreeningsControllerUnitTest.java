@@ -13,6 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +43,8 @@ public class ScreeningsControllerUnitTest {
 
     private ScreeningsDTO screeningsDTO;
 
+    private LocalDateTime date;
+
     private final ModelMapper mapper = new ModelMapper();
 
     private ScreeningsDTO mapToDTO(Screenings screenings){
@@ -48,10 +53,11 @@ public class ScreeningsControllerUnitTest {
 
     @Before
     public void setUp(){
+        date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.screenings = new ArrayList<> ();
-        this.testScreenings = new Screenings (null, "Deluxe");
+        this.testScreenings = new Screenings (1L, date, 1L, "deluxe", "Guardians of the Galaxy");
         this.screenings.add(testScreenings);
-        this.testScreeningsWithId = new Screenings (testScreenings.getMovieDateTime(), testScreenings.getScreenType());
+        this.testScreeningsWithId = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenNumber(), testScreenings.getScreenType(), testScreenings.getMovieName());
         this.testScreeningsWithId.setScreeningsId (this.id);
         this.screeningsDTO = this.mapToDTO(testScreeningsWithId);
     }

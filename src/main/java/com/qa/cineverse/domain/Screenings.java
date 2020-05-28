@@ -17,8 +17,12 @@ import java.util.*;
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
         private LocalDateTime movieDateTime;
+        @Column(name = "screen_number")
+        private Long screenNumber;
         @Column(name = "screen_type")
         private String screenType;
+        @Column(name = "movie_name")
+        private String movieName;
 
         @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
         @JoinTable(
@@ -30,15 +34,19 @@ import java.util.*;
         public Screenings() {
         }
 
-    public Screenings(LocalDateTime movieDateTime, String screenType) {
+    public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         this.movieDateTime = movieDateTime;
+        this.screenNumber = screenNumber;
         this.screenType = screenType;
+        this.movieName = movieName;
     }
 
-    public Screenings(Long screeningsId, LocalDateTime movieDateTime, String screenType) {
+    public Screenings(Long screeningsId, LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
+        this.screenNumber = screenNumber;
         this.screenType = screenType;
+        this.movieName = movieName;
     }
 
     public Long getScreeningsId() {
@@ -65,6 +73,22 @@ import java.util.*;
         this.screenType = screenType;
     }
 
+    public Long getScreenNumber() {
+        return screenNumber;
+    }
+
+    public void setScreenNumber(Long screenNumber) {
+        this.screenNumber = screenNumber;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
     public List<Customers> getCustomers() {
         return customers;
     }
@@ -80,23 +104,16 @@ import java.util.*;
         if (!(o instanceof Screenings))
             return false;
         Screenings that = (Screenings) o;
-        return getScreeningsId ().equals (that.getScreeningsId ()) &&
+        return getScreenNumber () == that.getScreenNumber () &&
+                getScreeningsId ().equals (that.getScreeningsId ()) &&
                 getMovieDateTime ().equals (that.getMovieDateTime ()) &&
                 getScreenType ().equals (that.getScreenType ()) &&
+                getMovieName ().equals (that.getMovieName ()) &&
                 getCustomers ().equals (that.getCustomers ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType (), getCustomers ());
-    }
-
-    @Override
-    public String toString() {
-        return "Screenings{" +
-                "screeningsId=" + screeningsId +
-                ", movieDateTime=" + movieDateTime +
-                ", screenType='" + screenType + '\'' +
-                '}';
+        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenNumber (), getScreenType (), getMovieName (), getCustomers ());
     }
 }

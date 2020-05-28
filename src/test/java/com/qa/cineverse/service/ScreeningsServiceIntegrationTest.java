@@ -46,7 +46,7 @@ public class ScreeningsServiceIntegrationTest {
     @Before
     public void setUp(){
         date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
-        this.testScreenings = new Screenings (date, "deluxe");
+        this.testScreenings = new Screenings (1L, date, 1L, "deluxe", "Guardians of the Galaxy");
         this.repository.deleteAll();
         this.testScreeningsWithID = this.repository.save(this.testScreenings);
     }
