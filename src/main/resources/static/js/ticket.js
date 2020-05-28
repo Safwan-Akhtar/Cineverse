@@ -1,8 +1,9 @@
 const postBooking = () => {
     let customername = document.getElementById("customername").value;
+    let movieTitle = document.getElementById("movieTitle").value;
 
     console.log(customername);
-
+    console.log(movieTitle);
 
 
 
