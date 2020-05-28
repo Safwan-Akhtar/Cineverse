@@ -1,5 +1,6 @@
 package com.qa.cineverse.domain;
 
+
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -46,6 +47,9 @@ public class Customers {
     public void setCustomersId(Long customerId) {
         this.customersId = customerId;
     }
+
+
+
 
     public String getName() {
         return name;

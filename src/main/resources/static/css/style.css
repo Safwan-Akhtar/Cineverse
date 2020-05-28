@@ -1,10 +1,75 @@
-body{ background-color: #0E2626;
-color: white;}
-
 
 /* Color Theme Swatches in Hex */
-.Christian-Tagliavini-Portfolio-1-hex { color: #0E2626; }
-.Christian-Tagliavini-Portfolio-2-hex { color: #BF9C88; }
-.Christian-Tagliavini-Portfolio-3-hex { color: #8C6151; }
-.Christian-Tagliavini-Portfolio-4-hex { color: #400B06; }
-.Christian-Tagliavini-Portfolio-5-hex { color: #260101; }
+.yellowgreen-1-hex {
+  color: #004742;
+}
+.yellowgreen-2-hex {
+  color: #1e665b;
+}
+.yellowgreen-3-hex {
+  color: #54887a;
+}
+.yellowgreen-4-hex {
+  color: #869e8f;
+}
+.yellowgreen-5-hex {
+  color: #ebe8cf;
+}
+
+
+
+* {
+    font-family: Helvetica;
+}
+
+/* h1 {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 2.5;
+
+    background-color: #54887a;
+    text-align: center;
+    color: #ebe8cf;
+
+    text-align: center;
+    padding-top: 20px;
+    padding:10px;
+} */
+
+body {
+  color: white;
+    background-image: url(https://i.imgur.com/LA3fOoF.png);
+      background-color: #cccccc; /* Used if the image is unavailable */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+footer {
+    position: static;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+
+    /* background-color: #54887a; */
+    text-align: center;
+    color: black;
+
+    text-align: center;
+    padding-top: 20px;
+    font-size: large;
+}
+
+p {
+    font-family: Helvetica;
+    font-size: large;
+}
+
+div.card{
+  color: black;
+}
+
+.jumbotron {
+    color: black;
+}
