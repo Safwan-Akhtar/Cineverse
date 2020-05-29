@@ -1,10 +1,7 @@
 package com.qa.cineverse.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Column;
@@ -13,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Transactional
@@ -36,9 +34,6 @@ public class ScreeningsDTO {
     @Getter
     @Setter
     private List<CustomersDTO> customers = new ArrayList<> ();
-
-    public ScreeningsDTO() {
-    }
 
     public ScreeningsDTO(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         super();

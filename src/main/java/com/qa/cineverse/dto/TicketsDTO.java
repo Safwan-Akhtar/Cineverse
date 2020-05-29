@@ -1,13 +1,11 @@
 package com.qa.cineverse.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Transactional
@@ -22,9 +20,6 @@ public class TicketsDTO {
     @Getter
     @Setter
     private String seatNo;
-
-    public TicketsDTO() {
-    }
 
     public TicketsDTO(String ticketType, String seatNo) {
         this.ticketType = ticketType;

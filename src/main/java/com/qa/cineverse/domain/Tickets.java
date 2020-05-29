@@ -2,10 +2,7 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -14,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Entity
@@ -45,9 +43,6 @@ public class Tickets {
     @Getter
     @Setter
     private List<Customers> customers = new ArrayList<>();
-
-    public Tickets() {
-    }
 
     public Tickets(String ticketType, String seatNo) {
         super();

@@ -2,16 +2,14 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Entity
@@ -51,9 +49,6 @@ import java.util.*;
         @Getter
         @Setter
         private List<Customers> customers = new ArrayList<>();
-
-        public Screenings() {
-        }
 
     public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         this.movieDateTime = movieDateTime;
