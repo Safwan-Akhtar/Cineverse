@@ -71,9 +71,8 @@
     <br>
 </header>
 <main>
-    <form id="ticket" method="GET" action="TicketBookings.html">
+    <form id="ticket" class="back" method="GET" action="TicketBookings.html">
         <fieldset>
-            <legend>TicketBookings</legend>
             <ul>
                 <li>
                     <Label for="name">Buyer name :</Label>
@@ -103,11 +102,11 @@
                         <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
                     </select>
                 </li>
-                <li>
+                <li class="back">
                     <label for="seats">Adult Seats</label>
                         <input type="number" id="adult" name="adult" value="0" min="0" max="20">
                 </li>
-                <li>
+                <li class="back">
                     <label for="seats">Child Seats</label>
                     <input type="number" id="child" name="child" value="0" min="0" max="20">
                 </li>
@@ -125,6 +124,7 @@
         <button id="reset" type="reset">Reset</button>
         <script src="../js/ticket.js"></script>
     </form>
+    <link rel="stylesheet" type="text/css" href="../css/ticketBooking.css" />
 </main>
 <!-- Footer -->
 <footer>
