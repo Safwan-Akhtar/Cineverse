@@ -1,14 +1,18 @@
 package com.qa.cineverse.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@EqualsAndHashCode
+@ToString
 @Transactional
 public class CustomersDTO {
 
@@ -33,31 +37,5 @@ public class CustomersDTO {
     public CustomersDTO(Long customerId, String name) {
         this.customersId = customerId;
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof CustomersDTO))
-            return false;
-        CustomersDTO that = (CustomersDTO) o;
-        return getCustomersId ().equals (that.getCustomersId ()) &&
-                getName ().equals (that.getName ()) &&
-                getTickets ().equals (that.getTickets ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getTickets ());
-    }
-
-    @Override
-    public String toString() {
-        return "CustomersDTO{" +
-                "customersId=" + customersId +
-                ", name='" + name + '\'' +
-                ", tickets=" + tickets +
-                '}';
     }
 }

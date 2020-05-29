@@ -1,8 +1,10 @@
 package com.qa.cineverse.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Column;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@EqualsAndHashCode
+@ToString
 @Transactional
 public class ScreeningsDTO {
 
@@ -50,38 +54,5 @@ public class ScreeningsDTO {
         this.screenNumber = screenNumber;
         this.screenType = screenType;
         this.movieName = movieName;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof ScreeningsDTO))
-            return false;
-        ScreeningsDTO that = (ScreeningsDTO) o;
-        return getScreeningsId ().equals (that.getScreeningsId ()) &&
-                getMovieDateTime ().equals (that.getMovieDateTime ()) &&
-                getScreenType ().equals (that.getScreenType ()) &&
-                getScreenNumber ().equals (that.getScreenNumber ()) &&
-                getMovieName ().equals (that.getMovieName ()) &&
-                getCustomers ().equals (that.getCustomers ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType (), getScreenNumber (), getMovieName (), getCustomers ());
-    }
-
-    @Override
-    public String toString() {
-        return "ScreeningsDTO{" +
-                "screeningsId=" + screeningsId +
-                ", movieDateTime=" + movieDateTime +
-                ", screenType='" + screenType + '\'' +
-                ", screenNumber=" + screenNumber +
-                ", movieName='" + movieName + '\'' +
-                ", customers=" + customers +
-                '}';
     }
 }

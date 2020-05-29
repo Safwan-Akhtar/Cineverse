@@ -2,14 +2,18 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+@EqualsAndHashCode
+@ToString
 @Entity
     @Table(name = "screenings")
     @Proxy(lazy=false)
@@ -66,35 +70,4 @@ import java.util.*;
         this.movieName = movieName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Screenings))
-            return false;
-        Screenings that = (Screenings) o;
-        return getScreeningsId ().equals (that.getScreeningsId ()) &&
-                getMovieDateTime ().equals (that.getMovieDateTime ()) &&
-                getScreenType ().equals (that.getScreenType ()) &&
-                getScreenNumber ().equals (that.getScreenNumber ()) &&
-                getMovieName ().equals (that.getMovieName ()) &&
-                getCustomers ().equals (that.getCustomers ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenNumber (), getScreenType (), getMovieName (), getCustomers ());
-    }
-
-    @Override
-    public String toString() {
-        return "Screenings{" +
-                "screeningsId=" + screeningsId +
-                ", movieDateTime=" + movieDateTime +
-                ", screenNumber=" + screenNumber +
-                ", screenType='" + screenType + '\'' +
-                ", movieName='" + movieName + '\'' +
-                ", customers=" + customers +
-                '}';
-    }
 }

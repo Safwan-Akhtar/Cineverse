@@ -2,8 +2,10 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "tickets")
 @Proxy(lazy=false)
@@ -55,33 +59,5 @@ public class Tickets {
         this.ticketsId = getTicketsId();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Tickets))
-            return false;
-        Tickets tickets = (Tickets) o;
-        return getTicketsId ().equals (tickets.getTicketsId ()) &&
-                getTicketType ().equals (tickets.getTicketType ()) &&
-                getSeatNo ().equals (tickets.getSeatNo ()) &&
-                getCustomers ().equals (tickets.getCustomers ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getTicketsId (), getTicketType (), getSeatNo (), getCustomers ());
-    }
-
-    @Override
-    public String toString() {
-        return "Tickets{" +
-                "ticketsId=" + ticketsId +
-                ", ticketType='" + ticketType + '\'' +
-                ", seatNo='" + seatNo + '\'' +
-                ", customers=" + customers +
-                '}';
     }
 }

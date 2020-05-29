@@ -1,11 +1,15 @@
 package com.qa.cineverse.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
+@EqualsAndHashCode
+@ToString
 @Transactional
 public class TicketsDTO {
 
@@ -31,31 +35,5 @@ public class TicketsDTO {
         this.ticketsId = ticketsId;
         this.ticketType = ticketType;
         this.seatNo = seatNo;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof TicketsDTO))
-            return false;
-        TicketsDTO that = (TicketsDTO) o;
-        return getTicketsId ().equals (that.getTicketsId ()) &&
-                getTicketType ().equals (that.getTicketType ()) &&
-                getSeatNo ().equals (that.getSeatNo ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getTicketsId (), getTicketType (), getSeatNo ());
-    }
-
-    @Override
-    public String toString() {
-        return "TicketsDTO{" +
-                "ticketsId=" + ticketsId +
-                ", ticketType='" + ticketType + '\'' +
-                ", seatNo=" + seatNo +
-                '}';
     }
 }

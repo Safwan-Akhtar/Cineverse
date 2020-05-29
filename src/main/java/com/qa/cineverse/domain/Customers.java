@@ -2,8 +2,10 @@ package com.qa.cineverse.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "customers")
 @Proxy(lazy=false)
@@ -58,33 +62,5 @@ public class Customers {
     public Customers(Long customersId, String name) {
         this.customersId = customersId;
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Customers))
-            return false;
-        Customers customers = (Customers) o;
-        return getCustomersId ().equals (customers.getCustomersId ()) &&
-                getName ().equals (customers.getName ()) &&
-                getScreenings ().equals (customers.getScreenings ()) &&
-                getTickets ().equals (customers.getTickets ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getScreenings (), getTickets ());
-    }
-
-    @Override
-    public String toString() {
-        return "Customers{" +
-                "customersId=" + customersId +
-                ", name='" + name + '\'' +
-                ", screenings=" + screenings +
-                ", tickets=" + tickets +
-                '}';
     }
 }

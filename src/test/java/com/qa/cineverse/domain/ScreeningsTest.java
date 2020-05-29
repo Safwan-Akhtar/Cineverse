@@ -75,7 +75,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void screeningsDateNullButOtherDateNotNull() {
         screenings.setMovieDateTime(null);
         other.setScreeningsId (1L);
@@ -112,7 +112,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         screenings.setScreeningsId(null);
         assertFalse(screenings.equals(other));
