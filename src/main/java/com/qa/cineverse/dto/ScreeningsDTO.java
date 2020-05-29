@@ -1,6 +1,8 @@
 package com.qa.cineverse.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Column;
@@ -12,11 +14,23 @@ import java.util.Objects;
 @Transactional
 public class ScreeningsDTO {
 
+    @Getter
+    @Setter
     private Long screeningsId;
+    @Getter
+    @Setter
     private LocalDateTime movieDateTime;
+    @Getter
+    @Setter
     private String screenType;
+    @Getter
+    @Setter
     private Long screenNumber;
+    @Getter
+    @Setter
     private String movieName;
+    @Getter
+    @Setter
     private List<CustomersDTO> customers = new ArrayList<> ();
 
     public ScreeningsDTO() {
@@ -38,53 +52,6 @@ public class ScreeningsDTO {
         this.movieName = movieName;
     }
 
-    public Long getScreeningsId() {
-        return screeningsId;
-    }
-
-    public void setScreeningsId(Long screeningsId) {
-        this.screeningsId = screeningsId;
-    }
-
-    public LocalDateTime getMovieDateTime() {
-        return movieDateTime;
-    }
-
-    public void setMovieDateTime(LocalDateTime movieDateTime) {
-        this.movieDateTime = movieDateTime;
-    }
-
-    public String getScreenType() {
-        return screenType;
-    }
-
-    public void setScreenType(String screenType) {
-        this.screenType = screenType;
-    }
-
-    public Long getScreenNumber() {
-        return screenNumber;
-    }
-
-    public void setScreenNumber(Long screenNumber) {
-        this.screenNumber = screenNumber;
-    }
-
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public List<CustomersDTO> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<CustomersDTO> customers) {
-        this.customers = customers;
-    }
 
     @Override
     public boolean equals(Object o) {

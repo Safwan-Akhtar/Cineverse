@@ -2,6 +2,8 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -16,14 +18,24 @@ import java.util.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
+        @Getter
+        @Setter
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
+        @Getter
+        @Setter
         private LocalDateTime movieDateTime;
         @Column(name = "screen_number")
+        @Getter
+        @Setter
         private Long screenNumber;
         @Column(name = "screen_type")
+        @Getter
+        @Setter
         private String screenType;
         @Column(name = "movie_name")
+        @Getter
+        @Setter
         private String movieName;
 
         @JsonIgnoreProperties("screenings")
@@ -32,6 +44,8 @@ import java.util.*;
                 name = "screenings_customers",
                 joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
+        @Getter
+        @Setter
         private List<Customers> customers = new ArrayList<>();
 
         public Screenings() {
@@ -50,54 +64,6 @@ import java.util.*;
         this.screenNumber = screenNumber;
         this.screenType = screenType;
         this.movieName = movieName;
-    }
-
-    public Long getScreeningsId() {
-        return screeningsId;
-    }
-
-    public void setScreeningsId(Long screeningsId) {
-        this.screeningsId = screeningsId;
-    }
-
-    public LocalDateTime getMovieDateTime() {
-        return movieDateTime;
-    }
-
-    public void setMovieDateTime(LocalDateTime movieDateTime) {
-        this.movieDateTime = movieDateTime;
-    }
-
-    public String getScreenType() {
-        return screenType;
-    }
-
-    public void setScreenType(String screenType) {
-        this.screenType = screenType;
-    }
-
-    public Long getScreenNumber() {
-        return screenNumber;
-    }
-
-    public void setScreenNumber(Long screenNumber) {
-        this.screenNumber = screenNumber;
-    }
-
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public List<Customers> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customers> customers) {
-        this.customers = customers;
     }
 
     @Override

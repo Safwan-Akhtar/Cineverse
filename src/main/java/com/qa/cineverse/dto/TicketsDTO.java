@@ -1,5 +1,7 @@
 package com.qa.cineverse.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
@@ -7,8 +9,14 @@ import java.util.Objects;
 @Transactional
 public class TicketsDTO {
 
+    @Getter
+    @Setter
     private Long ticketsId;
+    @Getter
+    @Setter
     private String ticketType;
+    @Getter
+    @Setter
     private String seatNo;
 
     public TicketsDTO() {
@@ -22,30 +30,6 @@ public class TicketsDTO {
     public TicketsDTO(Long ticketsId, String ticketType, String seatNo) {
         this.ticketsId = ticketsId;
         this.ticketType = ticketType;
-        this.seatNo = seatNo;
-    }
-
-    public Long getTicketsId() {
-        return ticketsId;
-    }
-
-    public void setTicketsId(Long ticketsId) {
-        this.ticketsId = ticketsId;
-    }
-
-    public String getTicketType() {
-        return ticketType;
-    }
-
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
         this.seatNo = seatNo;
     }
 

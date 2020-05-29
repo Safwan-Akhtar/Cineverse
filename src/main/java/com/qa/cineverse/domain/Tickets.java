@@ -2,6 +2,8 @@ package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -18,10 +20,16 @@ public class Tickets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tickets_id")
+    @Getter
+    @Setter
     private Long ticketsId;
     @Column(name = "ticket_type")
+    @Getter
+    @Setter
     private String ticketType;
     @Column(name = "seat_no")
+    @Getter
+    @Setter
     private String seatNo;
 
     @JsonIgnoreProperties("tickets")
@@ -30,6 +38,8 @@ public class Tickets {
             name = "tickets_customers",
             joinColumns=@JoinColumn(name="tickets_id"),
             inverseJoinColumns=@JoinColumn(name="customers_id"))
+    @Getter
+    @Setter
     private List<Customers> customers = new ArrayList<>();
 
     public Tickets() {
@@ -45,38 +55,6 @@ public class Tickets {
         this.ticketsId = getTicketsId();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
-    }
-
-    public Long getTicketsId() {
-        return ticketsId;
-    }
-
-    public void setTicketsId(Long ticketsId) {
-        this.ticketsId = ticketsId;
-    }
-
-    public String getTicketType() {
-        return ticketType;
-    }
-
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
-    }
-
-    public List<Customers> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customers> customers) {
-        this.customers = customers;
     }
 
     @Override
