@@ -89,12 +89,16 @@
                 </li>
                 <button id="timeButton" type="button">Search Times</button>
                 <li>
-                    <label for="screeningDate">Screening Date :</label>
-                    <input type="date" id="screeningDate" name="screeningDate" min="1950-01-01">
+                    <label for="screenDateList">Screening Time</label>
+                    <select type="date" id="dateList" name="screeningDate" class="screenDateList">
+                        <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
+                    </select>
                 </li>
                 <li>
-                    <label for="screeningTime">Screening Time</label>
-                    <input type="time" id="screeningTime" name="screeningTime">
+                    <label for="screenTimeList">Screening Time</label>
+                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList">
+                        <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
+                    </select>
                 </li>
                 <li>
                     <label for="seats">Adult Seats</label>
@@ -109,6 +113,10 @@
                     <input type="number" id="student" name="student" value="0" min="0" max="20">
                 </li>
             </ul>
+            <div>
+                <p class="screenTimeList">Screen List</p>
+                <ul id="timeList" class="screenTimeList">
+                </ul>
         </fieldset>
         <button id="postButton" type="button">Submit</button>
         <button id="reset" type="reset">Reset</button>

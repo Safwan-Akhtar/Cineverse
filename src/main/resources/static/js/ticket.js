@@ -22,7 +22,23 @@ let configGet = {
         let movieDate = movieDateTime.substring(0,10)
         let movieTime = movieDateTime.substring(11,16)
 
+        screeningsJson = response.data
+        screeningsCount = Object.keys(screeningsJson).length;
 
+        for (let i = 0; i < screeningsCount; i++) {
+            //date
+            let nodeDate = document.createElement("OPTION");
+            nodeDate.classList.add("screenDateList");
+            let textnodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
+            nodeDate.appendChild(textnodeDate);
+            document.getElementById("dateList").appendChild(nodeDate);
+            //time
+            let nodeTime = document.createElement("OPTION");
+            nodeTime.classList.add("screenTimeList");
+            let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16));
+            nodeTime.appendChild(textnodeTime);
+            document.getElementById("timeList").appendChild(nodeTime);
+        }
 
         console.log(response);
         console.log(movieSelected);
