@@ -64,7 +64,7 @@ public class CustomersService {
         return this.customersRepo.existsById(id);
     }
 
-    public CustomersDTO addTicketsToScreening(Long id, Tickets tickets){
+    public CustomersDTO addTicketsToCustomer(Long id, Tickets tickets){
         Customers customers = this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new);
         Tickets tmp = this.ticketsRepo.saveAndFlush(tickets);
         customers.getTickets ().add(tmp);
