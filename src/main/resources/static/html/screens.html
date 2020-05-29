@@ -10,21 +10,53 @@
 </head>
 <body>
 <!-- Nav bar -->
-<nav id="menu">
-    <div>
-        <ul class="nav">
-            <li class="nav-item"><a href="../index.html">Home</a></li>
-            <li class="nav-item"><a href="listingsGallary.html">Gallary</a></li>
-            <li class="nav-item"><a href="openingTimes.html">Opening times</a></li>
-            <li class="nav-item"><a href="newReleasesGallary.html">New releases</a></li>
-            <li class="nav-item"><a href="classifications.html">Classifications</a></li>
-            <li class="nav-item"><a href="screens.html">Screens</a></li>
-            <li class="nav-item"><a href="ticketBookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="payments.html">Payments</a></li>
-            <li class="nav-item"><a href="comingHere.html">Where</a></li>
-            <li class="nav-item"><a href="discussionBoard.html">Discussion board</a></li>
-            <li class="nav-item"><a href="about.html">About</a></li>
-            <li class="nav-item"><a href="contacts.html">Contacts</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="/src/main/resources/static/index.html" style="color:white">QA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/src/main/resources/static/index.html" style="color:white">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color:white">
+                    Whats on
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="listingsGallery.html">Current Listings</a>
+                    <a class="dropdown-item" href="#">Upcoming Releases</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color:white">
+                    Bookings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="TicketBookings.html">Book
+                        Tickets</a>
+                    <a class="dropdown-item" href="#">Book Screen</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color:white">
+                    Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Screens</a>
+                    <a class="dropdown-item" href="openingtimes.html">Opening Times</a>
+                    <a class="dropdown-item" href="classification.html">Classification</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="comingHere.html" style="color:white">Getting here</a>
+            </li>
         </ul>
     </div>
 </nav>
