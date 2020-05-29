@@ -22,22 +22,8 @@ public class ScreeningsDTOTest {
     public void setUp() {
         date1 = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         date2 = LocalDateTime.of(LocalDate.ofEpochDay(2107-11-13), LocalTime.MAX);
-        screenings = new ScreeningsDTO (1L, date1, 1L, "Deluxe", "Guardians");
-        other = new ScreeningsDTO(date2, 1L, "Standard", "Thor");
-    }
-
-    @Test
-    public void settersTest() {
-        assertNotNull(screenings.getScreeningsId());
-        assertNotNull(screenings.getMovieDateTime());
-        assertNotNull(screenings.getScreenType());
-
-        screenings.setScreeningsId(null);
-        assertNull(screenings.getScreeningsId());
-        screenings.setMovieDateTime(null);
-        assertNull(screenings.getMovieDateTime());
-        screenings.setScreenType (null);
-        assertNull(screenings.getScreenType ());
+        screenings = new ScreeningsDTO (1L, date1, "Deluxe", 1L, "Guardians");
+        other = new ScreeningsDTO(date2,  1L, "Standard","Thor");
     }
 
     @Test

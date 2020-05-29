@@ -10,35 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@RequiredArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Transactional
 public class ScreeningsDTO {
 
-    @Getter @Setter
+    @Getter @Setter @NonNull
     private Long screeningsId;
-    @Getter @Setter
+    @Getter @Setter @NonNull
     private LocalDateTime movieDateTime;
-    @Getter @Setter
+    @Getter @Setter @NonNull
     private String screenType;
-    @Getter @Setter
+    @Getter @Setter @NonNull
     private Long screenNumber;
-    @Getter @Setter
+    @Getter @Setter @NonNull
     private String movieName;
     @Getter @Setter
     private List<CustomersDTO> customers = new ArrayList<> ();
 
     public ScreeningsDTO(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         super();
-        this.movieDateTime = movieDateTime;
-        this.screenNumber = screenNumber;
-        this.screenType = screenType;
-        this.movieName = movieName;
-    }
-
-    public ScreeningsDTO(Long screeningsId, LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
-        this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
         this.screenNumber = screenNumber;
         this.screenType = screenType;

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+@RequiredArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
@@ -20,19 +21,19 @@ import java.util.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
-        @Getter @Setter
+        @Getter @Setter @NonNull
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
-        @Getter @Setter
+        @Getter @Setter @NonNull
         private LocalDateTime movieDateTime;
         @Column(name = "screen_number")
-        @Getter @Setter
+        @Getter @Setter @NonNull
         private Long screenNumber;
         @Column(name = "screen_type")
-        @Getter @Setter
+        @Getter @Setter @NonNull
         private String screenType;
         @Column(name = "movie_name")
-        @Getter @Setter
+        @Getter @Setter @NonNull
         private String movieName;
 
         @JsonIgnoreProperties("screenings")
@@ -50,13 +51,4 @@ import java.util.*;
         this.screenType = screenType;
         this.movieName = movieName;
     }
-
-    public Screenings(Long screeningsId, LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
-        this.screeningsId = screeningsId;
-        this.movieDateTime = movieDateTime;
-        this.screenNumber = screenNumber;
-        this.screenType = screenType;
-        this.movieName = movieName;
-    }
-
 }
