@@ -41,9 +41,10 @@ body {
   color: white;
     background-image: url(https://i.imgur.com/LA3fOoF.png);
       background-color: #cccccc; /* Used if the image is unavailable */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
 }
 
 footer {
