@@ -1,6 +1,8 @@
 package com.qa.cineverse.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -9,8 +11,15 @@ import java.util.Objects;
 
 @Transactional
 public class CustomersDTO {
+
+    @Getter
+    @Setter
     private Long customersId;
+    @Getter
+    @Setter
     private String name;
+    @Getter
+    @Setter
     private List<TicketsDTO> tickets = new ArrayList<>();
 
 
@@ -24,30 +33,6 @@ public class CustomersDTO {
     public CustomersDTO(Long customerId, String name) {
         this.customersId = customerId;
         this.name = name;
-    }
-
-    public Long getCustomersId() {
-        return customersId;
-    }
-
-    public void setCustomersId(Long customerId) {
-        this.customersId = customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<TicketsDTO> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<TicketsDTO> tickets) {
-        this.tickets = tickets;
     }
 
     @Override

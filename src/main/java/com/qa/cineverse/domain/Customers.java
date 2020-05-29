@@ -2,6 +2,8 @@ package com.qa.cineverse.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -17,9 +19,13 @@ public class Customers {
     @Id
     @GeneratedValue
     @Column(name = "customers_id")
+    @Getter
+    @Setter
     private Long customersId;
 
     @Column(name = "name")
+    @Getter
+    @Setter
     private String name;
 
     @JsonIgnore
@@ -28,6 +34,8 @@ public class Customers {
             name = "screenings_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
+    @Getter
+    @Setter
     private List<Screenings> screenings = new ArrayList<> ();
 
     @JsonIgnore
@@ -36,6 +44,8 @@ public class Customers {
             name = "tickets_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="tickets_id"))
+    @Getter
+    @Setter
     private List<Tickets> tickets = new ArrayList<> ();
 
     public Customers() {
@@ -48,38 +58,6 @@ public class Customers {
     public Customers(Long customersId, String name) {
         this.customersId = customersId;
         this.name = name;
-    }
-
-    public Long getCustomersId() {
-        return customersId;
-    }
-
-    public void setCustomersId(Long customerId) {
-        this.customersId = customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Screenings> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(List<Screenings> screenings) {
-        this.screenings = screenings;
-    }
-
-    public List<Tickets> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<Tickets> tickets) {
-        this.tickets = tickets;
     }
 
     @Override
