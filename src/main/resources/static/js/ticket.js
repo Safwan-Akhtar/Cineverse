@@ -24,8 +24,23 @@ const postBooking = () => {
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         let movieSelected = response.data[0].movieName;
+        let movieDateTime = response.data[0].movieDateTime;
+        let movieDate = movieDateTime.substring(0,10)
+        let movieTime = movieDateTime.substring(11,16)
+
+
+
         console.log(response);
         console.log(movieSelected);
+        console.log(movieTime);
+
+        var dateControl = document.querySelector('input[type="date"]');
+        dateControl.value = movieDate;
+
+        var timeControl = document.querySelector('input[type="time"]');
+        timeControl.value = movieTime;
+
+
 
     })    
     .catch(function (error) {
