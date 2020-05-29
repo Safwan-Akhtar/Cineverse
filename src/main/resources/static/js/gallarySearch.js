@@ -29,10 +29,10 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText) {
-    axios.get(`http://www.omdbapi.com/?apikey=c737e3a5&t=`+searchText)
+    axios.get(`http://www.omdbapi.com/?apikey=c737e3a5&s=`+searchText)
         .then((response) => {
             console.log(response);
-            let movies = response.data.Search;
+            let movies = response.data.search;
             let output = '';
             //underscore removes an error message
             $.each(movies = (_gallarySearch, movie) => {
@@ -41,10 +41,11 @@ function getMovies(searchText) {
                     <div class="well text-center">
                         <img src="${movie.Poster}">
                         <h5>${movie.Title}</h5>
-                        <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
+                        <a onclick="movieSelected('${movie.id}')" class="btn btn-primary" href="#">Movie Details</a>
                     </div>
                 </div>
                 `;
+                //<a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
             });
             $('#movies').html(output);
 
@@ -53,3 +54,4 @@ function getMovies(searchText) {
             console.log(err);
     });
 }
+
