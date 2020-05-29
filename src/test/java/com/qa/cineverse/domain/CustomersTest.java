@@ -12,7 +12,7 @@ public class CustomersTest {
 
     @Before
     public void setUp() {
-        customers = new Customers(1L, "Luke");
+        customers = new Customers("Luke");
         other = new Customers("Felix");
     }
 
@@ -90,7 +90,7 @@ public class CustomersTest {
     @Test
     public void hashCodeTestWithNull() {
         Customers customers = new Customers(null);
-        Customers other = new Customers(null, null);
+        Customers other = new Customers(null);
         assertEquals(customers.hashCode(), other.hashCode());
     }
 

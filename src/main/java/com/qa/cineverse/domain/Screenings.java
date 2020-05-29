@@ -9,10 +9,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-@RequiredArgsConstructor
+
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
     @Table(name = "screenings")
     @Proxy(lazy=false)
@@ -21,19 +20,19 @@ import java.util.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
-        @Getter @Setter @NonNull
+        @NonNull
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
-        @Getter @Setter @NonNull
+        @NonNull
         private LocalDateTime movieDateTime;
         @Column(name = "screen_number")
-        @Getter @Setter @NonNull
+        @NonNull
         private Long screenNumber;
         @Column(name = "screen_type")
-        @Getter @Setter @NonNull
+        @NonNull
         private String screenType;
         @Column(name = "movie_name")
-        @Getter @Setter @NonNull
+        @NonNull
         private String movieName;
 
         @JsonIgnoreProperties("screenings")
@@ -42,7 +41,6 @@ import java.util.*;
                 name = "screenings_customers",
                 joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
-        @Getter @Setter
         private List<Customers> customers = new ArrayList<>();
 
     public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
