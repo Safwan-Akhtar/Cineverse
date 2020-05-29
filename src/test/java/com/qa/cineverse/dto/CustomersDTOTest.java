@@ -58,7 +58,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void customersDTONameNullButOtherNameNotNull() {
         customersDTO.setName(null);
         assertFalse(customersDTO.equals(other));
@@ -70,7 +70,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         customersDTO.setCustomersId(null);
         assertFalse(customersDTO.equals(other));

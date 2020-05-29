@@ -32,10 +32,4 @@ public class TicketsController {
     public ResponseEntity<List<TicketsDTO>> getAllTickets(){
         return ResponseEntity.ok(this.service.readTickets ());
     }
-
-    @PostMapping("/createTickets")
-    public ResponseEntity<TicketsDTO> createTickets(@RequestBody Tickets tickets){
-        return new ResponseEntity<>(this.service.createTickets (tickets), HttpStatus.CREATED);
-    }
-
 }

@@ -49,7 +49,7 @@ public class CustomersTest {
         assertFalse(customers.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void customersNameNullButOtherNameNotNull() {
         customers.setName(null);
         other.setCustomersId (1L);
@@ -62,7 +62,7 @@ public class CustomersTest {
         assertFalse(customers.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         customers.setCustomersId(null);
         assertFalse(customers.equals(other));
