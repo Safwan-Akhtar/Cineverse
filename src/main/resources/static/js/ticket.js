@@ -6,7 +6,6 @@ let configGet = {
   
 
 
-
   const searchTimes = () => {
     let customername = document.getElementById("customername").value;
     let movieTitle = document.getElementById("movieTitle").value;
@@ -35,14 +34,13 @@ let configGet = {
             //time
             let nodeTime = document.createElement("OPTION");
             nodeTime.classList.add("screenTimeList");
-            let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16));
+            let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
             nodeTime.appendChild(textnodeTime);
             document.getElementById("timeList").appendChild(nodeTime);
         }
 
         console.log(response);
-        console.log(movieSelected);
-        console.log(movieTime);
+
 
         var dateControl = document.querySelector('input[type="date"]');
         dateControl.value = movieDate;
