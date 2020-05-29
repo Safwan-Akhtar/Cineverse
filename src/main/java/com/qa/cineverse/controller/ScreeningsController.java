@@ -1,6 +1,8 @@
 package com.qa.cineverse.controller;
 
+import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.ScreeningsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,15 @@ public class ScreeningsController {
     @GetMapping("/getScreeningById/{id}")
     public ResponseEntity<ScreeningsDTO> getScreeningById(@PathVariable Long id){
         return ResponseEntity.ok(this.service.findScreeningsById (id));
+    }
+
+    @GetMapping("/readScreeningsByName/{movieName}")
+    public ResponseEntity<List<ScreeningsDTO>> readScreeningsByName(@PathVariable String movieName){
+        return ResponseEntity.ok(this.service.readScreeningsByName (movieName));
+    }
+
+    @PatchMapping("/addCustomerToScreening/{id}")
+    public ResponseEntity<ScreeningsDTO> addCustomerToScreening(@PathVariable Long id, @RequestBody Customers customer){
+        return new ResponseEntity<>(this.service.addCustomerToScreening (id, customer), HttpStatus.ACCEPTED);
     }
 }
