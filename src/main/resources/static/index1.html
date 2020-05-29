@@ -11,10 +11,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <title>Cineverse Home</title>
+    <title>Cineverse | Home</title>
 </head>
 
 <body>
+<!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="/src/main/resources/static/index1.html" style="color:white">QA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -36,7 +37,6 @@
                         <a class="dropdown-item" href="./html/listingsGallery.html">Current Listings</a>
                         <a class="dropdown-item" href="#">Upcoming Releases</a>
                     </div>
-                </li>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -63,10 +63,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./html/comingHere.html" style="color:white">Getting here</a>
                 </li>
-
             </ul>
         </div>
     </nav>
+<!-- Start of main page content -->
+<header>
+    <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+    <h1 class="display-4">Welcome to Cineverse</h1>
+    <hr class="my-4">
+    <br>
+</header>
+<main>
 <div class="container">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -75,7 +82,6 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
@@ -90,7 +96,6 @@
                 <img src="./img/AvengersBanner.jpg" alt="Avengers" style="width: 1000px;  height: 450px;">
             </div>
         </div>
-
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -102,6 +107,13 @@
         </a>
     </div>
 </div>
+
+</main>
+    <!-- Footer -->
+    <footer>
+        <br><br><br><br>
+        <p>Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
