@@ -165,6 +165,7 @@
       <name>Spring Milestones Repository</name>
       <url>http://repo.spring.io/milestone</url>
     </repository>
+
   </repositories>
 
 
