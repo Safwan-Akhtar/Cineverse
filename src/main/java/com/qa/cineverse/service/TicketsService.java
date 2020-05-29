@@ -35,7 +35,7 @@ public class TicketsService {
 
     private TicketsDTO mapToDTO(Tickets tickets) { return this.mapper.map(tickets, TicketsDTO.class); }
 
-    public List<TicketsDTO> readScreenings() {
+    public List<TicketsDTO> readTickets() {
         return this.ticketsRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
