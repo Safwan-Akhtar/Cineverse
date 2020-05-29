@@ -40,7 +40,7 @@ public class CustomersServiceIntegrationTest {
 
     @Before
     public void setUp(){
-        this.testCustomers = new Customers ("Caroline");
+        this.testCustomers = new Customers ("Caroline", 1L);
         this.repository.deleteAll();
         this.testCustomersWithID = this.repository.save(this.testCustomers);
     }

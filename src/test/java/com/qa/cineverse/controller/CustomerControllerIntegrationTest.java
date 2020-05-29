@@ -54,7 +54,7 @@ public class CustomerControllerIntegrationTest {
     @Before
     public void setUp(){
         this.repository.deleteAll();
-        this.testCustomers = new Customers ("Chris");
+        this.testCustomers = new Customers ("Chris", 1L);
         this.testCustomersWithID = this.repository.save(testCustomers);
         this.id = testCustomersWithID.getCustomersId ();
         this.customersDTO = this.mapToDTO(testCustomersWithID);
