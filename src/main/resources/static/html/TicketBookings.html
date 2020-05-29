@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="/src/main/resources/static/index1.html" style="color:white">QA</a>
+        <a class="navbar-brand" href="../index1.html" style="color:white">QA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/src/main/resources/static/index1.html" style="color:white">Home <span
+                    <a class="nav-link" href="../index1.html" style="color:white">Home <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -70,9 +70,10 @@
 
     <form id="ticket" method="GET" action="TicketBookings.html">
         <fieldset>
+            <legend>TicketBookings</legend>
             <ul>
                 <li>
-                    <Label for="customername">Buyer name :</Label>
+                    <Label for="name">Buyer name :</Label>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
@@ -95,23 +96,22 @@
                     <input type="time" id="screeningTime" name="screeningTime">
                 </li>
                 <li>
-                    <label for="adult">Adult Seats</label>
-                    <input type="number" id="adult" name="adult" min="1" max="20">
+                    <label for="seats">Adult Seats</label>
+                        <input type="number" id="adult" name="adult" value="0" min="0" max="20">
                 </li>
                 <li>
-                    <label for="child">Child Seats</label>
-                    <input type="number" id="child" name="child" min="1" max="20">
+                    <label for="seats">Child Seats</label>
+                    <input type="number" id="child" name="child" value="0" min="0" max="20">
                 </li>
                 <li>
-                    <label for="student">Student Seats</label>
-                    <input type="number" id="student" name="student" min="1" max="20">
+                    <label for="seats">Student Seats</label>
+                    <input type="number" id="student" name="student" value="0" min="0" max="20">
                 </li>
             </ul>
         </fieldset>
-        <fieldset>
-            <button id="butt1" type="submit">Submit</button>
-            <button id="reset" type="reset">Reset</button>
-        </fieldset>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+        <script src="../js/ticket.js"></script>
     </form>
 
 
@@ -125,5 +125,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script src="https://js.stripe.com/v3/"></script>
   </body>
 </html>

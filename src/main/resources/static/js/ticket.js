@@ -1,3 +1,9 @@
+
+let configGet = {
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8181/html/character.html' },
+    responseType: 'json'
+  };
+
 const postBooking = () => {
     let customername = document.getElementById("customername").value;
     let movieTitle = document.getElementById("movieTitle").value;
@@ -6,18 +12,26 @@ const postBooking = () => {
     let adult = document.getElementById("adult").value;
     let child = document.getElementById("child").value;
     let student = document.getElementById("student").value;
-    let seatClass = document.getElementById("seatClass").value;
 
-    console.log(customername);
-    console.log(movieTitle);
-    console.log(screeningDate);
-    console.log(screeningTime);
-    console.log(adult);
-    console.log(child);
-    console.log(student);
-    console.log(seatClass);
+    // console.log(customername);
+    // console.log(movieTitle);
+    // console.log(screeningDate);
+    // console.log(screeningTime);
+    // console.log(adult);
+    // console.log(child);
+    // console.log(student);
 
-}
+    axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
+    .then(function (response) {
+        let movieSelected = response.data[0].movieName;
+        console.log(response);
+        console.log(movieSelected);
+
+    })    
+    .catch(function (error) {
+        console.log(error);
+    });
+};
 
 let postButton = document.querySelector('#postButton');
 postButton.addEventListener('click', postBooking);
