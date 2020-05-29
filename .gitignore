@@ -7,4 +7,5 @@ test-output
 .classpath
 .settings
 .project
+.env
 

@@ -1,7 +1,3 @@
-// function name() {
-
-// let movies = {};
-
 // Artemis Fowl
 const reqOne = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt3089630`);
         // .then((response) => {
@@ -15,76 +11,17 @@ const reqOne = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt3089630`);
 // let buttGetMovieOne = document.querySelector("#getOne");
 // buttGetMovieOne.addEventListener("click", artemisFowl);
 
-
-
 // Tenet
 const reqTwo = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6723592`);
-        // .then((response) => {
-        //     console.log(response);
-        //     // movies.push(response.data);
-        //     populateDiv(response.data);
-        // }, (error) => {
-        //     console.log(error);
-        // });
-// }
-// let buttGetMovieTwo = document.querySelector("#getTwo");
-// buttGetMovieTwo.addEventListener("click", tenet);
-
-
-
-
 
 // Mulan
 const reqThree = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt4566758`);
-        // .then((response) => {
-        //     console.log(response);
-        //     // movies.push(response.data);
-        //     populateDiv(response.data);
-        // }, (error) => {
-        //     console.log(error);
-        // });
-// }
-// let buttGetMovieThree = document.querySelector("#getThree");
-// buttGetMovieThree.addEventListener("click", mulan);
-
-
-
-
 
 // The King's Man
 const reqFour = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6856242`);
-        // .then((response) => {
-        //     console.log(response);
-        //     // movies.push(response.data);
-        //     populateDiv(response.data);
-        // }, (error) => {
-        //     console.log(error);
-        // });
-// }
-// let buttGetMovieFour = document.querySelector("#getFour");
-// buttGetMovieFour.addEventListener("click", theKingsMan);
-
-
-
 
 // Antebellum
 const reqFive = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt10065694`);
-        // .then((response) => {
-        //     console.log(response);
-        //     // movies.push(response.data);
-        //     populateDiv(response.data);
-        // }, (error) => {
-        //     console.log(error);
-        // });
-// }
-// let buttGetMovieFive = document.querySelector("#getFive");
-// buttGetMovieFive.addEventListener("click", antebellum);
-
-    // populateDiv(movies);
-
-// }
-// let buttGetMovieFive = document.querySelector("#showMovie");
-// buttGetMovieFive.addEventListener("click", name);
 
 function axiosAll()
     {
@@ -114,12 +51,7 @@ buttGetMovieFive.addEventListener("click", axiosAll);
 
 
 
-
-
-
-
-
-
+// Populates divs
 function populateDiv(movies) {
 
     const div = this.document.getElementById("galleryDiv")
@@ -145,7 +77,7 @@ function populateDiv(movies) {
         article.id = movie.imdbID;
         // divTwo.className = "";
         image.src = movie.Poster;
-        // image.position = "";
+        image.position = "centre";
         // divThree.className = "";
         // divFour.className = "";
         hTwo.id = movie.imdbID;
