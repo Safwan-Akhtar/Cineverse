@@ -1,5 +1,7 @@
 package com.qa.cineverse.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -12,14 +14,19 @@ import java.util.*;
     public class Screenings {
 
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
         private LocalDateTime movieDateTime;
+        @Column(name = "screen_number")
+        private Long screenNumber;
         @Column(name = "screen_type")
         private String screenType;
+        @Column(name = "movie_name")
+        private String movieName;
 
+        @JsonIgnoreProperties("screenings")
         @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
         @JoinTable(
                 name = "screenings_customers",
@@ -30,15 +37,19 @@ import java.util.*;
         public Screenings() {
         }
 
-    public Screenings(LocalDateTime movieDateTime, String screenType) {
+    public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         this.movieDateTime = movieDateTime;
+        this.screenNumber = screenNumber;
         this.screenType = screenType;
+        this.movieName = movieName;
     }
 
-    public Screenings(Long screeningsId, LocalDateTime movieDateTime, String screenType) {
+    public Screenings(Long screeningsId, LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         this.screeningsId = screeningsId;
         this.movieDateTime = movieDateTime;
+        this.screenNumber = screenNumber;
         this.screenType = screenType;
+        this.movieName = movieName;
     }
 
     public Long getScreeningsId() {
@@ -65,6 +76,22 @@ import java.util.*;
         this.screenType = screenType;
     }
 
+    public Long getScreenNumber() {
+        return screenNumber;
+    }
+
+    public void setScreenNumber(Long screenNumber) {
+        this.screenNumber = screenNumber;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
     public List<Customers> getCustomers() {
         return customers;
     }
@@ -83,12 +110,14 @@ import java.util.*;
         return getScreeningsId ().equals (that.getScreeningsId ()) &&
                 getMovieDateTime ().equals (that.getMovieDateTime ()) &&
                 getScreenType ().equals (that.getScreenType ()) &&
+                getScreenNumber ().equals (that.getScreenNumber ()) &&
+                getMovieName ().equals (that.getMovieName ()) &&
                 getCustomers ().equals (that.getCustomers ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenType (), getCustomers ());
+        return Objects.hash (getScreeningsId (), getMovieDateTime (), getScreenNumber (), getScreenType (), getMovieName (), getCustomers ());
     }
 
     @Override
@@ -96,7 +125,10 @@ import java.util.*;
         return "Screenings{" +
                 "screeningsId=" + screeningsId +
                 ", movieDateTime=" + movieDateTime +
+                ", screenNumber=" + screenNumber +
                 ", screenType='" + screenType + '\'' +
+                ", movieName='" + movieName + '\'' +
+                ", customers=" + customers +
                 '}';
     }
 }
