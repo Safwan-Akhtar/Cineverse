@@ -35,7 +35,7 @@ public class ScreeningsServiceIntegrationTest {
 
     private Screenings testScreenings;
 
-    private Screenings testScreeningsWithID;
+    private Screenings testScreeningsWithVariable;
 
     private LocalDateTime date;
 
@@ -48,30 +48,33 @@ public class ScreeningsServiceIntegrationTest {
         date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.testScreenings = new Screenings (1L, date, 1L, "deluxe", "Guardians of the Galaxy");
         this.repository.deleteAll();
-        this.testScreeningsWithID = this.repository.save(this.testScreenings);
+        this.testScreeningsWithVariable = this.repository.save(this.testScreenings);
     }
 
     @Test
     public void readScreeningsTest(){
         assertThat(this.service.readScreenings())
                 .isEqualTo(
-                        Stream.of(this.mapToDTO(testScreeningsWithID)).collect(Collectors.toList())
+                        Stream.of(this.mapToDTO(testScreeningsWithVariable)).collect(Collectors.toList())
                 );
     }
 
-//    @Test
-//    public void createScreeningsTest(){
-//        assertEquals(this.mapToDTO(this.testScreeningsWithID), this.service.createScreening (testScreenings));
-//    }
+    @Test
+    public void readScreeningsByNameTest(){
+        assertThat(this.service.readScreeningsByName("Guardians of the Galaxy"))
+                .isEqualTo(
+                        Stream.of(this.mapToDTO(testScreeningsWithVariable)).collect(Collectors.toList())
+                );
+    }
 
     @Test
     public void findCustomersByIdTest(){
-        assertThat(this.service.findScreeningsById (this.testScreeningsWithID.getScreeningsId ())).isEqualTo(this.mapToDTO(this.testScreeningsWithID));
+        assertThat(this.service.findScreeningsById (this.testScreeningsWithVariable.getScreeningsId ())).isEqualTo(this.mapToDTO(this.testScreeningsWithVariable));
     }
 
     @Test
     public void deleteCustomersTest(){
-        assertThat(this.service.deleteScreening(this.testScreeningsWithID.getScreeningsId ())).isFalse();
+        assertThat(this.service.deleteScreening(this.testScreeningsWithVariable.getScreeningsId ())).isFalse();
     }
 
 }

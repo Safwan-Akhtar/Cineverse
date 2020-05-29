@@ -48,6 +48,8 @@ public class ScreeningsControllerIntegrationTest {
 
     private long id;
 
+    private String name;
+
     private ScreeningsDTO screeningsDTO;
 
 
@@ -61,6 +63,7 @@ public class ScreeningsControllerIntegrationTest {
         this.testScreenings = new Screenings(null, 1L, "deluxe", "Guardians of the Galaxy");
         this.testScreeningsWithID = this.repository.save(testScreenings);
         this.id = testScreeningsWithID.getScreeningsId ();
+        this.name = testScreeningsWithID.getMovieName();
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
     }
 
@@ -70,6 +73,21 @@ public class ScreeningsControllerIntegrationTest {
         screeningsDTOList.add(screeningsDTO);
         String content = this.mock.perform(
                 request(HttpMethod.GET, "/getAllScreenings")
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTOList));
+    }
+
+    @Test
+    public void getAllScreeningsByNameTest() throws Exception {
+        List<ScreeningsDTO> screeningsDTOList = new ArrayList<> ();
+        screeningsDTOList.add(screeningsDTO);
+        String content = this.mock.perform(
+                request(HttpMethod.GET, "/readScreeningsByName/" + this.name)
                         .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
