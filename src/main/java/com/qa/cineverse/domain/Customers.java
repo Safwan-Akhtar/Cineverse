@@ -30,7 +30,7 @@ public class Customers {
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
     private List<Screenings> screenings = new ArrayList<> ();
 
-    @OneToMany(mappedBy = "customers", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tickets> tickets = new ArrayList<>();
 
     public Customers() {
@@ -100,7 +100,6 @@ public class Customers {
         return "Customers{" +
                 "customersId=" + customersId +
                 ", name='" + name + '\'' +
-                ", screenings=" + screenings +
                 ", tickets=" + tickets +
                 '}';
     }

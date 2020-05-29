@@ -24,7 +24,7 @@ public class Tickets {
     @Column(name = "seat_no")
     private String seatNo;
 
-    @ManyToOne (targetEntity = Customers.class, fetch = FetchType.LAZY)
+    @ManyToOne (targetEntity = Customers.class)
     private Customers customers;
 
     public Tickets() {
@@ -95,8 +95,8 @@ public class Tickets {
     public String toString() {
         return "Tickets{" +
                 "ticketsId=" + ticketsId +
-                ", ticketType=" + ticketType +
-                ", seatNo=" + seatNo +
+                ", ticketType='" + ticketType + '\'' +
+                ", seatNo='" + seatNo + '\'' +
                 ", customers=" + customers +
                 '}';
     }

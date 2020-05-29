@@ -2,7 +2,6 @@ package com.qa.cineverse.dto;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Column;
 import java.util.Objects;
 
 @Transactional
@@ -16,7 +15,6 @@ public class TicketsDTO {
     }
 
     public TicketsDTO(String ticketType, String seatNo) {
-        super();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
     }

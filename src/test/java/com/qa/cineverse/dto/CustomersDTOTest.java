@@ -92,14 +92,14 @@ public class CustomersDTOTest {
 
     @Test
     public void constructorWithoutId() {
-        CustomersDTO customersDTO = new CustomersDTO("Felix", ticketsDTO);
+        CustomersDTO customersDTO = new CustomersDTO("Felix");
         assertNull(customersDTO.getCustomersId ());
         assertNotNull(customersDTO.getName());
     }
 
     @Test
     public void hashCodeTestWithNull() {
-        CustomersDTO customersDTO = new CustomersDTO(null, null);
+        CustomersDTO customersDTO = new CustomersDTO(null);
         CustomersDTO other = new CustomersDTO(null, null, null);
         assertEquals(customersDTO.hashCode(), other.hashCode());
     }

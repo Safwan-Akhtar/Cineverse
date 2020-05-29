@@ -17,10 +17,9 @@ public class CustomersDTO {
     public CustomersDTO() {
     }
 
-    public CustomersDTO(String name, List<TicketsDTO> tickets) {
+    public CustomersDTO(String name) {
         super();
         this.name = name;
-        this.tickets = tickets;
     }
 
     public CustomersDTO(Long customerId, String name, List<TicketsDTO> tickets) {
