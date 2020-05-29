@@ -48,9 +48,9 @@ public class CustomersServiceUnitTest {
     @Before
     public void setUp(){
         this.customersList = new ArrayList<> ();
-        this.testCustomers = new Customers ("Felix", 1L);
+        this.testCustomers = new Customers ("Felix");
         this.customersList.add(testCustomers);
-        this.testCustomersWithID = new Customers (testCustomers.getName(), testCustomers.getSeatNo());
+        this.testCustomersWithID = new Customers (testCustomers.getName());
         this.testCustomersWithID.setCustomersId (id);
         this.customersDTOTest = this.mapToDTO(testCustomersWithID);
     }

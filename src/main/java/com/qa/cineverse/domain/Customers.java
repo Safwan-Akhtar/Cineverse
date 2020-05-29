@@ -21,8 +21,6 @@ public class Customers {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "seat_no")
-    private Long seatNo;
 
     @JsonIgnore
     @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
@@ -35,15 +33,13 @@ public class Customers {
     public Customers() {
     }
 
-    public Customers(String name, Long seatNo) {
+    public Customers(String name) {
         this.name = name;
-        this.seatNo = seatNo;
     }
 
-    public Customers(Long customersId, String name, Long seatNo) {
+    public Customers(Long customersId, String name) {
         this.customersId = customersId;
         this.name = name;
-        this.seatNo = seatNo;
     }
 
     public Long getCustomersId() {
@@ -60,14 +56,6 @@ public class Customers {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(Long seatNo) {
-        this.seatNo = seatNo;
     }
 
     public List<Screenings> getScreenings() {
@@ -87,13 +75,12 @@ public class Customers {
         Customers customers = (Customers) o;
         return getCustomersId ().equals (customers.getCustomersId ()) &&
                 getName ().equals (customers.getName ()) &&
-                getSeatNo ().equals (customers.getSeatNo ()) &&
                 getScreenings ().equals (customers.getScreenings ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getSeatNo (), getScreenings ());
+        return Objects.hash (getCustomersId (), getName (), getScreenings ());
     }
 
     @Override
@@ -101,8 +88,6 @@ public class Customers {
         return "Customers{" +
                 "customersId=" + customersId +
                 ", name='" + name + '\'' +
-                ", seatNo='" + seatNo + '\'' +
-                ", screenings=" + screenings +
                 '}';
     }
 }

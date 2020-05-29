@@ -12,22 +12,19 @@ public class CustomersTest {
 
     @Before
     public void setUp() {
-        customers = new Customers(1L, "Luke", 1L);
-        other = new Customers("Felix", 1L);
+        customers = new Customers(1L, "Luke");
+        other = new Customers("Felix");
     }
 
     @Test
     public void settersTest() {
         assertNotNull(customers.getCustomersId());
         assertNotNull(customers.getName());
-        assertNotNull(customers.getSeatNo());
 
         customers.setCustomersId(null);
         assertNull(customers.getCustomersId());
         customers.setName(null);
         assertNull(customers.getName());
-        customers.setSeatNo(null);
-        assertNull(customers.getSeatNo());
     }
 
     @Test
@@ -40,7 +37,6 @@ public class CustomersTest {
     public void createCustomersWithId() {
         assertEquals(1L, customers.getCustomersId(), 0);
         assertEquals("Luke", customers.getName());
-        assertEquals(1L, customers.getSeatNo(), 0);
     }
 
     @Test
@@ -86,15 +82,15 @@ public class CustomersTest {
 
     @Test
     public void constructorWithoutId() {
-        Customers characterSheet = new Customers("Felix", 1L);
+        Customers characterSheet = new Customers("Felix");
         assertNull(characterSheet.getCustomersId ());
         assertNotNull(characterSheet.getName());
     }
 
     @Test
     public void hashCodeTestWithNull() {
-        Customers customers = new Customers(null, null);
-        Customers other = new Customers(null, null, null);
+        Customers customers = new Customers(null);
+        Customers other = new Customers(null, null);
         assertEquals(customers.hashCode(), other.hashCode());
     }
 

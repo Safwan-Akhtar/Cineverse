@@ -13,22 +13,19 @@ public class CustomersDTOTest {
 
     @Before
     public void setUp() {
-        customersDTO = new CustomersDTO (1L, "Felix", 1L);
-        other = new CustomersDTO (1L, "Saf", 1L);
+        customersDTO = new CustomersDTO (1L, "Felix");
+        other = new CustomersDTO (1L, "Saf");
     }
 
     @Test
     public void settersTest() {
         assertNotNull(customersDTO.getCustomersId());
         assertNotNull(customersDTO.getName());
-        assertNotNull(customersDTO.getSeatNo());
 
         customersDTO.setCustomersId(null);
         assertNull(customersDTO.getCustomersId());
         customersDTO.setName(null);
         assertNull(customersDTO.getName());
-        customersDTO.setSeatNo(null);
-        assertNull(customersDTO.getSeatNo());
     }
 
     @Test
@@ -45,7 +42,6 @@ public class CustomersDTOTest {
     public void createCustomersDTOWithId() {
         assertEquals(1L, customersDTO.getCustomersId(), 0);
         assertEquals("Felix", customersDTO.getName());
-        assertEquals(1L, customersDTO.getSeatNo(), 0);
     }
 
     @Test
@@ -90,15 +86,15 @@ public class CustomersDTOTest {
 
     @Test
     public void constructorWithoutId() {
-        CustomersDTO customersDTO = new CustomersDTO("Felix", 1L);
+        CustomersDTO customersDTO = new CustomersDTO("Felix");
         assertNull(customersDTO.getCustomersId ());
         assertNotNull(customersDTO.getName());
     }
 
     @Test
     public void hashCodeTestWithNull() {
-        CustomersDTO customersDTO = new CustomersDTO(null, null);
-        CustomersDTO other = new CustomersDTO(null, null, null);
+        CustomersDTO customersDTO = new CustomersDTO(null);
+        CustomersDTO other = new CustomersDTO(null, null);
         assertEquals(customersDTO.hashCode(), other.hashCode());
     }
 }
