@@ -22,9 +22,6 @@ public class Customers {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "customers")
-    private List<Tickets> tickets = new ArrayList<>();
-
     @JsonIgnore
     @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
     @JoinTable(
@@ -32,6 +29,14 @@ public class Customers {
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
     private List<Screenings> screenings = new ArrayList<> ();
+
+    @JsonIgnore
+    @ManyToMany(targetEntity = Tickets.class, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tickets_customers",
+            joinColumns=@JoinColumn(name="customers_id"),
+            inverseJoinColumns=@JoinColumn(name="tickets_id"))
+    private List<Tickets> tickets = new ArrayList<> ();
 
     public Customers() {
     }

@@ -24,8 +24,13 @@ public class Tickets {
     @Column(name = "seat_no")
     private String seatNo;
 
-    @ManyToOne (targetEntity = Customers.class)
-    private Customers customers;
+    @JsonIgnoreProperties("tickets")
+    @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @JoinTable(
+            name = "tickets_customers",
+            joinColumns=@JoinColumn(name="tickets_id"),
+            inverseJoinColumns=@JoinColumn(name="customers_id"))
+    private List<Customers> customers = new ArrayList<>();
 
     public Tickets() {
     }
@@ -66,11 +71,11 @@ public class Tickets {
         this.seatNo = seatNo;
     }
 
-    public Customers getCustomers() {
+    public List<Customers> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(Customers customers) {
+    public void setCustomers(List<Customers> customers) {
         this.customers = customers;
     }
 
