@@ -11,13 +11,13 @@ import java.util.Objects;
 public class CustomersDTO {
     private Long customersId;
     private String name;
+    private List<TicketsDTO> tickets = new ArrayList<>();
 
 
     public CustomersDTO() {
     }
 
     public CustomersDTO(String name) {
-        super();
         this.name = name;
     }
 
@@ -42,6 +42,13 @@ public class CustomersDTO {
         this.name = name;
     }
 
+    public List<TicketsDTO> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<TicketsDTO> tickets) {
+        this.tickets = tickets;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -51,19 +58,21 @@ public class CustomersDTO {
             return false;
         CustomersDTO that = (CustomersDTO) o;
         return getCustomersId ().equals (that.getCustomersId ()) &&
-                getName ().equals (that.getName ());
+                getName ().equals (that.getName ()) &&
+                getTickets ().equals (that.getTickets ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName ());
+        return Objects.hash (getCustomersId (), getName (), getTickets ());
     }
 
     @Override
     public String toString() {
         return "CustomersDTO{" +
-                "customerId=" + customersId +
+                "customersId=" + customersId +
                 ", name='" + name + '\'' +
+                ", tickets=" + tickets +
                 '}';
     }
 }

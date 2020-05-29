@@ -30,6 +30,14 @@ public class Customers {
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
     private List<Screenings> screenings = new ArrayList<> ();
 
+    @JsonIgnore
+    @ManyToMany(targetEntity = Tickets.class, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "tickets_customers",
+            joinColumns=@JoinColumn(name="customers_id"),
+            inverseJoinColumns=@JoinColumn(name="tickets_id"))
+    private List<Tickets> tickets = new ArrayList<> ();
+
     public Customers() {
     }
 
@@ -66,6 +74,14 @@ public class Customers {
         this.screenings = screenings;
     }
 
+    public List<Tickets> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Tickets> tickets) {
+        this.tickets = tickets;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -75,12 +91,13 @@ public class Customers {
         Customers customers = (Customers) o;
         return getCustomersId ().equals (customers.getCustomersId ()) &&
                 getName ().equals (customers.getName ()) &&
-                getScreenings ().equals (customers.getScreenings ());
+                getScreenings ().equals (customers.getScreenings ()) &&
+                getTickets ().equals (customers.getTickets ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getScreenings ());
+        return Objects.hash (getCustomersId (), getName (), getScreenings (), getTickets ());
     }
 
     @Override
@@ -88,6 +105,8 @@ public class Customers {
         return "Customers{" +
                 "customersId=" + customersId +
                 ", name='" + name + '\'' +
+                ", screenings=" + screenings +
+                ", tickets=" + tickets +
                 '}';
     }
 }

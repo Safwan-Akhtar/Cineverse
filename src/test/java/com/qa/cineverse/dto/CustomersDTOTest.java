@@ -3,6 +3,9 @@ package com.qa.cineverse.dto;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
@@ -10,6 +13,7 @@ public class CustomersDTOTest {
 
     private CustomersDTO customersDTO;
     private CustomersDTO other;
+
 
     @Before
     public void setUp() {
