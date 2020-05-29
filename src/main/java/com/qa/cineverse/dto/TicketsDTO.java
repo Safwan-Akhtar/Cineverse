@@ -10,18 +10,18 @@ public class TicketsDTO {
 
     private Long ticketsId;
     private String ticketType;
-    private Long seatNo;
+    private String seatNo;
 
     public TicketsDTO() {
     }
 
-    public TicketsDTO(String ticketType, Long seatNo) {
+    public TicketsDTO(String ticketType, String seatNo) {
         super();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
     }
 
-    public TicketsDTO(Long ticketsId, String ticketType, Long seatNo) {
+    public TicketsDTO(Long ticketsId, String ticketType, String seatNo) {
         this.ticketsId = ticketsId;
         this.ticketType = ticketType;
         this.seatNo = seatNo;
@@ -43,11 +43,11 @@ public class TicketsDTO {
         this.ticketType = ticketType;
     }
 
-    public Long getSeatNo() {
+    public String getSeatNo() {
         return seatNo;
     }
 
-    public void setSeatNo(Long seatNo) {
+    public void setSeatNo(String seatNo) {
         this.seatNo = seatNo;
     }
 

@@ -1,7 +1,10 @@
 package com.qa.cineverse.controller;
 
 import com.qa.cineverse.domain.Customers;
+import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
+import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.dto.TicketsDTO;
 import com.qa.cineverse.service.CustomersService;
 import com.qa.cineverse.service.TicketsService;
@@ -30,6 +33,9 @@ public class TicketsController {
         return ResponseEntity.ok(this.service.readTickets ());
     }
 
-
+    @PostMapping("/createTickets")
+    public ResponseEntity<TicketsDTO> createTickets(@RequestBody Tickets tickets){
+        return new ResponseEntity<>(this.service.createTickets (tickets), HttpStatus.CREATED);
+    }
 
 }

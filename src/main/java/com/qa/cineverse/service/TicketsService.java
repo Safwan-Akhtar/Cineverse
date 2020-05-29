@@ -39,4 +39,8 @@ public class TicketsService {
         return this.ticketsRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+    public TicketsDTO createTickets(Tickets tickets) {
+        Tickets tempTickets = this.ticketsRepo.save(tickets);
+        return this.mapToDTO (tempTickets);
+    }
 }

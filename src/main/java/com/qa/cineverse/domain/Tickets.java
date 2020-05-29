@@ -22,7 +22,7 @@ public class Tickets {
     @Column(name = "ticket_type")
     private String ticketType;
     @Column(name = "seat_no")
-    private Long seatNo;
+    private String seatNo;
 
     @ManyToOne (targetEntity = Customers.class, fetch = FetchType.LAZY)
     private Customers customers;
@@ -30,12 +30,12 @@ public class Tickets {
     public Tickets() {
     }
 
-    public Tickets(String ticketType, Long seatNo) {
+    public Tickets(String ticketType, String seatNo) {
         this.ticketType = ticketType;
         this.seatNo = seatNo;
     }
 
-    public Tickets(Long ticketsId, String ticketType, Long seatNo) {
+    public Tickets(Long ticketsId, String ticketType, String seatNo) {
         this.ticketsId = getTicketsId();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
@@ -57,11 +57,11 @@ public class Tickets {
         this.ticketType = ticketType;
     }
 
-    public Long getSeatNo() {
+    public String getSeatNo() {
         return seatNo;
     }
 
-    public void setSeatNo(Long seatNo) {
+    public void setSeatNo(String seatNo) {
         this.seatNo = seatNo;
     }
 
