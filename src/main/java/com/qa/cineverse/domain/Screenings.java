@@ -11,6 +11,7 @@ import java.util.*;
 
 
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Data
 @Entity
     @Table(name = "screenings")
@@ -20,7 +21,6 @@ import java.util.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
-        @NonNull
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
         @NonNull
@@ -42,11 +42,4 @@ import java.util.*;
                 joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
         private List<Customers> customers = new ArrayList<>();
-
-    public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
-        this.movieDateTime = movieDateTime;
-        this.screenNumber = screenNumber;
-        this.screenType = screenType;
-        this.movieName = movieName;
-    }
 }
