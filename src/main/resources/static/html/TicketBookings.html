@@ -73,9 +73,10 @@
 <main>
     <form id="ticket" method="GET" action="TicketBookings.html">
         <fieldset>
+            <legend>TicketBookings</legend>
             <ul>
                 <li>
-                    <Label for="customername">Buyer name :</Label>
+                    <Label for="name">Buyer name :</Label>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
@@ -89,32 +90,40 @@
                         <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
                     </select>
                 </li>
+                <button id="timeButton" type="button">Search Times</button>
                 <li>
-                    <label for="screeningDate">Screening Date :</label>
-                    <input type="date" id="screeningDate" name="screeningDate" value="2020-06-15" min="1950-01-01">
+                    <label for="screenDateList">Screening Date</label>
+                    <select type="date" id="dateList" name="screeningDate" class="screenDateList">
+                        <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
+                    </select>
                 </li>
                 <li>
-                    <label for="screeningTime">Screening Time</label>
-                    <input type="time" id="screeningTime" name="screeningTime">
+                    <label for="screenTimeList">Screening Time</label>
+                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList">
+                        <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
+                    </select>
                 </li>
                 <li>
-                    <label for="adult">Adult Seats</label>
-                    <input type="number" id="adult" name="adult" min="1" max="20">
+                    <label for="seats">Adult Seats</label>
+                        <input type="number" id="adult" name="adult" value="0" min="0" max="20">
                 </li>
                 <li>
-                    <label for="child">Child Seats</label>
-                    <input type="number" id="child" name="child" min="1" max="20">
+                    <label for="seats">Child Seats</label>
+                    <input type="number" id="child" name="child" value="0" min="0" max="20">
                 </li>
                 <li>
-                    <label for="student">Student Seats</label>
-                    <input type="number" id="student" name="student" min="1" max="20">
+                    <label for="seats">Student Seats</label>
+                    <input type="number" id="student" name="student" value="0" min="0" max="20">
                 </li>
             </ul>
+            <div>
+                <p class="screenTimeList">Screen List</p>
+                <ul id="timeList" class="screenTimeList">
+                </ul>
         </fieldset>
-        <fieldset>
-            <button id="butt1" type="submit">Submit</button>
-            <button id="reset" type="reset">Reset</button>
-        </fieldset>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+        <script src="../js/ticket.js"></script>
     </form>
 </main>
 <!-- Footer -->
@@ -134,5 +143,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script src="https://js.stripe.com/v3/"></script>
   </body>
 </html>
