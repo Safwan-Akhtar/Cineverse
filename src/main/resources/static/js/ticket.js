@@ -52,8 +52,8 @@ let configGet = {
         console.log(error);
   });
 };
-let timeButton = document.querySelector('#timeButton');
-timeButton.addEventListener('click', searchTimes);
+
+document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
 const postBooking = () => {
     let customername = document.getElementById("customername").value;

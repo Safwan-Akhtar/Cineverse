@@ -81,7 +81,7 @@
                 <li>
                     <label for="movieTitle">Select movie :</label>
                     <select id="movieTitle" name="movieTitle">
-                        <option value="select">Select</option>
+                        <option>Select</option>
                         <option value="Mulan">Mulan</option>
                         <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
                         <option value="Avengers: Endgame">Avengers: Endgame</option>
@@ -89,16 +89,15 @@
                         <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
                     </select>
                 </li>
-                <button id="timeButton" type="button">Search Times</button>
                 <li>
                     <label for="screenDateList">Screening Date</label>
-                    <select type="date" id="dateList" name="screeningDate" class="screenDateList">
+                    <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
                         <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
                     </select>
                 </li>
                 <li>
                     <label for="screenTimeList">Screening Time</label>
-                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList">
+                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
                         <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
                     </select>
                 </li>
