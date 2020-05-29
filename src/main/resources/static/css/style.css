@@ -22,7 +22,7 @@
     font-family: Helvetica;
 }
 
-h1 {
+/* h1 {
     position: absolute;
     top: 0px;
     width: 100%;
@@ -35,11 +35,16 @@ h1 {
     text-align: center;
     padding-top: 20px;
     padding:10px;
-}
+} */
 
 body {
-    padding:10px;
-    /* add background colour here if desired*/
+  color: white;
+    background-image: url(https://i.imgur.com/LA3fOoF.png);
+      background-color: #cccccc; /* Used if the image is unavailable */
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
 }
 
 footer {
@@ -48,9 +53,9 @@ footer {
     width: 100%;
     height: 50px;
 
-    background-color: #54887a;
+    /* background-color: #54887a; */
     text-align: center;
-    color: #ebe8cf;
+    color: black;
 
     text-align: center;
     padding-top: 20px;
@@ -62,23 +67,10 @@ p {
     font-size: large;
 }
 
-#intro {
-    padding-top: 75px;
-    border: 1000px; 
-    color: #004742;
-    font-weight: bold;
+div.card{
+  color: black;
 }
 
-#clickBelow {
-    font-weight: normal;
+.jumbotron {
+    color: black;
 }
-
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  display: inline;
-} */

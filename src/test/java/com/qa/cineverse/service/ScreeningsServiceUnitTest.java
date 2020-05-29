@@ -54,9 +54,9 @@ public class ScreeningsServiceUnitTest {
     public void setUp(){
         date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.screeningsList = new ArrayList<> ();
-        this.testScreenings = new Screenings (1L, date, "deluxe");
+        this.testScreenings = new Screenings (1L, date, 1L, "deluxe", "Guardians of the Galaxy");
         this.screeningsList.add(testScreenings);
-        this.testScreeningsWithID = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenType ());
+        this.testScreeningsWithID = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenNumber(), testScreenings.getScreenType(), testScreenings.getMovieName());
         this.testScreeningsWithID.setScreeningsId (id);
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
     }
