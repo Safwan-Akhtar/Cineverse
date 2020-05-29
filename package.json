@@ -1,5 +1,5 @@
 {
-  "name": "cineverse",
+  "name": "Cineverse",
   "version": "1.0.0",
   "description": "Our final project as part of the QA Academy, started as \"Team Gates\".",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Safwan-Akhtar/Cineverse.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {

@@ -157,6 +157,13 @@
       <artifactId>selenium-java</artifactId>
       <version>3.141.59</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.stripe</groupId>
+      <artifactId>stripe-java</artifactId>
+      <version>19.14.0</version>
+    </dependency>
+
   </dependencies>
 
   <repositories>
@@ -165,7 +172,6 @@
       <name>Spring Milestones Repository</name>
       <url>http://repo.spring.io/milestone</url>
     </repository>
-
   </repositories>
 
 
