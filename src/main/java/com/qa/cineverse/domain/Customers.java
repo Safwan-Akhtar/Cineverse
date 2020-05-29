@@ -1,5 +1,7 @@
 package com.qa.cineverse.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -20,12 +22,13 @@ public class Customers {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
     @JoinTable(
             name = "screenings_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
-    private List<Screenings> orders = new ArrayList<> ();
+    private List<Screenings> screenings = new ArrayList<> ();
 
     public Customers() {
     }
@@ -55,12 +58,12 @@ public class Customers {
         this.name = name;
     }
 
-    public List<Screenings> getOrders() {
-        return orders;
+    public List<Screenings> getScreenings() {
+        return screenings;
     }
 
-    public void setOrders(List<Screenings> orders) {
-        this.orders = orders;
+    public void setScreenings(List<Screenings> screenings) {
+        this.screenings = screenings;
     }
 
     @Override
@@ -72,12 +75,12 @@ public class Customers {
         Customers customers = (Customers) o;
         return getCustomersId ().equals (customers.getCustomersId ()) &&
                 getName ().equals (customers.getName ()) &&
-                getOrders ().equals (customers.getOrders ());
+                getScreenings ().equals (customers.getScreenings ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getCustomersId (), getName (), getOrders ());
+        return Objects.hash (getCustomersId (), getName (), getScreenings ());
     }
 
     @Override
@@ -85,7 +88,6 @@ public class Customers {
         return "Customers{" +
                 "customersId=" + customersId +
                 ", name='" + name + '\'' +
-                ", orders=" + orders +
                 '}';
     }
 }
