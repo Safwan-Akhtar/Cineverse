@@ -19,34 +19,25 @@ public class Tickets {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tickets_id")
     private Long ticketsId;
+    @Column(name = "ticket_type")
+    private String ticketType;
     @Column(name = "seat_no")
     private Long seatNo;
 
-    @JsonIgnore
-    @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "screenings_customers",
-            joinColumns=@JoinColumn(name="customers_id"),
-            inverseJoinColumns=@JoinColumn(name="screenings_id"))
-    private List<Screenings> screenings = new ArrayList<> ();
-
-    @JsonIgnoreProperties("screenings")
-    @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
-    @JoinTable(
-            name = "screenings_customers",
-            joinColumns=@JoinColumn(name="screenings_id"),
-            inverseJoinColumns=@JoinColumn(name="customers_id"))
-    private List<Customers> customers = new ArrayList<>();
+    @ManyToOne (targetEntity = Customers.class, fetch = FetchType.LAZY)
+    private Customers customers;
 
     public Tickets() {
     }
 
-    public Tickets(Long seatNo) {
+    public Tickets(String ticketType, Long seatNo) {
+        this.ticketType = ticketType;
         this.seatNo = seatNo;
     }
 
-    public Tickets(Long ticketsId, Long seatNo) {
-        this.ticketsId = getTicketsId();;
+    public Tickets(Long ticketsId, String ticketType, Long seatNo) {
+        this.ticketsId = getTicketsId();
+        this.ticketType = ticketType;
         this.seatNo = seatNo;
     }
 
@@ -58,6 +49,14 @@ public class Tickets {
         this.ticketsId = ticketsId;
     }
 
+    public String getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(String ticketType) {
+        this.ticketType = ticketType;
+    }
+
     public Long getSeatNo() {
         return seatNo;
     }
@@ -66,19 +65,11 @@ public class Tickets {
         this.seatNo = seatNo;
     }
 
-    public List<Screenings> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(List<Screenings> screenings) {
-        this.screenings = screenings;
-    }
-
-    public List<Customers> getCustomers() {
+    public Customers getCustomers() {
         return customers;
     }
 
-    public void setCustomers(List<Customers> customers) {
+    public void setCustomers(Customers customers) {
         this.customers = customers;
     }
 
@@ -90,22 +81,22 @@ public class Tickets {
             return false;
         Tickets tickets = (Tickets) o;
         return getTicketsId ().equals (tickets.getTicketsId ()) &&
+                getTicketType ().equals (tickets.getTicketType ()) &&
                 getSeatNo ().equals (tickets.getSeatNo ()) &&
-                getScreenings ().equals (tickets.getScreenings ()) &&
                 getCustomers ().equals (tickets.getCustomers ());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash (getTicketsId (), getSeatNo (), getScreenings (), getCustomers ());
+        return Objects.hash (getTicketsId (), getTicketType (), getSeatNo (), getCustomers ());
     }
 
     @Override
     public String toString() {
         return "Tickets{" +
                 "ticketsId=" + ticketsId +
+                ", ticketType=" + ticketType +
                 ", seatNo=" + seatNo +
-                ", screenings=" + screenings +
                 ", customers=" + customers +
                 '}';
     }
