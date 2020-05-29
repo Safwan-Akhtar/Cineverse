@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "tickets")
 @Proxy(lazy=false)
 public class Tickets {
 

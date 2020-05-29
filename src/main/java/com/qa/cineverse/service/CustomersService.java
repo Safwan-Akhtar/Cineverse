@@ -1,9 +1,14 @@
 package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Customers;
+import com.qa.cineverse.domain.Screenings;
+import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
+import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.exception.CustomersNotFoundException;
+import com.qa.cineverse.exception.ScreeningsNotFoundException;
 import com.qa.cineverse.repo.CustomersRepo;
+import com.qa.cineverse.repo.TicketsRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +22,14 @@ public class CustomersService {
 
     private final CustomersRepo customersRepo;
 
+    private final TicketsRepo ticketsRepo;
+
     private final ModelMapper mapper;
 
     @Autowired
-    public CustomersService(CustomersRepo customersRepo, ModelMapper mapper) {
+    public CustomersService(CustomersRepo customersRepo, TicketsRepo ticketsRepo, ModelMapper mapper) {
         this.customersRepo = customersRepo;
+        this.ticketsRepo = ticketsRepo;
         this.mapper = mapper;
     }
 
@@ -54,5 +62,12 @@ public class CustomersService {
         }
         this.customersRepo.deleteById(id);
         return this.customersRepo.existsById(id);
+    }
+
+    public CustomersDTO addTicketsToScreening(Long id, Tickets tickets){
+        Customers customers = this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new);
+        Tickets tmp = this.ticketsRepo.saveAndFlush(tickets);
+        customers.getTickets ().add(tmp);
+        return this.mapToDTO(this.customersRepo.saveAndFlush(customers));
     }
 }
