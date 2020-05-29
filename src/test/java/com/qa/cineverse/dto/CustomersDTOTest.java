@@ -13,14 +13,12 @@ public class CustomersDTOTest {
 
     private CustomersDTO customersDTO;
     private CustomersDTO other;
-    private List<TicketsDTO> ticketsDTO;
 
 
     @Before
     public void setUp() {
-        ticketsDTO = new ArrayList<> ();
-        customersDTO = new CustomersDTO (1L, "Felix", ticketsDTO);
-        other = new CustomersDTO (1L, "Saf", ticketsDTO);
+        customersDTO = new CustomersDTO (1L, "Felix");
+        other = new CustomersDTO (1L, "Saf");
     }
 
     @Test
@@ -100,7 +98,7 @@ public class CustomersDTOTest {
     @Test
     public void hashCodeTestWithNull() {
         CustomersDTO customersDTO = new CustomersDTO(null);
-        CustomersDTO other = new CustomersDTO(null, null, null);
+        CustomersDTO other = new CustomersDTO(null, null);
         assertEquals(customersDTO.hashCode(), other.hashCode());
     }
 }

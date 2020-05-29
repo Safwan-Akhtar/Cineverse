@@ -18,14 +18,12 @@ public class CustomersDTO {
     }
 
     public CustomersDTO(String name) {
-        super();
         this.name = name;
     }
 
-    public CustomersDTO(Long customerId, String name, List<TicketsDTO> tickets) {
+    public CustomersDTO(Long customerId, String name) {
         this.customersId = customerId;
         this.name = name;
-        this.tickets = tickets;
     }
 
     public Long getCustomersId() {

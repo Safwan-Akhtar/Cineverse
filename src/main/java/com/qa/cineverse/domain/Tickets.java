@@ -31,6 +31,7 @@ public class Tickets {
     }
 
     public Tickets(String ticketType, String seatNo) {
+        super();
         this.ticketType = ticketType;
         this.seatNo = seatNo;
     }
