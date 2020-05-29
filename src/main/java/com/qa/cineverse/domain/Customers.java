@@ -21,13 +21,11 @@ public class Customers {
     @Id
     @GeneratedValue
     @Column(name = "customers_id")
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long customersId;
 
     @Column(name = "name")
-    @Getter
-    @Setter
+    @Getter @Setter
     private String name;
 
     @JsonIgnore
@@ -36,8 +34,7 @@ public class Customers {
             name = "screenings_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="screenings_id"))
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Screenings> screenings = new ArrayList<> ();
 
     @JsonIgnore
@@ -46,8 +43,7 @@ public class Customers {
             name = "tickets_customers",
             joinColumns=@JoinColumn(name="customers_id"),
             inverseJoinColumns=@JoinColumn(name="tickets_id"))
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Tickets> tickets = new ArrayList<> ();
 
     public Customers(String name) {

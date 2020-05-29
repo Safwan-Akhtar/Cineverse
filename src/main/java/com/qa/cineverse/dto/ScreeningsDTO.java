@@ -16,23 +16,17 @@ import java.util.Objects;
 @Transactional
 public class ScreeningsDTO {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long screeningsId;
-    @Getter
-    @Setter
+    @Getter @Setter
     private LocalDateTime movieDateTime;
-    @Getter
-    @Setter
+    @Getter @Setter
     private String screenType;
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long screenNumber;
-    @Getter
-    @Setter
+    @Getter @Setter
     private String movieName;
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<CustomersDTO> customers = new ArrayList<> ();
 
     public ScreeningsDTO(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {

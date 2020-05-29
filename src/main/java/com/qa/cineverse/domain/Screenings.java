@@ -20,24 +20,19 @@ import java.util.*;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "screenings_id")
-        @Getter
-        @Setter
+        @Getter @Setter
         private Long screeningsId;
         @Column(name = "movie_date_time")  /// YYYY-MM-DDT00:00:00
-        @Getter
-        @Setter
+        @Getter @Setter
         private LocalDateTime movieDateTime;
         @Column(name = "screen_number")
-        @Getter
-        @Setter
+        @Getter @Setter
         private Long screenNumber;
         @Column(name = "screen_type")
-        @Getter
-        @Setter
+        @Getter @Setter
         private String screenType;
         @Column(name = "movie_name")
-        @Getter
-        @Setter
+        @Getter @Setter
         private String movieName;
 
         @JsonIgnoreProperties("screenings")
@@ -46,8 +41,7 @@ import java.util.*;
                 name = "screenings_customers",
                 joinColumns=@JoinColumn(name="screenings_id"),
                 inverseJoinColumns=@JoinColumn(name="customers_id"))
-        @Getter
-        @Setter
+        @Getter @Setter
         private List<Customers> customers = new ArrayList<>();
 
     public Screenings(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {

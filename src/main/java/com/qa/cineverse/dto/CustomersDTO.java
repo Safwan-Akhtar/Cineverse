@@ -14,14 +14,11 @@ import java.util.Objects;
 @Transactional
 public class CustomersDTO {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long customersId;
-    @Getter
-    @Setter
+    @Getter @Setter
     private String name;
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<TicketsDTO> tickets = new ArrayList<>();
 
     public CustomersDTO(String name) {

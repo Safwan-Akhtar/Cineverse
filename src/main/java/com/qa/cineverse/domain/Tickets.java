@@ -22,16 +22,13 @@ public class Tickets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tickets_id")
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long ticketsId;
     @Column(name = "ticket_type")
-    @Getter
-    @Setter
+    @Getter @Setter
     private String ticketType;
     @Column(name = "seat_no")
-    @Getter
-    @Setter
+    @Getter @Setter
     private String seatNo;
 
     @JsonIgnoreProperties("tickets")
@@ -40,8 +37,7 @@ public class Tickets {
             name = "tickets_customers",
             joinColumns=@JoinColumn(name="tickets_id"),
             inverseJoinColumns=@JoinColumn(name="customers_id"))
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Customers> customers = new ArrayList<>();
 
     public Tickets(String ticketType, String seatNo) {

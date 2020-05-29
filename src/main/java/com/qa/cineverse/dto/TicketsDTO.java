@@ -11,14 +11,11 @@ import java.util.Objects;
 @Transactional
 public class TicketsDTO {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private Long ticketsId;
-    @Getter
-    @Setter
+    @Getter @Setter
     private String ticketType;
-    @Getter
-    @Setter
+    @Getter @Setter
     private String seatNo;
 
     public TicketsDTO(String ticketType, String seatNo) {
