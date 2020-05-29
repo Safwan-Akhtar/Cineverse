@@ -16,6 +16,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,7 @@ public class ScreeningsControllerIntegrationTest {
 
     private ScreeningsDTO screeningsDTO;
 
+
     private ScreeningsDTO mapToDTO(Screenings screenings){
         return this.mapper.map(screenings, ScreeningsDTO.class);
     }
@@ -54,7 +58,7 @@ public class ScreeningsControllerIntegrationTest {
     @Before
     public void setUp(){
         this.repository.deleteAll();
-        this.testScreenings = new Screenings (null, "Deluxe");
+        this.testScreenings = new Screenings(null, 1L, "deluxe", "Guardians of the Galaxy");
         this.testScreeningsWithID = this.repository.save(testScreenings);
         this.id = testScreeningsWithID.getScreeningsId ();
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
