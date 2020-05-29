@@ -1,5 +1,5 @@
 {
-  "name": "Cineverse",
+  "name": "cineverse",
   "version": "1.0.0",
   "description": "Our final project as part of the QA Academy, started as \"Team Gates\".",
   "main": "index.js",
@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/Safwan-Akhtar/Cineverse.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,6 +20,12 @@
   },
   "homepage": "https://github.com/Safwan-Akhtar/Cineverse#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "stripe": "^8.55.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }

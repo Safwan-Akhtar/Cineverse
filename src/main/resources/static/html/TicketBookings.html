@@ -11,9 +11,8 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
 </head>
-<noscript>If you have no JS enabled you will see this!</noscript>
-
 <body>
+<!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="../index1.html" style="color:white">QA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -35,7 +34,6 @@
                         <a class="dropdown-item" href="listingsGallery.html">Current Listings</a>
                         <a class="dropdown-item" href="#">Upcoming Releases</a>
                     </div>
-                </li>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -62,85 +60,54 @@
                 <li class="nav-item">
                     <a class="nav-link" href="comingHere.html" style="color:white">Getting here</a>
                 </li>
-
             </ul>
         </div>
     </nav>
-    <h2>Tickets Booking</h2>
-
+<!-- Start of main page content -->
+<header class="jumbotron"> <!--would like to centre jumbotron-->
+    <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+    <h1 class="display-4">Ticket Booking</h1>
+    <hr class="my-4">
+    <br>
+</header>
+<main>
     <form id="ticket" method="GET" action="TicketBookings.html">
         <fieldset>
             <ul>
                 <li>
-                    <Label for="name">Buyer name :</Label>
-                    <select id="title" name="title">
-                        <option value="select">Select</option>
-                        <option value="mr">Mr</option>
-                        <option value="mrs">Mrs</option>
-                        <option value="miss">Miss</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <Label for="customername">Buyer name :</Label>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
                     <label for="movieTitle">Select movie :</label>
                     <select id="movieTitle" name="movieTitle">
                         <option value="select">Select</option>
-                        <option value="Movie1">Movie1</option>
-                        <option value="Movie2">Movie2</option>
-                        <option value="Movie3">Movie3</option>
-                        <option value="Movie4">Movie4</option>
+                        <option value="Mulan">Mulan</option>
+                        <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
+                        <option value="Avengers: Endgame">Avengers: Endgame</option>
+                        <option value="Frozen 2">Frozen 2</option>
+                        <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
                     </select>
                 </li>
                 <li>
                     <label for="screeningDate">Screening Date :</label>
-                    <input type="date" id="screeningDate" name="screeningDate" value="0000-00-00" min="1950-01-01">
+                    <input type="date" id="screeningDate" name="screeningDate" value="2020-06-15" min="1950-01-01">
                 </li>
                 <li>
                     <label for="screeningTime">Screening Time</label>
                     <input type="time" id="screeningTime" name="screeningTime">
                 </li>
                 <li>
-                    <label for="seats">Seats</label>
-                    <select id="seats" name="Age">
-                        <option value="adult">Adult</option>
-                        <option value="child">Child</option>
-                        <option value="student">Student</option>
-                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
-
-                        <id id="seatClass" name="seatClass">
-                            <label>Standard</label>
-                            <input id="standard" type="radio" value="standard" name="seatClass">
-                            <label>VIP</label>
-                            <input id="vip" type="radio" value="vip" name="seatClass">
+                    <label for="adult">Adult Seats</label>
+                    <input type="number" id="adult" name="adult" min="1" max="20">
                 </li>
                 <li>
-                    <label for="seats">Seats</label>
-                    <select id="seats" name="Age">
-                        <option value="adult">Adult</option>
-                        <option value="child">Child</option>
-                        <option value="student">Student</option>
-                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
-
-                        <id id="seatClass" name="seatClass">
-                            <label>Standard</label>
-                            <input id="standard" type="radio" value="standard" name="seatClass">
-                            <label>VIP</label>
-                            <input id="vip" type="radio" value="vip" name="seatClass">
+                    <label for="child">Child Seats</label>
+                    <input type="number" id="child" name="child" min="1" max="20">
                 </li>
                 <li>
-                    <label for="seats">Seats</label>
-                    <select id="seats" name="Age">
-                        <option value="adult">Adult</option>
-                        <option value="child">Child</option>
-                        <option value="student">Student</option>
-                        <input type="number" id="seatsNumber" name="seatsNumber" min="1" max="20">
-
-                        <id id="seatClass" name="seatClass">
-                            <label>Standard</label>
-                            <input id="standard" type="radio" value="standard" name="seatClass">
-                            <label>VIP</label>
-                            <input id="vip" type="radio" value="vip" name="seatClass">
+                    <label for="student">Student Seats</label>
+                    <input type="number" id="student" name="student" min="1" max="20">
                 </li>
             </ul>
         </fieldset>
@@ -149,6 +116,13 @@
             <button id="reset" type="reset">Reset</button>
         </fieldset>
     </form>
+</main>
+<!-- Footer -->
+<footer>
+    <br><br><br><br>
+    <p>Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+</footer>
+
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -160,6 +134,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-</body>
-
+  </body>
 </html>
