@@ -41,7 +41,7 @@ public class TicketsService {
         return this.ticketsRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public boolean deleteTickets(Long id){
+    public boolean deleteTicket(Long id){
         if(!this.ticketsRepo.existsById(id)){
             throw new TicketsNotFoundException ();
         }
