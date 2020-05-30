@@ -56,7 +56,6 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.4</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -298,6 +297,14 @@
         <configuration>
           <source>8</source>
           <target>8</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <!--suppress UnresolvedMavenProperty -->
+              <version>${org.projectlombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
     </plugins>
