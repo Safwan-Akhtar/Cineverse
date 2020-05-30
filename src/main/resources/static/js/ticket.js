@@ -35,7 +35,6 @@ let configGet = {
 
         console.log(response);
 
-
         var dateControl = document.querySelector('input[type="date"]');
         dateControl.value = movieDate;
 
