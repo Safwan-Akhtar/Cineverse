@@ -59,8 +59,9 @@ public class TicketsControllerUnitTest {
         verify(service, times(1)).readTickets ();
     }
 
-
-
-
-
+    @Test
+    public void deleteTicketsTestFalse(){
+        this.ticketsController.deleteTicket(id);
+        verify(service, times(1)).deleteTicket(id);
+    }
 }
