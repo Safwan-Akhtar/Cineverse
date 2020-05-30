@@ -1,5 +1,6 @@
 package com.qa.cineverse.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.cineverse.domain.Screenings;
 import com.qa.cineverse.dto.ScreeningsDTO;
@@ -60,7 +61,7 @@ public class ScreeningsControllerIntegrationTest {
 
     @Before
     public void setUp(){
-        date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
+        date = LocalDateTime.parse("1975-06-16T00:00:00");
         this.repository.deleteAll();
         this.testScreenings = new Screenings(date, 1L, "deluxe", "Guardians of the Galaxy");
         this.testScreeningsWithID = this.repository.save(testScreenings);
