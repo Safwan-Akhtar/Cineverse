@@ -37,13 +37,6 @@ public class ScreeningsDTOTest {
     }
 
     @Test
-    public void createScreeningsDTOWithId() {
-        assertEquals(1L, screenings.getScreeningsId(), 0);
-        assertEquals(date1, screenings.getMovieDateTime ());
-        assertEquals("Deluxe", screenings.getScreenType ());
-    }
-
-    @Test
     public void checkEquality() {
         assertTrue(screenings.equals(screenings));
     }

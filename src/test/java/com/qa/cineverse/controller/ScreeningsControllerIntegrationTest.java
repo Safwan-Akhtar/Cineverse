@@ -52,6 +52,7 @@ public class ScreeningsControllerIntegrationTest {
 
     private ScreeningsDTO screeningsDTO;
 
+    private LocalDateTime date;
 
     private ScreeningsDTO mapToDTO(Screenings screenings){
         return this.mapper.map(screenings, ScreeningsDTO.class);
@@ -59,8 +60,9 @@ public class ScreeningsControllerIntegrationTest {
 
     @Before
     public void setUp(){
+        date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.repository.deleteAll();
-        this.testScreenings = new Screenings(null, 1L, "deluxe", "Guardians of the Galaxy");
+        this.testScreenings = new Screenings(date, 1L, "deluxe", "Guardians of the Galaxy");
         this.testScreeningsWithID = this.repository.save(testScreenings);
         this.id = testScreeningsWithID.getScreeningsId ();
         this.name = testScreeningsWithID.getMovieName();

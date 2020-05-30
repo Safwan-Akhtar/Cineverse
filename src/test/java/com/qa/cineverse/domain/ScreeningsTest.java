@@ -27,26 +27,6 @@ public class ScreeningsTest {
     }
 
     @Test
-    public void settersTest() {
-        assertNotNull(screenings.getScreeningsId());
-        assertNotNull(screenings.getScreenNumber());
-        assertNotNull(screenings.getMovieDateTime());
-        assertNotNull(screenings.getScreenType());
-        assertNotNull(screenings.getMovieName());
-
-        screenings.setScreeningsId(null);
-        assertNull(screenings.getScreeningsId());
-        screenings.setScreenNumber(null);
-        assertNull(screenings.getScreenNumber());
-        screenings.setMovieDateTime(null);
-        assertNull(screenings.getMovieDateTime());
-        screenings.setScreenType(null);
-        assertNull(screenings.getScreenType());
-        screenings.setMovieName(null);
-        assertNull(screenings.getMovieName());
-    }
-
-    @Test
     public void equalsWithNull() {
         assertFalse(screenings.equals(null));
     }
@@ -54,15 +34,6 @@ public class ScreeningsTest {
     @Test
     public void equalsWithDifferentObject() {
         assertFalse(screenings.equals(new Object()));
-    }
-
-    @Test
-    public void createScreeningsWithId() {
-        assertEquals(1L, screenings.getScreeningsId(), 0);
-        assertEquals(1, screenings.getScreenNumber(), 0);
-        assertEquals(date1, screenings.getMovieDateTime());
-        assertEquals("Deluxe", screenings.getScreenType());
-        assertEquals("Guardians", screenings.getMovieName());
     }
 
     @Test
@@ -75,7 +46,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void screeningsDateNullButOtherDateNotNull() {
         screenings.setMovieDateTime(null);
         other.setScreeningsId (1L);
@@ -88,7 +59,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void screeningsTypeNullButOtherTypeNotNull() {
         screenings.setScreenType(null);
         assertFalse(screenings.equals(other));
@@ -130,7 +101,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
     
-    @Test
+    @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
         Screenings screenings = new Screenings(null, null, null, null);
         Screenings other = new Screenings(null, null, null, null);
