@@ -1,10 +1,8 @@
 package com.qa.cineverse.service;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Tickets;
-import com.qa.cineverse.dto.CustomersDTO;
-import com.qa.cineverse.dto.CustomersDTOTest;
 import com.qa.cineverse.dto.TicketsDTO;
+import com.qa.cineverse.exception.TicketsNotFoundException;
 import com.qa.cineverse.repo.TicketsRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,5 +60,20 @@ public class TicketsServiceUnitTest {
         when(this.mapper.map(testTicketsWithID, TicketsDTO.class)).thenReturn(ticketsDTO);
         assertFalse("Service returned no Tickets", this.service.readTickets().isEmpty());
         verify(repository, times(1)).findAll();
+    }
+
+    @Test
+    public void deleteTicketsByExistingId(){
+        when(this.repository.existsById(id)).thenReturn(true, false);
+        assertFalse(service.deleteTicket(id));
+        verify(repository, times(1)).deleteById(id);
+        verify(repository, times(2)).existsById(id);
+    }
+
+    @Test(expected = TicketsNotFoundException.class)
+    public void deleteTicketsByNonExistingId(){
+        when(this.repository.existsById(id)).thenReturn(false);
+        service.deleteTicket(id);
+        verify(repository, times(1)).existsById(id);
     }
 }
