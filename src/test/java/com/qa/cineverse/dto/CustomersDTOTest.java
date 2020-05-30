@@ -17,8 +17,8 @@ public class CustomersDTOTest {
 
     @Before
     public void setUp() {
-        customersDTO = new CustomersDTO (1L, "Felix");
-        other = new CustomersDTO (1L, "Saf");
+        customersDTO = new CustomersDTO ("Felix");
+        other = new CustomersDTO ("Saf");
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void customersDTONameNullButOtherNameNotNull() {
         customersDTO.setName(null);
         assertFalse(customersDTO.equals(other));
@@ -70,7 +70,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         customersDTO.setCustomersId(null);
         assertFalse(customersDTO.equals(other));
@@ -98,7 +98,7 @@ public class CustomersDTOTest {
     @Test
     public void hashCodeTestWithNull() {
         CustomersDTO customersDTO = new CustomersDTO(null);
-        CustomersDTO other = new CustomersDTO(null, null);
+        CustomersDTO other = new CustomersDTO(null);
         assertEquals(customersDTO.hashCode(), other.hashCode());
     }
 }

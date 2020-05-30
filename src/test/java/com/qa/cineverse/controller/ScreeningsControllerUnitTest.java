@@ -55,7 +55,7 @@ public class ScreeningsControllerUnitTest {
     public void setUp(){
         date = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         this.screenings = new ArrayList<> ();
-        this.testScreenings = new Screenings (1L, date, 1L, "deluxe", "Guardians of the Galaxy");
+        this.testScreenings = new Screenings (date, 1L, "deluxe", "Guardians of the Galaxy");
         this.screenings.add(testScreenings);
         this.testScreeningsWithId = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenNumber(), testScreenings.getScreenType(), testScreenings.getMovieName());
         this.testScreeningsWithId.setScreeningsId (this.id);

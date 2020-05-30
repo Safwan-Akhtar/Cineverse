@@ -22,7 +22,7 @@ public class ScreeningsTest {
     public void setUp() {
         date1 = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         date2 = LocalDateTime.of(LocalDate.ofEpochDay(2107-11-13), LocalTime.MAX);
-        screenings = new Screenings (1L, date1, 1L, "Deluxe", "Guardians");
+        screenings = new Screenings (date1, 1L, "Deluxe", "Guardians");
         other = new Screenings(date2, 1L, "Standard", "Thor");
     }
 
@@ -75,7 +75,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void screeningsDateNullButOtherDateNotNull() {
         screenings.setMovieDateTime(null);
         other.setScreeningsId (1L);
@@ -112,7 +112,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         screenings.setScreeningsId(null);
         assertFalse(screenings.equals(other));
@@ -133,7 +133,7 @@ public class ScreeningsTest {
     @Test
     public void hashCodeTestWithNull() {
         Screenings screenings = new Screenings(null, null, null, null);
-        Screenings other = new Screenings(null, null, null, null, null);
+        Screenings other = new Screenings(null, null, null, null);
         assertEquals(screenings.hashCode(), other.hashCode());
     }
 

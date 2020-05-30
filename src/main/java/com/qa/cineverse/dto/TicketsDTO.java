@@ -1,77 +1,17 @@
 package com.qa.cineverse.dto;
 
+import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Objects;
-
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Data
 @Transactional
 public class TicketsDTO {
 
     private Long ticketsId;
+    @NonNull
     private String ticketType;
+    @NonNull
     private String seatNo;
-
-    public TicketsDTO() {
-    }
-
-    public TicketsDTO(String ticketType, String seatNo) {
-        this.ticketType = ticketType;
-        this.seatNo = seatNo;
-    }
-
-    public TicketsDTO(Long ticketsId, String ticketType, String seatNo) {
-        this.ticketsId = ticketsId;
-        this.ticketType = ticketType;
-        this.seatNo = seatNo;
-    }
-
-    public Long getTicketsId() {
-        return ticketsId;
-    }
-
-    public void setTicketsId(Long ticketsId) {
-        this.ticketsId = ticketsId;
-    }
-
-    public String getTicketType() {
-        return ticketType;
-    }
-
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof TicketsDTO))
-            return false;
-        TicketsDTO that = (TicketsDTO) o;
-        return getTicketsId ().equals (that.getTicketsId ()) &&
-                getTicketType ().equals (that.getTicketType ()) &&
-                getSeatNo ().equals (that.getSeatNo ());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash (getTicketsId (), getTicketType (), getSeatNo ());
-    }
-
-    @Override
-    public String toString() {
-        return "TicketsDTO{" +
-                "ticketsId=" + ticketsId +
-                ", ticketType='" + ticketType + '\'' +
-                ", seatNo=" + seatNo +
-                '}';
-    }
 }

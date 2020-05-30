@@ -7,13 +7,7 @@ let configGet = {
 
 
   const searchTimes = () => {
-    let customername = document.getElementById("customername").value;
     let movieTitle = document.getElementById("movieTitle").value;
-    let screeningDate = document.getElementById("screeningDate").value;
-    let screeningTime = document.getElementById("screeningTime").value;
-    let adult = document.getElementById("adult").value;
-    let child = document.getElementById("child").value;
-    let student = document.getElementById("student").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         let movieSelected = response.data[0].movieName;
