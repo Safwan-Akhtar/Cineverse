@@ -65,9 +65,9 @@ public class CustomersTest {
 
     @Test
     public void constructorWithoutId() {
-        Customers characterSheet = new Customers("Felix");
-        assertNull(characterSheet.getCustomersId ());
-        assertNotNull(characterSheet.getName());
+        Customers customers = new Customers("Felix");
+        assertNull(customers.getCustomersId ());
+        assertNotNull(customers.getName());
     }
 
     @Test(expected=NullPointerException.class)
@@ -76,5 +76,4 @@ public class CustomersTest {
         Customers other = new Customers(null);
         assertEquals(customers.hashCode(), other.hashCode());
     }
-
 }
