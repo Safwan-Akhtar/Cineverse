@@ -76,4 +76,11 @@ public class TicketsControllerIntegrationTest {
                 .getContentAsString();
         assertEquals(content, this.objectMapper.writeValueAsString(ticketsDTOList));
     }
+
+    @Test
+    public void deleteTicketTest() throws Exception {
+        this.mock.perform(
+                request(HttpMethod.DELETE, "/deleteTicket/" + this.id)
+        ).andExpect(status().isNoContent());
+    }
 }
