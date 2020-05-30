@@ -55,4 +55,8 @@ public class TicketsServiceIntegrationTest {
                 );
     }
 
+    @Test
+    public void deleteTicketsTest(){
+        assertThat(this.service.deleteTicket(this.testTicketsWithId.getTicketsId ())).isFalse();
+    }
 }
