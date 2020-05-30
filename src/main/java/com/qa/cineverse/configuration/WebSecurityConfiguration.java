@@ -9,12 +9,16 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.cors.CorsConfiguration;
+
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().configurationSource(request -> new CorsConfiguration ().applyPermitDefaultValues());
         http
                 .authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
@@ -27,6 +31,8 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
     }
+
+
 
     @Bean
     @Override

@@ -1,6 +1,6 @@
 
 let configGet = {
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8181/html/character.html' },
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
   };
   
