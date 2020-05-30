@@ -72,7 +72,19 @@ const postBooking = () => {
             responseType: 'json'
         })
         .then(function (response) {
-            console.log(response);
+            axios({
+                method: 'patch',
+                url: 'http://localhost:8181/addTicketsToCustomer/1',
+                data: `{
+                    ticketType: "adult",
+                    seatNo: "A1"
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8181/html/character.html' },
+                    responseType: 'json'
+                }`
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
         })
         .catch(function (response) {
             console.log(response);
