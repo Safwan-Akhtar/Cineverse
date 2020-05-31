@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
@@ -32,11 +31,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/*").hasAnyRole("ADMIN", "USER") ///Ticket Booking
                 .antMatchers("/").permitAll() ///Everything Else
                 .and().formLogin()
+                .loginPage("/login.html")
+                .defaultSuccessUrl("/user/ticketBookings.html", true)
                 .and().csrf().disable();
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() { return new BCryptPasswordEncoder (); }  /// Need to change to actual encoder
+    public PasswordEncoder getPasswordEncoder() { return NoOpPasswordEncoder.getInstance (); }  /// Need to change to actual encoder
 
 
 }

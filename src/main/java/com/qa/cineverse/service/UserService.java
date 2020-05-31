@@ -32,6 +32,7 @@ public class UserService implements UserDetailsService {
         return user.map(UserDTO::new).get();
     }
 
+    /*
     public User registerNewUserAccount(UserDTO accountDTO) throws EmailExistsException {
         if (emailExists(accountDTO.getEmail())) {
             throw new EmailExistsException (
@@ -49,6 +50,6 @@ public class UserService implements UserDetailsService {
         user.setRoles("ROLE_USER");
         return userRepo.save(user);
     }
-
+*/
 
 }
