@@ -26,20 +26,14 @@ public class UserDTO implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-    public UserDTO() {
-    }
-
-
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return "pass";
+        return password;
     }
 
     @Override
@@ -64,6 +58,6 @@ public class UserDTO implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }
