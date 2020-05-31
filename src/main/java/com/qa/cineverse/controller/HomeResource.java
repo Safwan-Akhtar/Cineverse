@@ -9,15 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeResource {
 
 
-    @RequestMapping(value = "/assessment", method = RequestMethod.GET)
-    public String index() {
-        return "index";
-    }
 
-    @RequestMapping(value = "user/TicketBookings", method = RequestMethod.GET)
-    public String TicketBookings() {
-        return "user/TicketBookings";
-    }
 
     @GetMapping("/user")  ///Ticket Bookings and Seat Selector
     public String user() {
