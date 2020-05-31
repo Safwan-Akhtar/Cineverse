@@ -26,13 +26,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN") ///Insert Screenings
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER") ///Login
+                .antMatchers("/admin/*").hasRole("ADMIN") ///Insert Screenings
                 .antMatchers("/user/*").hasAnyRole("ADMIN", "USER") ///Ticket Booking
                 .antMatchers("/").permitAll() ///Everything Else
                 .and().formLogin()
                 .loginPage("/login.html")
-                .defaultSuccessUrl("/user/ticketBookings.html", true)
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/index.html", false)
                 .and().csrf().disable();
     }
 
