@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.cors.CorsConfiguration;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 
 @Configuration
@@ -21,7 +24,7 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
         http.cors().configurationSource(request -> new CorsConfiguration ().applyPermitDefaultValues());
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "**").permitAll()
+                .antMatchers("/", "/index").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -31,8 +34,6 @@ public class WebSecurityConfiguration  extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
     }
-
-
 
     @Bean
     @Override
