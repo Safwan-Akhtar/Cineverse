@@ -21,3 +21,5 @@ INSERT INTO screenings (movie_date_time, screen_type, screen_number, movie_name)
 INSERT INTO screenings (movie_date_time, screen_type, screen_number, movie_name) VALUES ('2020-06-10T16:55:00', 'standard', 5, 'Spiderman: Into The Spiderverse');
 INSERT INTO screenings (movie_date_time, screen_type, screen_number, movie_name) VALUES ('2020-06-10T19:15:00', 'standard', 5, 'Spiderman: Into The Spiderverse');
 INSERT INTO screenings (movie_date_time, screen_type, screen_number, movie_name) VALUES ('2020-06-10T21:45:00', 'standard', 5, 'Spiderman: Into The Spiderverse');
+
+INSERT INTO user (user_name, password, roles, active) VALUES ('test', 'root', 'ROLE_USER', TRUE);
