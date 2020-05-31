@@ -18,8 +18,8 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <java.version>11</java.version>
 
-<!--    <thymeleaf.version>3.0.8.RELEASE</thymeleaf.version>-->
-<!--    <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>-->
+    <springboot-thymeleaf.version>3.0.9.RELEASE</springboot-thymeleaf.version>
+    <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
   </properties>
 
   <parent>

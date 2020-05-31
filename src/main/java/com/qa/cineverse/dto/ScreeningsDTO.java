@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@NoArgsConstructor
+
 @Data
 @Transactional
 public class ScreeningsDTO {
@@ -26,6 +26,9 @@ public class ScreeningsDTO {
     private String movieName;
 
     private List<CustomersDTO> customers = new ArrayList<> ();
+
+    public ScreeningsDTO() {
+    }
 
     public ScreeningsDTO(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         super();
