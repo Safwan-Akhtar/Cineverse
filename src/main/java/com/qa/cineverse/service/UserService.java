@@ -20,6 +20,11 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         Optional<User> user = userRepo.findByUserName(userName);
-        return new UserDTO(user);
+
+        user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + userName + "' does not exist"));
+
+        return user.map(UserDTO::new).get();
     }
+
+
 }
