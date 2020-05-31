@@ -18,6 +18,9 @@ public class User {
     private Long userId;
     private String userName;
     private String password;
+    private String forename;
+    private String surname;
+    private String email;
     private boolean active;
     private String roles;
 }
