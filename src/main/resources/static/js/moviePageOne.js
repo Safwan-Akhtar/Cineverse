@@ -35,6 +35,8 @@ function getOurMovie() {
                         <hr>
                         <a href="https://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View on IMDB</a>
                         <a href="gallarySearch.html" class="btn btn-default">Search another movie</a>
+                        <a href="listingsGallery.html" class="btn btn-default">Our current movies</a>
+                        <a href="newReleasesGallery.html" class="btn btn-default">See New Releases</a>
                     </div>
             </div>
             `;
