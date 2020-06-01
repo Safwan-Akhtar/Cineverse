@@ -1,6 +1,6 @@
 package com.qa.cineverse.validation;
 
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
+import javax.validation.constraints.Email;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

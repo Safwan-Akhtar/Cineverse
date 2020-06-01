@@ -17,6 +17,14 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <java.version>11</java.version>
+
+    <javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
+    <javax.el.version>2.2</javax.el.version>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="javax.persistence.validation.factory">validator</prop>
+      </props>
+    </property>
   </properties>
 
   <parent>
@@ -50,6 +58,18 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+          <exclusion>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+          </exclusion>
+        </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
@@ -116,6 +136,16 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
       <version>1.0.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
     </dependency>
 
     <dependency>

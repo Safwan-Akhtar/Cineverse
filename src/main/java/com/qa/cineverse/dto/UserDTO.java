@@ -1,6 +1,5 @@
 package com.qa.cineverse.dto;
 
-import com.qa.cineverse.controller.UserController;
 import com.qa.cineverse.domain.User;
 import com.qa.cineverse.validation.AnnotationValidatorCreator;
 import lombok.Getter;
@@ -11,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -20,20 +20,20 @@ import java.util.stream.Collectors;
 @AnnotationValidatorCreator.PasswordMatches
 public class UserDTO implements UserDetails {
 
-    @NotEmpty
+
     private String userName;
-    @NotEmpty
+
     private String password;
     private String matchingPassword;
-    @Setter @Getter @NotEmpty
+    @Setter @Getter
     private String forename;
-    @Setter @Getter @NotEmpty
+    @Setter @Getter
     private String surname;
-    @Setter @Getter @NotEmpty @AnnotationValidatorCreator.ValidEmail
+    @Setter @Getter  @AnnotationValidatorCreator.ValidEmail
     private String email;
-    @NotEmpty
+
     private boolean active;
-    @NotEmpty
+
     private List<GrantedAuthority> authorities;
 
     public UserDTO(User user) {
