@@ -1,72 +1,52 @@
-// Artemis Fowl
-function artemisFowl () {
-    axios({
-        method: 'get',
-        url: `http://www.omdbapi.com/?apikey=335035be&i=tt3089630`,
-    })
+//Individual movie page info
+
+function getMovie() {
+    let movieId = sessionStorage.getItem("movieId");
+
+    axios.get(`http://www.omdbapi.com/?apikey=c737e3a5&i=` + movieId)
         .then((response) => {
-            console.log(response);
-            populateDiv(response.data);
-        }, (error) => {
-            console.log(error);
+            console.log(response.data);
+            let movie = response.data;
+
+            let output = `
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${movie.Poster}" class="thumbnail">
+                </div>
+                <div class="col-md-8">
+                    <h2>${movie.Title}</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
+                        <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
+                        <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
+                        <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
+                        <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
+                        <li class="list-group-item"><strong>Writer:</strong> ${movie.Writer}</li>
+                        <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="well">
+                        <h3>Plot</h3>
+                        ${movie.Plot}
+                        <hr>
+                        <a href="http://idmdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                        <a hred="gallarySearch.html" class="btn btn-default">Go back to search</a>
+                    </div>
+            </div>
+            `;
+
+            $("#movieDiv").html(output);
+        })
+
+
+        .catch((err) => {
+            console.log(err);
+            window.alert("Oops, something went wrong...");
         });
-}
-let buttGetMovieOne = document.querySelector("#showMovie");
-buttGetMovieOne.addEventListener("click", artemisFowl);
-
-
-
-
-    // Populates div
-
-function populateDiv(movie) {
-
-    const div = this.document.getElementById("movieDiv")
-
-    const article = document.createElement("article");
-    const divTwo = document.createElement("div");
-    const image = document.createElement("img");
-    const divThree = document.createElement("div");
-    const divFour = document.createElement("div");
-    const header = document.createElement("header");
-    const hTwo = document.createElement("h2");
-    const aTag = document.createElement("a");
-    const pTag = document.createElement("p");
-    const pTagOne = document.createElement("p");
-    const pTagTwo = document.createElement("p");
-    const pTagThree = document.createElement("p");
-
-
-
-    // article.className = "";
-    article.id = movie.imdbID;
-    // divTwo.className = "";
-    image.src = movie.Poster;
-    // image.position = "";
-    // divThree.className = "";
-    // divFour.className = "";
-    hTwo.id = movie.imdbID;
-    aTag.href = movie.Poster;
-    aTag.textContent = movie.Title;
-    pTag.textContent = "Release Date: " + movie.Released;
-    pTagOne.textContent = "Cast: " + movie.Actors;
-    pTagTwo.textContent = "Director: " + movie.Director;
-    pTagThree.textContent = "Age Rating: " + movie.Rated;
-
-
-
-    hTwo.appendChild(aTag);
-    header.appendChild(hTwo);
-    header.appendChild(pTag);
-    header.appendChild(pTagOne)
-    header.appendChild(pTagTwo);
-    header.appendChild(pTagThree);
-    divFour.appendChild(header);
-    divThree.appendChild(divFour);
-    divTwo.appendChild(image);
-    article.appendChild(divTwo);
-    article.appendChild(divThree);
-    div.appendChild(article);
 
 }
 
