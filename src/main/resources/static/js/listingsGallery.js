@@ -85,7 +85,7 @@ function populateDiv(movies) {
 
         // Link to details will be in title (h2) tag - can move to a button
         hTwo.id = movie.imdbID;
-
+        //aTag.href = "#";
         aTag.onclick = `movieListingSelected('${movie.imdbID}')`;
         aTag.textContent = movie.Title;
 
