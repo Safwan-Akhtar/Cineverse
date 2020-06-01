@@ -1,7 +1,9 @@
 package com.qa.cineverse.controller;
 
 import com.qa.cineverse.domain.Customers;
+import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
+import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,5 +47,10 @@ public class CustomersController {
     @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<CustomersDTO> updateCharacter(@PathVariable Long id, @RequestBody Customers customers){
         return ResponseEntity.ok(this.service.updateCustomers (id, customers));
+    }
+
+    @PatchMapping("/addTicketsToCustomer/{id}")
+    public ResponseEntity<CustomersDTO> addTicketsToCustomer(@PathVariable Long id, @RequestBody Tickets tickets){
+        return new ResponseEntity<>(this.service.addTicketsToCustomer(id, tickets), HttpStatus.ACCEPTED);
     }
 }

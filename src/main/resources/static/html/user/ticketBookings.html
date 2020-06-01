@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 
 </head>
 <body>
 <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="../index1.html" style="color:white">QA</a>
+        <a class="navbar-brand" href="../index.html" style="color:white">QA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../index1.html" style="color:white">Home <span
+                    <a class="nav-link" href="../index.html" style="color:white">Home <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
                         Whats on
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="listingsGallery.html">Current Listings</a>
+                        <a class="dropdown-item" href="../listingsGallery.html">Current Listings</a>
                         <a class="dropdown-item" href="#">Upcoming Releases</a>
                     </div>
                 </li>
@@ -41,7 +41,7 @@
                         Bookings
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="TicketBookings.html">Book
+                        <a class="dropdown-item" href="ticketBookings.html">Book
                             Tickets</a>
                         <a class="dropdown-item" href="#">Book Screen</a>
                     </div>
@@ -52,13 +52,13 @@
                         Info
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="screens.html">Screens</a>
-                        <a class="dropdown-item" href="openingtimes.html">Opening Times</a>
-                        <a class="dropdown-item" href="classification.html">Classification</a>
+                        <a class="dropdown-item" href="../screens.html">Screens</a>
+                        <a class="dropdown-item" href="../openingtimes.html">Opening Times</a>
+                        <a class="dropdown-item" href="../classification.html">Classification</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="comingHere.html" style="color:white">Getting here</a>
+                    <a class="nav-link" href="../comingHere.html" style="color:white">Getting here</a>
                 </li>
             </ul>
         </div>
@@ -71,17 +71,17 @@
     <br>
 </header>
 <main>
-    <form id="ticket" method="GET" action="TicketBookings.html">
+    <form id="ticket" class="back" method="GET" action="ticketBookings.html">
         <fieldset>
             <ul>
                 <li>
-                    <Label for="customername">Buyer name :</Label>
+                    <Label for="name">Buyer name :</Label>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
                     <label for="movieTitle">Select movie :</label>
                     <select id="movieTitle" name="movieTitle">
-                        <option value="select">Select</option>
+                        <option>Select</option>
                         <option value="Mulan">Mulan</option>
                         <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
                         <option value="Avengers: Endgame">Avengers: Endgame</option>
@@ -90,32 +90,40 @@
                     </select>
                 </li>
                 <li>
-                    <label for="screeningDate">Screening Date :</label>
-                    <input type="date" id="screeningDate" name="screeningDate" value="2020-06-15" min="1950-01-01">
+                    <label for="screenDateList">Screening Date</label>
+                    <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
+                        <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
+                    </select>
                 </li>
                 <li>
-                    <label for="screeningTime">Screening Time</label>
-                    <input type="time" id="screeningTime" name="screeningTime">
+                    <label for="screenTimeList">Screening Time</label>
+                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
+                        <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
+                    </select>
+                </li>
+                <li class="back">
+                    <label for="seats">Adult Seats</label>
+                        <input type="number" id="adult" name="adult" value="0" min="0" max="20">
+                </li>
+                <li class="back">
+                    <label for="seats">Child Seats</label>
+                    <input type="number" id="child" name="child" value="0" min="0" max="20">
                 </li>
                 <li>
-                    <label for="adult">Adult Seats</label>
-                    <input type="number" id="adult" name="adult" min="1" max="20">
-                </li>
-                <li>
-                    <label for="child">Child Seats</label>
-                    <input type="number" id="child" name="child" min="1" max="20">
-                </li>
-                <li>
-                    <label for="student">Student Seats</label>
-                    <input type="number" id="student" name="student" min="1" max="20">
+                    <label for="seats">Student Seats</label>
+                    <input type="number" id="student" name="student" value="0" min="0" max="20">
                 </li>
             </ul>
+            <div>
+                <p class="screenTimeList">Screen List</p>
+                <ul id="timeList" class="screenTimeList">
+                </ul>
         </fieldset>
-        <fieldset>
-            <button id="butt1" type="submit">Submit</button>
-            <button id="reset" type="reset">Reset</button>
-        </fieldset>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+        <script src="../../js/ticket.js"></script>
     </form>
+    <link rel="stylesheet" type="text/css" href="../../css/ticketBooking.css" />
 </main>
 <!-- Footer -->
 <footer>
@@ -134,5 +142,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
   </body>
 </html>

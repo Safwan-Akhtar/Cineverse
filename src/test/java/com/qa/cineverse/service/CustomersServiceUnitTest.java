@@ -1,6 +1,7 @@
 package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.Customers;
+import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.CustomersDTOTest;
 import com.qa.cineverse.exception.CustomersNotFoundException;
 import com.qa.cineverse.repo.CustomersRepo;
@@ -39,10 +40,10 @@ public class CustomersServiceUnitTest {
 
     private Customers testCustomersWithID;
 
-    private CustomersDTOTest customersDTOTest;
+    private CustomersDTO customersDTO;
 
-    private CustomersDTOTest mapToDTO(Customers customers){
-        return this.mapper.map(customers, CustomersDTOTest.class);
+    private CustomersDTO mapToDTO(Customers customers){
+        return this.mapper.map(customers, CustomersDTO.class);
     }
 
     @Before
@@ -52,13 +53,13 @@ public class CustomersServiceUnitTest {
         this.customersList.add(testCustomers);
         this.testCustomersWithID = new Customers (testCustomers.getName());
         this.testCustomersWithID.setCustomersId (id);
-        this.customersDTOTest = this.mapToDTO(testCustomersWithID);
+        this.customersDTO = this.mapToDTO(testCustomersWithID);
     }
 
     @Test
     public void getAllCustomersTest(){
         when(repository.findAll()).thenReturn(this.customersList);
-        when(this.mapper.map(testCustomersWithID, CustomersDTOTest.class)).thenReturn(customersDTOTest);
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
         assertFalse("Service returned no Customers", this.service.readCustomers().isEmpty());
         verify(repository, times(1)).findAll();
     }
@@ -66,16 +67,16 @@ public class CustomersServiceUnitTest {
     @Test
     public void createCustomersTest(){
         when(repository.save(testCustomers)).thenReturn(testCustomersWithID);
-        when(this.mapper.map(testCustomersWithID, CustomersDTOTest.class)).thenReturn(customersDTOTest);
-        assertEquals(this.service.createCustomer (testCustomers), this.customersDTOTest);
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
+        assertEquals(this.service.createCustomer (testCustomers), this.customersDTO);
         verify(repository, times(1)).save(this.testCustomers);
     }
 
     @Test
     public void findCustomersByIdTest(){
         when(this.repository.findById(id)).thenReturn(java.util.Optional.ofNullable(testCustomersWithID));
-        when(this.mapper.map(testCustomersWithID, CustomersDTOTest.class)).thenReturn(customersDTOTest);
-        assertEquals(this.service.findCustomersById (this.id), customersDTOTest);
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
+        assertEquals(this.service.findCustomersById (this.id), customersDTO);
         verify(repository, times(1)).findById(id);
     }
 
