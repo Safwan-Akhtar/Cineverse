@@ -38,11 +38,18 @@
 
 body {
   color: white;
-/* background-color: slategrey !important; */
-/* background-color: #0f0f0a !important; */
-/* background-color: #325886 !important; */
-background-color: #1d252d !important;
 
+/* light grey */
+/* background-color: slategrey !important; */
+
+/* black */
+/* background-color: #0f0f0a !important; */
+
+/* blue */
+/* background-color: #325886 !important; */
+
+/* dark grey */
+background-color: #1d252d !important;
 
 
   background-position: center;
