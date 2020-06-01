@@ -58,15 +58,19 @@ footer {
     position: static;
     bottom: 0px;
     width: 100%;
-    height: 50px;
-
-    background-color: black;
+/*#202020 is darker grey, #303030 is lighter*/
+    background-color: #282828;
     text-align: center;
     color: ghostwhite;
-
-    text-align: center;
     padding-top: 20px;
     font-size: large;
+}
+
+.footer__nav__list {
+    list-style-type: none;
+    /*Would center but it doesn't center in line with the titles...*/
+    text-align: justify;
+    font-size: medium;
 }
 
 p {
