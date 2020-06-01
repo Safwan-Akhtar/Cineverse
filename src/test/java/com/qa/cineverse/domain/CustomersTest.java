@@ -12,19 +12,8 @@ public class CustomersTest {
 
     @Before
     public void setUp() {
-        customers = new Customers(1L, "Luke");
+        customers = new Customers("Luke");
         other = new Customers("Felix");
-    }
-
-    @Test
-    public void settersTest() {
-        assertNotNull(customers.getCustomersId());
-        assertNotNull(customers.getName());
-
-        customers.setCustomersId(null);
-        assertNull(customers.getCustomersId());
-        customers.setName(null);
-        assertNull(customers.getName());
     }
 
     @Test
@@ -32,12 +21,6 @@ public class CustomersTest {
 
     @Test
     public void equalsWithDifferentObject() { assertFalse(customers.equals (new Object())); }
-
-    @Test
-    public void createCustomersWithId() {
-        assertEquals(1L, customers.getCustomersId(), 0);
-        assertEquals("Luke", customers.getName());
-    }
 
     @Test
     public void checkEquality() {
@@ -49,7 +32,7 @@ public class CustomersTest {
         assertFalse(customers.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected=NullPointerException.class)
     public void customersNameNullButOtherNameNotNull() {
         customers.setName(null);
         other.setCustomersId (1L);
@@ -62,7 +45,7 @@ public class CustomersTest {
         assertFalse(customers.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         customers.setCustomersId(null);
         assertFalse(customers.equals(other));
@@ -82,16 +65,15 @@ public class CustomersTest {
 
     @Test
     public void constructorWithoutId() {
-        Customers characterSheet = new Customers("Felix");
-        assertNull(characterSheet.getCustomersId ());
-        assertNotNull(characterSheet.getName());
+        Customers customers = new Customers("Felix");
+        assertNull(customers.getCustomersId ());
+        assertNotNull(customers.getName());
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
         Customers customers = new Customers(null);
-        Customers other = new Customers(null, null);
+        Customers other = new Customers(null);
         assertEquals(customers.hashCode(), other.hashCode());
     }
-
 }

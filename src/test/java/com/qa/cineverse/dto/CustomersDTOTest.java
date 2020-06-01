@@ -3,6 +3,9 @@ package com.qa.cineverse.dto;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
@@ -11,21 +14,11 @@ public class CustomersDTOTest {
     private CustomersDTO customersDTO;
     private CustomersDTO other;
 
+
     @Before
     public void setUp() {
-        customersDTO = new CustomersDTO (1L, "Felix");
-        other = new CustomersDTO (1L, "Saf");
-    }
-
-    @Test
-    public void settersTest() {
-        assertNotNull(customersDTO.getCustomersId());
-        assertNotNull(customersDTO.getName());
-
-        customersDTO.setCustomersId(null);
-        assertNull(customersDTO.getCustomersId());
-        customersDTO.setName(null);
-        assertNull(customersDTO.getName());
+        customersDTO = new CustomersDTO ("Felix");
+        other = new CustomersDTO ("Saf");
     }
 
     @Test
@@ -39,12 +32,6 @@ public class CustomersDTOTest {
     }
 
     @Test
-    public void createCustomersDTOWithId() {
-        assertEquals(1L, customersDTO.getCustomersId(), 0);
-        assertEquals("Felix", customersDTO.getName());
-    }
-
-    @Test
     public void checkEquality() {
         assertTrue(customersDTO.equals(customersDTO));
     }
@@ -54,7 +41,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected=NullPointerException.class)
     public void customersDTONameNullButOtherNameNotNull() {
         customersDTO.setName(null);
         assertFalse(customersDTO.equals(other));
@@ -66,7 +53,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         customersDTO.setCustomersId(null);
         assertFalse(customersDTO.equals(other));
@@ -91,10 +78,10 @@ public class CustomersDTOTest {
         assertNotNull(customersDTO.getName());
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
         CustomersDTO customersDTO = new CustomersDTO(null);
-        CustomersDTO other = new CustomersDTO(null, null);
+        CustomersDTO other = new CustomersDTO(null);
         assertEquals(customersDTO.hashCode(), other.hashCode());
     }
 }

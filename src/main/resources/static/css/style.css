@@ -38,8 +38,20 @@
 
 body {
   color: white;
-    background-image: url(https://i.imgur.com/LA3fOoF.png);
-      background-color: #cccccc; /* Used if the image is unavailable */
+
+/* light grey */
+/* background-color: slategrey !important; */
+
+/* black */
+/* background-color: #0f0f0a !important; */
+
+/* blue */
+/* background-color: #325886 !important; */
+
+/* dark grey */
+background-color: #1d252d !important;
+
+
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -71,6 +83,8 @@ div.card{
 }
 
 .jumbotron {
-    color: black;
-}
+    color:white;
+    text-align: center;
+    
+  }
 
