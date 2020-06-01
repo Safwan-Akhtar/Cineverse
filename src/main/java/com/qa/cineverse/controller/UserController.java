@@ -1,12 +1,11 @@
 package com.qa.cineverse.controller;
 
+import com.qa.cineverse.domain.User;
 import com.qa.cineverse.dto.UserDTO;
+import com.qa.cineverse.exception.UserAlreadyExistsException;
+import com.qa.cineverse.service.MyUserService;
 import com.qa.cineverse.service.UserService;
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,15 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import javax.validation.Valid;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Controller
 public class UserController {
@@ -35,11 +26,11 @@ public class UserController {
         this.service = service;
     }
 
-    public ModelAndView registerUserAccount(
-            @ModelAttribute("user") @Valid UserDTO userDTO,
-            HttpServletRequest request, Errors errors) {
-
-    }
+//    public ModelAndView registerUserAccount(
+//            @ModelAttribute("user") @Valid UserDTO userDTO,
+//            HttpServletRequest request, Errors errors) {
+//
+//    }
 
 //    @PostMapping("/registerNewUserAccount")
 //    public ResponseEntity<UserDTO> registerNewUserAccount(@RequestBody User accountDTO) throws EmailExistsException {
@@ -57,5 +48,22 @@ public class UserController {
         model.addAttribute("user", userDTO);
         return "registration";
     }
+
+    @PostMapping("register")
+    public ModelAndView registerUserAccount(
+            @ModelAttribute("user") @Valid UserDTO userDTO,
+            HttpServletRequest request, Errors errors) {
+
+        try {
+            User registered = service.registerNewUserAccount(userDTO);
+        } catch (UserAlreadyExistsException uaeEx) {
+            ModelAndView mav = new ModelAndView("registration", "user", userDTO);
+            mav.addObject("message", "An account for that username/email already exists.");
+            return mav;
+        }
+
+        return new ModelAndView("successRegister", "user", userDTO);
+    }
+
 
 }

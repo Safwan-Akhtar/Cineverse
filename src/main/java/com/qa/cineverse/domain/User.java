@@ -18,6 +18,7 @@ public class User {
     private Long userId;
     private String userName;
     private String password;
+    private String matchingPassword;
     private String forename;
     private String surname;
     private String email;

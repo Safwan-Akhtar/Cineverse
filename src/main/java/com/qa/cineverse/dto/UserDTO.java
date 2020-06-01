@@ -2,7 +2,9 @@ package com.qa.cineverse.dto;
 
 import com.qa.cineverse.controller.UserController;
 import com.qa.cineverse.domain.User;
+import com.qa.cineverse.validation.AnnotationValidatorCreator;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@NoArgsConstructor
+@AnnotationValidatorCreator.PasswordMatches
 public class UserDTO implements UserDetails {
 
     @NotEmpty
@@ -35,6 +39,7 @@ public class UserDTO implements UserDetails {
     public UserDTO(User user) {
         this.userName = user.getUserName();
         this.password = user.getPassword();
+        this.matchingPassword = user.getMatchingPassword ();
         this.forename = user.getForename();
         this.surname = user.getSurname();
         this.email = user.getEmail();
@@ -52,6 +57,10 @@ public class UserDTO implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
     }
 
     @Override
