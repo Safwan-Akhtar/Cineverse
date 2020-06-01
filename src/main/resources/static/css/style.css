@@ -42,6 +42,18 @@ nav {
     margin-bottom: 20px;
 }
 
+.jumbotron {
+    color: white;
+    text-align: center;
+    /* slims the jumbotron, adds border to top */
+    padding: 1em 0 0;
+}
+/* slims jumbotron */
+hr {
+    padding: 0.5em;
+    margin-top: 0;
+}
+
 footer {
     position: static;
     bottom: 0px;
@@ -65,16 +77,4 @@ p {
 div.card{
   color: white;
   background-color: transparent;
-}
-
-.jumbotron {
-    color: white;
-    text-align: center;
-    /* slims the jumbotron, adds border to top */
-    padding: 1em 0 0;
-}
-/* slims jumbotron */
-hr {
-    padding: 0.5em;
-    margin-top: 0;
 }
