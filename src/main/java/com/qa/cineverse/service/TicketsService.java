@@ -4,6 +4,8 @@ import com.qa.cineverse.domain.Screenings;
 import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.dto.TicketsDTO;
+import com.qa.cineverse.exception.CustomersNotFoundException;
+import com.qa.cineverse.exception.TicketsNotFoundException;
 import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import com.qa.cineverse.repo.TicketsRepo;
@@ -37,5 +39,13 @@ public class TicketsService {
 
     public List<TicketsDTO> readTickets() {
         return this.ticketsRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
+    public boolean deleteTicket(Long id){
+        if(!this.ticketsRepo.existsById(id)){
+            throw new TicketsNotFoundException ();
+        }
+        this.ticketsRepo.deleteById(id);
+        return this.ticketsRepo.existsById(id);
     }
 }

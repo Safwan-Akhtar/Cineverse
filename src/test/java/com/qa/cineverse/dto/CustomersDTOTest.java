@@ -22,17 +22,6 @@ public class CustomersDTOTest {
     }
 
     @Test
-    public void settersTest() {
-        assertNotNull(customersDTO.getCustomersId());
-        assertNotNull(customersDTO.getName());
-
-        customersDTO.setCustomersId(null);
-        assertNull(customersDTO.getCustomersId());
-        customersDTO.setName(null);
-        assertNull(customersDTO.getName());
-    }
-
-    @Test
     public void equalsWithNull() {
         assertFalse(customersDTO.equals(null));
     }
@@ -40,12 +29,6 @@ public class CustomersDTOTest {
     @Test
     public void equalsWithDifferentObject() {
         assertFalse(customersDTO.equals(new Object()));
-    }
-
-    @Test
-    public void createCustomersDTOWithId() {
-        assertEquals(1L, customersDTO.getCustomersId(), 0);
-        assertEquals("Felix", customersDTO.getName());
     }
 
     @Test
@@ -58,7 +41,7 @@ public class CustomersDTOTest {
         assertFalse(customersDTO.equals(other));
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void customersDTONameNullButOtherNameNotNull() {
         customersDTO.setName(null);
         assertFalse(customersDTO.equals(other));
@@ -95,7 +78,7 @@ public class CustomersDTOTest {
         assertNotNull(customersDTO.getName());
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
         CustomersDTO customersDTO = new CustomersDTO(null);
         CustomersDTO other = new CustomersDTO(null);

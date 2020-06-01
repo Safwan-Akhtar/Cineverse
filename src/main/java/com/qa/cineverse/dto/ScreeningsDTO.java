@@ -26,7 +26,6 @@ public class ScreeningsDTO {
     private String movieName;
 
     private List<CustomersDTO> customers = new ArrayList<> ();
-
     public ScreeningsDTO(LocalDateTime movieDateTime, Long screenNumber, String screenType, String movieName) {
         super();
         this.movieDateTime = movieDateTime;

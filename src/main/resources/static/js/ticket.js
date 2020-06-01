@@ -1,6 +1,6 @@
 
 let configGet = {
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8181/html/character.html' },
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
   };
   
@@ -35,7 +35,6 @@ let configGet = {
 
         console.log(response);
 
-
         var dateControl = document.querySelector('input[type="date"]');
         dateControl.value = movieDate;
 
@@ -68,11 +67,27 @@ const postBooking = () => {
             data: `{
                 "name": "${customername}"
             }`,
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8181/html/character.html' },
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
             responseType: 'json'
         })
         .then(function (response) {
             console.log(response);
+            axios({
+                method: 'patch',
+                url: `http://localhost:8181/addTicketsToCustomer/1`,
+                data: `{
+                    "ticketType": "child",
+                    "seatNo": "F9"
+                }`,
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                responseType: 'json'
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
         })
         .catch(function (response) {
             console.log(response);
