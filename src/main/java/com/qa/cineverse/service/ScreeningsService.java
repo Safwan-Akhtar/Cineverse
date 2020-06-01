@@ -64,5 +64,4 @@ public class ScreeningsService {
         screenings.getCustomers ().add(tmp);
         return this.mapToDTO(this.screeningsRepo.saveAndFlush(screenings));
     }
-
 }

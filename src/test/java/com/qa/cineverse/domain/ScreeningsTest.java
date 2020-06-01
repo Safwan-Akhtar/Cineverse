@@ -22,28 +22,8 @@ public class ScreeningsTest {
     public void setUp() {
         date1 = LocalDateTime.of(LocalDate.ofEpochDay(2007-12-3), LocalTime.MIN);
         date2 = LocalDateTime.of(LocalDate.ofEpochDay(2107-11-13), LocalTime.MAX);
-        screenings = new Screenings (1L, date1, 1L, "Deluxe", "Guardians");
+        screenings = new Screenings (date1, 1L, "Deluxe", "Guardians");
         other = new Screenings(date2, 1L, "Standard", "Thor");
-    }
-
-    @Test
-    public void settersTest() {
-        assertNotNull(screenings.getScreeningsId());
-        assertNotNull(screenings.getScreenNumber());
-        assertNotNull(screenings.getMovieDateTime());
-        assertNotNull(screenings.getScreenType());
-        assertNotNull(screenings.getMovieName());
-
-        screenings.setScreeningsId(null);
-        assertNull(screenings.getScreeningsId());
-        screenings.setScreenNumber(null);
-        assertNull(screenings.getScreenNumber());
-        screenings.setMovieDateTime(null);
-        assertNull(screenings.getMovieDateTime());
-        screenings.setScreenType(null);
-        assertNull(screenings.getScreenType());
-        screenings.setMovieName(null);
-        assertNull(screenings.getMovieName());
     }
 
     @Test
@@ -57,15 +37,6 @@ public class ScreeningsTest {
     }
 
     @Test
-    public void createScreeningsWithId() {
-        assertEquals(1L, screenings.getScreeningsId(), 0);
-        assertEquals(1, screenings.getScreenNumber(), 0);
-        assertEquals(date1, screenings.getMovieDateTime());
-        assertEquals("Deluxe", screenings.getScreenType());
-        assertEquals("Guardians", screenings.getMovieName());
-    }
-
-    @Test
     public void checkEquality() {
         assertTrue(screenings.equals(screenings));
     }
@@ -75,7 +46,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected=NullPointerException.class)
     public void screeningsDateNullButOtherDateNotNull() {
         screenings.setMovieDateTime(null);
         other.setScreeningsId (1L);
@@ -88,7 +59,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void screeningsTypeNullButOtherTypeNotNull() {
         screenings.setScreenType(null);
         assertFalse(screenings.equals(other));
@@ -112,7 +83,7 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullId() {
         screenings.setScreeningsId(null);
         assertFalse(screenings.equals(other));
@@ -130,10 +101,10 @@ public class ScreeningsTest {
         assertFalse(screenings.equals(other));
     }
     
-    @Test
+    @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
         Screenings screenings = new Screenings(null, null, null, null);
-        Screenings other = new Screenings(null, null, null, null, null);
+        Screenings other = new Screenings(null, null, null, null);
         assertEquals(screenings.hashCode(), other.hashCode());
     }
 

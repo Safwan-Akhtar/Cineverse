@@ -1,5 +1,6 @@
 package com.qa.cineverse.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.cineverse.domain.Screenings;
 import com.qa.cineverse.dto.ScreeningsDTO;
@@ -48,8 +49,11 @@ public class ScreeningsControllerIntegrationTest {
 
     private long id;
 
+    private String name;
+
     private ScreeningsDTO screeningsDTO;
 
+    private LocalDateTime date;
 
     private ScreeningsDTO mapToDTO(Screenings screenings){
         return this.mapper.map(screenings, ScreeningsDTO.class);
@@ -57,10 +61,12 @@ public class ScreeningsControllerIntegrationTest {
 
     @Before
     public void setUp(){
+        date = LocalDateTime.parse("1975-06-16T00:00:00");
         this.repository.deleteAll();
-        this.testScreenings = new Screenings(null, 1L, "deluxe", "Guardians of the Galaxy");
+        this.testScreenings = new Screenings(date, 1L, "deluxe", "Guardians of the Galaxy");
         this.testScreeningsWithID = this.repository.save(testScreenings);
         this.id = testScreeningsWithID.getScreeningsId ();
+        this.name = testScreeningsWithID.getMovieName();
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
     }
 
@@ -70,6 +76,21 @@ public class ScreeningsControllerIntegrationTest {
         screeningsDTOList.add(screeningsDTO);
         String content = this.mock.perform(
                 request(HttpMethod.GET, "/getAllScreenings")
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTOList));
+    }
+
+    @Test
+    public void getAllScreeningsByNameTest() throws Exception {
+        List<ScreeningsDTO> screeningsDTOList = new ArrayList<> ();
+        screeningsDTOList.add(screeningsDTO);
+        String content = this.mock.perform(
+                request(HttpMethod.GET, "/readScreeningsByName/" + this.name)
                         .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
