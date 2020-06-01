@@ -1,22 +1,3 @@
-/* Color Theme Swatches in Hex */
-.yellowgreen-1-hex {
-  color: #004742;
-}
-.yellowgreen-2-hex {
-  color: #1e665b;
-}
-.yellowgreen-3-hex {
-  color: #54887a;
-}
-.yellowgreen-4-hex {
-  color: #869e8f;
-}
-.yellowgreen-5-hex {
-  color: #ebe8cf;
-}
-
-
-
 * {
     font-family: Helvetica;
 }
@@ -48,14 +29,17 @@ body {
 /* blue */
 /* background-color: #325886 !important; */
 /* background-color: #1d252d !important; */
-background-image: url(https://i.imgur.com/3tyjAPB.jpg) !important;
+    background-image: url(https://i.imgur.com/3tyjAPB.jpg) !important;
 
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
-
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+nav {
+    /* adds gap between nav bar and jumbotron */
+    margin-bottom: 20px;
 }
 
 footer {
@@ -64,9 +48,9 @@ footer {
     width: 100%;
     height: 50px;
 
-    /* background-color: #54887a; */
+    background-color: black;
     text-align: center;
-    color: black;
+    color: ghostwhite;
 
     text-align: center;
     padding-top: 20px;
@@ -84,7 +68,13 @@ div.card{
 }
 
 .jumbotron {
-    color:white;
+    color: white;
     text-align: center;
-    
-  }
+    /* slims the jumbotron, adds border to top */
+    padding: 1em 0 0;
+}
+/* slims jumbotron */
+hr {
+    padding: 0.5em;
+    margin-top: 0;
+}
