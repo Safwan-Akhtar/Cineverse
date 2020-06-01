@@ -80,7 +80,8 @@ function populateDiv(movies) {
         hTwo.id = movie.imdbID;
 
         aTag.href = "#";
-        aTag.onclick = `movieListingSelected('${movie.imdbID}')`;
+        //aTag.onclick = `movieListingSelected('${movie.imdbID}')`;
+        aTag.setAttribute('onclick', `movieListingSelected('${movie.imdbID}')`);
         aTag.textContent = movie.Title;
 
 

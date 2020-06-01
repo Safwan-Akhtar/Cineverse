@@ -1,6 +1,6 @@
-//Individual movie page info
+//Individual movie page info - copied from GallerySearch.js
 
-function getMovie() {
+function getOurMovie() {
     let movieId = sessionStorage.getItem("movieId");
 
     axios.get(`http://www.omdbapi.com/?apikey=c737e3a5&i=` + movieId)
@@ -11,7 +11,7 @@ function getMovie() {
             let output = `
             <div class="row">
                 <div class="col-md-4">
-                    <img src="${movie.Poster}" class="thumbnail">
+                    <img src="${movie.Poster}" class="thumbnail" alt="${movie.Title}'s Movie Poster">
                 </div>
                 <div class="col-md-8">
                     <h2>${movie.Title}</h2>
@@ -33,8 +33,10 @@ function getMovie() {
                         <h3>Plot</h3>
                         ${movie.Plot}
                         <hr>
-                        <a href="http://idmdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-                        <a hred="gallarySearch.html" class="btn btn-default">Go back to search</a>
+                        <a href="https://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View on IMDB</a>
+                        <a href="gallarySearch.html" class="btn btn-default">Search another movie</a>
+                        <a href="listingsGallery.html" class="btn btn-default">Our current movies</a>
+                        <a href="newReleasesGallery.html" class="btn btn-default">See New Releases</a>
                     </div>
             </div>
             `;
