@@ -9,19 +9,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
-@AnnotationValidatorCreator.PasswordMatches
 public class UserDTO implements UserDetails {
 
 
-    private String userName;
+    private String username;
 
     private String password;
     private String matchingPassword;
@@ -29,7 +26,7 @@ public class UserDTO implements UserDetails {
     private String forename;
     @Setter @Getter
     private String surname;
-    @Setter @Getter  @AnnotationValidatorCreator.ValidEmail
+    @Setter @Getter
     private String email;
 
     private boolean active;
@@ -37,7 +34,7 @@ public class UserDTO implements UserDetails {
     private List<GrantedAuthority> authorities;
 
     public UserDTO(User user) {
-        this.userName = user.getUserName();
+        this.username = user.getUsername();
         this.password = user.getPassword();
         this.matchingPassword = user.getMatchingPassword ();
         this.forename = user.getForename();
@@ -65,7 +62,7 @@ public class UserDTO implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
@@ -85,7 +82,7 @@ public class UserDTO implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return true;
     }
 
 }

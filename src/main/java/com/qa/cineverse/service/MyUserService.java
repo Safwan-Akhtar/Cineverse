@@ -41,37 +41,40 @@ public class MyUserService implements UserDetailsService  {
         return userRepo.findByEmail (email) != null;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-//        Optional<User> user = userRepo.findByUserName(userName);
-//        user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + userName + "' does not exist"));
-//        return user.map(UserDTO::new).get();
-//    }
+
 
     @Override
-    public UserDetails loadUserByUsername(String email)
-            throws UsernameNotFoundException {
-
-        User user = userRepo.findByEmail(email);
-        if (user == null) {
-            throw new UsernameNotFoundException(
-                    "No user found with username: "+ email);
-        }
-        boolean enabled = true;
-        boolean accountNonExpired = true;
-        boolean credentialsNonExpired = true;
-        boolean accountNonLocked = true;
-        return  new org.springframework.security.core.userdetails.User
-                (user.getEmail(),
-                        user.getPassword().toLowerCase(), enabled, accountNonExpired,
-                        credentialsNonExpired, accountNonLocked,
-                        getAuthorities(user));
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        Optional<User> user = userRepo.findByUserName(userName);
+        user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + userName + "' does not exist"));
+        return user.map(UserDTO::new).get();
     }
 
-    private static List<GrantedAuthority> getAuthorities (User user) {
-        List<GrantedAuthority> authorities = Arrays.stream (user.getRoles ().split (","))
-                .map (SimpleGrantedAuthority::new)
-                .collect (Collectors.toList ());
-        return authorities;
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String email)
+//            throws UsernameNotFoundException {
+//
+//        User user = userRepo.findByEmail(email);
+//        if (user == null) {
+//            throw new UsernameNotFoundException(
+//                    "No user found with username: "+ email);
+//        }
+//        boolean enabled = true;
+//        boolean accountNonExpired = true;
+//        boolean credentialsNonExpired = true;
+//        boolean accountNonLocked = true;
+//        return  new org.springframework.security.core.userdetails.User
+//                (user.getEmail(),
+//                        user.getPassword().toLowerCase(), enabled, accountNonExpired,
+//                        credentialsNonExpired, accountNonLocked,
+//                        getAuthorities(user));
+//    }
+//
+//    private static List<GrantedAuthority> getAuthorities (User user) {
+//        List<GrantedAuthority> authorities = Arrays.stream (user.getRoles ().split (","))
+//                .map (SimpleGrantedAuthority::new)
+//                .collect (Collectors.toList ());
+//        return authorities;
+//    }
 }
+
