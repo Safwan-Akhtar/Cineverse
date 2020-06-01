@@ -25,8 +25,8 @@ function axiosAll()
             // react on errors.
         })
     }
-let buttGetMovieFive = document.querySelector("#showMovie");
-buttGetMovieFive.addEventListener("click", axiosAll);
+
+window.addEventListener("load", axiosAll);
 
 // Populates divs onto html
 function populateDiv(movies) {
