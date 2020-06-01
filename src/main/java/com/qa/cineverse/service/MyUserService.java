@@ -2,8 +2,6 @@ package com.qa.cineverse.service;
 
 import com.qa.cineverse.domain.User;
 import com.qa.cineverse.dto.UserDTO;
-import com.qa.cineverse.exception.UserAlreadyExistsException;
-import com.qa.cineverse.validation.EmailValidator;
 import com.qa.cineverse.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MyUserService implements UserDetailsService  {
@@ -70,19 +65,13 @@ public class MyUserService implements UserDetailsService  {
                 (user.getEmail(),
                         user.getPassword().toLowerCase(), enabled, accountNonExpired,
                         credentialsNonExpired, accountNonLocked,
-                        getAuthorities(user.getRoles()));
+                        getAuthorities(user));
     }
 
-    private static List<GrantedAuthority> getAuthorities (List<String> roles) {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        for (String role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role));
-        }
+    private static List<GrantedAuthority> getAuthorities (User user) {
+        List<GrantedAuthority> authorities = Arrays.stream (user.getRoles ().split (","))
+                .map (SimpleGrantedAuthority::new)
+                .collect (Collectors.toList ());
         return authorities;
     }
-
-
-
-
-
 }
