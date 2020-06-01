@@ -47,15 +47,15 @@ body {
 
 /* blue */
 /* background-color: #325886 !important; */
+/* background-color: #1d252d !important; */
+background-image: url(https://i.imgur.com/3tyjAPB.jpg) !important;
 
-/* dark grey */
-background-color: #1d252d !important;
 
 
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 100% 200%;
+  background-size: 100% 100%;
 }
 
 footer {
@@ -79,7 +79,8 @@ p {
 }
 
 div.card{
-  color: black;
+  color: white;
+  background-color: transparent;
 }
 
 .jumbotron {
@@ -87,4 +88,3 @@ div.card{
     text-align: center;
     
   }
-
