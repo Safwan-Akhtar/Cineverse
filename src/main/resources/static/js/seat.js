@@ -1,10 +1,7 @@
+// For active visual status
 $('.cinema-seats .seat').on('click', function () {
     $(this).toggleClass('active');
   });
-
-
-
-  
 
   var inactive = document.getElementsByClassName(".cinema-seats .seat").length;
   inactive.valueOf()
@@ -16,13 +13,18 @@ $('.cinema-seats .seat').on('click', function () {
 
 
   function getSeatValue() {
-    element = document.getElementsByClassName(".cinema-seats .seat");
+    let element = document.getElementsByClassName(".cinema-seats .seat");
     
     let count = 0;
 
     array.forEach(element => {
+      if (element.className === ".cinema-seats .seat active") {
         console.log(count);
         count++;
+      } else {
+        //do nothing
+      }
+
     });
 
 
