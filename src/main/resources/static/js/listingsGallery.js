@@ -29,6 +29,7 @@ function axiosAll() {
         populateDiv(movies);
     })).catch(errors => {
         console.log("Oh dear, something went wrong...");
+        console.log(errors);
         // react on errors.
     })
 }
@@ -81,9 +82,14 @@ function populateDiv(movies) {
         image.position = "centre";
         image.alt = `${movie.Title} poster`;
 
+
+        // Link to details will be in title (h2) tag - can move to a button
         hTwo.id = movie.imdbID;
-        aTag.href = movie.Poster;
+
+        aTag.onclick = `movieListingSelected('${movie.imdbID}')`;
         aTag.textContent = movie.Title;
+
+
         pTag.textContent = "Release Date: " + movie.Released;
         pTagOne.textContent = "Cast: " + movie.Actors;
         pTagTwo.textContent = "Director: " + movie.Director;
@@ -102,4 +108,11 @@ function populateDiv(movies) {
         article.appendChild(divThree);
         div.appendChild(article);
     }
+}
+
+// This function can probably be merged with the gallerySearch.js & gallerySearchInfo.html page
+function movieListingSelected(id) {
+    sessionStorage.setItem("movieId", id);
+    window.location = "moviePageInfo.html";
+    return false;
 }
