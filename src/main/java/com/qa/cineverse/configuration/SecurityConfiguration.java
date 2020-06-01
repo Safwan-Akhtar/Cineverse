@@ -23,7 +23,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
                 .antMatchers("/html/admin/*").hasRole("ADMIN") ///Insert Screenings
                 .antMatchers("/html/user/*").hasAnyRole("ADMIN", "USER") ///Ticket Booking
@@ -32,7 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/index.html", false)
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .headers().frameOptions().disable();
     }
 
     @Bean
