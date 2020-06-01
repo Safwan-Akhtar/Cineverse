@@ -38,11 +38,18 @@
 
 body {
   color: white;
+
+/* light grey */
 /* background-color: slategrey !important; */
+
+/* black */
 /* background-color: #0f0f0a !important; */
+
+/* blue */
 /* background-color: #325886 !important; */
 /* background-color: #1d252d !important; */
 background-image: url(https://i.imgur.com/3tyjAPB.jpg) !important;
+
 
 
   background-position: center;

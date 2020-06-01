@@ -42,6 +42,25 @@ function populateDiv(movies) {
 
     for (let movie of movies) {
 
+        // To style:
+
+        // Have this code outside the loop
+        // const container = document.createElement('div')
+        // container.setAttribute('class', 'container')
+
+        // Then add this for the main div that contains each movie
+        // const card = document.createElement('div')
+        // card.setAttribute('class', 'card anotherClass anotherClass')
+        // Cards are a bootstrap component - can add other classes separated by a space to add additional bootstrap styles
+        // See https://getbootstrap.com/docs/4.5/components/card/ for options / more info
+
+        //eg.
+        // image.setAttirbute('class', 'card-img-top')
+        //   class="card-body" for div containing text
+        //   class="card-title" for movie title
+        //   class="card-text" for actors / directors
+        // or "list-group-item" if you change to li
+
         const article = document.createElement("article");
         const divTwo = document.createElement("div");
         const image = document.createElement("img");
@@ -55,13 +74,13 @@ function populateDiv(movies) {
         const pTagTwo = document.createElement("p");
         const pTagThree = document.createElement("p");
 
-        // article.className = "";
+
         article.id = movie.imdbID;
-        // divTwo.className = "";
+
         image.src = movie.Poster;
         image.position = "centre";
-        // divThree.className = "";
-        // divFour.className = "";
+        image.alt = `${movie.Title} poster`;
+
         hTwo.id = movie.imdbID;
         aTag.href = movie.Poster;
         aTag.textContent = movie.Title;
