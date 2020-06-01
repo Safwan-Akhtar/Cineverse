@@ -1,12 +1,8 @@
 package com.qa.cineverse.service;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.UserDTO;
-import com.qa.cineverse.exception.EmailExistsException;
-import com.qa.cineverse.repo.CustomersRepo;
-import com.qa.cineverse.repo.TicketsRepo;
+import com.qa.cineverse.validation.EmailValidator;
 import com.qa.cineverse.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,29 +46,29 @@ public class UserService implements UserDetailsService {
         return user.map(UserDTO::new).get();
     }
 
-    public UserDTO registerNewUserAccount(User user){
-        return this.mapToDTO(this.userRepo.save(user));
-    }
-
-
-
-//    public User registerNewUserAccount(UserDTO accountDTO) throws EmailExistsException {
-//        if (emailExists(accountDTO.getEmail())) {
-//            throw new EmailExistsException (
-//                    "There is an account with that email address:" + accountDTO.getEmail());
-//        }
-//        User user = new User();
-//        user.setForename(accountDTO.getForename());
-//        user.setSurname(accountDTO.getSurname());
-//        user.setUserName (accountDTO.getUsername());
-//        user.setSurname(accountDTO.getSurname());
-//
-//        user.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
-//
-//        user.setEmail(accountDTO.getEmail());
-//        user.setRoles("ROLE_USER");
-//        return userRepo.save(user);
+//    public UserDTO registerNewUserAccount(User user){
+//        return this.mapToDTO(this.userRepo.save(user));
 //    }
+
+
+
+    public User registerNewUserAccount(UserDTO accountDTO) throws EmailValidator {
+        if (emailExists(accountDTO.getEmail())) {
+            throw new EmailValidator (
+                    "There is an account with that email address:" + accountDTO.getEmail());
+        }
+        User user = new User();
+        user.setForename(accountDTO.getForename());
+        user.setSurname(accountDTO.getSurname());
+        user.setUserName (accountDTO.getUsername());
+        user.setSurname(accountDTO.getSurname());
+
+        user.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
+
+        user.setEmail(accountDTO.getEmail());
+        user.setRoles("ROLE_USER");
+        return userRepo.save(user);
+    }
 
 
 }
