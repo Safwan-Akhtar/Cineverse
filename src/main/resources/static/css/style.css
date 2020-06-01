@@ -72,15 +72,12 @@ p {
 }
 
 div.card{
-  color: black;
+  color: white;
+  background-color: transparent;
 }
 
 .jumbotron {
     color:white;
     text-align: center;
-    
-  }
-
-  nav button{
     
   }
