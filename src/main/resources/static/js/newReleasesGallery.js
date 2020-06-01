@@ -1,57 +1,34 @@
 // Artemis Fowl
 const reqOne = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt3089630`);
-        // .then((response) => {
-        //     console.log(response);
-        //     // movies.push(response.data);
-        //     populateDiv(response.data);
-        // }, (error) => {
-        //     console.log(error);
-        // });
-// }
-// let buttGetMovieOne = document.querySelector("#getOne");
-// buttGetMovieOne.addEventListener("click", artemisFowl);
-
 // Tenet
 const reqTwo = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6723592`);
-
 // Mulan
 const reqThree = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt4566758`);
-
 // The King's Man
 const reqFour = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6856242`);
-
 // Antebellum
 const reqFive = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt10065694`);
 
 function axiosAll()
     {
-        // let movies = [];
         axios.all([reqOne, reqTwo, reqThree, reqFour, reqFive]).then(axios.spread((...responses) => {
             const responseOne = responses[0].data
-            // populateDiv(responseOne);
-            // movies.push(responseOne)
             const responseTwo = responses[1].data
-            // populateDiv(responseTwo);
-            // movies.push(responseOne)
             const responseThree = responses[2].data
-            // populateDiv(responseThree);
-            // movies.push(responseOne)
-            console.log(responseOne)
-            console.log(responseTwo)
-            console.log(responseThree)
-            const movies = [responseOne, responseTwo, responseThree]
+            const responseFour = responses[3].data
+            const responseFive = responses[4].data
+            const movies = [responseOne, responseTwo, responseThree, responseFour, responseFive]
             // use/access the results
             populateDiv(movies);
         })).catch(errors => {
+            console.log("Oh no, something went wrong!")
             // react on errors.
         })
     }
 let buttGetMovieFive = document.querySelector("#showMovie");
 buttGetMovieFive.addEventListener("click", axiosAll);
 
-
-
-// Populates divs
+// Populates divs onto html
 function populateDiv(movies) {
 
     const div = this.document.getElementById("galleryDiv")
@@ -71,8 +48,6 @@ function populateDiv(movies) {
         const pTagTwo = document.createElement("p");
         const pTagThree = document.createElement("p");
 
-
-
         // article.className = "";
         article.id = movie.imdbID;
         // divTwo.className = "";
@@ -87,8 +62,6 @@ function populateDiv(movies) {
         pTagOne.textContent = "Cast: " + movie.Actors;
         pTagTwo.textContent = "Director: " + movie.Director;
         pTagThree.textContent = "Age Rating: " + movie.Rated;
-
-
 
         hTwo.appendChild(aTag);
         header.appendChild(hTwo);
