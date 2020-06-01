@@ -11,7 +11,7 @@ function getOurMovie() {
             let output = `
             <div class="row">
                 <div class="col-md-4">
-                    <img src="${movie.Poster}" class="thumbnail" alt="\`${movie.Title}'s Movie Poster\`">
+                    <img src="${movie.Poster}" class="thumbnail" alt="${movie.Title}'s Movie Poster">
                 </div>
                 <div class="col-md-8">
                     <h2>${movie.Title}</h2>
@@ -33,7 +33,7 @@ function getOurMovie() {
                         <h3>Plot</h3>
                         ${movie.Plot}
                         <hr>
-                        <a href="\`https://idmdb.com/title/${movie.imdbID}\`" target="_blank" class="btn btn-primary">View on IMDB</a>
+                        <a href="https://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View on IMDB</a>
                         <a href="gallarySearch.html" class="btn btn-default">Search another movie</a>
                     </div>
             </div>

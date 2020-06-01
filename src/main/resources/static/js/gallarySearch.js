@@ -37,9 +37,9 @@ function getMovies(searchText) {
             //underscore removes an error message
             $.each(movies, (_gallarySearch, movie) => {
                 output += `
-                <div classes="col-md-3">
+                <div class="col-md-3">
                     <div class="well text-center">
-                        <img src="${movie.Poster}">
+                        <img src="${movie.Poster}" alt="${movie.Title}'s Movie Poster">
                         <h5>${movie.Title}</h5>
                         <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
                     </div>
@@ -76,7 +76,7 @@ function getMovie() {
             let output = `
             <div class="row">
                 <div class="col-md-4">
-                    <img src="${movie.Poster}" class="thumbnail">
+                    <img src="${movie.Poster}" class="thumbnail" alt="${movie.Title}'s Movie Poster">
                 </div>
                 <div class="col-md-8">
                     <h2>${movie.Title}</h2>
@@ -98,8 +98,8 @@ function getMovie() {
                         <h3>Plot</h3>
                         ${movie.Plot}
                         <hr>
-                        <a href="http://idmdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-                        <a hred="gallarySearch.html" class="btn btn-default">Go back to search</a>
+                        <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                        <a href="gallarySearch.html" class="btn btn-default">Go back to search</a>
                     </div>
             </div>
             `;
