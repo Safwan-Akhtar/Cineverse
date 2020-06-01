@@ -33,7 +33,7 @@ function getOurMovie() {
                         <h3>Plot</h3>
                         ${movie.Plot}
                         <hr>
-                        <a href="\`http://idmdb.com/title/${movie.imdbID}\`" target="_blank" class="btn btn-primary">View on IMDB</a>
+                        <a href="\`https://idmdb.com/title/${movie.imdbID}\`" target="_blank" class="btn btn-primary">View on IMDB</a>
                         <a href="gallarySearch.html" class="btn btn-default">Search another movie</a>
                     </div>
             </div>
