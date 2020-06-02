@@ -69,15 +69,15 @@
         </div>
     </nav>
     <!--Start of Main Page content-->
-    <header class="jumbotron"> <!--would like to centre jumbotron-->
-        <noscript>If you have no JS enabled you will see this!</noscript>
-        <h1 class="display-4">Search movies</h1>
-        <hr class="my-4">
-        <br>
-    </header>
+<!--    <header class="jumbotron bg-dark text-white"> &lt;!&ndash;would like to centre jumbotron&ndash;&gt;-->
+<!--    <noscript>If you have no JS enabled you will see this!</noscript>-->
+<!--        <h1 class="display-4">Search movies</h1>-->
+<!--        <hr class="my-4">-->
+<!--    </header>-->
     <main>
         <div class="container">
             <div class="jumbotron">
+                <noscript>If you have no JS enabled you will see this!</noscript>
                 <h3 class="text-center">Search for any movie</h3>
                 <form id="searchForm">
                     <label for="searchText"></label><input type="text" class="form-control" id="searchText" placeholder="Search Movie...">
@@ -90,9 +90,46 @@
         </div>
     </main>
     <!-- Footer -->
-    <footer>
-        <br><br><br><br>
-        <p>Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+    <br><br><br><br>
+    <footer class= "container-fluid footer">
+        <div class="row">
+            <div class="col">
+                <h5>About Cineverse</h5>
+                <ul class="footer__nav__list nav--about">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Legal</h5>
+                <ul class="footer__nav__list nav--legal">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Social</h5>
+                <ul class="footer__nav__list nav--social">
+                    <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank" rel="noopener">Facebook</a>
+                    </li>
+                    <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
+                    </li>
+                    <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank" rel="noopener">Instagram</a>
+                    </li>
+                    <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank" rel="noopener">Youtube</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+        <br>
     </footer>
     <!-- Scripts -->
     </body>
