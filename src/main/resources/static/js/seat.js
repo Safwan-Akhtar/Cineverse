@@ -9,6 +9,7 @@
 
 
   function getSeatValue() {
+    console.log("getSeatValue() triggered")
     let element = document.getElementsByClassName(".cinema-seats .seat");
     let count = 0;
     console.log(element);
@@ -24,6 +25,7 @@
 
   }
 
-  let countSeats = document.querySelector('#countSeats');
+  let countSeats = document.querySelector('countSeats');
+  console.log(countSeats);
   countSeats.addEventListener('click', getSeatValue);
 
