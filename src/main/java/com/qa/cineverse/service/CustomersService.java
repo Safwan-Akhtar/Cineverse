@@ -45,14 +45,7 @@ public class CustomersService {
     public CustomersDTO findCustomersById(Long id){
         return this.mapToDTO(this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new));
     }
-
-    public CustomersDTO updateCustomers(Long id, Customers customers){
-        Customers update = this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new);
-        update.setName(customers.getName());
-        Customers tempCustomers = this.customersRepo.save(update);
-        return this.mapToDTO(tempCustomers);
-    }
-
+    
     public boolean deleteCustomers(Long id){
         if(!this.customersRepo.existsById(id)){
             throw new CustomersNotFoundException ();
