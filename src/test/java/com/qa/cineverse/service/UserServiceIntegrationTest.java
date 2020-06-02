@@ -7,6 +7,7 @@ import com.qa.cineverse.dto.UserDTO;
 import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,6 +37,8 @@ public class UserServiceIntegrationTest {
     private User testUser;
 
     private User testUserWithID;
+
+    private UserDTO userDTO;
 
     private UserDTO mapToDTO(User user){
         return this.mapper.map(user, UserDTO.class);
@@ -57,6 +61,11 @@ public class UserServiceIntegrationTest {
                 );
     }
 
+    @Ignore
+    @Test
+    public void createCustomersTest(){
+        assertEquals(this.mapToDTO(this.testUserWithID), this.service.createUser (userDTO));
+    }
 
 
 
