@@ -3,6 +3,9 @@ package com.qa.cineverse.domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TicketsTest {
@@ -10,10 +13,16 @@ public class TicketsTest {
     private Tickets tickets;
     private Tickets other;
 
+    private List<Customers> customers = new ArrayList<> ();
+    private List<Customers> otherCustomers = new ArrayList<> ();
+
     @Before
     public void setUp() {
         tickets = new Tickets("A1", "deluxe");
         other = new Tickets("B2", "standard");
+
+        customers.add(new Customers ("Jim"));
+        otherCustomers.add(new Customers ("Jam"));
     }
 
     @Test
@@ -55,6 +64,22 @@ public class TicketsTest {
     @Test
     public void ticketsSeatNotEqual() {
         other.setSeatNo("C3");
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void ticketCustomersNullButOtherTicketsNotNull() {
+        customers.add(new Customers (null));
+        tickets.setCustomers(null);
+        other.setTicketsId (1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test
+    public void customersTicketsNotEqual() {
+        otherCustomers.add(new Customers ("Jam"));
+        otherCustomers.add(new Customers ("Pam"));
+        other.setCustomers(otherCustomers);
         assertFalse(tickets.equals(other));
     }
 
