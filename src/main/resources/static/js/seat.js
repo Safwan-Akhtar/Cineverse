@@ -1,11 +1,40 @@
+function checkNumberSeats() {
+  console.log("checkNumberSeats() triggered");
+  let adultSeats = document.getElementById("adult").value;
+  let childSeats = document.getElementById("child").value;
+  let studentSeats = document.getElementById("student").value;
 
-// we want to know number of seats selected
-// we want the id's of the seats selected
+  let totalSeats = adultSeats + childSeats + studentSeats;
+  console.log(totalSeats);
+  if (active.length === totalSeats) {
+    let type = ``;
+    for (let i = 0; i < adultSeats; i++){
+      type += `adult,`;
+      console.log(type);
+    }
+    for (let i = 0; i < childSeats; i++){
+      type += `child,`;
+      console.log(type);
+    }
+    for (let i = 0; i < studentSeats; i++){
+      type += `student,`;
+      console.log(type);
+    }
+    console.log(type);
+  } else {
+    console.log("Number of seats selected doesn't match!");
+  }
+}
+
+
   function getSeatValue() {
-    console.log("getSeatValue() triggered")
+
+    console.log("getSeatValue() triggered");
 
     let allSeats = document.getElementsByClassName("seat");
     let active = document.getElementsByClassName("seat active");
+
+    checkNumberSeats();
 
     console.log(active); // HTML Collection []
     console.log(active.length); // total seats selected
