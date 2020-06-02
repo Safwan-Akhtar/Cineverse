@@ -1,13 +1,13 @@
 
   let inactive = document.getElementsByClassName(".cinema-seats .seat").length;
   inactive.valueOf();
-  console.log(inactive);
-  console.log(inactive.valueOf());
+  console.log(inactive); //0
+  console.log(inactive.valueOf()); //0
 
   let active = document.getElementsByClassName(".cinema-seats .seat active").length;
   active.valueOf()
-  console.log(active)
-  console.log(active.valueOf());
+  console.log(active) //0
+  console.log(active.valueOf()); //0
 
 
   function getSeatValue() {
@@ -33,9 +33,7 @@
 
   }
 
-  let countSeats = document.querySelector('countSeats');
   let countSeatsHash = document.querySelector('#countSeats');
   console.log(countSeatsHash);
-  console.log(countSeats);
-  countSeats.addEventListener('click', getSeatValue);
+  countSeatsHash.addEventListener('click', getSeatValue);
 
