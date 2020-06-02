@@ -100,13 +100,4 @@ public class ScreeningsControllerUnitTest {
         assertFalse("No screenings found", this.screeningController.readScreeningsByName(name).getBody().isEmpty());
         verify(service, times(1)).readScreeningsByName(name);
     }
-
-
-
-//    @GetMapping("/readScreeningsByName/{movieName}")
-//    public ResponseEntity<List<ScreeningsDTO>> readScreeningsByName(@PathVariable String movieName){
-//        return ResponseEntity.ok(this.service.readScreeningsByName (movieName));
-//    }
-
-
-}
+    }

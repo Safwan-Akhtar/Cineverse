@@ -40,6 +40,8 @@ public class ScreeningsServiceUnitTest {
 
     private final long id = 1L;
 
+    private final String name = "Mulan";
+
     private Screenings testScreeningsWithID;
 
     private ScreeningsDTO screeningsDTO;
@@ -57,7 +59,8 @@ public class ScreeningsServiceUnitTest {
         this.testScreenings = new Screenings (date, 1L, "deluxe", "Guardians of the Galaxy");
         this.screeningsList.add(testScreenings);
         this.testScreeningsWithID = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenNumber(), testScreenings.getScreenType(), testScreenings.getMovieName());
-        this.testScreeningsWithID.setScreeningsId (id);
+        this.testScreeningsWithID.setScreeningsId(id);
+        this.testScreeningsWithID.setMovieName(name);
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
     }
 
@@ -83,6 +86,14 @@ public class ScreeningsServiceUnitTest {
         when(this.mapper.map(testScreeningsWithID, ScreeningsDTO.class)).thenReturn(screeningsDTO);
         assertEquals(this.service.findScreeningsById (this.id), screeningsDTO);
         verify(repository, times(1)).findById(id);
+    }
+
+    @Test
+    public void findScreeningsByNameTest(){
+        when(repository.findByMovieName(name)).thenReturn(this.screeningsList);
+        when(this.mapper.map(testScreeningsWithID, ScreeningsDTO.class)).thenReturn(screeningsDTO);
+        assertFalse("Service returned no Screenings", this.service.readScreeningsByName(name).isEmpty());
+        verify(repository, times(1)).findByMovieName(name);
     }
 
     @Test
