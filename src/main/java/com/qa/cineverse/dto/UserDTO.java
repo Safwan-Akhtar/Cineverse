@@ -16,10 +16,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class UserDTO implements UserDetails {
 
-
+    @Setter
     private String username;
-
+    @Setter
     private String password;
+    @Setter
     private String matchingPassword;
     @Setter @Getter
     private String forename;
@@ -27,7 +28,7 @@ public class UserDTO implements UserDetails {
     private String surname;
     @Setter @Getter
     private String email;
-
+    @Setter
     private boolean active;
 
     private List<GrantedAuthority> authorities;

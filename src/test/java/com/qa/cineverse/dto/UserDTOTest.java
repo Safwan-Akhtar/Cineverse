@@ -53,7 +53,7 @@ public class UserDTOTest {
     }
 
     @Test
-    public void userDTOSurnameNullButOtherForenameNotNull() {
+    public void userDTOSurnameNullButOtherSurnameNotNull() {
         userDTO.setSurname(null);
         assertFalse(userDTO.equals(other));
     }
@@ -63,6 +63,68 @@ public class UserDTOTest {
         userDTO.setSurname("Chris");
         assertFalse(userDTO.equals(other));
     }
+
+    @Test
+    public void userDTOUsernameNullButOtherUsernameNotNull() {
+        userDTO.setUsername(null);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOUsernameNotEqual() {
+        userDTO.setUsername("Dudeman");
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOPasswordNullButOtherPasswordNotNull() {
+        userDTO.setPassword(null);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOPasswordNotEqual() {
+        userDTO.setPassword("root");
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOMatchingPasswordNullButOtherPasswordNotNull() {
+        userDTO.setMatchingPassword(null);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOMatchingPasswordNotEqual() {
+        userDTO.setPassword("root");
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOActiveNullButOtherActiveNotNull() {
+        userDTO.setActive(true);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOActiveNotEqual() {
+        userDTO.setActive(true);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOEmailNullButOtherEmailNotNull() {
+        userDTO.setEmail(null);
+        assertFalse(userDTO.equals(other));
+    }
+
+    @Test
+    public void userDTOEmailNotEqual() {
+        userDTO.setEmail("test@aol.com");
+        assertFalse(userDTO.equals(other));
+    }
+
+
 
 
 }
