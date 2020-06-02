@@ -10,7 +10,6 @@ let configGet = {
     let movieTitle = document.getElementById("movieTitle").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
-// add a show seating plan if deluxe / or standard
         let movieDateTime = response.data[0].movieDateTime;
         let movieDate = movieDateTime.substring(0,10)
         let movieTime = movieDateTime.substring(11,16)
@@ -47,6 +46,33 @@ let configGet = {
 };
 
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
+
+// currently not functional?
+const showSeatingPlan = () => {
+
+    console.log("change to screeningTime detected");
+    let screenType = document.getElementById("screeningTime");
+    let standardPlan = document.getElementById("standardSeatPlan");
+    let deluxePlan = document.getElementById("deluxeSeatPlan");
+    let screenPlanType = document.getElementById("screenPlanType");
+    console.log(screenType);
+    console.log(screenType.getText());
+    console.log(screenType.value.getText());
+    if (screenType.value.getText().endsWith("standard")) {
+        screenPlanType.textContent = "Choose your seats...";
+        standardPlan.style.display = "block";
+        deluxePlan.style.display = "none";
+    } else if (screenType.value.getText().endsWith("deluxe")){
+        screenPlanType.textContent = "Choose your seats...";
+        standardPlan.style.display = "none";
+        deluxePlan.style.display = "block";
+    } else {
+        screenPlanType.textContent = "Select a time to choose your seats...";
+    }
+}
+
+document.getElementById("screeningTime").addEventListener('change', showSeatingPlan);
+
 
 const postBooking = () => {
     let customername = document.getElementById("customername").value;
