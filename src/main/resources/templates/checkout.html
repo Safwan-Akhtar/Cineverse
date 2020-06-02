@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<head>
-  <title>Checkout</title>
-  <style>
-    body {
-      font-family: 'arial';
-    }
-    #checkout-form input,
-    #checkout-form button {
-      display: block;
-      margin: 12px;
-    }
-  </style>
-</head>
-<body>
-<form action='/charge' method='POST' id='checkout-form'>
-  <input type='hidden' th:value='${amount}' name='amount' />
-  <label>Price:<span th:text='${amount/100}' /></label>
-  <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
-  <script
-          src='https://checkout.stripe.com/checkout.js'
-          class='stripe-button'
-          th:attr='data-key=${stripePublicKey},
-                         data-amount=${amount},
-                         data-currency=${currency}'
-          data-name='Baeldung'
-          data-description='Spring course checkout'
-          data-image='http://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'
-          data-locale='auto'
-          data-zip-code='false'>
-  </script>
-</form>
-</body>
+
+  <head>
+    <title>Checkout</title>
+    <style>
+      body {
+        font-family: 'arial';
+      }
+      #checkout-form input,
+      #checkout-form button {
+        display: block;
+        margin: 12px;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  </head>
+
+  <body>
+    <form action='/charge' method='POST' id='checkout-form' class="container">
+      <input type='hidden' th:value='${amount}' name='amount' />
+      <label class="display-4 jumbotron bg-dark text-white" >Total: £<span th:text='${amount/100}' /></label>
+      <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+      <script
+              src='https://checkout.stripe.com/checkout.js'
+              class='stripe-button'
+              th:attr='data-key=${stripePublicKey},
+                             data-amount=${amount},
+                             data-currency=${currency}'
+              data-name='Cineverse'
+              data-description='Checkout'
+              data-image='img/qalogo.jpg'
+              data-locale='auto'
+              data-zip-code='false'>
+      </script>
+    </form>
+  </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </html>
