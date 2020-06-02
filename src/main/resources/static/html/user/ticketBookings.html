@@ -75,7 +75,7 @@
         <fieldset>
             <ul>
                 <li>
-                    <Label for="name">Buyer name :</Label>
+                    <Label for="customername">Buyer name :</Label>
                     <input id="customername" name="customername" type="text">
                 </li>
                 <li>
@@ -90,36 +90,33 @@
                     </select>
                 </li>
                 <li>
-                    <label for="screenDateList">Screening Date</label>
+                    <label for="screeningDate">Screening Date</label>
                     <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
                         <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
                     </select>
                 </li>
                 <li>
-                    <label for="screenTimeList">Screening Time</label>
+                    <label for="screeningTime">Screening Time</label>
                     <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
                         <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
                     </select>
                 </li>
                 <li class="back">
-                    <label for="seats">Adult Seats</label>
+                    <label for="adult">Adult Seats</label>
                         <input type="number" id="adult" name="adult" value="0" min="0" max="20">
                 </li>
                 <li class="back">
-                    <label for="seats">Child Seats</label>
+                    <label for="child">Child Seats</label>
                     <input type="number" id="child" name="child" value="0" min="0" max="20">
                 </li>
-                <li>
-                    <label for="seats">Student Seats</label>
+                <li> <!-- Student should be changed to concession -->
+                    <label for="student">Student Seats</label>
                     <input type="number" id="student" name="student" value="0" min="0" max="20">
                 </li>
             </ul>
-            <div>
-                <p class="screenTimeList">Screen List</p>
-                <ul id="timeList" class="screenTimeList">
-                </ul>  
-             </div>
-<!-- iframe for choosing a seat add to style=display: none-->
+
+            <p id="screenPlanType">Select a time to choose your seats...</p>
+<!-- iframe for choosing a seat add to style=display: none; -->
              <iframe id="standardSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="standardSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>
             <iframe id="deluxeSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="deluxeSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>
 
