@@ -36,6 +36,10 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+input.img-thumbnail{
+    background: transparent;
+    border: transparent;
+}
 
 nav {
     /* adds gap between nav bar and jumbotron */
