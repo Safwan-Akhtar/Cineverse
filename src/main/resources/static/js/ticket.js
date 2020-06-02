@@ -10,7 +10,7 @@ let configGet = {
     let movieTitle = document.getElementById("movieTitle").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
-        let movieSelected = response.data[0].movieName;
+// add a show seating plan if deluxe / or standard
         let movieDateTime = response.data[0].movieDateTime;
         let movieDate = movieDateTime.substring(0,10)
         let movieTime = movieDateTime.substring(11,16)
