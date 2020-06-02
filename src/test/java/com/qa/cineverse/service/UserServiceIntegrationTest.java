@@ -1,10 +1,7 @@
 package com.qa.cineverse.service;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.UserDTO;
-import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.junit.Before;
 import org.junit.Ignore;
