@@ -1,10 +1,11 @@
 function checkNumberSeats() {
   console.log("checkNumberSeats() triggered");
-  let adultSeats = document.getElementById("adult").value;
-  let childSeats = document.getElementById("child").value;
-  let studentSeats = document.getElementById("student").value;
+  let adultSeats = document.getElementById("adult").valueAsNumber;
+  let childSeats = document.getElementById("child").valueAsNumber;
+  let studentSeats = document.getElementById("student").valueAsNumber;
+  let active = document.getElementsByClassName("seat active");
 
-  let totalSeats = adultSeats + childSeats + studentSeats;
+  let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
   console.log(totalSeats);
   if (active.length === totalSeats) {
     let type = ``;
