@@ -54,7 +54,7 @@ public class UserService implements IUserService, UserDetailsService {
         user.setMatchingPassword(userDTO.getMatchingPassword());
         user.setActive(userDTO.isEnabled ());
         user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER"); //Doesn't work
+        user.setRoles("ROLE_USER");
         return this.mapToDTO(this.repository.save(user));
     }
 
