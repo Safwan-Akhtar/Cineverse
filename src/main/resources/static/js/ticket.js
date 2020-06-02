@@ -48,7 +48,7 @@ let configGet = {
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
 // currently not functional?
-const showSeatingPlan = () => {
+function showSeatingPlan() {
 
     console.log("change to screeningTime detected");
     let screenType = document.getElementById("screeningTime");
