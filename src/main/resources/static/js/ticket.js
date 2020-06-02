@@ -10,23 +10,27 @@ let configGet = {
     let movieTitle = document.getElementById("movieTitle").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
+        
         let movieSelected = response.data[0].movieName;
         let movieDateTime = response.data[0].movieDateTime;
-        let movieDate = movieDateTime.substring(0,10)
-        let movieTime = movieDateTime.substring(11,16)
+        let movieDate = movieDateTime.substring(0,10);
+        let movieTime = movieDateTime.substring(11,16);
 
-        screeningsJson = response.data
+        screeningsJson = response.data;
         screeningsCount = Object.keys(screeningsJson).length;
 
+
+        let nodeDate;
+        let nodeTime;
         for (let i = 0; i < screeningsCount; i++) {
             //date
-            let nodeDate = document.createElement("OPTION");
+            nodeDate = document.createElement("OPTION");
             nodeDate.classList.add("screenDateList");
             let textnodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
             nodeDate.appendChild(textnodeDate);
             document.getElementById("dateList").appendChild(nodeDate);
             //time
-            let nodeTime = document.createElement("OPTION");
+            nodeTime = document.createElement("OPTION");
             nodeTime.classList.add("screenTimeList");
             let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
             nodeTime.appendChild(textnodeTime);

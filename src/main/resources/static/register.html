@@ -10,131 +10,79 @@ color:#000;
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script th:src="@{/resources/pwstrength.js}"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
-<title th:utext="#{label.form.title}">form</title>
 </head>
 <body>
     <div class="container">
         <div >
-            <h1 th:utext="#{label.form.title}">form</h1>
+            <h1>Register Account</h1>
             <br/>
-            <form action="/" method="POST" enctype="utf8" >
-                <div class="form-group row" >
-                    <label class="col-sm-3" th:utext="#{label.user.firstName}">first</label>
-                    <span class="col-sm-5"><input class="form-control" name="firstName" value="" required="required"/></span>
-                    <span id="firstNameError" class="alert alert-danger col-sm-4" style="display:none"></span>
-                    
+            <form>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationServer01">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
+                    <div class="valid-feedback">
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Last name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
+                    <div class="valid-feedback">
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationServerUsername">Username</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend3"></span>
+                      </div>
+                      <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+                      <div class="invalid-feedback">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3" th:utext="#{label.user.lastName}">last</label>
-                    <span class="col-sm-5"><input class="form-control" name="lastName" value="" required="required"/></span>
-                    <span id="lastNameError" class="alert alert-danger col-sm-4" style="display:none"></span>
-                    
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationServer03">Email</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Example@email.com" required>
+                    <div class="invalid-feedback">
+                      Please provide a valid email (we will not share your details with anyone).
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationServer04">State</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="" required>
+                    <div class="invalid-feedback">
+                      Password
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationServer05">Zip</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="" required>
+                    <div class="invalid-feedback">
+                      Repeat Password
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3" th:utext="#{label.user.email}">email</label>
-                    <span class="col-sm-5"><input type="email" class="form-control" name="email" value="" required="required"/></span>                    
-                    <span id="emailError" class="alert alert-danger col-sm-4" style="display:none"></span>
-                    
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                      Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3" th:utext="#{label.user.password}">password</label>
-                    <span class="col-sm-5"><input id="password" class="form-control" name="password" value="" type="password" required="required"/></span>
-                    <span id="passwordError" class="alert alert-danger col-sm-4" style="display:none"></span>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3" th:utext="#{label.user.confirmPass}">confirm</label>
-                    <span class="col-sm-5"><input id="matchPassword" class="form-control" name="matchingPassword" value="" type="password" required="required"/></span>
-                    <span id="globalError" class="alert alert-danger col-sm-4" style="display:none"></span>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3" th:utext="#{label.user.2fa}">Use Two Step Verification</label>
-                    <span class="col-sm-5"><input type="checkbox" name="using2FA" value="true"/></span>
-                </div>
-                <br/>
-                <button type="submit" class="btn btn-primary" th:utext="#{label.form.submit}">submit</button>
-            </form>
+                <button class="btn btn-primary" type="submit" id="registerButton">Submit form</button>
+                <script src="../../js/register.js"></script>
+              </form>
             <br/> 
             <a th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
         </div>
     </div>
-
-<script th:inline="javascript">
-var serverContext = [[@{/}]];
-
-$(document).ready(function () {
-	$('form').submit(function(event) {
-		register(event);
-	});
-	
-	$(":password").keyup(function(){
-		if($("#password").val() != $("#matchPassword").val()){
-	        $("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
-	    }else{
-	    	$("#globalError").html("").hide();
-	    }
-	});
-	
-	options = {
-		    common: {minChar:8},
-		    ui: {
-		    	showVerdictsInsideProgressBar:true,
-		    	showErrors:true,
-		    	errorMessages:{
-		    		  wordLength: /*[[#{error.wordLength}]]*/,
-		    		  wordNotEmail: /*[[#{error.wordNotEmail}]]*/,
-		    		  wordSequences: /*[[#{error.wordSequences}]]*/,
-		    		  wordLowercase: /*[[#{error.wordLowercase}]]*/,
-		    		  wordUppercase: /*[[#{error.wordUppercase}]]*/,
-		    	          wordOneNumber: /*[[#{error.wordOneNumber}]]*/,
-		    		  wordOneSpecialChar: /*[[#{error.wordOneSpecialChar}]]*/
-		    		}
-		    	}
-		};
-	 $('#password').pwstrength(options);
-});
-
-function register(event){
-	event.preventDefault();
-    $(".alert").html("").hide();
-    $(".error-list").html("");
-    if($("#password").val() != $("#matchPassword").val()){
-    	$("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
-    	return;
-    }
-    var formData= $('form').serialize();
-    $.post(serverContext + "user/registration",formData ,function(data){
-        if(data.message == "success"){
-            window.location.href = serverContext + "successRegister.html";
-        }
-        
-    })
-    .fail(function(data) {
-        if(data.responseJSON.error.indexOf("MailError") > -1)
-        {
-            window.location.href = serverContext + "emailError.html";
-        }
-        else if(data.responseJSON.error == "UserAlreadyExist"){
-            $("#emailError").show().html(data.responseJSON.message);
-        }
-        else if(data.responseJSON.error.indexOf("InternalError") > -1){
-            window.location.href = serverContext + "login?message=" + data.responseJSON.message;
-        }
-        else{
-        	var errors = $.parseJSON(data.responseJSON.message);
-            $.each( errors, function( index,item ){
-            	if (item.field){
-            		$("#"+item.field+"Error").show().append(item.defaultMessage+"<br/>");
-            	}
-            	else {
-            		$("#globalError").show().append(item.defaultMessage+"<br/>");
-            	}
-               
-            });
-        }
-    });
-}
-
-</script>
 </body>
 
 </html>
