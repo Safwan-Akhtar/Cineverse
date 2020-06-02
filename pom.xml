@@ -20,11 +20,6 @@
 
     <javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
     <javax.el.version>2.2</javax.el.version>
-    <property name="hibernateProperties">
-      <props>
-        <prop key="javax.persistence.validation.factory">validator</prop>
-      </props>
-    </property>
   </properties>
 
   <parent>
