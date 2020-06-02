@@ -43,11 +43,13 @@ MVP: A functional ‘front-end’ web app (and integrated APIs) which connects t
 
 </details>
 
-Kanban Board for QA Project: [github boards](https://github.com/CarolineS-QA/hwa-game-time-log/projects/1)
 
-Presentation about the project: [on google slides](https://docs.google.com/presentation/d/1wznZu-mg9XHuvzp51Q3ZPYwYu3qjcSRW8Uu_N3bzJ_g/edit?usp=sharing)
+Kanban Board for QA Project: using Jira software.
 
-Please see the `docs` folder for the other documentation that is not linked in the 'design' column of the Kanban Board.
+Presentation about the project: [on google slides](https://docs.google.com/presentation/d/119-IZiVRVzC61cojHj9Mfl1r9C4oldZ9N1gdkUqk3Ec/edit?usp=sharing)
+
+Please see the `docs` folder for the other documentation.
+
 
 **[Back to top](#table-of-contents)**
 
@@ -132,11 +134,13 @@ How to build my project:
 
 As a Spring app, running the jar with `java -jar FileName.jar` won't work (at least not without some config).
 
-Note: If my GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser or my shortcut provided in this repo, to reach the home page of the web interface. The app will run until you trigger the `/shutdownAppContext` API call (click the red button on the home page).
+
+Note: If the GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser, to reach the home page of the web interface. The app will run until you trigger the `/shutdownAppContext` API call (click the red button on the home page).
 
 ### Running the tests
 
-The easiest way to run all my existing tests is to right click on `test/java/com.qa.hwq` in your IDE and select `Run tests in 'com.qa.hwa'` or `Run tests in 'com.qa.hwa' with Coverage`
+The easiest way to run all our existing tests is to right click on `test/java/com.qa.hwq` in your IDE and select `Run tests in 'com.qa.hwa'` or `Run tests in 'com.qa.hwa' with Coverage`
+
 
 ![Run All Tests](https://i.imgur.com/0YNyoqs.png)
 
@@ -194,9 +198,11 @@ In IntelliJ, as you write tests annotated with @Test, it gives you the option to
 #### User acceptance Tests (with Selenium)
 Selenium uses the `chromedriver.exe` included in this repository to run automated tests mocking use of the front-end. I have included the `extent-report.xml` and dependencies required to get easy to read test reports in the form of html files.
 
-Checkout my `selenium-tests` branch for examples of the tests in this project - it's not included in the master because it doesn't agree with Jenkins just yet...
 
-Or take a look at my [selenium-testing](https://github.com/CarolineS-QA/selenium-testing) repo which has other examples.
+There are examples of the tests in this project. You can run them like you would run unit tests.
+
+Or take a look at this [selenium-testing](https://github.com/CarolineS-QA/selenium-testing) repo which has other examples.
+
 
 #### Static analysis
 Sonarqube is used for static analysis. I used it to see how well my code conformed to an industry standard, the amount of coverage for my tests, and also highlighting bugs and security warnings.
@@ -322,11 +328,12 @@ Spring:
 **[Back to top](#table-of-contents)**
 ## Contributing
 
-Currently not accepting contributions due to the nature of this project being part of my Academy training. However, after June 8th 2020 I will be open to contributions.
+
+Currently not accepting contributions due to the nature of this project being part of our Academy training. However, after June 8th 2020 we may be open to contributions.
 
 Please review [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details on our code of conduct and development process (this is currently in development).
 
-**[Back to top](#table-of-contents)**
+
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
@@ -345,13 +352,13 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 ## Acknowledgements
 
 * Savannah [[savannahvaith](https://github.com/savannahvaith)]
-for my JavaScript training.
+for our JavaScript training.
 * Jordan [[JHarry444](https://github.com/JHarry444)]
 for his help with Spring during the project.
 * Tadas [[tvaidotas](https://github.com/tvaidotas)]
 for his initial introduction of Spring and Selenium testing.
 * Nick [[nickstewarttds](https://github.com/nickrstewarttds)]
-as my main trainer and moral support.
+as our main trainer and moral support.
 * Embedded Artistry [[embeddedartistry](https://github.com/embeddedartistry)] for their documentation templates [embedded-resources/docs](https://github.com/embeddedartistry/embedded-resources/tree/master/docs)
 
 
