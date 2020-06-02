@@ -26,6 +26,8 @@
   }
 
   let countSeats = document.querySelector('countSeats');
+  let countSeatsHash = document.querySelector('#countSeats');
+  console.log(countSeatsHash);
   console.log(countSeats);
   countSeats.addEventListener('click', getSeatValue);
 
