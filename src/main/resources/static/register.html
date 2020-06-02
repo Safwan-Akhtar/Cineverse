@@ -56,14 +56,14 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control is-invalid" id="password" placeholder="" required>
+                        <input type="password" class="form-control is-invalid" id="password" placeholder="" minlength="8" minlength="128" required>
                         <div class="invalid-feedback">
                         Password
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="passwordMatch">Repeat Password</label>
-                        <input type="text" class="form-control is-invalid" id="passwordMatch" placeholder="" required>
+                        <input type="password" class="form-control is-invalid" id="passwordMatch" oninput="check(this)" placeholder="" minlength="8" minlength="128" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
