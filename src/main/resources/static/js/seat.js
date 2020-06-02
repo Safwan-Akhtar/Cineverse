@@ -1,11 +1,13 @@
 
-  var inactive = document.getElementsByClassName(".cinema-seats .seat").length;
-  inactive.valueOf()
-  console.log(inactive)
+  let inactive = document.getElementsByClassName(".cinema-seats .seat").length;
+  inactive.valueOf();
+  console.log(inactive);
+  console.log(inactive.valueOf());
 
-  var active = document.getElementsByClassName(".cinema-seats .seat active").length;
+  let active = document.getElementsByClassName(".cinema-seats .seat active").length;
   active.valueOf()
   console.log(active)
+  console.log(active.valueOf());
 
 
   function getSeatValue() {
@@ -14,10 +16,16 @@
     let count = 0;
     console.log(element);
 
+    // we want to know number of seats selected
+    // we want the id's of the seats selected
+
+
     array.forEach(element => {
       if (element.className === ".cinema-seats .seat active") {
         count++;
         console.log(count);
+        let seatNo = element.id;
+        console.log(seatNo);
       } else {
         //do nothing
       }
