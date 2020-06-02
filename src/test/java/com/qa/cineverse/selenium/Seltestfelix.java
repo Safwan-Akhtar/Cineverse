@@ -8,11 +8,18 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -21,21 +28,77 @@ import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class Seltestfelix {
 
-//public class Seltestfelix {
-//    WebDriver driver;
-//    ExtentReports report;
-//    ExtentTest test;
+    @LocalServerPort
+    private int port;
+    private ExtentReports report;
+    private WebDriver driver;
+    ExtentTest test;
+
+    @Before
+    public void init() {
+        System.setProperty("webdriver.home.driver", "chromedriver");
+        ChromeOptions opts = new ChromeOptions();
+        this.driver = new ChromeDriver();
+
+        report = new ExtentReports(
+                System.getProperty("user.dir") + "/test-output/Report.html",
+                true
+        );
+        report
+                .addSystemInfo("Host Name", "QA")
+                .addSystemInfo("Tester", "Felix");
+        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
+    }
+
+    @Test
+    public void test1() throws InterruptedException {
+        test = report.startTest("Verifying the title of QA website");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigating to the QA website");
+        assertEquals(driver.getTitle(), "Virtual and online classes in technology, project management and leadership | QA");
+        test.log(LogStatus.PASS, "The title was exactly the same");
+        sleep(4000);
+
+    }
+
+    @After
+    public void tearDown() {
+        this.driver.quit();
+    }
+}
+
+//        WebElement name = driver.findElement(By.id("createName"));
+//        name.sendKeys("Donald");
+//        WebElement colour = driver.findElement(By.id("createColour"));
+//        colour.sendKeys("White");
+//        WebElement habitat = driver.findElement(By.id("createHabitat"));
+//        habitat.sendKeys("Donald");
+//
+//        WebElement button = driver.findElement(By.id("createButton"));
+//        button.click();
+//
+//        WebElement output = driver.findElement(By.id("createOutput"));
+//
+//        assertFalse(output.getText().isBlank());
+//    }
 //
 //
 
-
-
-
-
-
-
-
+//
+//}
+//
+//
+//
+//
+//
+//
+//
 //    @BeforeTest
 //    public void startReport(){
 //        report = new ExtentReports(
