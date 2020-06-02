@@ -23,7 +23,7 @@ function checkNumberSeats() {
     }
     console.log(type);
   } else {
-    console.log("Number of seats selected doesn't match!");
+    console.log("Nah bra. Number of seats selected doesn't match!");
   }
 }
 
