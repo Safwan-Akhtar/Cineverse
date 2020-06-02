@@ -9,25 +9,24 @@ const registerUser = () => {
 
     axios({
         method: 'post',
-        url: 'http://localhost:8181/createAbilities',
+        url: 'http://localhost:8181/createUser',
         data: `{
-            "username" : ""${username}",
-            "password" : ""${password}",
-            "matchingPassword" : ""${passwordMatch}",
+            "username" : "${username}",
+            "password" : "${password}",
+            "matchingPassword" : "${passwordMatch}",
             "roles" : "ROLE_USER",
             "active" : "true",
-            "email" : ""${email}",
-            "forename" : ""${forename}",
-            "surname" : ""${surname}"
+            "email" : "${email}",
+            "forename" : "${forename}",
+            "surname" : "${surname}"
         }`,
         headers: {'Content-Type': 'application/json' }
         })
         .then(function (response) {
-            console.log(newId);
+            console.log(response);
         })
         .catch(function (response) {
             console.log(response);
-
         }); 
 }
 

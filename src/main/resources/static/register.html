@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-<style>
-.password-verdict{
-color:#000;
-}
-</style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script th:src="@{/resources/pwstrength.js}"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
-</head>
-<body>
-    <div class="container">
-        <div >
-            <h1>Register Account</h1>
-            <br/>
-            <form>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="forename">First name</label>
-                    <input type="text" class="form-control is-valid" id="forename" placeholder="First name" value="Mark" required>
-                    <div class="valid-feedback">
+    <head>
+        <title>Character Maker</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+        <style>
+        .password-verdict{
+        color:#000;
+        }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script th:src="@{/resources/pwstrength.js}"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+    </head>
+    <body>
+        <div class="container">
+            <div >
+                <h1>Register Account</h1>
+                <br/>
+                <form>
+                    <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="forename">First name</label>
+                        <input type="text" class="form-control is-valid" id="forename" placeholder="First name" value="" required>
+                        <div class="valid-feedback">
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="surname">Last name</label>
-                    <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" value="Otto" required>
-                    <div class="valid-feedback">
+                    <div class="col-md-4 mb-3">
+                        <label for="surname">Last name</label>
+                        <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" value="" required>
+                        <div class="valid-feedback">
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend3"></span>
-                      </div>
-                      <input type="text" class="form-control is-invalid" id="username" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
-                      <div class="invalid-feedback">
-                      </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3"></span>
+                        </div>
+                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+                        <div class="invalid-feedback">
+                        </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control is-invalid" id="email" placeholder="Example@email.com" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid email (we will not share your details with anyone).
                     </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="password">State</label>
-                    <input type="text" class="form-control is-invalid" id="password" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Password
+                    <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control is-invalid" id="email" placeholder="Example@email.com" required>
+                        <div class="invalid-feedback">
+                        Please provide a valid email (we will not share your details with anyone).
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="passwordMatch">Zip</label>
-                    <input type="text" class="form-control is-invalid" id="passwordMatch" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Repeat Password
+                    <div class="col-md-3 mb-3">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control is-invalid" id="password" placeholder="" required>
+                        <div class="invalid-feedback">
+                        Password
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="form-check">
-                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                    <label class="form-check-label" for="invalidCheck3">
-                      Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                      You must agree before submitting.
+                    <div class="col-md-3 mb-3">
+                        <label for="passwordMatch">Repeat Password</label>
+                        <input type="text" class="form-control is-invalid" id="passwordMatch" placeholder="" required>
+                        <div class="invalid-feedback">
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <button class="btn btn-primary" type="submit" id="registerButton">Submit form</button>
-                <script src="../../js/register.js"></script>
-              </form>
-            <br/> 
-            <a th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
+                    </div>
+                    <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                        <label class="form-check-label" for="invalidCheck3">
+                        Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                        You must agree before submitting.
+                        </div>
+                    </div>
+                    </div>
+                    <button class="btn btn-primary" type="button" id="registerButton">Submit form</button>
+                    <script src="../../js/register.js"></script>
+                </form>
+                <br/> 
+                <a th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

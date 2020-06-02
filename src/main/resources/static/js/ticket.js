@@ -13,7 +13,7 @@ let configGet = {
         
         let movieSelected = response.data[0].movieName;
         let movieDateTime = response.data[0].movieDateTime;
-        let movieDate = movieDateTime.substring(0,10);
+        let movieDate = movieDateTime.substring(0,10); 
         let movieTime = movieDateTime.substring(11,16);
 
         screeningsJson = response.data;
