@@ -6,16 +6,20 @@ import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.UserDTO;
 import com.qa.cineverse.repo.UserRepo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
@@ -66,5 +70,15 @@ public class UserServiceUnitTest {
         assertFalse("Service returned no Users", this.service.readUser().isEmpty());
         verify(repository, times(1)).findAll();
     }
+
+    @Ignore
+    @Test
+    public void createUserTest(){
+        when(repository.save(testUser)).thenReturn(testUserWithID);
+        when(this.mapper.map(testUserWithID, UserDTO.class)).thenReturn(userDTO);
+        assertEquals(this.service.createUser (userDTO), this.userDTO);
+        verify(repository, times(1)).save(this.testUser);
+    }
+
 
 }

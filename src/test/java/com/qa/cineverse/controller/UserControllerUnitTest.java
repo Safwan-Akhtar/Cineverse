@@ -77,6 +77,4 @@ public class UserControllerUnitTest {
         assertEquals(this.userController.createUser(userDTO), new ResponseEntity<UserDTO> (this.userDTO, HttpStatus.CREATED));
         verify(this.service, times(1)).createUser(userDTO);
     }
-
-
 }
