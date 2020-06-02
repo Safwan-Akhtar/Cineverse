@@ -35,7 +35,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 
-public class Seltestfel {
+public class Seltestfelix {
     WebDriver driver;
     ExtentReports report;
     ExtentTest test;
