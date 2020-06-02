@@ -11,10 +11,11 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 
 </head>
+
 <body>
-<!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="../../index.html" style="color:white">QA</a>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark topnav-centered">
+        <a id="logoNavButton" class="navbar-brand" href="../../index.html" style="color:white">QA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,28 +23,26 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../index.html" style="color:white">Home <span
+                    <a id="homeNavButton" class="nav-link" href="../../index.html" style="color:white">Home <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" style="color:white">
-                        Whats on
-                    </a>
+                    <a id="whatsOnNavButton" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">Whats
+                        on</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../listingsGallery.html">Current Listings</a>
-                        <a class="dropdown-item" href="#">Upcoming Releases</a>
+                        <a id="listingGalleryNavButton" class="dropdown-item" href="../listingsGallery.html">Current
+                            Listings</a>
+                        <a id="upcomingReleasesNavButton" class="dropdown-item" href="#">Upcoming Releases</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" style="color:white">
-                        Bookings
-                    </a>
+                        aria-haspopup="true" aria-expanded="false" style="color:white">Bookings</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="ticketBookings.html">Book
+                        <a id="ticketBookingNavButton" class="dropdown-item" href="../user/ticketBookings.html">Book
                             Tickets</a>
-                        <a class="dropdown-item" href="#">Book Screen</a>
+                        <a id="screenBookingNavButton" class="dropdown-item" href="#">Book Screen</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -52,128 +51,140 @@
                         Info
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../screens.html">Screens</a>
-                        <a class="dropdown-item" href="../openingtimes.html">Opening Times</a>
-                        <a class="dropdown-item" href="../classification.html">Classification</a>
+                        <a id="screensNavButton" class="dropdown-item" href="../screens.html">Screens</a>
+                        <a id="openingTimesNavButton" class="dropdown-item" href="../openingtimes.html">Opening
+                            Times</a>
+                        <a id="classificationNavButton" class="dropdown-item"
+                            href="../classification.html">Classification</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../comingHere.html" style="color:white">Getting here</a>
+                    <a id="comingHereNavButton" class="nav-link" href="../comingHere.html" style="color:white">Getting
+                        here</a>
+                </li>
+                <li class="right">
+                    <a id="loginContainerNavButton" class="nav-link" href="../user/loginContainer.html"
+                        style="color:white">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
-<!-- Start of main page content -->
-<header class="jumbotron bg-dark text-white">
-    <!--would like to centre jumbotron-->
-    <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
-    <h1 class="display-4">Ticket Bookings</h1>
-    <hr class="my-4">
-</header>
-<main>
-    <form id="ticket" class="back" method="GET" action="ticketBookings.html">
-        <fieldset>
-            <ul>
-                <li>
-                    <Label for="name">Buyer name :</Label>
-                    <input id="customername" name="customername" type="text">
-                </li>
-                <li>
-                    <label for="movieTitle">Select movie :</label>
-                    <select id="movieTitle" name="movieTitle">
-                        <option>Select</option>
-                        <option value="Mulan">Mulan</option>
-                        <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
-                        <option value="Avengers: Endgame">Avengers: Endgame</option>
-                        <option value="Frozen 2">Frozen 2</option>
-                        <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="screenDateList">Screening Date</label>
-                    <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
-                        <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
-                    </select>
-                </li>
-                <li>
-                    <label for="screenTimeList">Screening Time</label>
-                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
-                        <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
-                    </select>
-                </li>
-                <li class="back">
-                    <label for="seats">Adult Seats</label>
+    <!-- Start of main page content -->
+    <header class="jumbotron bg-dark text-white">
+        <!--would like to centre jumbotron-->
+        <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+        <h1 class="display-4">Ticket Bookings</h1>
+        <hr class="my-4">
+    </header>
+    <main>
+        <form id="ticket" class="back" method="GET" action="ticketBookings.html">
+            <fieldset>
+                <ul>
+                    <li>
+                        <Label for="name">Buyer name :</Label>
+                        <input id="customername" name="customername" type="text">
+                    </li>
+                    <li>
+                        <label for="movieTitle">Select movie :</label>
+                        <select id="movieTitle" name="movieTitle">
+                            <option>Select</option>
+                            <option value="Mulan">Mulan</option>
+                            <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
+                            <option value="Avengers: Endgame">Avengers: Endgame</option>
+                            <option value="Frozen 2">Frozen 2</option>
+                            <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden
+                                World</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="screenDateList">Screening Date</label>
+                        <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
+                            <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="screenTimeList">Screening Time</label>
+                        <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
+                            <option type="time" id="screeningTime" name="screeningTime" value="screeningTime"></option>
+                        </select>
+                    </li>
+                    <li class="back">
+                        <label for="seats">Adult Seats</label>
                         <input type="number" id="adult" name="adult" value="0" min="0" max="20">
-                </li>
-                <li class="back">
-                    <label for="seats">Child Seats</label>
-                    <input type="number" id="child" name="child" value="0" min="0" max="20">
-                </li>
-                <li>
-                    <label for="seats">Student Seats</label>
-                    <input type="number" id="student" name="student" value="0" min="0" max="20">
-                </li>
-            </ul>
-            <div>
-                <p class="screenTimeList">Screen List</p>
-                <ul id="timeList" class="screenTimeList">
-                </ul>  
-             </div>
-          
-             <iframe style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="seat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>
-  
+                    </li>
+                    <li class="back">
+                        <label for="seats">Child Seats</label>
+                        <input type="number" id="child" name="child" value="0" min="0" max="20">
+                    </li>
+                    <li>
+                        <label for="seats">Student Seats</label>
+                        <input type="number" id="student" name="student" value="0" min="0" max="20">
+                    </li>
+                </ul>
+                <div>
+                    <p class="screenTimeList">Screen List</p>
+                    <ul id="timeList" class="screenTimeList">
+                    </ul>
+                </div>
 
-        </fieldset>
-        <button id="postButton" type="button">Submit</button>
-        <button id="reset" type="reset">Reset</button>
-        <script src="../../js/ticket.js"></script>
-    </form>
-    <link rel="stylesheet" type="text/css" href="../../css/ticketBooking.css" />
+                <iframe style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="seat.html"
+                    width="500" height="500" scrolling="no">Iframes not supported</iframe>
 
-    
-</main>
-<!-- Footer -->
-<br><br><br><br>
-<footer class= "container-fluid footer">
-    <div class="row">
-        <div class="col">
-            <h5>About Cineverse</h5>
-            <ul class="footer__nav__list nav--about">
-                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
-                </li>
-                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
-                </li>
-            </ul>
+
+            </fieldset>
+            <button id="postButton" type="button">Submit</button>
+            <button id="reset" type="reset">Reset</button>
+            <script src="../../js/ticket.js"></script>
+        </form>
+        <link rel="stylesheet" type="text/css" href="../../css/ticketBooking.css" />
+
+
+    </main>
+    <!-- Footer -->
+    <br><br><br><br>
+    <footer class="container-fluid footer">
+        <div class="row">
+            <div class="col">
+                <h5>About Cineverse</h5>
+                <ul class="footer__nav__list nav--about">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Legal</h5>
+                <ul class="footer__nav__list nav--legal">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Social</h5>
+                <ul class="footer__nav__list nav--social">
+                    <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank"
+                            rel="noopener">Facebook</a>
+                    </li>
+                    <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
+                    </li>
+                    <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank"
+                            rel="noopener">Instagram</a>
+                    </li>
+                    <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank"
+                            rel="noopener">Youtube</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col">
-            <h5>Legal</h5>
-            <ul class="footer__nav__list nav--legal">
-                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
-                </li>
-                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
-                </li>
-                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col">
-            <h5>Social</h5>
-            <ul class="footer__nav__list nav--social">
-                <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank" rel="noopener">Facebook</a>
-                </li>
-                <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
-                </li>
-                <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank" rel="noopener">Instagram</a>
-                </li>
-                <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank" rel="noopener">Youtube</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <br>
-    <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
-    <br>
-</footer>
+        <br>
+        <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+        <br>
+    </footer>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -184,6 +195,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-  </body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
 </html>
