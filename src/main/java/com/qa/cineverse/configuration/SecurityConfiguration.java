@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -31,9 +32,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/index.html", false)
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher ("/logout"))
+                .logoutSuccessUrl("/login.html")
+                .invalidateHttpSession(true)        // set invalidation state when logout
+                .deleteCookies("JSESSIONID")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/403")
                 .and().csrf().disable()
                 .headers().frameOptions().disable();
     }
+
+
 
     @Bean
     public PasswordEncoder getPasswordEncoder() { return NoOpPasswordEncoder.getInstance (); }  /// Need to change to actual encoder

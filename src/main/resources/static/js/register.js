@@ -1,19 +1,3 @@
-
-function check(input) {
-    let valid = document.getElementsByClassName("input:valid")
-    if (valid.length === 6) {
-
-        if (input.value !== document.getElementById('password').value) {
-            input.setCustomValidity('Password Must be Matching.');
-            return "match";
-        } else {
-            // input is valid -- reset the error message
-            input.setCustomValidity('');
-            return "mismatch";
-        }
-    }
-}
-
 function checkForm(form)
 {
     if(form.username.value == "") {
