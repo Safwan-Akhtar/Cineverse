@@ -39,14 +39,7 @@ let configGet = {
             nodeTime.appendChild(textNodeTime);
             document.getElementById("timeList").appendChild(nodeTime);
         }
-
         console.log(response);
-
-        // var dateControl = document.querySelector('input[type="date"]');
-        // dateControl.value = movieDate;
-        //
-        // var timeControl = document.querySelector('input[type="time"]');
-        // timeControl.value = movieTime;
     })    
     .catch(function (error) {
         console.log(error);
@@ -77,8 +70,8 @@ function showSeatingPlan() {
 document.getElementById("timeList").addEventListener('change', showSeatingPlan)
 
 // build string separated by ,
-let type = ``;
-let seat = ``;
+let type;
+let seat;
 
 // if total number of seats inputted matches selected, returns string array of types - otherwise defaults all to adult
 function getSeatTypes(activeArr) {
@@ -90,6 +83,8 @@ function getSeatTypes(activeArr) {
     let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
     console.log(`Total seats inputted = ${totalSeats}`);
 
+    //resets typeList if changing seats
+    type = ``;
     if (activeArr.length === totalSeats) {
 
         for (let i = 0; i < adultSeats; i++){
@@ -117,6 +112,9 @@ function getSeatTypes(activeArr) {
 function getSeatIds(activeArr) {
     console.log("getSeatIds() triggered");
     console.log(`Total seats selected = ${activeArr.length}`);
+
+    //resets seatIdList if changing seats
+    seat = ``;
 
     for (let i = 0; i < activeArr.length; i++){
         seat += `${activeArr[i].id},`;
@@ -150,6 +148,8 @@ const postBooking = () => {
     // type and seat are built outside this function
     let typesArr = type.split(",");
     let seatArr = seat.split(",");
+    console.log(typesArr);
+    console.log(seatArr);
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         
@@ -166,15 +166,16 @@ const postBooking = () => {
         })
         .then(function (response) {
             console.log(response);
+            console.log(`screeningId = ${foundId}`);
             let customersJson = response.data.customers;
             let customersCount = Object.keys(customersJson).length;
-            console.log(customersCount);
+            console.log(`Customers count = ${customersCount}`);
             axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
             .then(function (response) {
                     console.log(`the response from get customer by customer count`);
-                    console.log(response);
-                    let lastCustomerId = response.customersId;
-                    console.log(lastCustomerId);
+                    console.log(response.data);
+                    let lastCustomerId = response.data.customersId;
+                    console.log(`Last customerId = ${lastCustomerId}`);
                 for (let i = 0; i < typesArr.length; i++){
                     axios({
                         method: 'patch',
@@ -188,9 +189,6 @@ const postBooking = () => {
                     })
                 }
             })
-                .then(function (response) {
-                    console.log(response);
-                })
                 .catch(function (response) {
                 console.log(response);
                 });
@@ -203,10 +201,6 @@ const postBooking = () => {
         .catch(function (response) {
             console.log(response);
         });
-  //   })
-  //   .catch(function (error) {
-  //       console.log(error);
-  // });
 }
 let postButton = document.querySelector('#postButton');
 postButton.addEventListener('click', postBooking);
