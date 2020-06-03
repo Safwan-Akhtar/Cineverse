@@ -23,32 +23,6 @@ public class UserController {
         this.service = service;
     }
 
-
-
-    @GetMapping("currentUsername")
-    public String managersStatusCheck(Authentication authentication) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return user.getUsername();
-    }
-
-
-//    public ModelAndView registerUserAccount(
-//            @ModelAttribute("user") @Valid UserDTO userDTO,
-//            HttpServletRequest request, Errors errors) {
-//
-//    }
-
-//    @PostMapping("/registerNewUserAccount")
-//    public ResponseEntity<UserDTO> registerNewUserAccount(@RequestBody User accountDTO) throws EmailExistsException {
-//        return new ResponseEntity<User> (this.service.registerNewUserAccount (accountDTO), HttpStatus.CREATED);
-//    }
-//
-//    @PostMapping("/registerNewUserAccount")
-//    public ResponseEntity<UserDTO> registerNewUserAccount(@RequestBody User accountDTO){
-//        return new ResponseEntity<>(this.service.registerNewUserAccount (accountDTO), HttpStatus.CREATED);
-//    }
-
-
     @GetMapping("/getAllUser")
     public ResponseEntity<List<UserDTO>> getAllUser(){
         return ResponseEntity.ok(this.service.readUser ());
