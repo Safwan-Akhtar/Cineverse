@@ -173,10 +173,11 @@ const postBooking = () => {
             console.log(`Customers count = ${customersCount}`);
             axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
             .then(function (response) {
-                    console.log(`the response from get customer by customer count`);
-                    console.log(response.data);
-                    let lastCustomerId = response.data.customersId;
-                    console.log(`Last customerId = ${lastCustomerId}`);
+                console.log(`the response from get customer by customer count`);
+                console.log(response.data);
+                let lastCustomerId = response.data.customersId;
+                console.log(`Last customerId = ${lastCustomerId}`);
+
                 for (let i = 0; i < (typesArr.length-1); i++){
                     axios({
                         method: 'patch',
@@ -189,6 +190,9 @@ const postBooking = () => {
                         responseType: 'json'
                     })
                 }
+                //success!
+                window.alert("Your tickets have been booked!");
+                //add a redirect window.location.replace("page.html");
             })
                 .catch(function (response) {
                 console.log(response);
