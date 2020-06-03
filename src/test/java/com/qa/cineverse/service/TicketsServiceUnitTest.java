@@ -47,9 +47,9 @@ public class TicketsServiceUnitTest {
     @Before
     public void setUp(){
         this.ticketsList = new ArrayList<> ();
-        this.testTickets = new Tickets ("A1", "deluxe");
+        this.testTickets = new Tickets ("A1", "deluxe", 1L, 1L);
         this.ticketsList.add(testTickets);
-        this.testTicketsWithID = new Tickets (testTickets.getTicketType(), testTickets.getSeatNo());
+        this.testTicketsWithID = new Tickets (testTickets.getTicketType(), testTickets.getSeatNo(), testTickets.getScreenId(), testTickets.getUserId());
         this.testTicketsWithID.setTicketsId (id);
         this.ticketsDTO = this.mapToDTO(testTicketsWithID);
     }
