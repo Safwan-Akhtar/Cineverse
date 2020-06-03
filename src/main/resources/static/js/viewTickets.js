@@ -3,11 +3,12 @@ let configGet = {
     responseType: 'json'
 };
 
-let id = document.getElementById("customerName").value;
-axios.get(`http://localhost:8181/getCustomerById/${id}`, configGet)
+let name = document.getElementById("customerName").value;
+axios.get(`http://localhost:8181/readCustomersByName/${name}`, configGet)
     .then(function (response) {
-        let ticketsArr = response.data.tickets;
+        let ticketsArr = response.data[0].tickets;
         console.log(response.data.tickets);
+        console.log(response.data[0].tickets);
         let screeningId = ticketsArr[0].screenId;
         axios.get(`http://localhost:8181/getScreeningById/${screeningId}`, configGet)
             .then(function (response) {
