@@ -72,7 +72,7 @@
     <header class="jumbotron bg-dark text-white">
         <!--would like to centre jumbotron-->
         <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
-        <h1 class="display-4">Experience our screens</h1>
+        <h1 id="screensTitle" class="display-4">Experience our screens</h1>
         <hr class="my-4">
     </header>
     <main>
@@ -85,7 +85,7 @@
                     <p class="card-text">We're not just a cinema. Our screens are perfect for conferences etc. etc.</p>
                 </div>
                 <!--hides seating plan until you click-->
-                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseStandardPlan" role="button"
+                <a id="standardDrop" class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseStandardPlan" role="button"
                     aria-expanded="false" aria-controls="collapseStandardPlan">
                     Click to see standard screen plan
                 </a>
@@ -107,7 +107,7 @@
                     </p>
                 </div>
                 <!--hides seating plan until you click-->
-                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseLuxPlan" role="button"
+                <a id="deluxeDrop" class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseLuxPlan" role="button"
                     aria-expanded="false" aria-controls="collapseLuxPlan">
                     Click to see deluxe screen plan
                 </a>
