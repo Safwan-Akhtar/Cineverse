@@ -14,8 +14,8 @@ let configGet = {
         let movieDate = movieDateTime.substring(0,10)
         let movieTime = movieDateTime.substring(11,16)
 
-        screeningsJson = response.data
-        screeningsCount = Object.keys(screeningsJson).length;
+        let screeningsJson = response.data;
+        let screeningsCount = Object.keys(screeningsJson).length;
 
         for (let i = 0; i < screeningsCount; i++) {
             // clears existing date and time
@@ -29,14 +29,14 @@ let configGet = {
             //date
             let nodeDate = document.createElement("OPTION");
             nodeDate.classList.add("screenDateListOp");
-            let textnodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
-            nodeDate.appendChild(textnodeDate);
+            let textNodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
+            nodeDate.appendChild(textNodeDate);
             document.getElementById("dateList").appendChild(nodeDate);
             //time
             let nodeTime = document.createElement("OPTION");
             nodeTime.classList.add("screenTimeListOp");
-            let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
-            nodeTime.appendChild(textnodeTime);
+            let textNodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
+            nodeTime.appendChild(textNodeTime);
             document.getElementById("timeList").appendChild(nodeTime);
         }
 
@@ -113,7 +113,7 @@ function getSeatTypes(activeArr) {
 }
 
 // returns a string array of ids for selected seats
-function getSeatIds() {
+function getSeatIds(active) {
     console.log("getSeatValue() triggered");
 
     console.log(active); // HTML Collection []
@@ -121,12 +121,12 @@ function getSeatIds() {
 
     console.log("--------------")
 
-    let arrSimple = Array.from(active);
-    console.log(arrSimple);
+    // let arrSimple = Array.from(active);
+    // console.log(arrSimple);
 
     let seat = ``;
     for (let i = 0; i < active.length; i++){
-        seat += `${arrSimple[i].id},`;
+        seat += `${active[i].id},`;
         console.log(seat);
     }
     console.log(seat);
@@ -142,7 +142,7 @@ countSeatsHash.addEventListener('click', function () {
 
     // function to check if screen selection is deluxe/reg, count only type selected
     getSeatTypes(active);
-    getSeatIds();
+    getSeatIds(active);
 });
 
 
