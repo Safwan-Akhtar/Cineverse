@@ -13,13 +13,14 @@ axios.get(`http://localhost:8181/getCustomerById/${id}`, configGet)
             .then(function (response) {
                 let screeningData = response.data;
                 populateTicketsDiv(ticketsArr, screeningData);
-        })
+            })
             .catch(function (error) {
                 console.log(error);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     })
-    .catch(function (error) {
-        console.log(error);
-    });
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -58,8 +59,8 @@ function populateTicketsDiv(tickets, screening) {
 
         // screenId links to movie Name / Date/Time, ScreenNumber & ScreenType
         let movieDateTime = screening.movieDateTime;
-        let movieDate = movieDateTime.substring(0,10);
-        let movieTime = movieDateTime.substring(11,16);
+        let movieDate = movieDateTime.substring(0, 10);
+        let movieTime = movieDateTime.substring(11, 16);
 
         const hTwoMovie = document.createElement("h2");
         hTwoMovie.setAttribute('class', 'card-header');
@@ -92,5 +93,4 @@ function populateTicketsDiv(tickets, screening) {
         card.appendChild(cardBodyTwo);
         div.appendChild(card);
     }
-
-}
+    }
