@@ -10,15 +10,19 @@ import com.qa.cineverse.repo.TicketsRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepo repository;
@@ -40,8 +44,14 @@ public class UserService implements IUserService {
         return this.repository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-
+    @Transactional
+    @Override
     public UserDTO createUser(UserDTO userDTO){
+        if (emailExist(userDTO.getEmail())) {
+            throw new UserAlreadyExistsException(
+                    "There is an account with that email address: "
+                            +  userDTO.getEmail());
+        }
         User user = new User();
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
@@ -50,28 +60,15 @@ public class UserService implements IUserService {
         user.setMatchingPassword(userDTO.getMatchingPassword());
         user.setActive(userDTO.isEnabled ());
         user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER"); //Doesn't work
+        user.setRoles("ROLE_USER");
         return this.mapToDTO(this.repository.save(user));
     }
 
-    @Transactional
     @Override
-    public User registerNewUserAccount(UserDTO userDTO)
-            throws UserAlreadyExistsException {
-
-        if (emailExist(userDTO.getEmail())) {
-            throw new UserAlreadyExistsException(
-                    "There is an account with that email address: "
-                            +  userDTO.getEmail());
-        }
-
-        User user = new User();
-        user.setForename(userDTO.getForename());
-        user.setSurname(userDTO.getSurname());
-        user.setPassword(userDTO.getPassword());
-        user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER");
-        return repository.save(user);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = repository.findByUsername(username);
+        user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + username + "' does not exist"));
+        return user.map(UserDTO::new).get();
     }
 
     private boolean emailExist(String email) {

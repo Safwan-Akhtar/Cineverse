@@ -12,6 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,6 +43,8 @@ public class ScreeningsControllerUnitTest {
 
     private final long id = 1L;
 
+    private final String name = "Mulan";
+
     private ScreeningsDTO screeningsDTO;
 
     private LocalDateTime date;
@@ -59,6 +63,7 @@ public class ScreeningsControllerUnitTest {
         this.screenings.add(testScreenings);
         this.testScreeningsWithId = new Screenings (testScreenings.getMovieDateTime (), testScreenings.getScreenNumber(), testScreenings.getScreenType(), testScreenings.getMovieName());
         this.testScreeningsWithId.setScreeningsId (this.id);
+        this.testScreeningsWithId.setMovieName (this.name);
         this.screeningsDTO = this.mapToDTO(testScreeningsWithId);
     }
 
@@ -89,4 +94,10 @@ public class ScreeningsControllerUnitTest {
         verify(service, times(1)).findScreeningsById (id);
     }
 
-}
+    @Test
+    public void getScreeningsByNameTest(){
+        when(service.readScreeningsByName(name)).thenReturn(this.screenings.stream().map(this::mapToDTO).collect(Collectors.toList()));
+        assertFalse("No screenings found", this.screeningController.readScreeningsByName(name).getBody().isEmpty());
+        verify(service, times(1)).readScreeningsByName(name);
+    }
+    }

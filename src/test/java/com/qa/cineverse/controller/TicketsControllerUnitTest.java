@@ -45,9 +45,9 @@ public class TicketsControllerUnitTest {
     @Before
     public void setUp(){
         this.tickets = new ArrayList<> ();
-        this.testTickets = new Tickets ("A1", "deluxe");
+        this.testTickets = new Tickets ("A1", "deluxe", 1L, 1L);
         this.tickets.add(testTickets);
-        this.testTicketsWithId = new Tickets (testTickets.getTicketType(), testTickets.getSeatNo());
+        this.testTicketsWithId = new Tickets (testTickets.getTicketType(), testTickets.getSeatNo(), testTickets.getScreenId(), testTickets.getUserId());
         this.testTicketsWithId.setTicketsId (this.id);
         this.ticketsDTO = this.mapToDTO(testTicketsWithId);
     }

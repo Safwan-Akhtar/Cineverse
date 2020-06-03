@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>login</title>
+    <title>Cineverse | Login</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
@@ -21,9 +21,11 @@
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
                 </p>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" href="user/ticketBookings.html">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" href="user/ticketBookings.html" id="userLog">Sign in</button>
+                <script src="../../js/login.js"></script>
             </form>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location.href='./register.html'">No account?</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location.href='html/register.html'">No account?</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location.href='./index.html'">Back to Home</button>
         </div>
     </body>
 </html>
