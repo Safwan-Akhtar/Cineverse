@@ -182,7 +182,8 @@ const postBooking = () => {
                     axios({
                         method: 'patch',
                         url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
-                        // userId is not fully implemented yet?
+                        // userId is not fully implemented yet, use:
+                        // localStorage.getItem('user')
                         data: `{
                         "userId": "1",
                         "screenId": "${foundId}",
