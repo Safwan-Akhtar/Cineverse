@@ -17,6 +17,8 @@ public class CustomersDTO {
     @NonNull
     private String name;
     @NonNull
+    private String username;
+    @NonNull
     private List<TicketsDTO> tickets = new ArrayList<>();
 
 }

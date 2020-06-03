@@ -29,9 +29,6 @@ public class Tickets {
     @Column(name = "screen_id")
     @NonNull
     private Long screenId;
-    @Column(name = "user_id")
-    @NonNull
-    private Long userId;
 
     @JsonIgnoreProperties("tickets")
     @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)
