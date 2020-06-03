@@ -195,6 +195,7 @@ const postBooking = () => {
                     })
                 }
                 //success!
+                // alter to viewTickets.html & or basket?
                 window.alert("Your tickets have been booked! You will now be directed to checkout");
                 window.location.replace("../payment.html");
             })
