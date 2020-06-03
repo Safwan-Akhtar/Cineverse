@@ -185,7 +185,7 @@ const postBooking = () => {
                         // userId is not fully implemented yet, use:
                         // localStorage.getItem('user')
                         data: `{
-                        "userId": "1",
+                        "userId": "${localStorage.getItem('user')}",
                         "screenId": "${foundId}",
                         "ticketType": "${typesArr[i]}",
                         "seatNo": "${seatArr[i]}"
