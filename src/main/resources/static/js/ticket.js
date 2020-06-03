@@ -182,9 +182,12 @@ const postBooking = () => {
                     axios({
                         method: 'patch',
                         url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                        // userId is not fully implemented yet?
                         data: `{
-                    "ticketType": "${typesArr[i]}",
-                    "seatNo": "${seatArr[i]}"
+                        "userId": "1",
+                        "screenId": "${foundId}",
+                        "ticketType": "${typesArr[i]}",
+                        "seatNo": "${seatArr[i]}"
                 }`,
                         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
                         responseType: 'json'
