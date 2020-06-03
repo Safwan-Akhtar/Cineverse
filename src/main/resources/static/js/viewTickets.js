@@ -27,7 +27,7 @@ const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
 // set Prices
-
+let price = ``;
 
 
 function populateTicketsDiv(tickets, screening) {
@@ -55,7 +55,7 @@ function populateTicketsDiv(tickets, screening) {
 
         pTag.textContent = "SeatNo: " + ticket.seatNo;
         pTagOne.textContent = "Type: " + ticket.ticketType; //adult/child/student
-        pTagTwo.textContent = "Price: " + price;
+        pTagTwo.textContent = "Price: TBC" + price;
         pTagThree.textContent = "Buyer id: " + ticket.userId;
 
         // screenId links to movie Name / Date/Time, ScreenNumber & ScreenType
