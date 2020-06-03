@@ -1,0 +1,11 @@
+# git ignore
+.idea
+.vscode
+target
+test-output
+*.iml
+.classpath
+.settings
+.project
+.env
+

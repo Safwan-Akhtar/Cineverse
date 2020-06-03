@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <title>Cineverse | Movie Classification</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark topnav-centered">
+        <a id="logoNavButton" class="navbar-brand" href="../index.html" style="color:white">QA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a id="homeNavButton" class="nav-link" href="../index.html" style="color:white">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="whatOnDrop"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">Whats
+                        on</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="listingGalleryNavButton" class="dropdown-item" href="listingsGallery.html">Current
+                            Listings</a>
+                        <a id="upcomingReleasesNavButton" class="dropdown-item" href="#">Upcoming Releases</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="bookingsDrop" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color:white">Bookings</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="ticketBookingNavButton" class="dropdown-item" href="user/ticketBookings.html">Book
+                            Tickets</a>
+                        <a id="screenBookingNavButton" class="dropdown-item" href="#">Book Screen</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="infoDrop" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color:white">
+                        Info
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="screensNavButton" class="dropdown-item" href="screens.html">Screens</a>
+                        <a id="openingTimesNavButton" class="dropdown-item" href="openingtimes.html">Opening
+                            Times</a>
+                        <a id="classificationNavButton" class="dropdown-item"
+                            href="classification.html">Classification</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a id="comingHereNavButton" class="nav-link" href="comingHere.html" style="color:white">Getting
+                        here</a>
+                </li>
+                <li class="right">
+                    <a id="loginContainerNavButton" class="nav-link" href="user/loginContainer.html"
+                        style="color:white">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Start of Main Page content-->
+    <header class="jumbotron bg-dark text-white">
+        <!--would like to centre jumbotron-->
+        <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+        <h1 class="display-4">Cinema Classifications</h1>
+        <hr class="my-4">
+    </header>
+    <main>
+        <section id="classificationInfo" class="container">
+            <div id="intro">
+                <strong>Our movies are rated using the British Board of Film Classification.</strong>
+                <p id="clickBelow">Click the icons below for more details.</p>
+            </div>
+
+            <input id="uClick" class="img-thumbnail" type="image" value="uclass" src="../img/classu.png"
+                alt="U classification">
+            <input id="pgClick" class="img-thumbnail" type="image" value="pgclass" src="../img/classpg.png"
+                alt="PG classification">
+            <input id="12Click" class="img-thumbnail" type="image" value="12class" src="../img/class12.png"
+                alt="12 classification">
+            <input id="12aClick" class="img-thumbnail" type="image" value="12aclass" src="../img/class12a.png"
+                alt="12 classification">
+            <input id="15Click" class="img-thumbnail" type="image" value="15class" src="../img/class15.png"
+                alt="15 classification">
+            <input id="18Click" class="img-thumbnail" type="image" value="18class" src="../img/class18.png"
+                alt="18 classification">
+            <input id="r18Click" class="img-thumbnail" type="image" value="r18class" src="../img/classr18.png"
+                alt="R18 classification">
+
+            <div id="uDesc" style="display: none">
+                <h3>U Universal – Suitable for all</h3>
+                <p>A U film should be suitable for audiences aged four years and over, although it is impossible to
+                    predict what might
+                    upset any particular child.
+
+                    U films should be set within a positive framework and should offer reassuring counterbalances to any
+                    violence, threat or
+                    horror. If a work is particularly suitable for pre-school children, this will be indicated in the
+                    ratings info.</p>
+            </div>
+
+            <div id="pgDesc" style="display: none">
+                <h3>PG Parental Guidance</h3>
+                <p>
+                    General viewing, but some scenes may be unsuitable for young children. A PG film should not unsettle
+                    a child aged around
+                    eight or older. Unaccompanied children of any age may watch, but parents are advised to consider
+                    whether the content may
+                    upset younger, or more sensitive, children.
+                </p>
+            </div>
+
+            <div id="12Desc" style="display: none">
+                <h3>12 – Suitable for 12 years and over</h3>
+                <p>
+                    Films classified 12 contain material that is not generally suitable for children aged
+                    under 12. No one younger than 12 may see a 12 rated video work.
+                </p>
+            </div>
+
+            <div id="12aDesc" style="display: none">
+                <h3>12A – Suitable for 12 years and over or accompanied by adult</h3>
+                <p>
+                    Films classified 12A and video works classified 12 contain material that is not generally suitable
+                    for children aged
+                    under 12. No one younger than 12 may see a 12A film in a cinema unless accompanied by an adult.
+                    Adults planning to take
+                    a child under 12 to view a 12A film should consider whether the film is suitable for that child. To
+                    help them decide, we
+                    recommend that they check the Ratings info for that film in advance. No one younger than 12 may rent
+                    or buy a 12 rated
+                    video work.
+                </p>
+            </div>
+
+            <div id="15Desc" style="display: none">
+                <h3>15 – Suitable only for 15 years and over</h3>
+                <p>No one younger than 15 may see a 15 film in a cinema. No one younger than 15 may rent or buy a 15
+                    rated video work.</p>
+            </div>
+
+            <div id="18Desc" style="display: none">
+                <h3>18 – Suitable only for adults</h3>
+                <p>No one younger than 18 may see an 18 film in a cinema. No one younger than 18 may rent or buy an 18
+                    rated video work.
+                    Adults should be free to choose their own entertainment.</p>
+            </div>
+
+            <div id="r18Desc" style="display: none">
+                <h3>R18 - To be shown only in specially licensed cinemas, or supplied only in licensed sex shops, and to
+                    adults only</h3>
+                <p>
+                    The R18 category is a special and legally-restricted classification primarily for explicit works of
+                    consenting sex or
+                    strong fetish material involving adults. Films may only be shown to adults in specially licensed
+                    cinemas, and video
+                    works may be supplied to adults only in licensed sex shops. R18 video works may not be supplied by
+                    mail order.
+
+                    For full details of the legal restrictions for these works please see the BBFC Classification
+                    Guidelines document here.
+                </p>
+            </div>
+        </section>
+        <br><br>
+        <section id="FAQ's" class="container">
+            <h3><strong>FAQ's</strong></h3>
+            <strong>Q: HOW OLD DOES MY CHILD NEED TO BE TO VISIT YOUR VENUES?</strong>
+            <p>The magic of cinema begins at an early age but children under the age of 8 will need to be accompanied by
+                an adult at all times. Children over 8 are welcome to watch any U or PG rated movie with parental
+                consent prior to 7pm. After 7pm and for all performance of 12A certificate films children will need to
+                accompanied by an adult.
+
+                Should you need further information on film classification and appropriate content, please visit the
+                BBFC website (UK) or the IFCO website (ROI) for further information
+
+                Please note that late shows (performances after 10.30 pm) are only for those aged 18 and over.</p>
+
+            <strong>Q: WHERE CAN I GET INFORMATION OF FILM CLASSIFICATIONS?</strong>
+            <p>You can find more info <a
+                    href="https://www.bbfc.co.uk/about-classification/classification-guidelines/">here</a>.</p>
+            <p>For a comprehensive list of UK ratings and how they affect attendance, please visit the BBFC guideline
+                document <a
+                    href="http://www.bbfc.co.uk/sites/default/files/attachments/BBFC%20Classification%20Guidelines%202014_0.pdf">here</a>
+            </p>
+
+            <strong>Q: WHY DOES THIS FILM NOT HAVE A CLASSIFICATION?</strong>
+            <p>In some circumstances we place tickets on sale prior to the classification being issued. Such sale is
+                conditional on you meeting the minimum age required by the classification when issued. If you have
+                purchased a ticket in these circumstances but are below the minimum age ultimately required by the
+                classification, we cannot admit you to see the film, but we will issue a full refund of the ticket
+                purchased.</p>
+
+            <strong>Q: DOES THIS MEAN STAFF WILL ASK FOR MY ID?</strong>
+            <p>Yes, cinemas staff can ask for photo identification as proof of age. You will be refused entry to the
+                movie if you cannot provide an identification document to verify your age.</p>
+
+            <strong>Q: WHAT FORMS OF ID ARE ACCEPTED?</strong>
+            <p>Any valid form of photo ID that details your date of birth is acceptable. Examples would be a passport,
+                school ID cards, third level student cards, travel cards etc.</p>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <br><br><br><br>
+    <footer class="container-fluid footer">
+        <div class="row">
+            <div class="col">
+                <h5>About Cineverse</h5>
+                <ul class="footer__nav__list nav--about">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Legal</h5>
+                <ul class="footer__nav__list nav--legal">
+                    <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
+                    </li>
+                    <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Social</h5>
+                <ul class="footer__nav__list nav--social">
+                    <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank"
+                            rel="noopener">Facebook</a>
+                    </li>
+                    <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
+                    </li>
+                    <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank"
+                            rel="noopener">Instagram</a>
+                    </li>
+                    <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank"
+                            rel="noopener">Youtube</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+        <br>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../js/classification.js"></script>
+</body>
+
+</html>
