@@ -42,11 +42,11 @@ let configGet = {
 
         console.log(response);
 
-        var dateControl = document.querySelector('input[type="date"]');
-        dateControl.value = movieDate;
-
-        var timeControl = document.querySelector('input[type="time"]');
-        timeControl.value = movieTime;
+        // var dateControl = document.querySelector('input[type="date"]');
+        // dateControl.value = movieDate;
+        //
+        // var timeControl = document.querySelector('input[type="time"]');
+        // timeControl.value = movieTime;
     })    
     .catch(function (error) {
         console.log(error);
@@ -55,18 +55,17 @@ let configGet = {
 
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
-// currently not functional? - shows deluxe/reg seating plan
+// shows deluxe/reg seating plan depending on selection
 function showSeatingPlan() {
-    let screenType = document.getElementById("timeList").value; // this gets the text inside
+    let screenType = document.getElementById("timeList").value;
     let standardPlan = document.getElementById("standardSeatPlan");
     let deluxePlan = document.getElementById("deluxeSeatPlan");
     let screenPlanType = document.getElementById("screenPlanType");
-    console.log(screenType);
     if (screenType.endsWith("standard")) {
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "block";
         deluxePlan.style.display = "none";
-    } else if (screenType.value.getText().endsWith("deluxe")){
+    } else if (screenType.endsWith("deluxe")){
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "none";
         deluxePlan.style.display = "block";
@@ -109,17 +108,18 @@ function getSeatTypes(activeArr) {
             type += `adult,`;
         }
         console.log("Types defaulted to adult");
+        window.alert("You haven't set the right number of seats, please try again.");
         console.log(type);
     }
 }
 
 // returns a string array of ids for selected seats
-function getSeatIds(active) {
+function getSeatIds(activeArr) {
     console.log("getSeatIds() triggered");
-    console.log(`Total seats selected = ${active.length}`);
+    console.log(`Total seats selected = ${activeArr.length}`);
 
-    for (let i = 0; i < active.length; i++){
-        seat += `${active[i].id},`;
+    for (let i = 0; i < activeArr.length; i++){
+        seat += `${activeArr[i].id},`;
     }
     console.log(seat);
 
@@ -128,11 +128,17 @@ function getSeatIds(active) {
 let countSeatsHash = document.querySelector('#countSeats');
 countSeatsHash.addEventListener('click', function () {
     //  let allSeats = document.getElementsByClassName("seat");
-    // "reg" is standard "deluxe" is deluxe
-    let active = document.getElementsByClassName("seat reg active");
+    let activeStandard = document.getElementsByClassName("seat reg active");
     let activeDeluxe = document.getElementsByClassName("seat deluxe active");
+    let active;
 
-    // function to check if screen selection is deluxe/reg, count only type selected
+    let screenType = document.getElementById("timeList").value;
+    // to check if screen selection is deluxe/reg, count only type selected
+    if (screenType.endsWith("standard")){
+        active = activeStandard;
+    } else {
+        active = activeDeluxe;
+    }
     getSeatTypes(active);
     getSeatIds(active);
 });
@@ -160,27 +166,36 @@ const postBooking = () => {
         })
         .then(function (response) {
             console.log(response);
-            let patchData = response.data;
-            let customersCount = patchData.customers.keys(customersId).length;
-            let lastCustomerId = patchData.customers.keys(customersId)[customersCount-1];
+            let customersJson = response.data.customers;
+            let customersCount = Object.keys(customersJson).length;
             console.log(customersCount);
-            console.log(lastCustomerId);
-            for (let i = 0; i < typesArr.length; i++){
-                axios({
-                    method: 'patch',
-                    url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
-                    data: `{
+            axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
+            .then(function (response) {
+                    console.log(`the response from get customer by customer count`);
+                    console.log(response);
+                    let lastCustomerId = response.customersId;
+                    console.log(lastCustomerId);
+                for (let i = 0; i < typesArr.length; i++){
+                    axios({
+                        method: 'patch',
+                        url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                        data: `{
                     "ticketType": "${typesArr[i]}",
                     "seatNo": "${seatArr[i]}"
                 }`,
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                    responseType: 'json'
-                })
-            }
+                        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                        responseType: 'json'
                     })
-            .then(function (response) {
-                console.log(response);
+                }
             })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (response) {
+                console.log(response);
+                });
+        }
+            )
             .catch(function (response) {
                 console.log(response);
             });
