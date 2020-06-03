@@ -1,4 +1,4 @@
-
+console.log(localStorage.getItem('user'));
 let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
