@@ -2,7 +2,19 @@ section#standardSeatPlan {
   background: #111;
 }
 
-.theatre {
+section#deluxeSeatPlan {
+  background: #111;
+}
+
+.theatre-reg {
+  display: flex;
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.theatre-del {
   display: flex;
   position: absolute;
   top: 92%;
