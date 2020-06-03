@@ -160,7 +160,8 @@ const postBooking = () => {
             method: 'patch',
             url: `http://localhost:8181/addCustomerToScreening/${foundId}`,
             data: `{
-                "name": "${customername}"
+                "name": "${customername}",
+                "username" : "${localStorage.getItem('user')}"
             }`,
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
             responseType: 'json'
@@ -185,7 +186,6 @@ const postBooking = () => {
                         // userId is not fully implemented yet, use:
                         // localStorage.getItem('user')
                         data: `{
-                        "userId": "${localStorage.getItem('user')}",
                         "screenId": "${foundId}",
                         "ticketType": "${typesArr[i]}",
                         "seatNo": "${seatArr[i]}"
