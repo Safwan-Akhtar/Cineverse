@@ -1,35 +1,34 @@
 package com.qa.cineverse.selenium;
 
-import static java.lang.Thread.*;
-
-import com.qa.cineverse.App;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.springframework.boot.SpringApplication;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+import static java.lang.Thread.*;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -58,9 +57,8 @@ public class Seltestfelix {
     }
 
     @Test
-    public void accessIndex() throws InterruptedException {
+    public void accessIndex() throws InterruptedException, IOException{
         test = report.startTest("Verifying the title of Cineverse website");
-
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
 
@@ -70,14 +68,15 @@ public class Seltestfelix {
         WebElement header = driver.findElement(By.id("header"));
         assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
-
         sleep(4000);
+
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\indexScreenshot.png"));
     }
 
     @Test
-    public void navToClassPage() throws InterruptedException {
-        test = report.startTest("Verifying the existence of the classification page.");
-
+    public void navToClassPage() throws InterruptedException, IOException {
+        test = report.startTest("Classification page tests");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen.");
 
@@ -102,7 +101,73 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "U description was displayed.");
         sleep(5000);
 
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\classificationScreenshot.png"));
     }
+
+
+
+    @Test
+    public void navToComingHere() throws InterruptedException, IOException {
+        test = report.startTest("Getting here page tests");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen.");
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
+        sleep(5000);
+
+        driver.findElement(By.id("comingHereNavButton")).click();
+        test.log(LogStatus.INFO, "Getting here clicked.");
+        sleep(5000);
+        driver.findElement(By.id("gettingThere")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element from the 'getting here' page exists, meaning the classification page was accessed.");
+        sleep(5000);
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\comingHereScreenshot.png"));
+    }
+
+
+    @Test
+    public void navToGallarySearch() throws InterruptedException, IOException {
+        test = report.startTest("Search page tests");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen.");
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
+        sleep(5000);
+
+        // add once searchGal has been added to navbar
+        driver.findElement(By.id("")).click();
+        test.log(LogStatus.INFO, "Search gallary button clicked.");
+        sleep(5000);
+        driver.findElement(By.id("searchForm")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element from the search gallary page exists, meaning the search gallary page was accessed.");
+        sleep(5000);
+
+        driver.findElement(By.id("searchText")).click();
+        test.log(LogStatus.INFO, "Clicked search bar.");
+        sleep(5000);
+
+        driver.findElement(By.alt("Jaws")).sendKeys(Keys.ENTER);
+        sleep(5000);
+        //add unique jaws page identifier
+        driver.findElement(By.id("")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element on the 'getting here' page exists, meaning the classification page was accessed.");
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchScreenshot.png"));
+        sleep(5000);
+
+
+
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchInfoScreenshot.png"));
+    }
+
+
+
+
 
 
 
@@ -113,6 +178,7 @@ public class Seltestfelix {
     }
 }
 
+//use wait instead of sleep
 
 
 
