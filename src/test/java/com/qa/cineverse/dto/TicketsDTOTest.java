@@ -12,8 +12,8 @@ public class TicketsDTOTest {
 
     @Before
     public void setUp() {
-        ticketsDTO = new TicketsDTO ("A1", "deluxe");
-        other = new TicketsDTO ("B2", "standard");
+        ticketsDTO = new TicketsDTO ("A1", "deluxe", 1L);
+        other = new TicketsDTO ("B2", "standard", 3L);
     }
 
     @Test
@@ -60,6 +60,18 @@ public class TicketsDTOTest {
         assertFalse(ticketsDTO.equals(other));
     }
 
+    @Test(expected=NullPointerException.class)
+    public void ticketsDTOScreenNullButOtherScreenNotNull() {
+        ticketsDTO.setScreenId(null);
+        assertFalse(ticketsDTO.equals(other));
+    }
+
+    @Test
+    public void ticketsDTOScreenNotEqual() {
+        other.setScreenId(1L);
+        assertFalse(ticketsDTO.equals(other));
+    }
+
     @Test
     public void nullId() {
         ticketsDTO.setTicketsId(null);
@@ -88,8 +100,8 @@ public class TicketsDTOTest {
 
     @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
-        TicketsDTO ticketsDTO = new TicketsDTO(null, null);
-        TicketsDTO other = new TicketsDTO(null, null);
+        TicketsDTO ticketsDTO = new TicketsDTO(null, null, null);
+        TicketsDTO other = new TicketsDTO(null, null, null);
         assertEquals(ticketsDTO.hashCode(), other.hashCode());
     }
 

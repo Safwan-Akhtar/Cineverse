@@ -22,8 +22,8 @@ public class CustomersTest {
         customers = new Customers("Luke");
         other = new Customers("Felix");
 
-        tickets.add(new Tickets ("adult", "A1"));
-        otherTickets.add(new Tickets ("child", "A3"));
+        tickets.add(new Tickets ("adult", "A1", 1L, 1L));
+        otherTickets.add(new Tickets ("child", "A3", 1L, 1L));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class CustomersTest {
 
     @Test(expected=NullPointerException.class)
     public void customersTicketsNullButOtherTicketsNotNull() {
-        tickets.add(new Tickets (null, null));
+        tickets.add(new Tickets (null, null, null, null));
         customers.setTickets(null);
         other.setCustomersId (1L);
         assertFalse(customers.equals(other));
@@ -65,8 +65,8 @@ public class CustomersTest {
 
     @Test
     public void customersTicketsNotEqual() {
-        otherTickets.add(new Tickets ("child", "A3"));
-        otherTickets.add(new Tickets ("student", "A4"));
+        otherTickets.add(new Tickets ("child", "A3", 3L, 1L));
+        otherTickets.add(new Tickets ("student", "A4", 3L, 2L));
         other.setTickets(otherTickets);
         assertFalse(customers.equals(other));
     }

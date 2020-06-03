@@ -18,8 +18,8 @@ public class TicketsTest {
 
     @Before
     public void setUp() {
-        tickets = new Tickets("A1", "deluxe");
-        other = new Tickets("B2", "standard");
+        tickets = new Tickets("A1", "deluxe", 1L, 1L);
+        other = new Tickets("B2", "standard", 3L, 2L);
 
         customers.add(new Customers ("Jim"));
         otherCustomers.add(new Customers ("Jam"));
@@ -68,6 +68,32 @@ public class TicketsTest {
     }
 
     @Test(expected=NullPointerException.class)
+    public void ticketsScreenNullButOtherScreenNotNull() {
+        tickets.setScreenId(null);
+        other.setTicketsId (1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test
+    public void ticketsScreenIdNotEqual() {
+        other.setScreenId(1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void ticketsUserNullButOtherUserNotNull() {
+        tickets.setUserId(null);
+        other.setTicketsId (1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test
+    public void ticketsUserIdNotEqual() {
+        other.setUserId(1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test(expected=NullPointerException.class)
     public void ticketCustomersNullButOtherTicketsNotNull() {
         customers.add(new Customers (null));
         tickets.setCustomers(null);
@@ -97,16 +123,17 @@ public class TicketsTest {
 
     @Test
     public void constructorWithoutId() {
-        Tickets tickets = new Tickets("A1", "deluxe");
+        Tickets tickets = new Tickets("A1", "deluxe", 1L, 1L);
         assertNull(tickets.getTicketsId ());
         assertNotNull(tickets.getTicketType());
         assertNotNull(tickets.getSeatNo());
+        assertNotNull(tickets.getScreenId());
     }
 
     @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
-        Tickets tickets = new Tickets(null, null);
-        Tickets other = new Tickets(null, null);
+        Tickets tickets = new Tickets(null, null, null, null);
+        Tickets other = new Tickets(null, null, null, null);
         assertEquals(tickets.hashCode(), other.hashCode());
     }
 }
