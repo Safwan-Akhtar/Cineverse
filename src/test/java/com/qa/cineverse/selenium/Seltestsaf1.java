@@ -1,7 +1,5 @@
 package com.qa.cineverse.selenium;
 
-import static java.lang.Thread.*;
-
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -13,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -30,7 +30,7 @@ public class Seltestsaf1 {
     @LocalServerPort
     private int port;
     private WebDriver driver;
-    ExtentReports report;
+    private ExtentReports report;
     ExtentTest test;
 
     @Before
@@ -56,10 +56,10 @@ public class Seltestsaf1 {
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://localhost:" + port);
         test.log(LogStatus.INFO, "Navigating to the Cineverse website");
-        WebElement header = driver.findElement(By.id("header"));
+
+        WebElement header = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("header")));
         assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
-        sleep(4000);
 
     }
 
