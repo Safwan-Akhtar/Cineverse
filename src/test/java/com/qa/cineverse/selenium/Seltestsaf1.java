@@ -172,6 +172,22 @@ public class Seltestsaf1 {
         test.log(LogStatus.PASS, "navigation link to opening times works");
     }
 
+    @Test
+    public void upcomingNav () throws InterruptedException {
+        test = report.startTest("Verifying navigation to upcoming releases page is working");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigating to the Cineverse website");
+
+        WebElement whatsOnDrop = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("whatOnDrop")));
+        whatsOnDrop.click();
+        test.log(LogStatus.PASS, "navigation drop down for whats on works");
+        WebElement upComingNav = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("upcomingReleasesNavButton")));
+        upComingNav.click();
+        test.log(LogStatus.PASS, "navigation link to up coming releases works");
+    }
+
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.FAILURE){
