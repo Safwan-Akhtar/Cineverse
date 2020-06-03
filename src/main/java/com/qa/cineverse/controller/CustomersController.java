@@ -44,6 +44,11 @@ public class CustomersController {
         return ResponseEntity.ok(this.service.findCustomersById (id));
     }
 
+    @GetMapping("/readCustomersByName/{name}")
+    public ResponseEntity<List<CustomersDTO>> readCustomersByName(@PathVariable String name){
+        return ResponseEntity.ok(this.service.readCustomersByName (name));
+    }
+
     @PatchMapping("/addTicketsToCustomer/{id}")
     public ResponseEntity<CustomersDTO> addTicketsToCustomer(@PathVariable Long id, @RequestBody Tickets tickets){
         return new ResponseEntity<>(this.service.addTicketsToCustomer(id, tickets), HttpStatus.ACCEPTED);

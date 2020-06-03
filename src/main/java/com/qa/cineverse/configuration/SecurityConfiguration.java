@@ -28,8 +28,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/html/user/*").hasAnyRole("ADMIN", "USER") ///Ticket Booking
                 .antMatchers("/").permitAll() ///Everything Else
                 .and().formLogin()
-                .loginPage("/html/login.html")
-                .loginProcessingUrl("/html/login")
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/index.html", false)
                 .and().csrf().disable()
                 .headers().frameOptions().disable();
