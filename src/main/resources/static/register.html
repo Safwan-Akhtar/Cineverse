@@ -23,14 +23,14 @@
                 <form>
                     <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="forename">First name</label>
-                        <input type="text" class="form-control is-valid" id="forename" placeholder="First name" value="" required>
+                        <label for="validationServer01">First name</label>
+                        <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="surname">Last name</label>
-                        <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" value="" required>
+                        <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend3"></span>
                         </div>
-                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" minlength="2" maxlength="35" aria-describedby="inputGroupPrepend3" pattern="[A-Za-z0-9]" required>
                         <div class="invalid-feedback">
                         </div>
                         </div>
@@ -49,35 +49,26 @@
                     <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control is-invalid" id="email" placeholder="Example@email.com" required>
+                        <input type="email" class="form-control is-invalid" id="email" placeholder="Example@email.com"  minlength="3" maxlength="255" required>
                         <div class="invalid-feedback">
                         Please provide a valid email (we will not share your details with anyone).
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control is-invalid" id="password" placeholder="" minlength="8" minlength="128" required>
+                        <input type="password" class="form-control is-invalid" id="password" placeholder="" minlength="8" maxlength="128" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$" required>
                         <div class="invalid-feedback">
                         Password
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="passwordMatch">Repeat Password</label>
-                        <input type="password" class="form-control is-invalid" id="passwordMatch" oninput="check(this)" placeholder="" minlength="8" minlength="128" required>
+                        <input type="password" class="form-control is-invalid" id="passwordMatch" oninput="check(this)" placeholder="" minlength="8" maxlength="128" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$"" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
                     </div>
                     <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                        <label class="form-check-label" for="invalidCheck3">
-                        Agree to terms and conditions
-                        </label>
-                        <div class="invalid-feedback">
-                        You must agree before submitting.
-                        </div>
-                    </div>
                     </div>
                     <button class="btn btn-primary" type="button" id="registerButton">Submit form</button>
                     <script src="../../js/register.js"></script>
@@ -87,5 +78,15 @@
             </div>
         </div>
     </body>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>

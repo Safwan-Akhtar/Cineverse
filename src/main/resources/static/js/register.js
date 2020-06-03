@@ -1,6 +1,6 @@
   
 const registerUser = () => {
-    let forename = document.getElementById("forename").value;
+    let forename = document.getElementById("validationServer01").value;
     let surname = document.getElementById("surname").value;
     let username = document.getElementById("username").value;
     let email = document.getElementById("email").value;
