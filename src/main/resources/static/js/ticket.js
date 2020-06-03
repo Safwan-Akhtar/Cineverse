@@ -20,13 +20,13 @@ let configGet = {
         for (let i = 0; i < screeningsCount; i++) {
             //date
             let nodeDate = document.createElement("OPTION");
-            nodeDate.classList.add("screenDateList");
+            nodeDate.classList.add("screenDateListOp");
             let textnodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
             nodeDate.appendChild(textnodeDate);
             document.getElementById("dateList").appendChild(nodeDate);
             //time
             let nodeTime = document.createElement("OPTION");
-            nodeTime.classList.add("screenTimeList");
+            nodeTime.classList.add("screenTimeListOp");
             let textnodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
             nodeTime.appendChild(textnodeTime);
             document.getElementById("timeList").appendChild(nodeTime);

@@ -1,13 +1,12 @@
-function checkNumberSeats() {
+function checkNumberSeats(activeArr) {
   console.log("checkNumberSeats() triggered");
   let adultSeats = document.getElementById("adult").valueAsNumber;
   let childSeats = document.getElementById("child").valueAsNumber;
   let studentSeats = document.getElementById("student").valueAsNumber;
-  let active = document.getElementsByClassName("seat active");
 
   let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
   console.log(totalSeats);
-  if (active.length === totalSeats) {
+  if (activeArr.length === totalSeats) {
     let type = ``;
     for (let i = 0; i < adultSeats; i++){
       type += `adult,`;
@@ -32,10 +31,13 @@ function checkNumberSeats() {
 
     console.log("getSeatValue() triggered");
 
-    let allSeats = document.getElementsByClassName("seat");
-    let active = document.getElementsByClassName("seat active");
+  //  let allSeats = document.getElementsByClassName("seat");
+    // "reg" is standard "deluxe" is deluxe
+    let active = document.getElementsByClassName("seat reg active");
+    let activeDeluxe = document.getElementsByClassName("seat deluxe active");
 
-    checkNumberSeats();
+    // if screen selection is deluxe, only count del, otherwise, count reg
+    checkNumberSeats(active);
 
     console.log(active); // HTML Collection []
     console.log(active.length); // total seats selected
