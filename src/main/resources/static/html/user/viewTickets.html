@@ -77,7 +77,25 @@
     <hr class="my-4">
 </header>
 <main>
+    <form id="readTickets" class="back" method="GET" action="viewTickets.html">
+        <fieldset>
+            <ul>
+                <li>
+                    <Label for="customerId">Your id :</Label>
+                    <input id="customerId" name="customerId" type="number">
+                </li>
+<!--                <li>-->
+<!--                    <Label for="customerName">Your name :</Label>-->
+<!--                    <input id="customerName" name="customerName" type="text">-->
+<!--                </li>-->
+            </ul>
+        </fieldset>
+        <br>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+    </form>
 
+    <div id="bookingResponse"></div>
 </main>
 <!-- Footer -->
 <br><br><br><br>
@@ -133,6 +151,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+<script src="../../js/viewTickets.js"></script>
 </body>
 </html>
