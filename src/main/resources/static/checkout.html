@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
 
-  <body  class="container align-items-center">
+  <body  class="container" style="left: 50%">
     <form action='/charge' method='POST' id='checkout-form' >
       <input type='hidden' th:value='${amount}' name='amount' />
       <label class="display-4 jumbotron bg-dark text-white" >Total: £<span th:text='${amount/100}' /></label>
