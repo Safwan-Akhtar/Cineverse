@@ -68,7 +68,7 @@ public class ScreeningsServiceIntegrationTest {
     }
 
     @Test
-    public void findCustomersByIdTest(){
+    public void findScreeningsByIdTest(){
         assertThat(this.service.findScreeningsById (this.testScreeningsWithVariable.getScreeningsId ())).isEqualTo(this.mapToDTO(this.testScreeningsWithVariable));
     }
 
