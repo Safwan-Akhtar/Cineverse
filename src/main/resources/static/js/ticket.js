@@ -5,7 +5,7 @@ let configGet = {
   };
   
 
-
+// populates the Screening Time and Date based off the movie selected
   const searchTimes = () => {
     let movieTitle = document.getElementById("movieTitle").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
@@ -18,6 +18,14 @@ let configGet = {
         screeningsCount = Object.keys(screeningsJson).length;
 
         for (let i = 0; i < screeningsCount; i++) {
+            // clears existing date and time
+
+            // let existingDates = document.getElementsByClassName("screenDateListOp");
+            // let existingTimes = document.getElementsByClassName("screenTimeListOp");
+            // for (let i = 0; i < existingDates.length; i++){
+            //     document.getElementById("dateList").removeChild();
+            // }
+
             //date
             let nodeDate = document.createElement("OPTION");
             nodeDate.classList.add("screenDateListOp");
@@ -47,11 +55,9 @@ let configGet = {
 
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
-// currently not functional?
+// currently not functional? - shows deluxe/reg seating plan
 function showSeatingPlan() {
-
-    console.log("method showSeatingPlan started");
-    let screenType = document.getElementById("screeningTime");
+    let screenType = document.getElementById("timeList").value; // this only selects the empty option
     let standardPlan = document.getElementById("standardSeatPlan");
     let deluxePlan = document.getElementById("deluxeSeatPlan");
     let screenPlanType = document.getElementById("screenPlanType");
@@ -71,9 +77,72 @@ function showSeatingPlan() {
     }
 }
 
-document.getElementById("timeList").addEventListener('change', function () {
-    console.log("change to screeningTime detected");
-    showSeatingPlan();
+document.getElementById("timeList").addEventListener('change', showSeatingPlan)
+
+// if total number of seats inputted matches selected, returns string array of types - otherwise defaults all to adult
+function getSeatTypes(activeArr) {
+    console.log("checkNumberSeats() triggered");
+    let adultSeats = document.getElementById("adult").valueAsNumber;
+    let childSeats = document.getElementById("child").valueAsNumber;
+    let studentSeats = document.getElementById("student").valueAsNumber;
+
+    let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
+    console.log(`Total seats inputted = ${totalSeats}`);
+
+    let type = ``;
+    if (activeArr.length === totalSeats) {
+
+        for (let i = 0; i < adultSeats; i++){
+            type += `adult,`;
+        }
+        for (let i = 0; i < childSeats; i++){
+            type += `child,`;
+        }
+        for (let i = 0; i < studentSeats; i++){
+            type += `student,`;
+        }
+        console.log(type);
+    } else {
+        console.log("Nah bra. Number of seats selected doesn't match!");
+        for (let i = 0; i < activeArr.length; i++){
+            type += `adult,`;
+        }
+        console.log("Types defaulted to adult");
+        console.log(type);
+    }
+}
+
+// returns a string array of ids for selected seats
+function getSeatIds() {
+    console.log("getSeatValue() triggered");
+
+    console.log(active); // HTML Collection []
+    console.log(active.length); // total seats selected
+
+    console.log("--------------")
+
+    let arrSimple = Array.from(active);
+    console.log(arrSimple);
+
+    let seat = ``;
+    for (let i = 0; i < active.length; i++){
+        seat += `${arrSimple[i].id},`;
+        console.log(seat);
+    }
+    console.log(seat);
+
+}
+
+let countSeatsHash = document.querySelector('#countSeats');
+countSeatsHash.addEventListener('click', function () {
+    //  let allSeats = document.getElementsByClassName("seat");
+    // "reg" is standard "deluxe" is deluxe
+    let active = document.getElementsByClassName("seat reg active");
+    let activeDeluxe = document.getElementsByClassName("seat deluxe active");
+
+    // function to check if screen selection is deluxe/reg, count only type selected
+    getSeatTypes(active);
+    getSeatIds();
 });
 
 
