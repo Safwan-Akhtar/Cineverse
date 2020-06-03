@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Character Maker</title>
         <meta charset="UTF-8" />
@@ -24,13 +24,13 @@
                     <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationServer01">First name</label>
-                        <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]" required>
+                        <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]+" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="surname">Last name</label>
-                        <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]" required>
+                        <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]+" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend3"></span>
                         </div>
-                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" minlength="2" maxlength="35" aria-describedby="inputGroupPrepend3" pattern="[A-Za-z0-9]" required>
+                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" minlength="2" maxlength="35" aria-describedby="inputGroupPrepend3" pattern="[A-Za-z0-9]+" required>
                         <div class="invalid-feedback">
                         </div>
                         </div>
@@ -56,14 +56,14 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control is-invalid" id="password" placeholder="" minlength="8" maxlength="128" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$" required>
+                        <input type="password" class="form-control is-invalid" id="password" placeholder="" minlength="8" maxlength="128" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.])[A-Za-z\d$@$!%*?&.]{6, 20}" required>
                         <div class="invalid-feedback">
                         Password
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="passwordMatch">Repeat Password</label>
-                        <input type="password" class="form-control is-invalid" id="passwordMatch" oninput="check(this)" placeholder="" minlength="8" maxlength="128" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$" required>
+                        <input type="password" class="form-control is-invalid" id="passwordMatch" oninput="check(this)" placeholder="" minlength="8" maxlength="128" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.])[A-Za-z\d$@$!%*?&.]{6, 20}" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -72,6 +72,7 @@
                     </div>
                     <button class="btn btn-primary" type="button" id="registerButton">Submit form</button>
                     <script src="../../js/register.js"></script>
+                    <link rel="stylesheet" href="css/register.css"/>
                 </form>
                 <br/> 
                 <a th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>

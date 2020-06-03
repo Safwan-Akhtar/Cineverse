@@ -1,4 +1,19 @@
   
+function check(input) {
+    let valid = document.getElementsByClassName("input:valid")
+    if (valid.length === 6) {
+
+        if (input.value !== document.getElementById('password').value) {
+            input.setCustomValidity('Password Must be Matching.');
+            return "match";
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+            return "mismatch";
+        }
+    } 
+}
+
 const registerUser = () => {
     let forename = document.getElementById("validationServer01").value;
     let surname = document.getElementById("surname").value;
@@ -6,6 +21,14 @@ const registerUser = () => {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let passwordMatch = document.getElementById("passwordMatch").value;
+
+    let matchCheckPass = check(input);
+    if (matchCheckPass === "match") {
+        console.log(matchCheckPass)
+    } else {
+        console.log(matchCheckPass)
+    }
+
 
 
         axios({
@@ -31,19 +54,6 @@ const registerUser = () => {
                 console.log(response);
             }); 
 }
-
-function check(input) {
-    if (input.value != document.getElementById('password').value) {
-        input.setCustomValidity('Password Must be Matching.');
-    } else {
-        // input is valid -- reset the error message
-        input.setCustomValidity('');
-        let registerButton = document.querySelector('#registerButton');
-        registerButton.addEventListener('click', registerUser);
-    }
-}
-
-
 
 
 
