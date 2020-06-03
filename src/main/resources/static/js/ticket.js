@@ -50,7 +50,7 @@ document.getElementById("movieTitle").addEventListener('change', searchTimes);
 // currently not functional?
 function showSeatingPlan() {
 
-    console.log("change to screeningTime detected");
+    console.log("method showSeatingPlan started");
     let screenType = document.getElementById("screeningTime");
     let standardPlan = document.getElementById("standardSeatPlan");
     let deluxePlan = document.getElementById("deluxeSeatPlan");
@@ -58,7 +58,7 @@ function showSeatingPlan() {
     console.log(screenType);
     console.log(screenType.getText());
     console.log(screenType.value.getText());
-    if (screenType.value.getText().endsWith("standard")) {
+    if (screenType.getText().endsWith("standard")) {
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "block";
         deluxePlan.style.display = "none";
@@ -71,7 +71,10 @@ function showSeatingPlan() {
     }
 }
 
-document.getElementById("screeningTime").addEventListener('change', showSeatingPlan);
+document.getElementById("timeList").addEventListener('change', function () {
+    console.log("change to screeningTime detected");
+    showSeatingPlan();
+});
 
 
 const postBooking = () => {
