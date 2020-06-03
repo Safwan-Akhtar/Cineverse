@@ -191,8 +191,8 @@ const postBooking = () => {
                     })
                 }
                 //success!
-                window.alert("Your tickets have been booked!");
-                //add a redirect window.location.replace("page.html");
+                window.alert("Your tickets have been booked! You will now be directed to checkout");
+                window.location.replace("../payment.html");
             })
                 .catch(function (response) {
                 console.log(response);
