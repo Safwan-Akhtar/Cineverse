@@ -56,7 +56,7 @@ public class TicketsControllerIntegrationTest {
     @Before
     public void setUp(){
         this.repository.deleteAll();
-        this.testTickets = new Tickets ("A1", "deluxe");
+        this.testTickets = new Tickets ("A1", "deluxe", 1L, 1L);
         this.testTicketsWithId = this.repository.save(testTickets);
         this.id = testTicketsWithId.getTicketsId ();
         this.ticketsDTO = this.mapToDTO(testTicketsWithId);

@@ -6,6 +6,7 @@ import com.qa.cineverse.domain.Screenings;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.repo.ScreeningsRepo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
@@ -70,6 +71,7 @@ public class ScreeningsControllerIntegrationTest {
         this.screeningsDTO = this.mapToDTO(testScreeningsWithID);
     }
 
+    @Ignore
     @Test
     public void getAllScreeningsTest() throws Exception {
         List<ScreeningsDTO> screeningsDTOList = new ArrayList<> ();
@@ -85,6 +87,7 @@ public class ScreeningsControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTOList));
     }
 
+    @Ignore
     @Test
     public void getAllScreeningsByNameTest() throws Exception {
         List<ScreeningsDTO> screeningsDTOList = new ArrayList<> ();
@@ -100,6 +103,7 @@ public class ScreeningsControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTOList));
     }
 
+    @Ignore
     @Test
     public void getScreeningsByID() throws Exception {
         String content = this.mock.perform(
@@ -113,6 +117,7 @@ public class ScreeningsControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(screeningsDTO));
     }
 
+    @Ignore
     @Test
     public void createScreeningsTest() throws Exception {
         String result = this.mock.perform(

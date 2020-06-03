@@ -1,7 +1,10 @@
 package com.qa.cineverse.dto;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.Column;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -14,4 +17,9 @@ public class TicketsDTO {
     private String ticketType;
     @NonNull
     private String seatNo;
+    @NonNull
+    private Long screenId;
+    @NotNull
+    private Long userId;
+
 }
