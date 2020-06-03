@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -56,12 +57,13 @@ public class Seltestfelix {
 
     @Test
     public void test1() throws InterruptedException {
-        test = report.startTest("Verifying the title of QA website");
+        test = report.startTest("Verifying the title of Cineverse website");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://localhost:" + port);
-        test.log(LogStatus.INFO, "Navigating to the QA website");
-        assertEquals(driver.getTitle(), "Virtual and online classes in technology, project management and leadership | QA");
+        test.log(LogStatus.INFO, "Navigating to the Cineverse website");
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
         sleep(4000);
 
