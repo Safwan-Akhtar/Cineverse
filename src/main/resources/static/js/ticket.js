@@ -79,6 +79,10 @@ function showSeatingPlan() {
 
 document.getElementById("timeList").addEventListener('change', showSeatingPlan)
 
+// build string separated by ,
+let type = ``;
+let seat = ``;
+
 // if total number of seats inputted matches selected, returns string array of types - otherwise defaults all to adult
 function getSeatTypes(activeArr) {
     console.log("checkNumberSeats() triggered");
@@ -89,7 +93,6 @@ function getSeatTypes(activeArr) {
     let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
     console.log(`Total seats inputted = ${totalSeats}`);
 
-    let type = ``;
     if (activeArr.length === totalSeats) {
 
         for (let i = 0; i < adultSeats; i++){
@@ -124,7 +127,6 @@ function getSeatIds(active) {
     // let arrSimple = Array.from(active);
     // console.log(arrSimple);
 
-    let seat = ``;
     for (let i = 0; i < active.length; i++){
         seat += `${active[i].id},`;
         console.log(seat);
@@ -149,11 +151,9 @@ countSeatsHash.addEventListener('click', function () {
 const postBooking = () => {
     let customername = document.getElementById("customername").value;
     let movieTitle = document.getElementById("movieTitle").value;
-    let screeningDate = document.getElementById("screeningDate").value;
-    let screeningTime = document.getElementById("screeningTime").value;
-    let adult = document.getElementById("adult").value;
-    let child = document.getElementById("child").value;
-    let student = document.getElementById("student").value;
+    // type and seat are built outside this function
+    let typesArr = type.split(",");
+    let seatArr = seat.split(",");
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         
