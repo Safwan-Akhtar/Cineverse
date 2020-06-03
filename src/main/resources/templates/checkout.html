@@ -18,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
 
-  <body>
-    <form action='/charge' method='POST' id='checkout-form' class="container">
+  <body  class="container align-items-center">
+    <form action='/charge' method='POST' id='checkout-form' >
       <input type='hidden' th:value='${amount}' name='amount' />
       <label class="display-4 jumbotron bg-dark text-white" >Total: £<span th:text='${amount/100}' /></label>
       <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
@@ -33,6 +33,7 @@
               data-description='Checkout'
               data-image='img/qalogo.jpg'
               data-locale='auto'
+
               data-zip-code='false'>
       </script>
     </form>
