@@ -66,7 +66,19 @@ public class Seltestfelix {
         assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
         sleep(4000);
+    }
 
+    @Test
+    public void testNavToClass() throws InterruptedException {
+        driver.manage().window().maximize();
+        driver.get("http://localhost:" + port);
+
+        test = report.startTest("Verifying Navbar exists");
+        WebElement navbar = driver.findElement(By.id("navbarDropdownMenuLink"));
+        assertTrue(navbar.isDisplayed());
+        test.log(LogStatus.INFO, "Navbar exists");
+        navbar.click();
+        sleep(4000);
     }
 
     @After
