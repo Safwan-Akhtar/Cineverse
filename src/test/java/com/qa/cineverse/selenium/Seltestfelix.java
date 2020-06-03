@@ -56,29 +56,50 @@ public class Seltestfelix {
     }
 
     @Test
-    public void test1() throws InterruptedException {
+    public void accessIndex() throws InterruptedException {
         test = report.startTest("Verifying the title of Cineverse website");
+
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+
         driver.get("http://localhost:" + port);
-        test.log(LogStatus.INFO, "Navigating to the Cineverse website");
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website");
+
         WebElement header = driver.findElement(By.id("header"));
         assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
+
         sleep(4000);
     }
 
     @Test
-    public void testNavToClass() throws InterruptedException {
-        driver.manage().window().maximize();
-        driver.get("http://localhost:" + port);
+    public void navToClassPage() throws InterruptedException {
+        test = report.startTest("Verifying the existence of the classification page.");
 
-        test = report.startTest("Verifying Navbar exists");
-        WebElement navbar = driver.findElement(By.id("navbarDropdownMenuLink"));
-        assertTrue(navbar.isDisplayed());
-        test.log(LogStatus.INFO, "Navbar exists");
-        navbar.click();
-        sleep(4000);
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen.");
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
+        sleep(5000);
+
+        driver.findElement(By.id("infoDrop")).click();
+        test.log(LogStatus.INFO, "Info button clicked.");
+        sleep(5000);
+        driver.findElement(By.id("classificationNavButton")).click();
+        test.log(LogStatus.INFO, "Classification page clicked.");
+        sleep(5000);
+        driver.findElement(By.id("uClick")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element on Classification page exists, meaning the classification page was accessed.");
+        sleep(5000);
+
+        driver.findElement(By.id("uClick")).click();
+        test.log(LogStatus.INFO, "click U button.");
+        sleep(5000);
+        driver.findElement(By.id("uDesc")).isDisplayed();
+        test.log(LogStatus.INFO, "U description was displayed.");
+        sleep(5000);
+
     }
 
     @After
