@@ -138,7 +138,7 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
         sleep(5000);
 
-        // add once searchGal has been added to navbar
+        // add id once searchGal has been added to navbar
         driver.findElement(By.id("")).click();
         test.log(LogStatus.INFO, "Search gallary button clicked.");
         sleep(5000);
@@ -149,27 +149,26 @@ public class Seltestfelix {
         driver.findElement(By.id("searchText")).click();
         test.log(LogStatus.INFO, "Clicked search bar.");
         sleep(5000);
-
-        driver.findElement(By.alt("Jaws")).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("searchText")).sendKeys("jaws" + Keys.ENTER);
+        test.log(LogStatus.INFO, "Entered 'jaws' into search.");
         sleep(5000);
-        //add unique jaws page identifier
-        driver.findElement(By.id("")).isDisplayed();
+        driver.findElement(By.id("tt0073195-img")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element on the 'getting here' page exists, meaning the classification page was accessed.");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchScreenshot.png"));
         sleep(5000);
 
+        driver.findElement(By.id("tt0073195")).click();
+        test.log(LogStatus.INFO, "Clicked 'movie details'.");
+        sleep(5000);
+        driver.findElement(By.id("movieDetails")).isDisplayed();
+        test.log(LogStatus.INFO, "Validated movie details page.");
+        sleep(5000);
+        File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile2, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchInfoScreenshot.png"));
+        sleep(5000);
 
-
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchInfoScreenshot.png"));
     }
-
-
-
-
-
-
 
 
     @After
@@ -177,8 +176,6 @@ public class Seltestfelix {
         this.driver.quit();
     }
 }
-
-//use wait instead of sleep
 
 
 
