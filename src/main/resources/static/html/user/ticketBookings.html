@@ -126,8 +126,8 @@
 <!--            <iframe id="standardSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="standardSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>-->
 <!--            <iframe id="deluxeSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="deluxeSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>-->
 
-            <!-- Standard seating Start add display: none; -->
-            <section id="standardSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;">
+            <!-- Standard seating Start -->
+            <section id="standardSeatPlan" style="display: none; width: 100%; height: 500px; overflow: hidden; border:1px solid #000;">
                 <div class="theatre-reg">
                     <div class="cinema-seats left">
                         <div class="cinema-row row-1">
@@ -288,12 +288,8 @@
                 </div>
 
             </section>
-            <!-- Button for submitting seats-->
-            <br>
-            <div>
-                <button id="countSeats" type="button">Confirm seats</button>
-            </div>
-              <!-- Standard seating end / Deluxe Start add display: none; -->
+
+              <!-- Standard seating end / Deluxe Start -->
             <section id="deluxeSeatPlan" style="display: none; width: 100%; height: 500px; overflow: hidden; border:1px solid #000;">
                 <div class="theatre-del">
                     <div class="cinema-seats left">
@@ -369,14 +365,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- Button for submitting seats-->
-                <br>
-                <div>
-                    <button id="countDeluxeSeats" type="button">Select seats</button>
-                </div>
             </section>
             <!--Deluxe end-->
-
+            <!-- Button for submitting seats-->
+            <br>
+            <div>
+                <button id="countSeats" type="button">Confirm seats</button>
+            </div>
             <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
             <script>
