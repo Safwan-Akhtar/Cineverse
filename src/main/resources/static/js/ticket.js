@@ -150,6 +150,7 @@ const postBooking = () => {
     let seatArr = seat.split(",");
     console.log(typesArr);
     console.log(seatArr);
+    console.log((typesArr.length-1));
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         
@@ -176,7 +177,7 @@ const postBooking = () => {
                     console.log(response.data);
                     let lastCustomerId = response.data.customersId;
                     console.log(`Last customerId = ${lastCustomerId}`);
-                for (let i = 0; i < typesArr.length; i++){
+                for (let i = 0; i < (typesArr.length-1); i++){
                     axios({
                         method: 'patch',
                         url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
