@@ -23,7 +23,7 @@ import static org.testng.AssertJUnit.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class Seltestsaf {
+public class Seltestsaf1 {
 
 
 
