@@ -57,14 +57,12 @@ document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
 // currently not functional? - shows deluxe/reg seating plan
 function showSeatingPlan() {
-    let screenType = document.getElementById("timeList").value; // this only selects the empty option
+    let screenType = document.getElementById("timeList").value; // this gets the text inside
     let standardPlan = document.getElementById("standardSeatPlan");
     let deluxePlan = document.getElementById("deluxeSeatPlan");
     let screenPlanType = document.getElementById("screenPlanType");
     console.log(screenType);
-    console.log(screenType.getText());
-    console.log(screenType.value.getText());
-    if (screenType.getText().endsWith("standard")) {
+    if (screenType.endsWith("standard")) {
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "block";
         deluxePlan.style.display = "none";
@@ -85,7 +83,7 @@ let seat = ``;
 
 // if total number of seats inputted matches selected, returns string array of types - otherwise defaults all to adult
 function getSeatTypes(activeArr) {
-    console.log("checkNumberSeats() triggered");
+    console.log("getSeatTypes() triggered");
     let adultSeats = document.getElementById("adult").valueAsNumber;
     let childSeats = document.getElementById("child").valueAsNumber;
     let studentSeats = document.getElementById("student").valueAsNumber;
@@ -117,19 +115,11 @@ function getSeatTypes(activeArr) {
 
 // returns a string array of ids for selected seats
 function getSeatIds(active) {
-    console.log("getSeatValue() triggered");
-
-    console.log(active); // HTML Collection []
-    console.log(active.length); // total seats selected
-
-    console.log("--------------")
-
-    // let arrSimple = Array.from(active);
-    // console.log(arrSimple);
+    console.log("getSeatIds() triggered");
+    console.log(`Total seats selected = ${active.length}`);
 
     for (let i = 0; i < active.length; i++){
         seat += `${active[i].id},`;
-        console.log(seat);
     }
     console.log(seat);
 
@@ -170,16 +160,24 @@ const postBooking = () => {
         })
         .then(function (response) {
             console.log(response);
-            axios({
-                method: 'patch',
-                url: `http://localhost:8181/addTicketsToCustomer/1`,
-                data: `{
-                    "ticketType": "child",
-                    "seatNo": "F9"
+            let patchData = response.data;
+            let customersCount = patchData.customers.keys(customersId).length;
+            let lastCustomerId = patchData.customers.keys(customersId)[customersCount-1];
+            console.log(customersCount);
+            console.log(lastCustomerId);
+            for (let i = 0; i < typesArr.length; i++){
+                axios({
+                    method: 'patch',
+                    url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                    data: `{
+                    "ticketType": "${typesArr[i]}",
+                    "seatNo": "${seatArr[i]}"
                 }`,
-                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                responseType: 'json'
-            })
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                    responseType: 'json'
+                })
+            }
+                    })
             .then(function (response) {
                 console.log(response);
             })
@@ -190,10 +188,10 @@ const postBooking = () => {
         .catch(function (response) {
             console.log(response);
         });
-    })
-    .catch(function (error) {
-        console.log(error);
-  });
+  //   })
+  //   .catch(function (error) {
+  //       console.log(error);
+  // });
 }
 let postButton = document.querySelector('#postButton');
 postButton.addEventListener('click', postBooking);
