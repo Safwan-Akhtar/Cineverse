@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cineverse | Register</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/lowFooter.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .password-verdict{
+            color:#000;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script th:src="@{/resources/pwstrength.js}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendors/formvalidation/dist/css/formValidation.min.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+</head>
+<body>
+
+
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark topnav-centered">
+    <a id="logoNavButton" class="navbar-brand" href="index.html" style="color:white">QA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a id="homeNavButton" class="nav-link" href="index.html" style="color:white">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="whatOnDrop"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">Whats
+                    on</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="listingGalleryNavButton" class="dropdown-item" href="html/listingsGallery.html">Current
+                        Listings</a>
+                    <a id="upcomingReleasesNavButton" class="dropdown-item" href="html/newReleasesGallery.html">Upcoming Releases</a>
+                    <a id="gallerySearchNavButton" class="dropdown-item" href="html/gallerySearch.html">Search our Gallery</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="bookingsDrop" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color:white">Bookings</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="ticketBookingNavButton" class="dropdown-item" href="html/user/ticketBookings.html">Book
+                        Tickets</a>
+                    <a id="screenBookingNavButton" class="dropdown-item" href="#">Book Screen</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="infoDrop" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color:white">
+                    Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="screensNavButton" class="dropdown-item" href="html/screens.html">Screens</a>
+                    <a id="openingTimesNavButton" class="dropdown-item" href="html/openingtimes.html">Opening
+                        Times</a>
+                    <a id="classificationNavButton" class="dropdown-item"
+                       href="html/classification.html">Classification</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a id="comingHereNavButton" class="nav-link" href="html/comingHere.html" style="color:white">Getting
+                    here</a>
+            </li>
+            <li class="right">
+                <a id="loginContainerNavButton" class="nav-link" href="../login.html"
+                   style="color:white">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<div class="container content">
+    <div >
+        <h1 style="color: wheat">Register Account</h1>
+        <br/>
+        <form onsubmit="return checkForm(this);" id="demoForm" method="POST">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01" style="color: wheat">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]+" required>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="surname" style="color: wheat">Last name</label>
+                    <input type="text" class="form-control is-valid" id="surname" placeholder="Last name" minlength="2" maxlength="35" value="" pattern="[A-Za-z]+" required>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="username" style="color: wheat">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3"></span>
+                        </div>
+                        <input type="text" class="form-control is-invalid" id="username" placeholder="Username" minlength="2" maxlength="35" aria-describedby="inputGroupPrepend3" pattern="[A-Za-z0-9]+" required>
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="email" style="color: wheat">Email</label>
+                    <input type="email" class="form-control is-invalid" id="email" placeholder="Example@email.com"  minlength="5" maxlength="255" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid email (we will not share your details with anyone).
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="password" style="color: wheat">Password</label>
+                    <input type="password" class="form-control is-invalid" name="password" id="password" placeholder="" minlength="8" maxlength="128" required>
+                    <div class="invalid-feedback">
+                        Password
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="passwordMatch" style="color: wheat">Repeat Password</label>
+                    <input type="password" class="form-control is-invalid" name="passwordMatch" id="passwordMatch" placeholder="" minlength="8" maxlength="128" required>
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+            </div>
+            <button class="btn btn-primary" type="submit" id="registerButton" >Submit form</button>
+            <script src="../js/register.js"></script>
+            <link rel="stylesheet" href="../css/register.css"/>
+        </form>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='../login.html'">Have an account?</button>
+    </div>
+</div>
+
+
+
+<!--  Footer -->
+
+<footer class="container-fluid footer">
+    <div class="row">
+        <div class="col">
+            <h5>About Cineverse</h5>
+            <ul class="footer__nav__list nav--about">
+                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <h5>Legal</h5>
+            <ul class="footer__nav__list nav--legal">
+                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <h5>Social</h5>
+            <ul class="footer__nav__list nav--social">
+                <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank"
+                        rel="noopener">Facebook</a>
+                </li>
+                <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
+                </li>
+                <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank"
+                        rel="noopener">Instagram</a>
+                </li>
+                <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank"
+                        rel="noopener">Youtube</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+    <br>
+</footer>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
+<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+<script src="/vendors/formvalidation/dist/js/plugins/Bootstrap.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(e) {
+        FormValidation.formValidation(
+            document.getElementById('demoForm'),
+            {
+                fields: {
+                    ...
+                },
+                plugins: {
+                    bootstrap: new FormValidation.plugins.Bootstrap(),
+                    ...
+                },
+            }
+        );
+    });
+</script>
+</html>
