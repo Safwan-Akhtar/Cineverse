@@ -66,7 +66,7 @@ public class Seltestfelix {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\indexScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output\\classificationScreenshot.png"));
     }
 
     @Test
@@ -97,8 +97,7 @@ public class Seltestfelix {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\classificationScreenshot.png"));
-        report.flush();
+        FileUtils.copyFile(scrFile, new File("test-output\\classificationScreenshot.png"));
     }
 
 
@@ -120,7 +119,7 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Unique element from the 'getting here' page exists, meaning the classification page was accessed.");
         sleep(2000);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\comingHereScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output\\comingHereScreenshot.png"));
     }
 
     @Ignore
@@ -151,7 +150,7 @@ public class Seltestfelix {
         driver.findElement(By.id("tt0073195-img")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element on the 'getting here' page exists, meaning the classification page was accessed.");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output\\searchScreenshot.png"));
         sleep(2000);
 
         driver.findElement(By.id("tt0073195")).click();
@@ -161,16 +160,42 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Validated movie details page.");
         sleep(2000);
         File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile2, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchInfoScreenshot.png"));
+        FileUtils.copyFile(scrFile2, new File("test-output\\searchInfoScreenshot.png"));
         sleep(2000);
 
     }
 
+    @Ignore
+    @Test
+    public void listingsGallary() throws InterruptedException, IOException{
+        test = report.startTest("Verifying the title of Cineverse website");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
 
+        driver.findElement(By.id("whatOnDrop")).click();
+        test.log(LogStatus.INFO, "Clicked what's on drop down.");
+        sleep(2000);
+        driver.findElement(By.id("listingGallaryNavButton")).click();
+        test.log(LogStatus.INFO, "Current listings page clicked.");
+        sleep(2000);
+        driver.findElement(By.id("currentListings")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element on current listings page exists, meaning the classification page was accessed.");
+        sleep(2000);
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website");
+
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.isDisplayed());
+        test.log(LogStatus.PASS, "The title was exactly the same");
+        sleep(2000);
+
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("test-output\\indexScreenshot.png"));
+    }
 
     @AfterClass
     public static void endReport(){
-        report.endTest(test);
         report.flush();
         report.close();
     }
@@ -178,7 +203,9 @@ public class Seltestfelix {
     @After
     public void tearDown() {
         this.driver.quit();
+        report.endTest(test);
     }
+
 }
 
 
