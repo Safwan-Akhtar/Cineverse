@@ -2,7 +2,6 @@ package com.qa.cineverse.controller;
 
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Screenings;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.ScreeningsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class ScreeningsController {
