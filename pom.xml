@@ -30,7 +30,6 @@
     <relativePath />
   </parent>
 
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -202,8 +201,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Below causes MongoDB to activate for some reason. Works for now, but
-        need to look into it -->
     <dependency>
       <groupId>com.relevantcodes</groupId>
       <artifactId>extentreports</artifactId>
@@ -233,11 +230,6 @@
       <version>29.0-jre</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>com.stripe</groupId>-->
-<!--      <artifactId>stripe-java</artifactId>-->
-<!--      <version>19.14.0</version>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>com.stripe</groupId>
       <artifactId>stripe-java</artifactId>

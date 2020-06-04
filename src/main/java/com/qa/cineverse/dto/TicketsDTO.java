@@ -1,10 +1,10 @@
 package com.qa.cineverse.dto;
 
-import com.sun.istack.NotNull;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.Column;
 
 @NoArgsConstructor
 @RequiredArgsConstructor

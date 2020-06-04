@@ -46,7 +46,7 @@ public class Seltestsaf1 {
         this.driver = new ChromeDriver();
 
         report = new ExtentReports(
-                System.getProperty("user.dir") + "/test-output/Report.html",
+                System.getProperty("user.dir") + "/test-output/SafReport.html",
                 false
         );
         report
@@ -189,6 +189,52 @@ public class Seltestsaf1 {
         upComingNav.click();
         test.log(LogStatus.PASS, "navigation link to up coming releases works");
     }
+
+    @Test
+    public void loginNav () throws InterruptedException {
+        test = report.startTest("Verifying login and create user is working");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigating to the Cineverse website");
+
+        WebElement loginNav = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("loginContainerNavButton")));
+        loginNav.click();
+        test.log(LogStatus.PASS, "Correctly navigated to login page");
+        WebElement createAccount = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("createAccount")));
+        createAccount.click();
+        test.log(LogStatus.PASS, "Correctly navigated to create account page");
+        WebElement firstName = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("validationServer01")));
+        firstName.click();
+        firstName.sendKeys("user");
+        test.log(LogStatus.PASS, "keys for first name sent");
+        WebElement lastName = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("surname")));
+        lastName.click();
+        lastName.sendKeys("user");
+        test.log(LogStatus.PASS, "keys for last name sent");
+        WebElement userName = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("username")));
+        userName.click();
+        userName.sendKeys("user");
+        test.log(LogStatus.PASS, "keys for user name sent");
+        WebElement email = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("email")));
+        email.click();
+        email.sendKeys("user@hotmail.com");
+        test.log(LogStatus.PASS, "keys for email sent");
+        WebElement password = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("password")));
+        password.click();
+        password.sendKeys("Pass1234");
+        test.log(LogStatus.PASS, "keys for password sent");
+        WebElement passwordMatch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("passwordMatch")));
+        passwordMatch.click();
+        passwordMatch.sendKeys("Pass1234");
+        test.log(LogStatus.PASS, "keys for password confirmation sent");
+        WebElement submit = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("registerButton")));
+        submit.click();
+        test.log(LogStatus.PASS, "Account created");
+        sleep(5000);
+    }
+
+
 
     @AfterMethod
     public void getResult(ITestResult result){
