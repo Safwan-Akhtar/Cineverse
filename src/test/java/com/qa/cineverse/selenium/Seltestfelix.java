@@ -40,7 +40,6 @@ public class Seltestfelix {
         report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
     }
 
-
     @Before
     public void init() {
         System.setProperty("webdriver.home.driver", "chromedriver");
@@ -120,7 +119,6 @@ public class Seltestfelix {
         FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "comingHereScreenshot.png"));
     }
 
-    @Ignore
     @Test
     public void navToGallarySearch() throws InterruptedException, IOException {
         test = report.startTest("Search page tests");
@@ -156,26 +154,31 @@ public class Seltestfelix {
         driver.findElement(By.id("tt0073195")).click();
         test.log(LogStatus.INFO, "Clicked 'movie details'.");
         sleep(2000);
-        driver.findElement(By.id("movieDetails")).isDisplayed();
+        driver.findElement(By.id("MovieDetails")).isDisplayed();
         test.log(LogStatus.INFO, "Validated movie details page.");
         sleep(2000);
         File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile2, new File("test-output" + File.separator + "searchInfoScreenshot.png"));
         sleep(2000);
 
+        test.log(LogStatus.PASS,"Test passed");
+
     }
 
-    @Ignore
     @Test
     public void listingsGallary() throws InterruptedException, IOException{
-        test = report.startTest("Verifying the title of Cineverse website");
+        test = report.startTest("Search page tests");
         driver.manage().window().maximize();
-        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen.");
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
+        sleep(2000);
 
         driver.findElement(By.id("whatOnDrop")).click();
         test.log(LogStatus.INFO, "Clicked what's on drop down.");
         sleep(2000);
-        driver.findElement(By.id("listingGallaryNavButton")).click();
+        driver.findElement(By.id("listingGalleryNavButton")).click();
         test.log(LogStatus.INFO, "Current listings page clicked.");
         sleep(2000);
         driver.findElement(By.id("currentListings")).isDisplayed();
