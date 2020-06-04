@@ -2,26 +2,28 @@ let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
 };
+let currentUser = localStorage.getItem('user');
 
-let name = document.getElementById("customerName").value;
-axios.get(`http://localhost:8181/readCustomersByName/${name}`, configGet)
-    .then(function (response) {
-        let ticketsArr = response.data[0].tickets;
-        console.log(response.data.tickets);
-        console.log(response.data[0].tickets);
-        let screeningId = ticketsArr[0].screenId;
-        axios.get(`http://localhost:8181/getScreeningById/${screeningId}`, configGet)
-            .then(function (response) {
-                let screeningData = response.data;
-                populateTicketsDiv(ticketsArr, screeningData);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    })
+const ticketFinder = () => {
+    axios.get(`http://localhost:8181/readCustomersByName/${currentUser}`, configGet)
+        .then(function (response) {
+            let ticketsArr = response.data[0].tickets;
+            console.log(response.data.tickets);
+            console.log(response.data[0].tickets);
+            let screeningId = ticketsArr[0].screenId;
+            axios.get(`http://localhost:8181/getScreeningById/${screeningId}`, configGet)
+                .then(function (response) {
+                    let screeningData = response.data;
+                    populateTicketsDiv(ticketsArr, screeningData);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+    }
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -31,14 +33,14 @@ let price = ``;
 
 
 function populateTicketsDiv(tickets, screening) {
-    const div = document.querySelector("#bookingResponse");
+const div = document.querySelector("#bookingResponse");
 
     for (let ticket of tickets) {
         const card = document.createElement('div');
-        card.setAttribute('class', 'card');
+        card.setAttribute('class', 'card-ticket');
 
         const cardBody = document.createElement("div");
-        cardBody.setAttribute('class', 'card-body');
+        cardBody.setAttribute('class', 'card-body-ticket');
         const cardBodyTwo = document.createElement("ul");
         cardBodyTwo.setAttribute('class', 'list-group list-group-flush');
 
@@ -56,7 +58,7 @@ function populateTicketsDiv(tickets, screening) {
         pTag.textContent = "SeatNo: " + ticket.seatNo;
         pTagOne.textContent = "Type: " + ticket.ticketType; //adult/child/student
         pTagTwo.textContent = "Price: TBC" + price;
-        pTagThree.textContent = "Buyer id: " + ticket.userId;
+        pTagThree.textContent = "Purchase id: " + ticket.userId;
 
         // screenId links to movie Name / Date/Time, ScreenNumber & ScreenType
         let movieDateTime = screening.movieDateTime;
@@ -95,3 +97,5 @@ function populateTicketsDiv(tickets, screening) {
         div.appendChild(card);
     }
     }
+
+    window.addEventListener('load', ticketFinder);
