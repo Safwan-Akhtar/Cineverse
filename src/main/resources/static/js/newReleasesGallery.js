@@ -6,8 +6,8 @@ const reqTwo = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6723592`);
 const reqThree = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt4566758`);
 // The King's Man
 const reqFour = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt6856242`);
-// Antebellum
-const reqFive = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt10065694`);
+// Black Widow
+const reqFive = axios.get(`http://www.omdbapi.com/?apikey=335035be&i=tt3480822`);
 
 function axiosAll()
     {
@@ -34,47 +34,42 @@ function populateDiv(movies) {
 
     const div = this.document.getElementById("galleryDiv")
 
+    const container = document.createElement('div')
+    container.setAttribute('class', 'container')
+
     for (let movie of movies) {
+        // card should be wrapped...
 
-        // To style:
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card movie-card');
+        card.setAttribute('style', 'width: 25vw;');
 
-        // Have this code outside the loop
-        // const container = document.createElement('div')
-        // container.setAttribute('class', 'container')
-
-        // Then add this for the main div that contains each movie
-        // const card = document.createElement('div')
-        // card.setAttribute('class', 'card anotherClass anotherClass')
-        // Cards are a bootstrap component - can add other classes separated by a space to add additional bootstrap styles
-        // See https://getbootstrap.com/docs/4.5/components/card/ for options / more info
-
-        //eg.
-        // image.setAttirbute('class', 'card-img-top')
-        //   class="card-body" for div containing text
-        //   class="card-title" for movie title
         //   class="card-text" for actors / directors
         // or "list-group-item" if you change to li
 
-
-        const article = document.createElement("article");
-        const divTwo = document.createElement("div");
         const image = document.createElement("img");
-        const divThree = document.createElement("div");
-        const divFour = document.createElement("div");
-        const header = document.createElement("header");
-        const hTwo = document.createElement("h2");
-        const aTag = document.createElement("a");
-        const pTag = document.createElement("p");
-        const pTagOne = document.createElement("p");
-        const pTagTwo = document.createElement("p");
-        const pTagThree = document.createElement("p");
+        image.setAttribute('class', 'card-img-top');
 
-        article.id = movie.imdbID;
+        const divTwo = document.createElement("div");
+        divTwo.setAttribute('class', 'card-body');
+
+        const hTwo = document.createElement("h2");
+        hTwo.setAttribute('class', 'card-title');
+        const aTag = document.createElement("a");
+
+        const pTag = document.createElement("p");
+        pTag.setAttribute('class', 'card-text');
+        const pTagOne = document.createElement("p");
+        pTagOne.setAttribute('class', 'card-text');
+        const pTagTwo = document.createElement("p");
+        pTagTwo.setAttribute('class', 'card-text');
+        const pTagThree = document.createElement("p");
+        pTagThree.setAttribute('class', 'card-text');
 
         image.src = movie.Poster;
         image.position = "centre";
         image.alt = `${movie.Title} poster`;
-
+        image.size
 
         // Link to details on title - can move to a button
         hTwo.id = movie.imdbID;
@@ -91,19 +86,16 @@ function populateDiv(movies) {
         pTagThree.textContent = "Age Rating: " + movie.Rated;
 
         hTwo.appendChild(aTag);
-        header.appendChild(hTwo);
-        header.appendChild(pTag);
-        header.appendChild(pTagOne)
-        header.appendChild(pTagTwo);
-        header.appendChild(pTagThree);
-        divFour.appendChild(header);
-        divThree.appendChild(divFour);
-        divTwo.appendChild(image);
-        article.appendChild(divTwo);
-        article.appendChild(divThree);
-        div.appendChild(article);
-
+        divTwo.appendChild(hTwo);
+        divTwo.appendChild(pTag);
+        divTwo.appendChild(pTagOne);
+        divTwo.appendChild(pTagTwo);
+        divTwo.appendChild(pTagThree);
+        card.appendChild(image);
+        card.appendChild(divTwo);
+        container.appendChild(card);
     }
+    div.appendChild(container);
 }
 
 // This function can probably be merged with the gallerySearch.js & gallerySearchInfo.html page
