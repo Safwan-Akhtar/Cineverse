@@ -43,9 +43,9 @@ public class CustomersController {
         return ResponseEntity.ok(this.service.findCustomersById (id));
     }
 
-    @GetMapping("/readCustomersByName/{name}")
-    public ResponseEntity<List<CustomersDTO>> readCustomersByName(@PathVariable String name){
-        return ResponseEntity.ok(this.service.readCustomersByName (name));
+    @GetMapping("/readCustomersByName/{username}")
+    public ResponseEntity<List<CustomersDTO>> readCustomersByName(@PathVariable String username){
+        return ResponseEntity.ok(this.service.readCustomersByName (username));
     }
 
     @PatchMapping("/addTicketsToCustomer/{id}")

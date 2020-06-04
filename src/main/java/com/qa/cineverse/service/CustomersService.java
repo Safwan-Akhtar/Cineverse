@@ -46,8 +46,8 @@ public class CustomersService {
         return this.mapToDTO(this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new));
     }
 
-    public List<CustomersDTO> readCustomersByName(String name) {
-        return this.customersRepo.findByName(name).stream().map(this::mapToDTO).collect(Collectors.toList());
+    public List<CustomersDTO> readCustomersByName(String username) {
+        return this.customersRepo.findByUsername(username).stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public boolean deleteCustomers(Long id){
