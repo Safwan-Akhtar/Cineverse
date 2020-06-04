@@ -98,4 +98,7 @@ const div = document.querySelector("#bookingResponse");
     }
     }
 
-    window.addEventListener('load', ticketFinder);
+    window.addEventListener("load", ticketFinder);
+
+    let postButton = document.querySelector('#postButton');
+    postButton.addEventListener('click', ticketFinder);
