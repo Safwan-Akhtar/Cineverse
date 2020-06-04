@@ -1,4 +1,4 @@
-
+console.log(localStorage.getItem('user'));
 let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
@@ -182,17 +182,22 @@ const postBooking = () => {
                     axios({
                         method: 'patch',
                         url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                        // userId is not fully implemented yet, use:
+                        // localStorage.getItem('user')
                         data: `{
-                    "ticketType": "${typesArr[i]}",
-                    "seatNo": "${seatArr[i]}"
+                        "userId": "1",
+                        "screenId": "${foundId}",
+                        "ticketType": "${typesArr[i]}",
+                        "seatNo": "${seatArr[i]}"
                 }`,
                         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
                         responseType: 'json'
                     })
                 }
                 //success!
-                window.alert("Your tickets have been booked!");
-                //add a redirect window.location.replace("page.html");
+                // alter to viewTickets.html & or basket?
+                window.alert("Your tickets have been booked! You will now be directed to checkout");
+                window.location.replace("../payment.html");
             })
                 .catch(function (response) {
                 console.log(response);
