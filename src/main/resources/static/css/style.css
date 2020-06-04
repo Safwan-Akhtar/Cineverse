@@ -136,3 +136,22 @@ div.card{
   background-color: transparent;
   border: transparent;
 }
+
+.movie-card {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid gray;
+    background-color: lightblue;
+}
+
+@media screen and (min-width: 600px) {
+    .movie-card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .movie-card {
+        flex: 1 1 calc(33% - 2rem);
+    }
+}
