@@ -26,6 +26,9 @@ public class Customers {
     @Column(name = "name")
     @NonNull
     private String name;
+    @Column(name = "username")
+    @NonNull
+    private String username;
 
     @JsonIgnore
     @ManyToMany(targetEntity = Screenings.class, fetch = FetchType.LAZY)
