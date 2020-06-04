@@ -2,28 +2,26 @@ let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
 };
-let currentUser = localStorage.getItem('user');
 
-const ticketFinder = () => {
-    axios.get(`http://localhost:8181/readCustomersByName/${currentUser}`, configGet)
-        .then(function (response) {
-            let ticketsArr = response.data[0].tickets;
-            console.log(response.data.tickets);
-            console.log(response.data[0].tickets);
-            let screeningId = ticketsArr[0].screenId;
-            axios.get(`http://localhost:8181/getScreeningById/${screeningId}`, configGet)
-                .then(function (response) {
-                    let screeningData = response.data;
-                    populateTicketsDiv(ticketsArr, screeningData);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        })
-    }
+let name = document.getElementById("customerName").value;
+axios.get(`http://localhost:8181/readCustomersByName/${name}`, configGet)
+    .then(function (response) {
+        let ticketsArr = response.data[0].tickets;
+        console.log(response.data.tickets);
+        console.log(response.data[0].tickets);
+        let screeningId = ticketsArr[0].screenId;
+        axios.get(`http://localhost:8181/getScreeningById/${screeningId}`, configGet)
+            .then(function (response) {
+                let screeningData = response.data;
+                populateTicketsDiv(ticketsArr, screeningData);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -33,7 +31,7 @@ let price = ``;
 
 
 function populateTicketsDiv(tickets, screening) {
-const div = document.querySelector("#bookingResponse");
+    const div = document.querySelector("#bookingResponse");
 
     for (let ticket of tickets) {
         const card = document.createElement('div');
@@ -97,8 +95,3 @@ const div = document.querySelector("#bookingResponse");
         div.appendChild(card);
     }
     }
-
-    window.addEventListener("load", ticketFinder);
-
-    let postButton = document.querySelector('#postButton');
-    postButton.addEventListener('click', ticketFinder);
