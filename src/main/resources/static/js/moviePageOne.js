@@ -34,7 +34,7 @@ function getOurMovie() {
                         ${movie.Plot}
                         <hr>
                         <a href="https://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View on IMDB</a>
-                        <a style="color: white" href="gallarySearch.html" class="btn btn-primary">Search another movie</a>
+                        <a style="color: white" href="gallerySearch.html" class="btn btn-primary">Search another movie</a>
                         <a style="color: white" href="listingsGallery.html" class="btn btn-primary">Our current movies</a>
                         <a style="color: white" href="newReleasesGallery.html" class="btn btn-primary">See New Releases</a>
                     </div>
