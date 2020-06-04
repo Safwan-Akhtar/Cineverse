@@ -19,11 +19,11 @@ public class CustomersTest {
 
     @Before
     public void setUp() {
-        customers = new Customers("Luke");
-        other = new Customers("Felix");
+        customers = new Customers("Luke", "Lukeyboy");
+        other = new Customers("Felix", "YugiFan");
 
-        tickets.add(new Tickets ("adult", "A1", 1L, 1L));
-        otherTickets.add(new Tickets ("child", "A3", 1L, 1L));
+        tickets.add(new Tickets ("adult", "A1", 1L));
+        otherTickets.add(new Tickets ("child", "A3", 1L));
     }
 
     @Test
@@ -56,8 +56,21 @@ public class CustomersTest {
     }
 
     @Test(expected=NullPointerException.class)
+    public void ticketsUserNullButOtherUserNotNull() {
+        customers.setUsername(null);
+        other.setCustomersId (1L);
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test
+    public void ticketsUserIdNotEqual() {
+        other.setUsername("whatwhat");
+        assertFalse(tickets.equals(other));
+    }
+
+    @Test(expected=NullPointerException.class)
     public void customersTicketsNullButOtherTicketsNotNull() {
-        tickets.add(new Tickets (null, null, null, null));
+        tickets.add(new Tickets (null, null, null));
         customers.setTickets(null);
         other.setCustomersId (1L);
         assertFalse(customers.equals(other));
@@ -65,8 +78,8 @@ public class CustomersTest {
 
     @Test
     public void customersTicketsNotEqual() {
-        otherTickets.add(new Tickets ("child", "A3", 3L, 1L));
-        otherTickets.add(new Tickets ("student", "A4", 3L, 2L));
+        otherTickets.add(new Tickets ("child", "A3", 3L));
+        otherTickets.add(new Tickets ("student", "A4", 3L));
         other.setTickets(otherTickets);
         assertFalse(customers.equals(other));
     }
@@ -91,15 +104,15 @@ public class CustomersTest {
 
     @Test
     public void constructorWithoutId() {
-        Customers customers = new Customers("Felix");
+        Customers customers = new Customers("Felix", "Femmmme");
         assertNull(customers.getCustomersId ());
         assertNotNull(customers.getName());
     }
 
     @Test(expected=NullPointerException.class)
     public void hashCodeTestWithNull() {
-        Customers customers = new Customers(null);
-        Customers other = new Customers(null);
+        Customers customers = new Customers(null, null);
+        Customers other = new Customers(null, null);
         assertEquals(customers.hashCode(), other.hashCode());
     }
 }
