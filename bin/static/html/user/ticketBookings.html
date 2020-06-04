@@ -1,0 +1,449 @@
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/seatPlan.css" />
+<title>Cineverse | Bookings</title>
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark topnav-centered">
+        <a id="logoNavButton" class="navbar-brand" href="../../index.html" style="color:white">QA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a id="homeNavButton" class="nav-link" href="../../index.html" style="color:white">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="whatsOnNavButton" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">Whats
+                        on</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="listingGalleryNavButton" class="dropdown-item" href="../listingsGallery.html">Current
+                            Listings</a>
+                        <a id="upcomingReleasesNavButton" class="dropdown-item" href="#">Upcoming Releases</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color:white">Bookings</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="ticketBookingNavButton" class="dropdown-item" href="../user/ticketBookings.html">Book
+                            Tickets</a>
+                        <a id="screenBookingNavButton" class="dropdown-item" href="#">Book Screen</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color:white">
+                        Info
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a id="screensNavButton" class="dropdown-item" href="../screens.html">Screens</a>
+                        <a id="openingTimesNavButton" class="dropdown-item" href="../openingtimes.html">Opening
+                            Times</a>
+                        <a id="classificationNavButton" class="dropdown-item"
+                            href="../classification.html">Classification</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a id="comingHereNavButton" class="nav-link" href="../comingHere.html" style="color:white">Getting
+                        here</a>
+                </li>
+                <li class="right">
+                    <a id="loginContainerNavButton" class="nav-link" href="../user/loginContainer.html"
+                        style="color:white">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!-- Start of main page content -->
+<header class="jumbotron bg-dark text-white">
+    <!--would like to centre jumbotron-->
+    <noscript>If you have no JS enabled you will see this! Please enable JS. Please?</noscript>
+    <h1 class="display-4">Ticket Bookings</h1>
+    <hr class="my-4">
+</header>
+<main>
+    <form id="ticket" class="back" method="GET" action="ticketBookings.html">
+        <fieldset>
+            <ul>
+                <li>
+                    <Label for="customername">Buyer name :</Label>
+                    <input id="customername" name="customername" type="text">
+                </li>
+                <li>
+                    <label for="movieTitle">Select movie :</label>
+                    <select id="movieTitle" name="movieTitle">
+                        <option>Select</option>
+                        <option value="Mulan">Mulan</option>
+                        <option value="Spiderman: Into The Spiderverse">Spiderman: Into The Spiderverse</option>
+                        <option value="Avengers: Endgame">Avengers: Endgame</option>
+                        <option value="Frozen 2">Frozen 2</option>
+                        <option value="How To Train Your Dragon: Hidden World">How To Train Your Dragon: Hidden World</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="dateList">Screening Date</label>
+                    <select type="date" id="dateList" name="screeningDate" class="screenDateList" required>
+                        <option type="date" id="screeningDate" name="screeningDate" value="screeningDate"></option>
+                    </select>
+                </li>
+                <li>
+                    <label for="timeList">Screening Time</label>
+                    <select type="time" id="timeList" name="screeningTime" class="screenTimeList" required>
+                        <option type="time" id="screeningTime" name="screeningTime"></option>
+                    </select>
+                </li>
+                <li class="back">
+                    <label for="adult">Adult Seats</label>
+                        <input type="number" id="adult" name="adult" value="0" min="0" max="20">
+                </li>
+                <li class="back">
+                    <label for="child">Child Seats</label>
+                    <input type="number" id="child" name="child" value="0" min="0" max="20">
+                </li>
+                <li> <!-- Student should be changed to concession -->
+                    <label for="student">Student Seats</label>
+                    <input type="number" id="student" name="student" value="0" min="0" max="20">
+                </li>
+            </ul>
+
+            <p id="screenPlanType">Select a time to choose your seats...</p>
+<!-- iframe for choosing a seat add to style= -->
+<!--            <iframe id="standardSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="standardSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>-->
+<!--            <iframe id="deluxeSeatPlan" style="width: 100%; height: 500px; overflow: hidden; border:1px solid #000;" src="deluxeSeat.html" width="500" height="500" scrolling="no">Iframes not supported</iframe>-->
+
+            <!-- Standard seating Start -->
+            <section id="standardSeatPlan" style="display: none; width: 100%; height: 500px; overflow: hidden; border:1px solid #000;">
+                <div class="theatre-reg">
+                    <div class="cinema-seats left">
+                        <div class="cinema-row row-1">
+                            <div class="seat reg" id="A1"></div>
+                            <div class="seat reg" id="B1"></div>
+                            <div class="seat reg" id="C1"></div>
+                            <div class="seat reg" id="D1"></div>
+                            <div class="seat reg" id="E1"></div>
+                            <div class="seat reg" id="F1"></div>
+                            <div class="seat reg" id="G1"></div>
+                            <div class="seat reg" id="H1"></div>
+                        </div>
+                        <div class="cinema-row row-2">
+                            <div class="seat reg" id="A2"></div>
+                            <div class="seat reg" id="B2"></div>
+                            <div class="seat reg" id="C2"></div>
+                            <div class="seat reg" id="D2"></div>
+                            <div class="seat reg" id="E2"></div>
+                            <div class="seat reg" id="F2"></div>
+                            <div class="seat reg" id="G2"></div>
+                            <div class="seat reg" id="H2"></div>
+                            <div class="seat reg" id="I2"></div>
+                        </div>
+                        <div class="cinema-row row-3">
+                            <div class="seat reg" id="A3"></div>
+                            <div class="seat reg" id="B3"></div>
+                            <div class="seat reg" id="C3"></div>
+                            <div class="seat reg" id="D3"></div>
+                            <div class="seat reg" id="E3"></div>
+                            <div class="seat reg" id="F3"></div>
+                            <div class="seat reg" id="G3"></div>
+                            <div class="seat reg" id="H3"></div>
+                            <div class="seat reg" id="I3"></div>
+                        </div>
+                        <div class="cinema-row row-4">
+                            <div class="seat reg" id="A4"></div>
+                            <div class="seat reg" id="B4"></div>
+                            <div class="seat reg" id="C4"></div>
+                            <div class="seat reg" id="D4"></div>
+                            <div class="seat reg" id="E4"></div>
+                            <div class="seat reg" id="F4"></div>
+                            <div class="seat reg" id="G4"></div>
+                            <div class="seat reg" id="H4"></div>
+                            <div class="seat reg" id="I4"></div>
+                        </div>
+                        <div class="cinema-row row-5">
+                            <div class="seat reg" id="A5"></div>
+                            <div class="seat reg" id="B5"></div>
+                            <div class="seat reg" id="C5"></div>
+                            <div class="seat reg" id="D5"></div>
+                            <div class="seat reg" id="E5"></div>
+                            <div class="seat reg" id="F5"></div>
+                            <div class="seat reg" id="G5"></div>
+                            <div class="seat reg" id="H5"></div>
+                            <div class="seat reg" id="I5"></div>
+                        </div>
+                        <div class="cinema-row row-6">
+                            <div class="seat reg" id="A6"></div>
+                            <div class="seat reg" id="B6"></div>
+                            <div class="seat reg" id="C6"></div>
+                            <div class="seat reg" id="D6"></div>
+                            <div class="seat reg" id="E6"></div>
+                            <div class="seat reg" id="F6"></div>
+                            <div class="seat reg" id="G6"></div>
+                            <div class="seat reg" id="H6"></div>
+                            <div class="seat reg" id="I6"></div>
+                        </div>
+                        <div class="cinema-row row-7">
+                            <div class="seat reg" id="A7"></div>
+                            <div class="seat reg" id="B7"></div>
+                            <div class="seat reg" id="C7"></div>
+                            <div class="seat reg" id="D7"></div>
+                            <div class="seat reg" id="E7"></div>
+                            <div class="seat reg" id="F7"></div>
+                            <div class="seat reg" id="G7"></div>
+                            <div class="seat reg" id="H7"></div>
+                            <div class="seat reg" id="I7"></div>
+                        </div>
+                    </div>
+                    <div class="cinema-seats right">
+                        <div class="cinema-row row-1">
+                            <div class="seat reg" id="A8"></div>
+                            <div class="seat reg" id="B8"></div>
+                            <div class="seat reg" id="C8"></div>
+                            <div class="seat reg" id="D8"></div>
+                            <div class="seat reg" id="E8"></div>
+                            <div class="seat reg" id="F8"></div>
+                            <div class="seat reg" id="G8"></div>
+                            <div class="seat reg" id="H8"></div>
+                            <div class="seat reg" id="I8"></div>
+                        </div>
+                        <div class="cinema-row row-2">
+                            <div class="seat reg" id="A9"></div>
+                            <div class="seat reg" id="B9"></div>
+                            <div class="seat reg" id="C9"></div>
+                            <div class="seat reg" id="D9"></div>
+                            <div class="seat reg" id="E9"></div>
+                            <div class="seat reg" id="F9"></div>
+                            <div class="seat reg" id="G9"></div>
+                            <div class="seat reg" id="H9"></div>
+                            <div class="seat reg" id="I9"></div>
+                        </div>
+                        <div class="cinema-row row-3">
+                            <div class="seat reg" id="A10"></div>
+                            <div class="seat reg" id="B10"></div>
+                            <div class="seat reg" id="C10"></div>
+                            <div class="seat reg" id="D10"></div>
+                            <div class="seat reg" id="E10"></div>
+                            <div class="seat reg" id="F10"></div>
+                            <div class="seat reg" id="G10"></div>
+                            <div class="seat reg" id="H10"></div>
+                            <div class="seat reg" id="I10"></div>
+                        </div>
+                        <div class="cinema-row row-4">
+                            <div class="seat reg" id="A11"></div>
+                            <div class="seat reg" id="B11"></div>
+                            <div class="seat reg" id="C11"></div>
+                            <div class="seat reg" id="D11"></div>
+                            <div class="seat reg" id="E11"></div>
+                            <div class="seat reg" id="F11"></div>
+                            <div class="seat reg" id="G11"></div>
+                            <div class="seat reg" id="H11"></div>
+                            <div class="seat reg" id="I11"></div>
+                        </div>
+                        <div class="cinema-row row-5">
+                            <div class="seat reg" id="A12"></div>
+                            <div class="seat reg" id="B12"></div>
+                            <div class="seat reg" id="C12"></div>
+                            <div class="seat reg" id="D12"></div>
+                            <div class="seat reg" id="E12"></div>
+                            <div class="seat reg" id="F12"></div>
+                            <div class="seat reg" id="G12"></div>
+                            <div class="seat reg" id="H12"></div>
+                            <div class="seat reg" id="I12"></div>
+                        </div>
+                        <div class="cinema-row row-6">
+                            <div class="seat reg" id="A13"></div>
+                            <div class="seat reg" id="B13"></div>
+                            <div class="seat reg" id="C13"></div>
+                            <div class="seat reg" id="D13"></div>
+                            <div class="seat reg" id="E13"></div>
+                            <div class="seat reg" id="F13"></div>
+                            <div class="seat reg" id="G13"></div>
+                            <div class="seat reg" id="H13"></div>
+                            <div class="seat reg" id="I13"></div>
+                        </div>
+                        <div class="cinema-row row-7">
+                            <div class="seat reg" id="A14"></div>
+                            <div class="seat reg" id="B14"></div>
+                            <div class="seat reg" id="C14"></div>
+                            <div class="seat reg" id="D14"></div>
+                            <div class="seat reg" id="E14"></div>
+                            <div class="seat reg" id="F14"></div>
+                            <div class="seat reg" id="G14"></div>
+                            <div class="seat reg" id="H14"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+              <!-- Standard seating end / Deluxe Start -->
+            <section id="deluxeSeatPlan" style="display: none; width: 100%; height: 500px; overflow: hidden; border:1px solid #000;">
+                <div class="theatre-del">
+                    <div class="cinema-seats left">
+                        <div class="cinema-row row-1">
+                            <div class="seat deluxe" id="A1*"></div>
+                            <div class="seat deluxe" id="B1*"></div>
+                            <div class="seat deluxe" id="C1*"></div>
+                            <div class="seat deluxe" id="D1*"></div>
+                            <div class="seat deluxe" id="E1*"></div>
+                        </div>
+                        <div class="cinema-row row-2">
+                            <div class="seat deluxe" id="A2*"></div>
+                            <div class="seat deluxe" id="B2*"></div>
+                            <div class="seat deluxe" id="C2*"></div>
+                            <div class="seat deluxe" id="D2*"></div>
+                            <div class="seat deluxe" id="E2*"></div>
+                        </div>
+                        <div class="cinema-row row-3">
+                            <div class="seat deluxe" id="A3*"></div>
+                            <div class="seat deluxe" id="B3*"></div>
+                            <div class="seat deluxe" id="C3*"></div>
+                            <div class="seat deluxe" id="D3*"></div>
+                            <div class="seat deluxe" id="E3*"></div>
+                        </div>
+                        <div class="cinema-row row-4">
+                            <div class="seat deluxe" id="A4*"></div>
+                            <div class="seat deluxe" id="B4*"></div>
+                            <div class="seat deluxe" id="C4*"></div>
+                            <div class="seat deluxe" id="D4*"></div>
+                            <div class="seat deluxe" id="E4*"></div>
+                        </div>
+                        <div class="cinema-row row-5">
+                            <div class="seat deluxe" id="A5*"></div>
+                            <div class="seat deluxe" id="B5*"></div>
+                            <div class="seat deluxe" id="C5*"></div>
+                            <div class="seat deluxe" id="D5*"></div>
+                        </div>
+                    </div>
+                    <div class="cinema-seats right">
+                        <div class="cinema-row row-1">
+                            <div class="seat deluxe" id="A6*"></div>
+                            <div class="seat deluxe" id="B6*"></div>
+                            <div class="seat deluxe" id="C6*"></div>
+                            <div class="seat deluxe" id="D6*"></div>
+                        </div>
+                        <div class="cinema-row row-2">
+                            <div class="seat deluxe" id="A7*"></div>
+                            <div class="seat deluxe" id="B7*"></div>
+                            <div class="seat deluxe" id="C7*"></div>
+                            <div class="seat deluxe" id="D7*"></div>
+                            <div class="seat deluxe" id="E7*"></div>
+                        </div>
+                        <div class="cinema-row row-3">
+                            <div class="seat deluxe" id="A8*"></div>
+                            <div class="seat deluxe" id="B8*"></div>
+                            <div class="seat deluxe" id="C8*"></div>
+                            <div class="seat deluxe" id="D8*"></div>
+                            <div class="seat deluxe" id="E8*"></div>
+                        </div>
+                        <div class="cinema-row row-4">
+                            <div class="seat deluxe" id="A9*"></div>
+                            <div class="seat deluxe" id="B9*"></div>
+                            <div class="seat deluxe" id="C9*"></div>
+                            <div class="seat deluxe" id="D9*"></div>
+                            <div class="seat deluxe" id="E9*"></div>
+                        </div>
+                        <div class="cinema-row row-5">
+                            <div class="seat deluxe" id="A10*"></div>
+                            <div class="seat deluxe" id="B10*"></div>
+                            <div class="seat deluxe" id="C10*"></div>
+                            <div class="seat deluxe" id="D10*"></div>
+                            <div class="seat deluxe" id="E10*"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Deluxe end-->
+            <!-- Button for submitting seats-->
+            <br>
+            <div>
+                <button id="countSeats" type="button">Confirm seats</button>
+            </div>
+            <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+            <script>
+                // For active visual status
+                $('.cinema-seats .seat').on('click', function () {
+                    $(this).toggleClass('active');
+                });
+            </script>
+
+        </fieldset>
+        <br>
+        <button id="postButton" type="button">Submit</button>
+        <button id="reset" type="reset">Reset</button>
+    </form>
+    <link rel="stylesheet" type="text/css" href="../../css/ticketBooking.css" />
+
+    
+</main>
+<!-- Footer -->
+<br><br><br><br>
+<footer class= "container-fluid footer">
+    <div class="row">
+        <div class="col">
+            <h5>About Cineverse</h5>
+            <ul class="footer__nav__list nav--about">
+                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">About Team Gates</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">About Cineverse</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <h5>Legal</h5>
+            <ul class="footer__nav__list nav--legal">
+                <li> <a href="#" class="icon-facebook" target="_blank" rel="noopener">Privacy Policy</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Terms and Conditions</a>
+                </li>
+                <li> <a href="#" class="icon-twitter" target="_blank" rel="noopener">Licences</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <h5>Social</h5>
+            <ul class="footer__nav__list nav--social">
+                <li> <a href="https://www.facebook.com/#" class="icon-facebook" target="_blank" rel="noopener">Facebook</a>
+                </li>
+                <li> <a href="https://twitter.com/#" class="icon-twitter" target="_blank" rel="noopener">Twitter</a>
+                </li>
+                <li> <a href="https://www.instagram.com/#" class="icon-instagram" target="_blank" rel="noopener">Instagram</a>
+                </li>
+                <li> <a href="https://www.youtube.com/user/#" class="icon-youtube" target="_blank" rel="noopener">Youtube</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <p class="small" style="margin-bottom: 0">Copyright (c) QA Cinemas & QAC Team Gates 2020</p>
+    <br>
+</footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../js/ticket.js"></script>
+  </body>
+</html>
