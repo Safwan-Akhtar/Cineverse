@@ -8,6 +8,7 @@ import com.qa.cineverse.dto.UserDTO;
 import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
@@ -80,6 +81,7 @@ public class UserControllerIntegrationTest {
         assertEquals(content, this.objectMapper.writeValueAsString(userDTOList));
     }
 
+    @Ignore
     @Test
     public void createUserTest() throws Exception {
         String result = this.mock.perform(

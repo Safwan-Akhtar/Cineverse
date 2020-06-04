@@ -20,7 +20,7 @@ import java.io.IOException;
 import static org.testng.AssertJUnit.assertTrue;
 import static java.lang.Thread.*;
 
-
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Seltestfelix {

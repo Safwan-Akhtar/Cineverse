@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
@@ -25,6 +26,7 @@ import java.io.File;
 import static java.lang.Thread.sleep;
 import static org.testng.AssertJUnit.assertTrue;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Seltestsaf1 {
