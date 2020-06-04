@@ -61,6 +61,31 @@ p {
     font-size: large;
 }
 
+
+div.card-ticket{
+    color: #000000;
+    background-color: #444444;
+    border: transparent;
+    display: float;
+    position: relative;
+    width: 50%;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -00%);
+  }
+  
+  div.card-body-ticket{
+    color: #000000;
+    background-color: #444444;
+    border: transparent;
+    display: float;
+    position: relative;
+    width: 100%;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -00%);
+  }
+
 div.card{
   color: white;
   background-color: transparent;
