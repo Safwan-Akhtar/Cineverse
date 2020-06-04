@@ -1,12 +1,8 @@
 package com.qa.cineverse.service;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.UserDTO;
 import com.qa.cineverse.exception.UserAlreadyExistsException;
-import com.qa.cineverse.repo.CustomersRepo;
-import com.qa.cineverse.repo.TicketsRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

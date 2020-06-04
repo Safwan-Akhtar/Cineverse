@@ -3,7 +3,6 @@ package com.qa.cineverse.controller;
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
-import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

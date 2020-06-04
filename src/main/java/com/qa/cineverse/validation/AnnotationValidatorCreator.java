@@ -1,7 +1,5 @@
 package com.qa.cineverse.validation;
 
-import javax.validation.constraints.Email;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
