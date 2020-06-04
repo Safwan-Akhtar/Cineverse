@@ -1,8 +1,10 @@
 package com.qa.cineverse.dto;
 
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.validation.AnnotationValidatorCreator;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
