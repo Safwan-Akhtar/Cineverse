@@ -3,7 +3,6 @@ package com.qa.cineverse.service;
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
-import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.exception.CustomersNotFoundException;
 import com.qa.cineverse.repo.CustomersRepo;
 import com.qa.cineverse.repo.TicketsRepo;
@@ -47,8 +46,8 @@ public class CustomersService {
         return this.mapToDTO(this.customersRepo.findById(id).orElseThrow(CustomersNotFoundException::new));
     }
 
-    public List<CustomersDTO> readCustomersByName(String name) {
-        return this.customersRepo.findByName(name).stream().map(this::mapToDTO).collect(Collectors.toList());
+    public List<CustomersDTO> readCustomersByName(String username) {
+        return this.customersRepo.findByUsername(username).stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public boolean deleteCustomers(Long id){
