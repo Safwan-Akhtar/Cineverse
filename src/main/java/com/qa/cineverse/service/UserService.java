@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,10 @@ public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepo repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
 
     private final ModelMapper mapper;
@@ -44,22 +49,24 @@ public class UserService implements IUserService, UserDetailsService {
         return this.repository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-
+    @Transactional
+    @Override
     public UserDTO createUser(UserDTO userDTO){
+        if (emailExist(userDTO.getEmail())) {
+            throw new UserAlreadyExistsException(
+                    "There is an account with that email address: "
+                            +  userDTO.getEmail());
+        }
         User user = new User();
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
         user.setUsername(userDTO.getUsername());
-        user.setPassword(userDTO.getPassword());
-        user.setMatchingPassword(userDTO.getMatchingPassword());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setMatchingPassword(passwordEncoder.encode(userDTO.getMatchingPassword()));
         user.setActive(userDTO.isEnabled ());
         user.setEmail(userDTO.getEmail());
         user.setRoles("ROLE_USER");
         return this.mapToDTO(this.repository.save(user));
-    }
-
-    private boolean emailExists(final String email) {
-        return repository.findByEmail (email) != null;
     }
 
     @Override
@@ -69,27 +76,8 @@ public class UserService implements IUserService, UserDetailsService {
         return user.map(UserDTO::new).get();
     }
 
-    @Transactional
-    @Override
-    public User registerNewUserAccount(UserDTO userDTO)
-            throws UserAlreadyExistsException {
-
-        if (emailExist(userDTO.getEmail())) {
-            throw new UserAlreadyExistsException(
-                    "There is an account with that email address: "
-                            +  userDTO.getEmail());
-        }
-
-        User user = new User();
-        user.setForename(userDTO.getForename());
-        user.setSurname(userDTO.getSurname());
-        user.setPassword(userDTO.getPassword());
-        user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER");
-        return repository.save(user);
-    }
-
     private boolean emailExist(String email) {
         return repository.findByEmail(email) != null;
     }
+
 }
