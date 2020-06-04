@@ -19,7 +19,5 @@ public class TicketsDTO {
     private String seatNo;
     @NonNull
     private Long screenId;
-    @NotNull
-    private Long userId;
 
 }

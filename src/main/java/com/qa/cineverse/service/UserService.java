@@ -57,6 +57,11 @@ public class UserService implements IUserService, UserDetailsService {
                     "There is an account with that email address: "
                             +  userDTO.getEmail());
         }
+        if (emailExist(userDTO.getUsername())) {
+            throw new UserAlreadyExistsException(
+                    "There is an account with that email address: "
+                            +  userDTO.getUsername());
+        }
         User user = new User();
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
