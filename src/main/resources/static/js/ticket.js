@@ -85,18 +85,24 @@ function getSeatTypes(activeArr) {
 
     //resets typeList if changing seats
     type = ``;
+    let total = 0;
     if (activeArr.length === totalSeats) {
 
         for (let i = 0; i < adultSeats; i++){
             type += `adult,`;
+            total += 10;
         }
         for (let i = 0; i < childSeats; i++){
             type += `child,`;
+            total += 5;
         }
         for (let i = 0; i < studentSeats; i++){
             type += `student,`;
+            total += 7;
         }
         console.log(type);
+        console.log(total);
+        sessionStorage.setItem("price", "${total}");
     } else {
         console.log("Nah bra. Number of seats selected doesn't match!");
         for (let i = 0; i < activeArr.length; i++){
@@ -160,7 +166,8 @@ const postBooking = () => {
             method: 'patch',
             url: `http://localhost:8181/addCustomerToScreening/${foundId}`,
             data: `{
-                "name": "${customername}"
+                "name": "${customername}",
+                "username" : "${localStorage.getItem('user')}"
             }`,
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
             responseType: 'json'
