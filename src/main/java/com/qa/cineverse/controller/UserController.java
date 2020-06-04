@@ -31,4 +31,4 @@ public class UserController {
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
         return new ResponseEntity<>(this.service.createUser (user), HttpStatus.CREATED);
     }
-    }
+}
