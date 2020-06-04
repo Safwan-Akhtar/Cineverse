@@ -31,8 +31,6 @@ public class UserService implements IUserService, UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-
     private final ModelMapper mapper;
 
     @Autowired

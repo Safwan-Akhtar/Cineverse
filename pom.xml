@@ -249,7 +249,6 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <repositories>
@@ -264,8 +263,7 @@
   <build>
     <outputDirectory>target/${project.artifactId}/WEB-INF/classes</outputDirectory>
     <finalName>${project.artifactId}</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven
-				defaults (may be moved to parent pom) -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven		defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
           <groupId>org.springframework.boot</groupId>
@@ -339,10 +337,6 @@
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
