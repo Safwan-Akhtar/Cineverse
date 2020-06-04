@@ -74,4 +74,6 @@ public class UserService implements IUserService, UserDetailsService {
     private boolean emailExist(String email) {
         return repository.findByEmail(email) != null;
     }
+
+
 }
