@@ -44,7 +44,7 @@ public class Seltestsaf1 {
         this.driver = new ChromeDriver();
 
         report = new ExtentReports(
-                System.getProperty("user.dir") + "/test-output/Report.html",
+                System.getProperty("user.dir") + "/test-output/SafReport.html",
                 false
         );
         report
