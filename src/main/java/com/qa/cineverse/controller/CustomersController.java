@@ -3,7 +3,6 @@ package com.qa.cineverse.controller;
 import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.Tickets;
 import com.qa.cineverse.dto.CustomersDTO;
-import com.qa.cineverse.dto.ScreeningsDTO;
 import com.qa.cineverse.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,9 +43,9 @@ public class CustomersController {
         return ResponseEntity.ok(this.service.findCustomersById (id));
     }
 
-    @GetMapping("/readCustomersByName/{name}")
-    public ResponseEntity<List<CustomersDTO>> readCustomersByName(@PathVariable String name){
-        return ResponseEntity.ok(this.service.readCustomersByName (name));
+    @GetMapping("/readCustomersByName/{username}")
+    public ResponseEntity<List<CustomersDTO>> readCustomersByName(@PathVariable String username){
+        return ResponseEntity.ok(this.service.readCustomersByName (username));
     }
 
     @PatchMapping("/addTicketsToCustomer/{id}")
