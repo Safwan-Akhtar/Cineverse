@@ -131,8 +131,10 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
         sleep(2000);
 
-        // add id once searchGal has been added to navbar
-        driver.findElement(By.id("")).click();
+        driver.findElement(By.id("whatOnDrop")).click();
+        test.log(LogStatus.INFO, "Clicked what's on drop down.");
+        sleep(2000);
+        driver.findElement(By.id("gallerySearchNavButton")).click();
         test.log(LogStatus.INFO, "Search gallary button clicked.");
         sleep(2000);
         driver.findElement(By.id("searchForm")).isDisplayed();
