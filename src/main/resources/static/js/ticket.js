@@ -103,6 +103,8 @@ function getSeatTypes(activeArr) {
         console.log(type);
         console.log(total);
         sessionStorage.setItem("price", "${total}");
+        const price = document.getElementById("totalPrice");
+        price.innerHTML = total;
     } else {
         console.log("Nah bra. Number of seats selected doesn't match!");
         for (let i = 0; i < activeArr.length; i++){
