@@ -54,7 +54,7 @@ public class UserService implements IUserService, UserDetailsService {
         }
         if (emailExist(userDTO.getUsername())) {
             throw new UserAlreadyExistsException(
-                    "There is an account with that email address: "
+                    "There is an account with that username: "
                             +  userDTO.getUsername());
         }
         User user = new User();

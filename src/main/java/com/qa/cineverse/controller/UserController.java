@@ -31,23 +31,4 @@ public class UserController {
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
         return new ResponseEntity<>(this.service.createUser (user), HttpStatus.CREATED);
     }
-
-
-//    @PostMapping("registerNewUserAccount")
-//    public ModelAndView registerUserAccount(
-//            @ModelAttribute("user") @Valid UserDTO userDTO,
-//            HttpServletRequest request, Errors errors) {
-//
-//        try {
-//            User registered = service.registerNewUserAccount(userDTO);
-//        } catch (UserAlreadyExistsException uaeEx) {
-//            ModelAndView mav = new ModelAndView("register.html", "user", userDTO);
-//            mav.addObject("message", "An account for that username/email already exists.");
-//            return mav;
-//        }
-//
-//        return new ModelAndView("index.html", "user", userDTO);
-//    }
-
-
-}
+    }
