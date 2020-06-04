@@ -80,6 +80,4 @@ public class UserService implements IUserService, UserDetailsService {
         return repository.findByEmail(email) != null;
     }
 
-
-
 }
