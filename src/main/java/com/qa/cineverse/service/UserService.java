@@ -44,8 +44,14 @@ public class UserService implements IUserService, UserDetailsService {
         return this.repository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-
+    @Transactional
+    @Override
     public UserDTO createUser(UserDTO userDTO){
+        if (emailExist(userDTO.getEmail())) {
+            throw new UserAlreadyExistsException(
+                    "There is an account with that email address: "
+                            +  userDTO.getEmail());
+        }
         User user = new User();
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
@@ -58,35 +64,11 @@ public class UserService implements IUserService, UserDetailsService {
         return this.mapToDTO(this.repository.save(user));
     }
 
-    private boolean emailExists(final String email) {
-        return repository.findByEmail (email) != null;
-    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = repository.findByUsername(username);
         user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + username + "' does not exist"));
         return user.map(UserDTO::new).get();
-    }
-
-    @Transactional
-    @Override
-    public User registerNewUserAccount(UserDTO userDTO)
-            throws UserAlreadyExistsException {
-
-        if (emailExist(userDTO.getEmail())) {
-            throw new UserAlreadyExistsException(
-                    "There is an account with that email address: "
-                            +  userDTO.getEmail());
-        }
-
-        User user = new User();
-        user.setForename(userDTO.getForename());
-        user.setSurname(userDTO.getSurname());
-        user.setPassword(userDTO.getPassword());
-        user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER");
-        return repository.save(user);
     }
 
     private boolean emailExist(String email) {

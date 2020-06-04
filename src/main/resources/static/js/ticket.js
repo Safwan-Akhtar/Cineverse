@@ -1,4 +1,4 @@
-
+console.log(localStorage.getItem('user'));
 let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
@@ -39,14 +39,7 @@ let configGet = {
             nodeTime.appendChild(textNodeTime);
             document.getElementById("timeList").appendChild(nodeTime);
         }
-
         console.log(response);
-
-        var dateControl = document.querySelector('input[type="date"]');
-        dateControl.value = movieDate;
-
-        var timeControl = document.querySelector('input[type="time"]');
-        timeControl.value = movieTime;
     })    
     .catch(function (error) {
         console.log(error);
@@ -55,20 +48,17 @@ let configGet = {
 
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
 
-// currently not functional? - shows deluxe/reg seating plan
+// shows deluxe/reg seating plan depending on selection
 function showSeatingPlan() {
-    let screenType = document.getElementById("timeList").value; // this only selects the empty option
+    let screenType = document.getElementById("timeList").value;
     let standardPlan = document.getElementById("standardSeatPlan");
     let deluxePlan = document.getElementById("deluxeSeatPlan");
     let screenPlanType = document.getElementById("screenPlanType");
-    console.log(screenType);
-    console.log(screenType.getText());
-    console.log(screenType.value.getText());
-    if (screenType.getText().endsWith("standard")) {
+    if (screenType.endsWith("standard")) {
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "block";
         deluxePlan.style.display = "none";
-    } else if (screenType.value.getText().endsWith("deluxe")){
+    } else if (screenType.endsWith("deluxe")){
         screenPlanType.textContent = "Choose your seats...";
         standardPlan.style.display = "none";
         deluxePlan.style.display = "block";
@@ -80,12 +70,12 @@ function showSeatingPlan() {
 document.getElementById("timeList").addEventListener('change', showSeatingPlan)
 
 // build string separated by ,
-let type = ``;
-let seat = ``;
+let type;
+let seat;
 
 // if total number of seats inputted matches selected, returns string array of types - otherwise defaults all to adult
 function getSeatTypes(activeArr) {
-    console.log("checkNumberSeats() triggered");
+    console.log("getSeatTypes() triggered");
     let adultSeats = document.getElementById("adult").valueAsNumber;
     let childSeats = document.getElementById("child").valueAsNumber;
     let studentSeats = document.getElementById("student").valueAsNumber;
@@ -93,6 +83,8 @@ function getSeatTypes(activeArr) {
     let totalSeats = Number(adultSeats) + Number(childSeats) + Number(studentSeats);
     console.log(`Total seats inputted = ${totalSeats}`);
 
+    //resets typeList if changing seats
+    type = ``;
     if (activeArr.length === totalSeats) {
 
         for (let i = 0; i < adultSeats; i++){
@@ -111,25 +103,21 @@ function getSeatTypes(activeArr) {
             type += `adult,`;
         }
         console.log("Types defaulted to adult");
+        window.alert("You haven't set the right number of seats, please try again.");
         console.log(type);
     }
 }
 
 // returns a string array of ids for selected seats
-function getSeatIds(active) {
-    console.log("getSeatValue() triggered");
+function getSeatIds(activeArr) {
+    console.log("getSeatIds() triggered");
+    console.log(`Total seats selected = ${activeArr.length}`);
 
-    console.log(active); // HTML Collection []
-    console.log(active.length); // total seats selected
+    //resets seatIdList if changing seats
+    seat = ``;
 
-    console.log("--------------")
-
-    // let arrSimple = Array.from(active);
-    // console.log(arrSimple);
-
-    for (let i = 0; i < active.length; i++){
-        seat += `${active[i].id},`;
-        console.log(seat);
+    for (let i = 0; i < activeArr.length; i++){
+        seat += `${activeArr[i].id},`;
     }
     console.log(seat);
 
@@ -138,11 +126,17 @@ function getSeatIds(active) {
 let countSeatsHash = document.querySelector('#countSeats');
 countSeatsHash.addEventListener('click', function () {
     //  let allSeats = document.getElementsByClassName("seat");
-    // "reg" is standard "deluxe" is deluxe
-    let active = document.getElementsByClassName("seat reg active");
+    let activeStandard = document.getElementsByClassName("seat reg active");
     let activeDeluxe = document.getElementsByClassName("seat deluxe active");
+    let active;
 
-    // function to check if screen selection is deluxe/reg, count only type selected
+    let screenType = document.getElementById("timeList").value;
+    // to check if screen selection is deluxe/reg, count only type selected
+    if (screenType.endsWith("standard")){
+        active = activeStandard;
+    } else {
+        active = activeDeluxe;
+    }
     getSeatTypes(active);
     getSeatIds(active);
 });
@@ -154,6 +148,9 @@ const postBooking = () => {
     // type and seat are built outside this function
     let typesArr = type.split(",");
     let seatArr = seat.split(",");
+    console.log(typesArr);
+    console.log(seatArr);
+    console.log((typesArr.length-1));
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
     .then(function (response) {
         
@@ -170,19 +167,43 @@ const postBooking = () => {
         })
         .then(function (response) {
             console.log(response);
-            axios({
-                method: 'patch',
-                url: `http://localhost:8181/addTicketsToCustomer/1`,
-                data: `{
-                    "ticketType": "child",
-                    "seatNo": "F9"
-                }`,
-                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                responseType: 'json'
-            })
+            console.log(`screeningId = ${foundId}`);
+            let customersJson = response.data.customers;
+            let customersCount = Object.keys(customersJson).length;
+            console.log(`Customers count = ${customersCount}`);
+            axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
             .then(function (response) {
-                console.log(response);
+                console.log(`the response from get customer by customer count`);
+                console.log(response.data);
+                let lastCustomerId = response.data.customersId;
+                console.log(`Last customerId = ${lastCustomerId}`);
+
+                for (let i = 0; i < (typesArr.length-1); i++){
+                    axios({
+                        method: 'patch',
+                        url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                        // userId is not fully implemented yet, use:
+                        // localStorage.getItem('user')
+                        data: `{
+                        "userId": "1",
+                        "screenId": "${foundId}",
+                        "ticketType": "${typesArr[i]}",
+                        "seatNo": "${seatArr[i]}"
+                }`,
+                        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                        responseType: 'json'
+                    })
+                }
+                //success!
+                // alter to viewTickets.html & or basket?
+                window.alert("Your tickets have been booked! You will now be directed to checkout");
+                window.location.replace("../payment.html");
             })
+                .catch(function (response) {
+                console.log(response);
+                });
+        }
+            )
             .catch(function (response) {
                 console.log(response);
             });
@@ -190,10 +211,6 @@ const postBooking = () => {
         .catch(function (response) {
             console.log(response);
         });
-    })
-    .catch(function (error) {
-        console.log(error);
-  });
 }
 let postButton = document.querySelector('#postButton');
 postButton.addEventListener('click', postBooking);
