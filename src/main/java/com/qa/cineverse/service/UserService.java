@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,10 @@ public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepo repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
 
     private final ModelMapper mapper;
@@ -56,8 +61,8 @@ public class UserService implements IUserService, UserDetailsService {
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
         user.setUsername(userDTO.getUsername());
-        user.setPassword(userDTO.getPassword());
-        user.setMatchingPassword(userDTO.getMatchingPassword());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setMatchingPassword(passwordEncoder.encode(userDTO.getMatchingPassword()));
         user.setActive(userDTO.isEnabled ());
         user.setEmail(userDTO.getEmail());
         user.setRoles("ROLE_USER");
@@ -74,6 +79,5 @@ public class UserService implements IUserService, UserDetailsService {
     private boolean emailExist(String email) {
         return repository.findByEmail(email) != null;
     }
-
 
 }

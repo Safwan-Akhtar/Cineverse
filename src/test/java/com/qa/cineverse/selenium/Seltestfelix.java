@@ -1,11 +1,7 @@
 package com.qa.cineverse.selenium;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-
+import org.junit.*;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -14,12 +10,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -36,24 +27,26 @@ public class Seltestfelix {
 
     @LocalServerPort
     private int port;
-    private ExtentReports report;
+    private static ExtentReports report;
     private WebDriver driver;
-    ExtentTest test;
+    static ExtentTest test;
+
+    @BeforeClass
+    public static void beforeClass(){
+        report = new ExtentReports("test-output" + File.separator + "Report.html", true);
+        report
+                .addSystemInfo("Host Name", "QA")
+                .addSystemInfo("Tester", "Felix");
+        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
+    }
+
 
     @Before
     public void init() {
         System.setProperty("webdriver.home.driver", "chromedriver");
         ChromeOptions opts = new ChromeOptions();
-        this.driver = new ChromeDriver();
-
-        report = new ExtentReports(
-                System.getProperty("user.dir") + "/test-output/Report.html",
-                true
-        );
-        report
-                .addSystemInfo("Host Name", "QA")
-                .addSystemInfo("Tester", "Felix");
-        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
+        //        opts.setHeadless(true);
+        this.driver = new ChromeDriver(opts);
     }
 
     @Test
@@ -68,10 +61,10 @@ public class Seltestfelix {
         WebElement header = driver.findElement(By.id("header"));
         assertTrue(header.isDisplayed());
         test.log(LogStatus.PASS, "The title was exactly the same");
-        sleep(4000);
+        sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\indexScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "classificationScreenshot.png"));
     }
 
     @Test
@@ -82,27 +75,27 @@ public class Seltestfelix {
 
         driver.get("http://localhost:" + port);
         test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
-        sleep(5000);
+        sleep(2000);
 
         driver.findElement(By.id("infoDrop")).click();
         test.log(LogStatus.INFO, "Info button clicked.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("classificationNavButton")).click();
         test.log(LogStatus.INFO, "Classification page clicked.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("uClick")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element on Classification page exists, meaning the classification page was accessed.");
-        sleep(5000);
+        sleep(2000);
 
         driver.findElement(By.id("uClick")).click();
         test.log(LogStatus.INFO, "click U button.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("uDesc")).isDisplayed();
         test.log(LogStatus.INFO, "U description was displayed.");
-        sleep(5000);
+        sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\classificationScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "classificationScreenshot.png"));
     }
 
 
@@ -115,19 +108,19 @@ public class Seltestfelix {
 
         driver.get("http://localhost:" + port);
         test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
-        sleep(5000);
+        sleep(2000);
 
         driver.findElement(By.id("comingHereNavButton")).click();
         test.log(LogStatus.INFO, "Getting here clicked.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("gettingThere")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element from the 'getting here' page exists, meaning the classification page was accessed.");
-        sleep(5000);
+        sleep(2000);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\comingHereScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "comingHereScreenshot.png"));
     }
 
-
+    @Ignore
     @Test
     public void navToGallarySearch() throws InterruptedException, IOException {
         test = report.startTest("Search page tests");
@@ -136,45 +129,81 @@ public class Seltestfelix {
 
         driver.get("http://localhost:" + port);
         test.log(LogStatus.INFO, "Navigated to the Cineverse website.");
-        sleep(5000);
+        sleep(2000);
 
         // add id once searchGal has been added to navbar
         driver.findElement(By.id("")).click();
         test.log(LogStatus.INFO, "Search gallary button clicked.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("searchForm")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element from the search gallary page exists, meaning the search gallary page was accessed.");
-        sleep(5000);
+        sleep(2000);
 
         driver.findElement(By.id("searchText")).click();
         test.log(LogStatus.INFO, "Clicked search bar.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("searchText")).sendKeys("jaws" + Keys.ENTER);
         test.log(LogStatus.INFO, "Entered 'jaws' into search.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("tt0073195-img")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element on the 'getting here' page exists, meaning the classification page was accessed.");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchScreenshot.png"));
-        sleep(5000);
+        FileUtils.copyFile(scrFile, new File("test-output" + File.separator + "searchScreenshot.png"));
+        sleep(2000);
 
         driver.findElement(By.id("tt0073195")).click();
         test.log(LogStatus.INFO, "Clicked 'movie details'.");
-        sleep(5000);
+        sleep(2000);
         driver.findElement(By.id("movieDetails")).isDisplayed();
         test.log(LogStatus.INFO, "Validated movie details page.");
-        sleep(5000);
+        sleep(2000);
         File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile2, new File("C:\\Users\\felix\\IdeaProjects\\Cineverse\\test-output\\\\searchInfoScreenshot.png"));
-        sleep(5000);
+        FileUtils.copyFile(scrFile2, new File("test-output" + File.separator + "searchInfoScreenshot.png"));
+        sleep(2000);
 
     }
 
+    @Ignore
+    @Test
+    public void listingsGallary() throws InterruptedException, IOException{
+        test = report.startTest("Verifying the title of Cineverse website");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
+
+        driver.findElement(By.id("whatOnDrop")).click();
+        test.log(LogStatus.INFO, "Clicked what's on drop down.");
+        sleep(2000);
+        driver.findElement(By.id("listingGallaryNavButton")).click();
+        test.log(LogStatus.INFO, "Current listings page clicked.");
+        sleep(2000);
+        driver.findElement(By.id("currentListings")).isDisplayed();
+        test.log(LogStatus.INFO, "Unique element on current listings page exists, meaning the classification page was accessed.");
+        sleep(2000);
+
+        driver.get("http://localhost:" + port);
+        test.log(LogStatus.INFO, "Navigated to the Cineverse website");
+
+        WebElement header = driver.findElement(By.id("header"));
+        assertTrue(header.isDisplayed());
+        test.log(LogStatus.PASS, "The title was exactly the same");
+        sleep(2000);
+
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("test-output" + File.separator + "indexScreenshot.png"));
+    }
+
+    @AfterClass
+    public static void endReport(){
+        report.flush();
+        report.close();
+    }
 
     @After
     public void tearDown() {
         this.driver.quit();
+        report.endTest(test);
     }
+
 }
 
 
