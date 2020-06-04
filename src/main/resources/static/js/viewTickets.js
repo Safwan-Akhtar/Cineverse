@@ -58,7 +58,6 @@ const div = document.querySelector("#bookingResponse");
         pTag.textContent = "SeatNo: " + ticket.seatNo;
         pTagOne.textContent = "Type: " + ticket.ticketType; //adult/child/student
         pTagTwo.textContent = "Price: TBC" + price;
-        pTagThree.textContent = "Purchase id: " + ticket.userId;
 
         // screenId links to movie Name / Date/Time, ScreenNumber & ScreenType
         let movieDateTime = screening.movieDateTime;
@@ -81,6 +80,8 @@ const div = document.querySelector("#bookingResponse");
         date.setAttribute('class', 'card-text');
         date.textContent = `${movieDate}`;
 
+        const breaker = document.createElement("br");
+
         card.id = `Ticket${ticket.id}`;
 
         cardBodyTwo.appendChild(pTag);
@@ -94,6 +95,7 @@ const div = document.querySelector("#bookingResponse");
 
         card.appendChild(cardBody);
         card.appendChild(cardBodyTwo);
+        div.appendChild(breaker);
         div.appendChild(card);
     }
     }
