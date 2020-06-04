@@ -33,10 +33,7 @@ public class Seltestfelix {
 
     @BeforeClass
     public static void beforeClass(){
-        report = new ExtentReports(
-                System.getProperty("user.dir") + "/test-output/Report.html",
-                true
-        );
+        report = new ExtentReports("test-output" + File.separator + "Report.html", true);
         report
                 .addSystemInfo("Host Name", "QA")
                 .addSystemInfo("Tester", "Felix");
@@ -48,7 +45,8 @@ public class Seltestfelix {
     public void init() {
         System.setProperty("webdriver.home.driver", "chromedriver");
         ChromeOptions opts = new ChromeOptions();
-        this.driver = new ChromeDriver();
+        //        opts.setHeadless(true);
+        this.driver = new ChromeDriver(opts);
     }
 
     @Test
@@ -66,7 +64,7 @@ public class Seltestfelix {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output\\classificationScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "classificationScreenshot.png"));
     }
 
     @Test
@@ -97,7 +95,7 @@ public class Seltestfelix {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output\\classificationScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "classificationScreenshot.png"));
     }
 
 
@@ -119,7 +117,7 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Unique element from the 'getting here' page exists, meaning the classification page was accessed.");
         sleep(2000);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output\\comingHereScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "comingHereScreenshot.png"));
     }
 
     @Ignore
@@ -150,7 +148,7 @@ public class Seltestfelix {
         driver.findElement(By.id("tt0073195-img")).isDisplayed();
         test.log(LogStatus.INFO, "Unique element on the 'getting here' page exists, meaning the classification page was accessed.");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output\\searchScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output" + File.separator + "searchScreenshot.png"));
         sleep(2000);
 
         driver.findElement(By.id("tt0073195")).click();
@@ -160,7 +158,7 @@ public class Seltestfelix {
         test.log(LogStatus.INFO, "Validated movie details page.");
         sleep(2000);
         File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile2, new File("test-output\\searchInfoScreenshot.png"));
+        FileUtils.copyFile(scrFile2, new File("test-output" + File.separator + "searchInfoScreenshot.png"));
         sleep(2000);
 
     }
@@ -191,7 +189,7 @@ public class Seltestfelix {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output\\indexScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output" + File.separator + "indexScreenshot.png"));
     }
 
     @AfterClass
