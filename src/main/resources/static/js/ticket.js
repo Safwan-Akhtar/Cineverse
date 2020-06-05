@@ -2,48 +2,48 @@ console.log(localStorage.getItem('user'));
 let configGet = {
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:63342' },
     responseType: 'json'
-  };
-  
+};
+
 
 // populates the Screening Time and Date based off the movie selected
-  const searchTimes = () => {
+const searchTimes = () => {
     let movieTitle = document.getElementById("movieTitle").value;
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
-    .then(function (response) {
-        let movieDateTime = response.data[0].movieDateTime;
-        let movieDate = movieDateTime.substring(0,10)
-        let movieTime = movieDateTime.substring(11,16)
+        .then(function (response) {
+            let movieDateTime = response.data[0].movieDateTime;
+            let movieDate = movieDateTime.substring(0,10)
+            let movieTime = movieDateTime.substring(11,16)
 
-        let screeningsJson = response.data;
-        let screeningsCount = Object.keys(screeningsJson).length;
+            let screeningsJson = response.data;
+            let screeningsCount = Object.keys(screeningsJson).length;
 
-        for (let i = 0; i < screeningsCount; i++) {
-            // clears existing date and time
+            for (let i = 0; i < screeningsCount; i++) {
+                // clears existing date and time
 
-            // let existingDates = document.getElementsByClassName("screenDateListOp");
-            // let existingTimes = document.getElementsByClassName("screenTimeListOp");
-            // for (let i = 0; i < existingDates.length; i++){
-            //     document.getElementById("dateList").removeChild();
-            // }
+                // let existingDates = document.getElementsByClassName("screenDateListOp");
+                // let existingTimes = document.getElementsByClassName("screenTimeListOp");
+                // for (let i = 0; i < existingDates.length; i++){
+                //     document.getElementById("dateList").removeChild();
+                // }
 
-            //date
-            let nodeDate = document.createElement("OPTION");
-            nodeDate.classList.add("screenDateListOp");
-            let textNodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
-            nodeDate.appendChild(textNodeDate);
-            document.getElementById("dateList").appendChild(nodeDate);
-            //time
-            let nodeTime = document.createElement("OPTION");
-            nodeTime.classList.add("screenTimeListOp");
-            let textNodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
-            nodeTime.appendChild(textNodeTime);
-            document.getElementById("timeList").appendChild(nodeTime);
-        }
-        console.log(response);
-    })    
-    .catch(function (error) {
-        console.log(error);
-  });
+                //date
+                let nodeDate = document.createElement("OPTION");
+                nodeDate.classList.add("screenDateListOp");
+                let textNodeDate = document.createTextNode(response.data[i].movieDateTime.substring(0,10));
+                nodeDate.appendChild(textNodeDate);
+                document.getElementById("dateList").appendChild(nodeDate);
+                //time
+                let nodeTime = document.createElement("OPTION");
+                nodeTime.classList.add("screenTimeListOp");
+                let textNodeTime = document.createTextNode(response.data[i].movieDateTime.substring(11,16) + " --- " + response.data[i].screenType);
+                nodeTime.appendChild(textNodeTime);
+                document.getElementById("timeList").appendChild(nodeTime);
+            }
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 };
 
 document.getElementById("movieTitle").addEventListener('change', searchTimes);
@@ -102,7 +102,10 @@ function getSeatTypes(activeArr) {
         }
         console.log(type);
         console.log(total);
-        sessionStorage.setItem("price", "${total}");
+        sessionStorage.setItem("price", `"${total}"`);
+
+        const price = document.getElementById("totalPrice");
+        price.innerHTML = total;
     } else {
         console.log("Nah bra. Number of seats selected doesn't match!");
         for (let i = 0; i < activeArr.length; i++){
@@ -158,62 +161,62 @@ const postBooking = () => {
     console.log(seatArr);
     console.log((typesArr.length-1));
     axios.get(`http://localhost:8181/readScreeningsByName/${movieTitle}`, configGet)
-    .then(function (response) {
-        
-        let foundId = response.data[0].screeningsId;
+        .then(function (response) {
 
-        axios({
-            method: 'patch',
-            url: `http://localhost:8181/addCustomerToScreening/${foundId}`,
-            data: `{
+            let foundId = response.data[0].screeningsId;
+
+            axios({
+                method: 'patch',
+                url: `http://localhost:8181/addCustomerToScreening/${foundId}`,
+                data: `{
                 "name": "${customername}",
                 "username" : "${localStorage.getItem('user')}"
             }`,
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-            responseType: 'json'
-        })
-        .then(function (response) {
-            console.log(response);
-            console.log(`screeningId = ${foundId}`);
-            let customersJson = response.data.customers;
-            let customersCount = Object.keys(customersJson).length;
-            console.log(`Customers count = ${customersCount}`);
-            axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
-            .then(function (response) {
-                console.log(`the response from get customer by customer count`);
-                console.log(response.data);
-                let lastCustomerId = response.data.customersId;
-                console.log(`Last customerId = ${lastCustomerId}`);
-
-                for (let i = 0; i < (typesArr.length-1); i++){
-                    axios({
-                        method: 'patch',
-                        url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
-                        // userId is not fully implemented yet, use:
-                        // localStorage.getItem('user')
-                        data: `{
-                        "userId": "1",
-                        "screenId": "${foundId}",
-                        "ticketType": "${typesArr[i]}",
-                        "seatNo": "${seatArr[i]}"
-                }`,
-                        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-                        responseType: 'json'
-                    })
-                }
-                //success!
-                // alter to viewTickets.html & or basket?
-                window.alert("Your tickets have been booked! You will now be directed to checkout");
-                window.location.replace("../payment.html");
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                responseType: 'json'
             })
+                .then(function (response) {
+                        console.log(response);
+                        console.log(`screeningId = ${foundId}`);
+                        let customersJson = response.data.customers;
+                        let customersCount = Object.keys(customersJson).length;
+                        console.log(`Customers count = ${customersCount}`);
+                        axios.get(`http://localhost:8181/getCustomerById/${customersCount}`, configGet)
+                            .then(function (response) {
+                                console.log(`the response from get customer by customer count`);
+                                console.log(response.data);
+                                let lastCustomerId = response.data.customersId;
+                                console.log(`Last customerId = ${lastCustomerId}`);
+
+                                for (let i = 0; i < (typesArr.length-1); i++){
+                                    axios({
+                                        method: 'patch',
+                                        url: `http://localhost:8181/addTicketsToCustomer/${lastCustomerId}`,
+                                        // userId is not fully implemented yet, use:
+                                        // localStorage.getItem('user')
+                                        data: `{
+                                                "userId": "1",
+                                                "screenId": "${foundId}",
+                                                "ticketType": "${typesArr[i]}",
+                                                "seatNo": "${seatArr[i]}"
+                                        }`,
+                                        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                                        responseType: 'json'
+                                    })
+                                }
+                                //success!
+                                // alter to viewTickets.html & or basket?
+                                window.alert("Your tickets have been booked! You will now be directed to checkout");
+                                window.location.replace("../payment.html");
+                            })
+                            .catch(function (response) {
+                                console.log(response);
+                            });
+                    }
+                )
                 .catch(function (response) {
-                console.log(response);
+                    console.log(response);
                 });
-        }
-            )
-            .catch(function (response) {
-                console.log(response);
-            });
         })
         .catch(function (response) {
             console.log(response);

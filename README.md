@@ -2,7 +2,7 @@
 
 Our final project as part of the QA Academy, started as "Team Gates".
 
-This application aims to build a website for "QA Cinemas" about movies, listings and upcoming releases. It is currently for demo purposes only, showcasing our academy training and knowledge of Spring & connecting a working back-end to a front-end via API calls.
+This application aims to build a website for "QA Cinemas" about movies, listings and upcoming releases. It is currently for demo purposes only, showcasing all our academy training and knowledge, in particular Spring & connecting a working back-end to a front-end via API calls.
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ MVP: A functional ‘front-end’ website (and integrated APIs) which connects t
 - Testing: using a combination of Junit, Mockito and Selenium
 - Maven to build and integrate with...
 - Jenkins for the CI Pipeline to send to...
-- Sonarqube (hosted on a Google Cloud VM) and
+- Sonarqube (hosted on a Google Cloud VM)
 - External API's: Stripe, Omdb.com
 
 </details>
@@ -125,9 +125,9 @@ How to build this project:
 
 [Maven](https://maven.apache.org/) - Dependency Management
 
+* Warning! The app does not have a 'stop' function, it is advised to only run in an IDE.
 * Clone the repo to your machine.
 * Open the cmd line / git bash inside the repo file directory.
-* Warning! The app does not have a 'stop' function, it is advised to only run in an IDE.
 * Run the following commands:
 
 ``` mvn clean package ```
@@ -137,14 +137,14 @@ How to build this project:
 As a Spring app, running the jar with `java -jar FileName.jar` won't work (at least not without some config).
 
 
-Note: If the GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser, to reach the home page of the web interface. The app will run until you trigger the `/shutdownAppContext` API call (click the red button on the home page).
+Note: If the GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser, to reach the home page of the web interface. 
 
 ### Running the tests
 
-The easiest way to run all our existing tests is to right click on `test/java/com.qa.hwq` in your IDE and select `Run tests in 'com.qa.hwa'` or `Run tests in 'com.qa.hwa' with Coverage`
+The easiest way to run all our existing tests is to right click on `test/java/com.qa.cineverse` in your IDE and select `Run tests in 'com.qa.cineverse'` or `Run tests in 'com.qa.cineserve' with Coverage`
 
 
-![Run All Tests](https://i.imgur.com/0YNyoqs.png)
+![Run All Tests](https://i.imgur.com/RSGswss.png)
 
 **[Back to top](#table-of-contents)**
 #### Unit Tests 
@@ -180,8 +180,8 @@ JUnit is used for unit tests. A unit test will test individual methods within a 
 
 In IntelliJ, as you write tests annotated with @Test, it gives you the option to run tests in a class, or individual Tests. Just look for the green arrows in the margins.
 
-![Run All Unit Tests in a class](https://i.imgur.com/B6wd2Pu.png)
-![Run a specific Unit Test](https://i.imgur.com/dbfsorJ.png)
+![Run All Unit Tests in a class](https://i.imgur.com/Z3X6l6J.jpg)
+![Run a specific Unit Test](https://i.imgur.com/UTEIV8T.jpg)
 
 **[Back to top](#table-of-contents)**
 #### Integration Tests 
@@ -206,8 +206,8 @@ Mockito is used for intergration testing, but can also be applied to certain uni
 ```
 In IntelliJ, as you write tests annotated with @Test, it gives you the option to run tests in a class, or individual Tests. Just look for the green arrows in the margins.
 
-![Run all integration Tests](https://i.imgur.com/WrgkrWh.png)
-![Run a single integration Test](https://i.imgur.com/pljXWW1.png)
+![Run all integration Tests](https://i.imgur.com/ZvJbfM2.jpg)
+![Run a single integration Test](https://i.imgur.com/3AN3EkC.jpg)
 
 **[Back to top](#table-of-contents)**
 
