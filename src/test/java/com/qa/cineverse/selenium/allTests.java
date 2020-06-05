@@ -52,7 +52,7 @@ public class allTests {
 
     @Test
     public void accessIndex() throws InterruptedException, IOException{
-        test = report.startTest("Verifying the title of Cineverse website");
+        test = report.startTest("Verifying the Index page of Cineverse website");
         driver.manage().window().maximize();
         test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
 
@@ -65,8 +65,8 @@ public class allTests {
         sleep(2000);
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "classificationScreenshot.png"));
-        test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("classificationScreenshot.png"));
+        FileUtils.copyFile(scrFile, new File("test-output"  + File.separator + "indexScreenshot.png"));
+        test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("indexScreenshot.png"));
     }
 
     @Test
