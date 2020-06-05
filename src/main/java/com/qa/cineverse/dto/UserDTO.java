@@ -1,7 +1,7 @@
 package com.qa.cineverse.dto;
 
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.validation.AnnotationValidatorCreator;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,13 +14,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@EqualsAndHashCode
 @NoArgsConstructor
 public class UserDTO implements UserDetails {
 
-
+    @Setter
     private String username;
-
+    @Setter
     private String password;
+    @Setter
     private String matchingPassword;
     @Setter @Getter
     private String forename;
@@ -28,7 +30,7 @@ public class UserDTO implements UserDetails {
     private String surname;
     @Setter @Getter
     private String email;
-
+    @Setter
     private boolean active;
 
     private List<GrantedAuthority> authorities;

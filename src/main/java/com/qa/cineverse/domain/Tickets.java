@@ -1,7 +1,10 @@
 package com.qa.cineverse.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -26,6 +29,9 @@ public class Tickets {
     @Column(name = "seat_no")
     @NonNull
     private String seatNo;
+    @Column(name = "screen_id")
+    @NonNull
+    private Long screenId;
 
     @JsonIgnoreProperties("tickets")
     @ManyToMany(targetEntity = Customers.class, fetch = FetchType.LAZY, cascade= CascadeType.ALL)

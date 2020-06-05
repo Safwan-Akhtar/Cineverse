@@ -42,7 +42,7 @@ public class TicketsServiceIntegrationTest {
 
     @Before
     public void setUp(){
-        this.testTickets = new Tickets ("A1", "deluxe");
+        this.testTickets = new Tickets ("A1", "deluxe", 1L);
         this.repository.deleteAll();
         this.testTicketsWithId = this.repository.save(this.testTickets);
     }

@@ -2,9 +2,7 @@
 
 Our final project as part of the QA Academy, started as "Team Gates".
 
-This application aims to build a website for "QA Cinemas" about movies, listings and upcoming releases. It is currently for demo purposes only, showcasing our academy training and knowledge of Spring & connecting a working back-end to a front-end via API calls.
-
-Warning, some parts of this readme might be out of date.
+This application aims to build a website for "QA Cinemas" about movies, listings and upcoming releases. It is currently for demo purposes only, showcasing all our academy training and knowledge, in particular Spring & connecting a working back-end to a front-end via API calls.
 
 ## Table of Contents
 
@@ -26,7 +24,7 @@ Warning, some parts of this readme might be out of date.
 
 ## About the Project
 
-MVP: A functional ‘front-end’ web app (and integrated APIs) which connects to a back-end written in Java, and a relational database.
+MVP: A functional ‘front-end’ website (and integrated APIs) which connects to a back-end written in Java, and a relational database.
 <details>
 <summary>Technology used in the project...</summary>
     
@@ -34,12 +32,12 @@ MVP: A functional ‘front-end’ web app (and integrated APIs) which connects t
 - Database: SQL database hosted on Google Cloud Platform
 - Front-end: html, css and javascript
 - Source Control: Git
-- IDE: IntelliJ Ultimate
+- IDE: IntelliJ Ultimate, Visual Studio Code, Eclipse
 - Testing: using a combination of Junit, Mockito and Selenium
 - Maven to build and integrate with...
-- Jenkins as part of my CI Pipeline to send to...
-- Sonarqube (hosted on a Google Cloud VM) and...
-- Nexus (artifact repository).
+- Jenkins for the CI Pipeline to send to...
+- Sonarqube (hosted on a Google Cloud VM)
+- External API's: Stripe, Omdb.com
 
 </details>
 
@@ -56,7 +54,7 @@ Please see the `docs` folder for the other documentation.
 ## Project Status 
 Current release: v0.1 - in development
 
-**Test Coverage:** For src/main/java: 0% // Sonarqube: 0% // Overall: 0%
+**Test Coverage:** For src/main/java: 81% // Overall: 84% // 180 tests
 
 For test reports please see the `docs` folder.
 
@@ -78,23 +76,22 @@ What things you need to install the software and where to find them.
 Java SE 8 (or later) to run the jar file.
 Maven to create the jar-file and run.
 
-If my GCP instance is no longer live...
+If the GCP instance is no longer live...
 A relational database to configure the application to.
-(a GCP instance will require the least application config, however you can also use mySQL or h2)
+(a GCP instance will require the least application config, however you can also use local mySQL or h2)
 
 You can use the command line to run the program but git & git bash are nice to have.
 
-For the front end it's preferred that you have a Chrome browser (if you want to make use of my app shortcut).
+For the front end it's preferred that you have a Chrome browser.
 ```
 **To Develop**
 
 When you open the project in an IDE to develop, the pom.xml file should allow your IDE to automatically download the required dependencies (libraries).
 
 ```
-The main IDE that I used for this project was IntelliJ Ultimate
+The main IDE's that we used for this project was IntelliJ Ultimate & Visual Studio Code
 Postman was used to test my API calls before writing them in JavaScript
-I also used Visual Studio Code for the front-end
-As part of the CI pipeline for this project I used Jenkins
+As part of the CI pipeline for this project we used Jenkins
 ```
 
 **Links for Dependencies**
@@ -108,22 +105,27 @@ Jenkins [here](https://jenkins.io/download/),
 Postman [here](https://www.postman.com/downloads/),
 Google Chrome [here](https://www.google.com/chrome/).
 
+**External API's**
+Stripe [here](https://stripe.com/docs/development/quickstart)
+Open Movie Database [here](https://www.omdbapi.com/)
+
 ### Getting the Source
 
 This project is [hosted on GitHub](https://github.com/CarolineS-QA/hwa-game-time-log). You can clone this project directly using this command:
 
 ```
-git clone git@github.com:CarolineS-QA/hwa-game-time-log.git
+git clone https://github.com/Safwan-Akhtar/Cineverse.git
 ```
 **[Back to top](#table-of-contents)**
 ## Building
 
-How to build my project: 
+How to build this project: 
 
 ### Built With
 
 [Maven](https://maven.apache.org/) - Dependency Management
 
+* Warning! The app does not have a 'stop' function, it is advised to only run in an IDE.
 * Clone the repo to your machine.
 * Open the cmd line / git bash inside the repo file directory.
 * Run the following commands:
@@ -135,68 +137,84 @@ How to build my project:
 As a Spring app, running the jar with `java -jar FileName.jar` won't work (at least not without some config).
 
 
-Note: If the GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser, to reach the home page of the web interface. The app will run until you trigger the `/shutdownAppContext` API call (click the red button on the home page).
+Note: If the GCP instance is no longer active, you will need a database on your machine set up to connect to, and configured in `application.properties` before running the above commands. When you run the second command the program will run, launching the Spring boot application. You can then navigate to `localhost:8181` via a browser, to reach the home page of the web interface. 
 
 ### Running the tests
 
-The easiest way to run all our existing tests is to right click on `test/java/com.qa.hwq` in your IDE and select `Run tests in 'com.qa.hwa'` or `Run tests in 'com.qa.hwa' with Coverage`
+The easiest way to run all our existing tests is to right click on `test/java/com.qa.cineverse` in your IDE and select `Run tests in 'com.qa.cineverse'` or `Run tests in 'com.qa.cineserve' with Coverage`
 
 
-![Run All Tests](https://i.imgur.com/0YNyoqs.png)
+![Run All Tests](https://i.imgur.com/RSGswss.png)
 
 **[Back to top](#table-of-contents)**
 #### Unit Tests 
 JUnit is used for unit tests. A unit test will test individual methods within a class for functionality. Below is a simple Unit Test for my UserDTO class:
 
 ```
+// setUp for Mockito Unit tests
     @Before
-    public void SetUp()
-    {
-        sessionDTOs = new ArrayList<>();
-        zeroDuration = Duration.ofDays(0);
-        userWithId = new UserDTO(1L, "testUser", zeroDuration, zeroDuration, zeroDuration, sessionDTOs);
+    public void setUp(){
+        this.customersList = new ArrayList<> ();
+        this.testCustomers = new Customers ("Felix", "Tellytub");
+        this.customersList.add(testCustomers);
+        this.testCustomersWithID = new Customers (testCustomers.getName(), testCustomers.getUsername());
+        this.testCustomersWithID.setCustomersId (id);
+        this.customersDTO = this.mapToDTO(testCustomersWithID);
     }
 
     @Test
-    public void notEqualsWithNull() {
-        assertNotEquals(null, userWithId);
+    public void getAllCustomersTest(){
+        when(repository.findAll()).thenReturn(this.customersList);
+        when(this.mapper.map(testCustomersWithID, CustomersDTO.class)).thenReturn(customersDTO);
+        assertFalse("Service returned no Customers", this.service.readCustomers().isEmpty());
+        verify(repository, times(1)).findAll();
+    }
+
+// simple unit test expecting an exception
+    @Test(expected=NullPointerException.class)
+    public void customersDTONameNullButOtherNameNotNull() {
+        customersDTO.setName(null);
+        assertFalse(customersDTO.equals(other));
     }
 ```
 
 In IntelliJ, as you write tests annotated with @Test, it gives you the option to run tests in a class, or individual Tests. Just look for the green arrows in the margins.
 
-![Run All Unit Tests in a class](https://i.imgur.com/B6wd2Pu.png)
-![Run a specific Unit Test](https://i.imgur.com/dbfsorJ.png)
+![Run All Unit Tests in a class](https://i.imgur.com/Z3X6l6J.jpg)
+![Run a specific Unit Test](https://i.imgur.com/UTEIV8T.jpg)
 
 **[Back to top](#table-of-contents)**
 #### Integration Tests 
 Mockito is used for intergration testing, but can also be applied to certain unit tests. It tests how different classes interact with each other. By 'mocking' the functions that a method/class relies on we can see how the code we are testing works by assuming the parts it relies on work too.
 
 ```
-//Mockito Unit Test
-    @Test
-    public void readAllSessionsTest() {
-        when(repo.findAll()).thenReturn(gameSessionList);
-        when(this.mapper.map(testSessionWithId, GameSessionDTO.class)).thenReturn(sessionDTO);
-        assertEquals(this.service.readAllSessions(), gameSessionDTOList);
-        verify(repo, times(1)).findAll();
+//Integration Test
+    @Before
+    public void setUp(){
+        this.testCustomers = new Customers ("Caroline", "CarebearFan");
+        this.repository.deleteAll();
+        this.testCustomersWithID = this.repository.save(this.testCustomers);
     }
 
-//Integration Test
-@Test
-    public void deleteGameSessionTest(){
-        assertThat(this.service.deleteGameSession(this.testSessionWithId.getSessionId())).isFalse();
+    @Test
+    public void readCustomersTest(){
+        assertThat(this.service.readCustomers())
+                .isEqualTo(
+                        Stream.of(this.mapToDTO(testCustomersWithID)).collect(Collectors.toList())
+                );
     }
 ```
 In IntelliJ, as you write tests annotated with @Test, it gives you the option to run tests in a class, or individual Tests. Just look for the green arrows in the margins.
 
-![Run all integration Tests](https://i.imgur.com/WrgkrWh.png)
-![Run a single integration Test](https://i.imgur.com/pljXWW1.png)
+![Run all integration Tests](https://i.imgur.com/ZvJbfM2.jpg)
+![Run a single integration Test](https://i.imgur.com/3AN3EkC.jpg)
 
 **[Back to top](#table-of-contents)**
 
 #### User acceptance Tests (with Selenium)
-Selenium uses the `chromedriver.exe` included in this repository to run automated tests mocking use of the front-end. I have included the `extent-report.xml` and dependencies required to get easy to read test reports in the form of html files.
+Selenium uses the `chromedriver.exe` included in this repository to run automated tests mocking use of the front-end. You should check that the driver you use matches your version of chrome. Get versions [here](http://chromedriver.chromium.org/).
+
+We have included the `extent-report.xml` and dependencies required to get easy to read test reports in the form of html files.
 
 
 There are examples of the tests in this project. You can run them like you would run unit tests.
@@ -205,13 +223,13 @@ Or take a look at this [selenium-testing](https://github.com/CarolineS-QA/seleni
 
 
 #### Static analysis
-Sonarqube is used for static analysis. I used it to see how well my code conformed to an industry standard, the amount of coverage for my tests, and also highlighting bugs and security warnings.
+Sonarqube is used for static analysis. We used it to see how well my code conformed to an industry standard, the amount of coverage for my tests, and also highlighting bugs and security warnings.
 
 ```
 mvn clean package
 sonar:sonar -Dsonar.host.url=http://YourVMForSonarQubeIP:PORT/ -Dsonar.login.admin=admin -Dsonar.password=admin
 ```
-![SonarQube example](https://i.imgur.com/f7agBSC.png)
+![SonarQube example](https://i.imgur.com/zFF3c7m.png)
 
 **[Back to top](#table-of-contents)**
 ## Installation
@@ -233,67 +251,116 @@ How to get a development environment running:
 
 Example of getting some data out of the system with Postman:
 
-![Postman createUser](https://i.imgur.com/FKdR2Rf.png)
+![Postman createUser](https://i.imgur.com/xerOh0B.jpg)
 
 Should response with:
 ```
-{
-    "userId": 1,
-    "username": "testGamer",
-    "totalTimePlayed": 0.0,
-    "freeTime": 24.000000000,
-    "timeRemaining": 24.000000000,
-    "gameSessions": []
-}
+[
+    {
+        "screeningsId": 7,
+        "movieDateTime": "2020-06-10T18:15:00",
+        "screenType": "deluxe",
+        "screenNumber": 2,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 16,
+        "movieDateTime": "2020-06-10T18:15:00",
+        "screenType": "standard",
+        "screenNumber": 4,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 18,
+        "movieDateTime": "2020-06-10T23:35:00",
+        "screenType": "standard",
+        "screenNumber": 4,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 19,
+        "movieDateTime": "2020-06-10T13:15:00",
+        "screenType": "standard",
+        "screenNumber": 5,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 20,
+        "movieDateTime": "2020-06-10T15:35:00",
+        "screenType": "standard",
+        "screenNumber": 5,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 21,
+        "movieDateTime": "2020-06-10T17:55:00",
+        "screenType": "standard",
+        "screenNumber": 5,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 22,
+        "movieDateTime": "2020-06-10T20:15:00",
+        "screenType": "standard",
+        "screenNumber": 5,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    },
+    {
+        "screeningsId": 23,
+        "movieDateTime": "2020-06-10T22:45:00",
+        "screenType": "standard",
+        "screenNumber": 5,
+        "movieName": "Spiderman: Into The Spiderverse",
+        "customers": []
+    }
+]
 ```
 
-JSON for sending /createGameSession
+JSON for sending addCustomerToScreening/{Screening_id}
 ```
-{
-	"gameName": "Hello World",
-	"user":
-	{
-		"userId": 1,
-		"username": "testGamer"
-	},
-	"timePlayed": 7,
-	"timeOfSession": "2007-12-03T10:15:30"
-}
+    {
+		"name" : "Chris",
+		"username" : "Chrisctr"
+    }
 ```
 Responds with:
 ```
 {
-    "sessionId": 1,
-    "user": "testGamer",
-    "gameName": "Hello World",
-    "timeOfSession": "2007-12-03T10:15:30",
-    "timePlayed": 7.000000000
+    "screeningsId": 1,
+    "movieDateTime": "2020-06-10T13:15:00",
+    "screenType": "deluxe",
+    "screenNumber": 1,
+    "movieName": "Mulan",
+    "customers": [
+        {
+            "customersId": 1,
+            "name": "Chris",
+		    "username" : "Chrisctr"
+            "tickets": []
+        }
+    ]
 }
 ```
 
-If you /getUserByUsername/testGamer
+If you want to addTicketsToCustomer/{customer_id}
 
 ```
-{
-     "userId": 1,
-     "username": "testGamer",
-     "totalTimePlayed": 0.0,
-     "freeTime": 24.000000000,
-     "timeRemaining": 24.000000000,
-     "gameSessions": [
-         {
-             "sessionId": 1,
-             "user": "testGamer",
-             "gameName": "Hello World",
-             "timeOfSession": "2007-12-03T10:15:30",
-             "timePlayed": 7.000000000
-         }
-     ]
- }
+	{
+		"seatNo" : "F8",
+		"ticketType" : "child",
+		"screenId" : 1
+    }
  ```
 
-On development localhost:8181 page:
-![Development web interface](https://i.imgur.com/vZhjC1V.png)
+On localhost:8181 page:
+![Development web interface](https://i.imgur.com/kHuocmT.jpg)
 
 Remember you can `Ctrl + Shift + I` to inspect and reach the developer's console.
 
@@ -325,6 +392,12 @@ Spring:
 - [https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-documentation)
 - [https://vladmihalcea.com/jpa-hibernate-synchronize-bidirectional-entity-associations/](https://vladmihalcea.com/jpa-hibernate-synchronize-bidirectional-entity-associations/)
 
+Front-end:
+- [https://getbootstrap.com/docs/4.5/getting-started/introduction/](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+
+API's:
+- [https://stripe.com/docs/api](https://stripe.com/docs/api)
+
 **[Back to top](#table-of-contents)**
 ## Contributing
 
@@ -348,6 +421,7 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 * **Christian Redfern** [[Christian-QA](https://github.com/Christian-QA)]
 * **Luke Smyth-osbourne** [[sosbourneQA](https://github.com/sosbourneQA)]
 * **Safwan Akhtar** [[Safwan-QA](https://github.com/Safwan-Akhtar)]
+* Jordan [[JHarry444](https://github.com/JHarry444)] *feature/jordan - the file purge*
 
 ## Acknowledgements
 

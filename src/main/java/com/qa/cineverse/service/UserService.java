@@ -1,27 +1,31 @@
 package com.qa.cineverse.service;
 
-import com.qa.cineverse.domain.Customers;
 import com.qa.cineverse.domain.User;
-import com.qa.cineverse.dto.CustomersDTO;
 import com.qa.cineverse.dto.UserDTO;
 import com.qa.cineverse.exception.UserAlreadyExistsException;
-import com.qa.cineverse.repo.CustomersRepo;
-import com.qa.cineverse.repo.TicketsRepo;
 import com.qa.cineverse.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepo repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
 
     private final ModelMapper mapper;
@@ -40,41 +44,40 @@ public class UserService implements IUserService {
         return this.repository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-
-    public UserDTO createUser(UserDTO userDTO){
-        User user = new User();
-        user.setForename(userDTO.getForename());
-        user.setSurname(userDTO.getSurname());
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(userDTO.getPassword());
-        user.setMatchingPassword(userDTO.getMatchingPassword());
-        user.setActive(userDTO.isEnabled ());
-        user.setEmail(userDTO.getEmail());
-        user.setRoles("ROLE_USER"); //Doesn't work
-        return this.mapToDTO(this.repository.save(user));
-    }
-
     @Transactional
     @Override
-    public User registerNewUserAccount(UserDTO userDTO)
-            throws UserAlreadyExistsException {
-
+    public UserDTO createUser(UserDTO userDTO){
         if (emailExist(userDTO.getEmail())) {
             throw new UserAlreadyExistsException(
                     "There is an account with that email address: "
                             +  userDTO.getEmail());
         }
-
+        if (emailExist(userDTO.getUsername())) {
+            throw new UserAlreadyExistsException(
+                    "There is an account with that username: "
+                            +  userDTO.getUsername());
+        }
         User user = new User();
         user.setForename(userDTO.getForename());
         user.setSurname(userDTO.getSurname());
-        user.setPassword(userDTO.getPassword());
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setMatchingPassword(passwordEncoder.encode(userDTO.getMatchingPassword()));
+        user.setActive(userDTO.isEnabled ());
         user.setEmail(userDTO.getEmail());
         user.setRoles("ROLE_USER");
-        return repository.save(user);
+        return this.mapToDTO(this.repository.save(user));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = repository.findByUsername(username);
+        user.orElseThrow(() -> new UsernameNotFoundException ("The username '" + username + "' does not exist"));
+        return user.map(UserDTO::new).get();
     }
 
     private boolean emailExist(String email) {
         return repository.findByEmail(email) != null;
     }
+
 }

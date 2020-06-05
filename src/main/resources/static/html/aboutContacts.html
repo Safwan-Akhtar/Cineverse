@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../css/aboutContacts.css" />
+    <title>Cineverse | About us & contacts </title>
+</head>
+<body>
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark topnav-centered">
+    <a id="logoNavButton" class="navbar-brand" href="../index.html" style="color:white">QA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a id="homeNavButton" class="nav-link" href="../index.html" style="color:white">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="whatOnDrop" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="color:white">Whats
+                    on</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="listingGalleryNavButton" class="dropdown-item" href="listingsGallery.html">Current
+                        Listings</a>
+                    <a id="upcomingReleasesNavButton" class="dropdown-item" href="newReleasesGallery.html">Upcoming
+                        Releases</a>
+                    <a id="gallerySearchNavButton" class="dropdown-item" href="gallerySearch.html">Search our
+                        Gallery</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="bookingsDrop" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color:white">Bookings</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="ticketBookingNavButton" class="dropdown-item" href="user/ticketBookings.html">Book
+                        Tickets</a>
+                    <a id="screenBookingNavButton" class="dropdown-item" href="#">Book Screen</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="infoDrop" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="color:white">
+                    Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a id="screensNavButton" class="dropdown-item" href="screens.html">Screens</a>
+                    <a id="openingTimesNavButton" class="dropdown-item" href="openingtimes.html">Opening
+                        Times</a>
+                    <a id="classificationNavButton" class="dropdown-item" href="classification.html">Classification</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a id="comingHereNavButton" class="nav-link" href="comingHere.html" style="color:white">Getting
+                    here</a>
+            </li>
+            <li class="right">
+                <a id="loginContainerNavButton" class="nav-link" href="../login.html" style="color:white">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Start of Main Page content-->
+<h1 class="title">Tabs</h1>
+<div class="tabContainer">
+    <div class="buttonContainer">
+        <button onclick="showPanel(0,'#f44336')">Tab 1</button>
+        <button onclick="showPanel(1,'#4CAF50')">Tab 2</button>
+    </div>
+    <div class="tabPanel">Tab 1:Content</div>
+    <div class="tabPanel">Tab 2:Content</div>
+    
+</div>   
+
+<script src="../js/aboutContatcs.js"></script>
+</body>
+</html>

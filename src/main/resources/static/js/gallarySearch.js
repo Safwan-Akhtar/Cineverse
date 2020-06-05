@@ -1,25 +1,4 @@
 
-/// original test alert function (required scripts at top of the html)
-
-// $(document).ready(() => {
-//     alert(1);
-// });
-
-
-/// test alert function - (alternative syntax, for when scripts are not at the top of html)
-
-// jQuery(function ($) { alert(1); })(jQuery);
-
-
-/// user input to console - working
-
-// $(document).ready(() => {
-//     $('#searchForm').on('submit', (e) => {
-//         console.log($('#searchText').val());
-//         e.preventDefault();
-//     });
-// });
-
 $(document).ready(() => {
     $("#searchForm").on("submit", (e) => {
         let searchText = $("#searchText").val();
@@ -39,9 +18,9 @@ function getMovies(searchText) {
                 output += `
                 <div class="col-md-3">
                     <div class="well text-center">
-                        <img src="${movie.Poster}" alt="${movie.Title}'s Movie Poster">
+                        <img id="${movie.imdbID}-img" src="${movie.Poster}" alt="${movie.Title}'s Movie Poster">
                         <h5>${movie.Title}</h5>
-                        <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
+                        <a id="${movie.imdbID}" onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
                     </div>
                 </div>
                 `;
@@ -58,7 +37,7 @@ function getMovies(searchText) {
 
 function movieSelected(id) {
     sessionStorage.setItem("movieId", id);
-    window.location = "gallarySearchInfo.html";
+    window.location = "gallerySearchInfo.html";
     return false;
 }
 
@@ -99,7 +78,7 @@ function getMovie() {
                         ${movie.Plot}
                         <hr>
                         <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-                        <a href="gallarySearch.html" class="btn btn-default">Go back to search</a>
+                        <a href="gallerySearch.html" class="btn btn-default">Go back to search</a>
                     </div>
             </div>
             `;
