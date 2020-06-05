@@ -83,11 +83,12 @@
   <!-- Checkout -->
   <div class="content">
     <form action='/charge' method='POST' id='checkout-form'  class="container" style="left: 100%" >
-      <input type='hidden' th:value='${amount}' name='amount' />
+      <input type='hidden' id="priceFetch" th:value='${amount}' name='amount' />
       <label class="display-4 jumbotron bg-dark text-white" >Total: £<span th:text='${amount/100}' /></label>
       <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
       <script
               src='https://checkout.stripe.com/checkout.js'
+              src="js/checkout.js"
               class='stripe-button'
               th:attr='data-key=${stripePublicKey},
                                data-amount=${amount},
@@ -96,10 +97,7 @@
               data-description='Checkout'
               data-image='img/qalogo.jpg'
               data-locale='auto'
-
               data-zip-code='false'>
-        const price = sessionStorage.getItem("price");
-        console.log(price);
       </script>
     </form>
   </div>
